@@ -1,0 +1,23 @@
+" Powerline
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+set rtp+=$POWERLINE_HOME/bindings/vim
+
+" Josh's Magic Vim Config Edit Key of Wonder
+nmap <silent> <F12> :if bufloaded($HOME . '/.vimrc.after') && bufnr(@%) == bufnr($HOME.'/.vimrc.after') <CR>w<CR>execute 'source ' . $HOME . '/.vimrc.after'<CR>bd<CR>else<CR>execute 'tabe ' . $HOME . '/.vimrc.after'<CR>endif<CR><CR>
+
+" Run Ruby file
+nmap <silent> <F10> :w<CR> :!ruby %<CR>
+
+" Switch off highlighting
+nmap <silent> <F9> :nohl<CR>
+
+" Pretty highlighting
+hi Search cterm=NONE ctermfg=black ctermbg=yellow
+
+" NERDTree settings
+let NERDTreeShowHidden=1
+
+" Associcate CSP files with HTML filetype
+au BufNewFile,BufRead *.csp set filetype=html
