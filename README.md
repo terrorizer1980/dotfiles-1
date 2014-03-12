@@ -8,7 +8,7 @@
 Usage
 -----
 
-Clone or fork this project, then just symlink these bad boys into your home directory:
+Just symlink these bad boys into your home directory:
 
 ```bash
 $ ln -s .tmux.conf ~
