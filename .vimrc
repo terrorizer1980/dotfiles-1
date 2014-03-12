@@ -16,12 +16,14 @@ Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-sensible'
 Bundle 'edkolev/tmuxline.vim'
 Bundle 'chriskempson/base16-vim'
+Bundle 'tpope/vim-vividchalk'
+Bundle 'vim-scripts/Wombat'
 
 "
 " vim-airline
 "
 set laststatus=2
-let g:airline_theme='powerlineish'
+let g:airline_theme='wombat'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
@@ -45,8 +47,13 @@ let NERDTreeShowHidden=1
 "
 syntax on
 set bg=dark
-colorscheme base16-default
+colorscheme wombat
 hi Search cterm=NONE ctermfg=black ctermbg=yellow
+
+"
+" Editor
+"
+set nu
 
 "
 " Hotkey functions
