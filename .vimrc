@@ -15,13 +15,12 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-sensible'
 Bundle 'edkolev/tmuxline.vim'
-Bundle 'chriskempson/base16-vim'
 
 "
 " vim-airline
 "
 set laststatus=2
-let g:airline_theme='powerlineish'
+let g:airline_theme='dark'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
@@ -44,8 +43,8 @@ let NERDTreeShowHidden=1
 " Colors
 "
 syntax on
+colorscheme default 
 set bg=dark
-colorscheme base16-default
 hi Search cterm=NONE ctermfg=black ctermbg=yellow
 
 "
