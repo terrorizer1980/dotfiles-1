@@ -1,7 +1,9 @@
-My dotfiles
-===========
-
-My application configuration files, obvs.
+```
+ ____ ____ ____ ____ ____ ____ ____ ____ ____ 
+||. |||d |||o |||t |||f |||i |||l |||e |||s ||
+||__|||__|||__|||__|||__|||__|||__|||__|||__||
+|/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|
+```
 
 Usage
 -----
@@ -13,6 +15,10 @@ $ ln -s .tmux.conf ~
 $ ln -s .vimrc ~
 $ ln -s .zshrc ~
 ```
+
+Thanks
+------
+ASCII art font is [smkeyboard.flf by Kent Nassen](http://www.forkable.eu/utils/fonts/figlet/smkeyboard.flf)
 
 ---
 
