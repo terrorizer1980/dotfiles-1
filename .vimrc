@@ -48,6 +48,11 @@ set bg=dark
 hi Search cterm=NONE ctermfg=black ctermbg=yellow
 
 "
+" Editor
+"
+set nu
+
+"
 " Hotkey functions
 "
 " Josh's Magic Vim Config Edit Key of Wonder
