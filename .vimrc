@@ -12,27 +12,15 @@ Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdtree'
-Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-sensible'
-Bundle 'edkolev/tmuxline.vim'
 
 "
-" vim-airline
+" Powerline
 "
-set laststatus=2
-let g:airline_theme='dark'
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-
-"
-" tmuxline.vim
-"
-let g:tmuxline_separators = {
-  \ 'left' : '',
-  \ 'left_alt': '',
-  \ 'right' : '',
-  \ 'right_alt' : '',
-  \ 'space' : ' '}
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+set rtp+=$POWERLINE_HOME/bindings/vim
 
 "
 " NERDTree
