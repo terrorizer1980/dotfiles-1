@@ -30,7 +30,7 @@ No matter *what* you do, don’t forget to install all the required Vim plugins 
 
 If you aren’t using Vundle already:
 ```bash
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+$ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 ```
 
 Install those plugins:
