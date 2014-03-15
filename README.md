@@ -16,7 +16,7 @@ $ ln -s .vimrc ~
 $ ln -s .zshrc ~
 ```
 
-If you aren’t down with Python 3, don’t feel like building Vim from source, dislike cool, angluar symbols, or want super lightweight status bars, use the *.airline alternatives:
+If you aren’t down with Python 3, don’t feel like building Vim from source, dislike cool, angluar symbols, or want super lightweight status bars, use the `*.airline` alternatives:
 
 ```bash
 $ ln -s .tmux.conf.airline ~/.tmux.conf
