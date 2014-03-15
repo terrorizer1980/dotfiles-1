@@ -23,15 +23,17 @@ $ ln -s .tmux.conf.airline ~/.tmux.conf
 $ ln -s .vimrc.airline ~/.vimrc
 ```
 
-Preflight
+Pre-flight
 ---------
 
-No matter *what* you do, don’t forget to install those Vim plugins before you get started:
+No matter *what* you do, don’t forget to install all the required Vim plugins before you get started.
 
 If you aren’t using Vundle already:
 ```bash
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 ```
+
+Install those plugins:
 
 ```bash
 $ vim +BundleInstall +qall
