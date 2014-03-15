@@ -20,8 +20,15 @@ If you aren’t down with Python 3, don’t feel like building Vim from source, 
 
 ```bash
 $ ln -s .tmux.conf.airline ~/.tmux.conf
-$ ln -s .vimrc.airline ~/.vimrc.airline
+$ ln -s .vimrc.airline ~/.vimrc
 ```
+
+No matter *what* you do, don’t forget to install those Vim plugins before you get started:
+
+```bash
+$ vim +BundleInstall +qall
+```
+
 
 Thanks
 ------
