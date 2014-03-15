@@ -16,6 +16,13 @@ $ ln -s .vimrc ~
 $ ln -s .zshrc ~
 ```
 
+If you aren’t down with Python 3, don’t feel like building Vim from source, dislike cool, angluar symbols, or want super lightweight status bars, use the *.airline alternatives:
+
+```bash
+$ ln -s .tmux.conf.airline ~/.tmux.conf
+$ ln -s .vimrc.airline ~/.vimrc.airline
+```
+
 Thanks
 ------
 ASCII art font is [smkeyboard.flf by Kent Nassen](http://www.forkable.eu/utils/fonts/figlet/smkeyboard.flf)
