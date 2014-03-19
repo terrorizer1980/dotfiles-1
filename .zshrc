@@ -26,3 +26,8 @@ export EDITOR='vim'
 alias rweb="ruby -run -e httpd . -p 5000"
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
+
+function zshtheme {
+  sed -i "s/\(ZSH_THEME=\"\).*\(\"\)/\1$1\2/g" ~/.zshrc
+  source ~/.zshrc
+}
