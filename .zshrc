@@ -15,7 +15,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl"
-export PATH=$PATH:$HOME/.rvm/bin
+export PATH=~/.rvm/gems/ruby-2.1.0/bin
 export PATH=$PATH:~/.gem/ruby/2.1.0/bin
 export PATH=$PATH:~/.local/bin
 
