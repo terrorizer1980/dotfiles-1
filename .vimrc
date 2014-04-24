@@ -33,27 +33,36 @@ set incsearch   " incremental searching
 set ignorecase  " searches are case insensitive...
 set smartcase   " ... unless they contain at least one capital letter
 
+""
+"" Backups
+""
+set backupdir=~/tmp/vim,/tmp,.
+set directory=~/tmp/vim,/tmp,.
+
 "
-" vundle
+" NeoBundle
 "
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-rails.git'
-Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-sensible'
+set rtp+=~/.vim/bundle/neobundle.vim/
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'tpope/vim-rails.git'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'tpope/vim-sensible'
+NeoBundle 'kien/ctrlp.vim'
+call neobundle#end()
 filetype off
 filetype plugin indent on
+NeoBundleCheck
 
 "
 " Powerline
 "
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
-set rtp+=$POWERLINE_HOME/bindings/vim
+"set rtp+=/home/nick/.local/lib/python3.3/site-packages/powerline/bindings/vim
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
 
 "
 " NERDTree
@@ -64,9 +73,10 @@ let NERDTreeShowHidden=1
 " Colors
 "
 syntax on
-colorscheme default 
+colorscheme default
 set bg=dark
 hi Search cterm=NONE ctermfg=black ctermbg=yellow
+hi LineNr ctermfg=grey
 
 "
 " Editor
@@ -74,13 +84,21 @@ hi Search cterm=NONE ctermfg=black ctermbg=yellow
 set nu
 
 "
+" File Types
+"
+autocmd FileType markdown setlocal textwidth=80
+
+"
 " Hotkey functions
 "
-" Josh's Magic Vim Config Edit Key of Wonder
-nmap <silent> <F12> :if bufloaded($HOME . '/.vimrc.after') && bufnr(@%) == bufnr($HOME.'/.vimrc.after') <CR>w<CR>execute 'source ' . $HOME . '/.vimrc.after'<CR>bd<CR>else<CR>execute 'tabe ' . $HOME . '/.vimrc.after'<CR>endif<CR><CR>
+" Edit .vimrc
+nmap <silent> <F12> :if bufloaded($HOME . '/.vimrc') && bufnr(@%) == bufnr($HOME.'/.vimrc') <CR>w<CR>execute 'source ' . $HOME . '/.vimrc'<CR>bd<CR>else<CR>execute 'tabe ' . $HOME . '/.vimrc'<CR>endif<CR><CR>
 
 " Run Ruby file
 nmap <silent> <F10> :w<CR> :!ruby %<CR>
 
 " Switch off highlighting
 nmap <silent> <F9> :nohl<CR>
+
+" Prettify punctuation
+nmap <silent> <F8> :%s/\v"(.*)"/“\1”/ge<CR> :%s/'/’/ge<CR> :%s/\v--([^-])/—\1/ge<CR>
