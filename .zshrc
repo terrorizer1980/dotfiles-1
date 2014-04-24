@@ -1,5 +1,13 @@
+if ! [ -n "$TMUX" ]; then
+  opts=(b d g p s t w y)
+  opt=${opts[$[RANDOM % 7]]}
+  echo $'\n'
+  cowsay -$opt `fortune`
+  echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+fi
+
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="bureau"
+ZSH_THEME="bprd"
 COMPLETION_WAITING_DOTS="true"
 
 # Uncomment following line if you want to  shown in the command execution time stamp 
@@ -15,19 +23,33 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl"
-export PATH=~/.rvm/gems/ruby-2.1.0/bin
-export PATH=$PATH:~/.gem/ruby/2.1.0/bin
 export PATH=$PATH:~/.local/bin
+export PATH=$PATH:/home/nick/.pyenv/versions/2.7.6/bin/
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$PYENV_ROOT/bin:$PATH"
 
 export POWERLINE_HOME="~/.local/lib/python3.3/site-packages/powerline"
 # export MANPATH="/usr/local/man:$MANPATH"
 export EDITOR='vim'
+export PYENV_ROOT="$HOME/.pyenv"
+
+eval "$(rbenv init -)"
+eval "$(pyenv init -)"
 
 alias rweb="ruby -run -e httpd . -p 5000"
 alias zshconfig="vim ~/.zshrc"
+alias zshsource="source ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
+alias wtfpl="curl -o LICENSE 'http://www.wtfpl.net/txt/copying/'"
+alias mm="middleman"
 
 function zshtheme {
   sed -i "s/\(ZSH_THEME=\"\).*\(\"\)/\1$1\2/g" ~/.zshrc
   source ~/.zshrc
+}
+
+function rbenv_prompt_info() {
+  local ruby_version
+  ruby_version=$(rbenv version 2> /dev/null) || return
+  echo "‹$ruby_version" | sed 's/[ \t].*$/›/'
 }
