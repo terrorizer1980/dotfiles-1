@@ -24,11 +24,11 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl"
 export PATH=$PATH:~/.local/bin
-export PATH=$PATH:/home/nick/.pyenv/versions/2.7.6/bin/
+export PATH=$PATH:$HOME/.pyenv/versions/2.7.6/bin/
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
-export POWERLINE_HOME="~/.local/lib/python3.3/site-packages/powerline"
+export POWERLINE_HOME="$HOME/.local/lib/python3.3/site-packages/powerline"
 # export MANPATH="/usr/local/man:$MANPATH"
 export EDITOR='vim'
 export PYENV_ROOT="$HOME/.pyenv"
