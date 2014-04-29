@@ -7,7 +7,7 @@ if ! [ -n "$TMUX" ]; then
 fi
 
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="bprd"
+ZSH_THEME="bureau"
 COMPLETION_WAITING_DOTS="true"
 
 # Uncomment following line if you want to  shown in the command execution time stamp 
@@ -22,16 +22,18 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl"
-export PATH=$PATH:~/.local/bin
-export PATH=$PATH:$HOME/.pyenv/versions/2.7.6/bin/
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
 export POWERLINE_HOME="$HOME/.local/lib/python3.3/site-packages/powerline"
 # export MANPATH="/usr/local/man:$MANPATH"
 export EDITOR='vim'
 export PYENV_ROOT="$HOME/.pyenv"
+
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl"
+export PATH=$PATH:/bin
+export PATH=$PATH:/usr/sbin
+export PATH=$PATH:~/.local/bin
+export PATH=$PATH:$HOME/.pyenv/versions/2.7.6/bin/
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$PYENV_ROOT/bin:$PATH"
 
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
@@ -53,3 +55,5 @@ function rbenv_prompt_info() {
   ruby_version=$(rbenv version 2> /dev/null) || return
   echo "‹$ruby_version" | sed 's/[ \t].*$/›/'
 }
+
+xrandr --output DP-1 --primary --mode 1920x1080 --auto --output LVDS-0 --mode 1280x800 --auto --right-of DP-1
