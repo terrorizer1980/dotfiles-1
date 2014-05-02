@@ -14,9 +14,10 @@ Just symlink these bad boys into your home directory:
 $ ln -s .tmux.conf ~
 $ ln -s .vimrc ~
 $ ln -s .zshrc ~
+$ ln -s .Xdefaults ~
 ```
 
-If you aren’t down with Python 3, don’t feel like building Vim from source, dislike cool, angular symbols, or want super lightweight status bars, use the `*.airline` alternatives:
+If your Vim doesn’t support Python, you dislike cool, angular symbols, or you want super lightweight status bars, use the `*.airline` alternatives:
 
 ```bash
 $ ln -s .tmux.conf.airline ~/.tmux.conf
@@ -28,15 +29,16 @@ Pre-flight
 
 No matter *what* you do, don’t forget to install all the required Vim plugins before you get started.
 
-If you aren’t using Vundle already:
+If you aren’t using [NeoBundle](https://github.com/Shougo/neobundle.vim) already:
+
 ```bash
-$ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+$ curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
 ```
 
 Install those plugins:
 
 ```bash
-$ vim +BundleInstall +qall
+$ vim +NeoBundleInstall +qall
 ```
 
 Thanks
