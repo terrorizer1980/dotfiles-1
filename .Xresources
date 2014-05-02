@@ -1,0 +1,5 @@
+xterm*termName: xterm-256color
+xterm*reverseVideo:	on
+xterm*faceName: Sauce Code Powerline
+xterm*faceSize: 9
+xterm*locale: true
