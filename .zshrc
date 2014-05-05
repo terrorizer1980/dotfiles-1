@@ -43,5 +43,3 @@ function rbenv_prompt_info() {
   ruby_version=$(rbenv version 2> /dev/null) || return
   echo "‹$ruby_version" | sed 's/[ \t].*$/›/'
 }
-
-xrandr --output DP-1 --primary --mode 1920x1080 --auto --output LVDS-0 --mode 1280x800 --auto --right-of DP-1
