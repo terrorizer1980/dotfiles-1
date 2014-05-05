@@ -59,10 +59,9 @@ NeoBundleCheck
 "
 " Powerline
 "
-"set rtp+=/home/nick/.local/lib/python3.3/site-packages/powerline/bindings/vim
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+py3 from powerline.vim import setup as powerline_setup
+py3 powerline_setup()
+py3 del powerline_setup
 
 "
 " NERDTree
