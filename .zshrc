@@ -1,13 +1,13 @@
-# #
-# # Holy Cow
-# #
-# if ! [ -n "$TMUX" ]; then
-#  opts=(b d g p s t w y)
-#  opt=${opts[$[RANDOM % 7]]}
-#  echo $'\n'
-#  cowsay -$opt `fortune`
-#  echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# fi
+#
+# Holy Cow
+#
+if ! [ -n "$TMUX" ]; then
+  opts=(b d g p s t w y)
+  opt=${opts[$[RANDOM % 7]]}
+  echo $'\n'
+  cowsay -$opt `fortune`
+  echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+fi
 
 
 #
@@ -73,19 +73,36 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
 
 #
-# Path Configuration
+# Editor
+#
+export EDITOR='vim'
+
+
+#
+# Basic Path Config
 #
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl"
 export PATH="$PATH:/bin:/usr/sbin:$HOME/.local/bin"
+
+
+#
+# rbenv
+#
 export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+function rbenv_prompt_info() {
+  local ruby_version
+  ruby_version=$(rbenv version 2> /dev/null) || return
+  echo "‹$ruby_version" | sed 's/[ \t].*$/›/'
+}
+
+
+#
+# pyenv
+#
 export PATH="$PYENV_ROOT/bin:$PATH"
-
-
-#
-# Other Environment Variables
-#
-export EDITOR='vim'
-export PYENV_ROOT="$HOME/.pyenv"
+eval "$(pyenv init -)"
 
 
 #
@@ -97,19 +114,3 @@ alias zshsource="source ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias wtfpl="curl -o LICENSE 'http://www.wtfpl.net/txt/copying/'"
 alias mm="middleman"
-
-
-#
-# Functions
-#
-function rbenv_prompt_info() {
-  local ruby_version
-  ruby_version=$(rbenv version 2> /dev/null) || return
-  echo "‹$ruby_version" | sed 's/[ \t].*$/›/'
-}
-
-
-
-
-eval "$(rbenv init -)"
-eval "$(pyenv init -)"
