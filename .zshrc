@@ -1,23 +1,24 @@
-if ! [ -n "$TMUX" ]; then
-  opts=(b d g p s t w y)
-  opt=${opts[$[RANDOM % 7]]}
-  echo $'\n'
-  cowsay -$opt `fortune`
-  echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Hello, cow!
+# if ! [ -n "$TMUX" ]; then
+#  opts=(b d g p s t w y)
+#  opt=${opts[$[RANDOM % 7]]}
+#  echo $'\n'
+#  cowsay -$opt `fortune`
+#  echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# fi
+
+# Prezto!
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="bureau"
-COMPLETION_WAITING_DOTS="true"
+autoload -Uz promptinit
+promptinit
 
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
-
+# Path stuff
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl"
 export PATH="$PATH:/bin:/usr/sbin:$HOME/.local/bin"
 export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$PATH:$HOME/.pyenv/versions/2.7.6/bin/"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
 export EDITOR='vim'
