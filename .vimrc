@@ -59,9 +59,9 @@ NeoBundleCheck
 "
 " Powerline
 "
-py3 from powerline.vim import setup as powerline_setup
-py3 powerline_setup()
-py3 del powerline_setup
+py from powerline.vim import setup as powerline_setup
+py powerline_setup()
+py del powerline_setup
 
 "
 " NERDTree
