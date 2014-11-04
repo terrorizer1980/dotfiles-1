@@ -37,8 +37,8 @@ $ vim +NeoBundleInstall +qall
 
 Requirements
 ------------
-- [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 - [NeoBundle](https://github.com/Shougo/neobundle.vim)
+- [Prezto](https://github.com/sorin-ionescu/prezto)
 - [pyenv](https://github.com/yyuu/pyenv)
 - [rbenv](https://github.com/sstephenson/rbenv)
 
