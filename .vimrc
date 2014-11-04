@@ -1,3 +1,5 @@
+let g:airline_powerline_fonts = 1
+
 ""
 "" Basic Setup
 ""
@@ -55,7 +57,7 @@ set listchars+=precedes:<    " The character to show in the last column when wra
 ""
 "" File Type Settings
 ""
-autocmd FileType markdown setlocal textwidth=80
+au BufRead,BufNewFile *.markdown setlocal textwidth=80
 
 ""
 "" Hotkey Functions
@@ -74,43 +76,38 @@ nmap <silent> <F8> :%s/\v"(.*)"/“\1”/ge<CR> :%s/'/’/ge<CR> :%s/\v--([^-])/
 
 
 ""
-"" NeoBundle
+"" Vim-Plug 
 ""
-set rtp+=~/.vim/bundle/neobundle.vim/
-call neobundle#begin(expand('~/.vim/bundle/'))
+call plug#begin('~/.vim/plugged')
 
-NeoBundleFetch 'Shougo/neobundle.vim'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tpope/vim-sensible'
+Plug 'kien/ctrlp.vim'
+Plug 'chriskempson/base16-vim'
+Plug 'timcharper/textile.vim'
+Plug 'whatyouhide/vim-gotham'
+Plug 'bling/vim-airline'
+Plug 'edkolev/tmuxline.vim'
+Plug 'kchmck/vim-coffee-script'
 
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'tpope/vim-rails.git'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'tpope/vim-sensible'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'chriskempson/base16-vim'
-NeoBundle 'Shougo/unite.vim'
-
-call neobundle#end()
-filetype off
-filetype plugin indent on
-
-NeoBundleCheck
-
+call plug#end()
 
 ""
 "" Colors
 ""
 syntax on
 set background=dark
-colorscheme base16-default
+colorscheme gotham
 
 
 ""
 "" Powerline
 ""
-py from powerline.vim import setup as powerline_setup
-py powerline_setup()
-py del powerline_setup
+" py3 from powerline.vim import setup as powerline_setup
+" py3 powerline_setup()
+" py3 del powerline_setup
 
 
 ""
