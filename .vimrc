@@ -89,6 +89,9 @@ Plug 'bling/vim-airline'
 Plug 'edkolev/tmuxline.vim'
 Plug 'luochen1990/rainbow'
 Plug 'kchmck/vim-coffee-script'
+Plug 'tpope/vim-dispatch'
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'luochen1990/rainbow'
 
 call plug#end()
 
@@ -100,6 +103,7 @@ syntax on
 set background=dark
 colorscheme base16-default
 let g:rainbow_active=1
+
 
 ""
 "" NERDTree
