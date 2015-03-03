@@ -1,4 +1,4 @@
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts=1
 
 ""
 "" Basic Setup
@@ -71,8 +71,8 @@ nmap <silent> <F10> :w<CR> :!ruby %<CR>
 " - Switch off highlighting
 nmap <silent> <F9> :nohl<CR>
 
-" - Prettify punctuation
-nmap <silent> <F8> :%s/\v"(.*)"/“\1”/ge<CR> :%s/'/’/ge<CR> :%s/\v--([^-])/—\1/ge<CR>
+" - Toggle paste mode 
+set pastetoggle=<F2>
 
 
 ""
@@ -80,37 +80,31 @@ nmap <silent> <F8> :%s/\v"(.*)"/“\1”/ge<CR> :%s/'/’/ge<CR> :%s/\v--([^-])/
 ""
 call plug#begin('~/.vim/plugged')
 
-Plug 'scrooloose/syntastic'
-Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-sensible'
+Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'kien/ctrlp.vim'
 Plug 'chriskempson/base16-vim'
-Plug 'timcharper/textile.vim'
-Plug 'whatyouhide/vim-gotham'
 Plug 'bling/vim-airline'
 Plug 'edkolev/tmuxline.vim'
+Plug 'luochen1990/rainbow'
 Plug 'kchmck/vim-coffee-script'
 
 call plug#end()
+
 
 ""
 "" Colors
 ""
 syntax on
 set background=dark
-colorscheme gotham
-
-
-""
-"" Powerline
-""
-" py3 from powerline.vim import setup as powerline_setup
-" py3 powerline_setup()
-" py3 del powerline_setup
-
+colorscheme base16-default
+let g:rainbow_active=1
 
 ""
 "" NERDTree
 ""
 let NERDTreeShowHidden=1
+
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
