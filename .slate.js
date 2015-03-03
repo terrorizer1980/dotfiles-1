@@ -1,4 +1,4 @@
-var hyper, nudge, nudgeAmt, resize, resizeAmt, sox, soy, ssx, ssy;
+var hyper, mod1, mod2, nudge, nudgeAmt, pos, resize, resizeAmt, sox, soy, ssx, ssy;
 
 sox = 'screenOriginX';
 
@@ -15,6 +15,69 @@ S.config('gridCellRoundedCornerSize', 2);
 nudgeAmt = '5%';
 
 resizeAmt = '5%';
+
+pos = {
+  centered: {
+    x: sox + "+" + ssx + "/8",
+    y: soy + "+" + ssy + "/8",
+    width: ssx + "/8*6",
+    height: ssy + "/8*6"
+  },
+  fullscreen: {
+    x: sox,
+    y: soy,
+    width: ssx,
+    height: ssy
+  },
+  leftHalf: {
+    x: sox,
+    y: soy,
+    width: ssx + "/2",
+    height: ssy
+  },
+  bottomHalf: {
+    x: sox,
+    y: soy + "+" + ssy + "/2",
+    width: ssx,
+    height: ssy + "/2"
+  },
+  topHalf: {
+    x: sox,
+    y: soy,
+    width: ssx,
+    height: ssy + "/2"
+  },
+  rightHalf: {
+    x: sox + "+" + ssx + "/2",
+    y: soy,
+    width: ssx + "/2",
+    height: ssy
+  },
+  topLeftQuarter: {
+    x: sox,
+    y: soy,
+    width: ssx + "/2",
+    height: ssy + "/2"
+  },
+  topRightQuarter: {
+    x: sox + "+" + ssx + "/2",
+    y: soy,
+    width: ssx + "/2",
+    height: ssy + "/2"
+  },
+  bottomLeftQuarter: {
+    x: sox,
+    y: soy + "+" + ssy + "/2",
+    width: ssx + "/2",
+    height: ssy + "/2"
+  },
+  bottomRightQuarter: {
+    x: sox + "+" + ssx + "/2",
+    y: soy + "+" + ssy + "/2",
+    width: ssx + "/2",
+    height: ssy + "/2"
+  }
+};
 
 nudge = {
   left: S.op('nudge', {
@@ -54,30 +117,60 @@ resize = {
   })
 };
 
-hyper = 'ctrl,alt,cmd,shift';
+hyper = function(k) {
+  return k + ":ctrl,alt,cmd,shift";
+};
 
-S.bind("r:" + hyper, S.op('relaunch'));
+mod1 = function(k) {
+  return k + ":ctrl,shift";
+};
 
-S.bind("u:" + hyper, S.op('undo'));
+mod2 = function(k) {
+  return k + ":ctrl,alt";
+};
 
-S.bind("g:" + hyper, S.op('grid'));
+S.bind(hyper('r'), S.op('relaunch'));
 
-S.bind("q:" + hyper, S.op('hint', {
+S.bind(hyper('z'), S.op('undo'));
+
+S.bind(hyper('w'), S.op('grid'));
+
+S.bind(hyper('q'), S.op('hint', {
   characters: 'QWERTYUIOP'
 }));
 
-S.bind('left:ctrl,shift', nudge.left);
+S.bind(hyper('g'), S.op('move', pos.centered));
 
-S.bind('right:ctrl,shift', nudge.right);
+S.bind(hyper('o'), S.op('move', pos.fullscreen));
 
-S.bind('up:ctrl,shift', nudge.up);
+S.bind(hyper('h'), S.op('move', pos.leftHalf));
 
-S.bind('down:ctrl,shift', nudge.down);
+S.bind(hyper('j'), S.op('move', pos.bottomHalf));
 
-S.bind('left:alt,shift', resize.left);
+S.bind(hyper('k'), S.op('move', pos.topHalf));
 
-S.bind('right:alt,shift', resize.right);
+S.bind(hyper('l'), S.op('move', pos.rightHalf));
 
-S.bind('up:alt,shift', resize.up);
+S.bind(hyper('u'), S.op('move', pos.topLeftQuarter));
 
-S.bind('down:alt,shift', resize.down);
+S.bind(hyper('i'), S.op('move', pos.topRightQuarter));
+
+S.bind(hyper('n'), S.op('move', pos.bottomLeftQuarter));
+
+S.bind(hyper('m'), S.op('move', pos.bottomRightQuarter));
+
+S.bind(mod1('left'), nudge.left);
+
+S.bind(mod1('right'), nudge.right);
+
+S.bind(mod1('up'), nudge.up);
+
+S.bind(mod1('down'), nudge.down);
+
+S.bind(mod2('left'), resize.left);
+
+S.bind(mod2('right'), resize.right);
+
+S.bind(mod2('up'), resize.up);
+
+S.bind(mod2('down'), resize.down);

@@ -1,3 +1,6 @@
+# Thanks to:
+# - https://github.com/dmac/dotfiles/blob/master/.slate
+
 # Aliases
 sox = 'screenOriginX'
 soy = 'screenOriginY'
@@ -9,6 +12,59 @@ S.config('gridRoundedCornerSize', 2)
 S.config('gridCellRoundedCornerSize', 2)
 nudgeAmt = '5%'
 resizeAmt= '5%'
+
+# Positions
+pos =
+  centered:
+    x: "#{sox}+#{ssx}/8"
+    y: "#{soy}+#{ssy}/8"
+    width: "#{ssx}/8*6"
+    height: "#{ssy}/8*6"
+  fullscreen:
+    x: sox
+    y: soy
+    width: ssx
+    height: ssy
+  leftHalf:
+    x: sox
+    y: soy
+    width: "#{ssx}/2"
+    height: ssy
+  bottomHalf:
+    x: sox
+    y: "#{soy}+#{ssy}/2"
+    width: ssx
+    height: "#{ssy}/2"
+  topHalf:
+    x: sox
+    y: soy
+    width: ssx
+    height: "#{ssy}/2"
+  rightHalf:
+    x: "#{sox}+#{ssx}/2"
+    y: soy
+    width: "#{ssx}/2"
+    height: ssy
+  topLeftQuarter:
+    x: sox
+    y: soy
+    width: "#{ssx}/2"
+    height: "#{ssy}/2"
+  topRightQuarter:
+    x: "#{sox}+#{ssx}/2"
+    y: soy
+    width: "#{ssx}/2"
+    height: "#{ssy}/2"
+  bottomLeftQuarter:
+    x: sox
+    y: "#{soy}+#{ssy}/2"
+    width: "#{ssx}/2"
+    height: "#{ssy}/2"
+  bottomRightQuarter:
+    x: "#{sox}+#{ssx}/2"
+    y: "#{soy}+#{ssy}/2"
+    width: "#{ssx}/2"
+    height: "#{ssy}/2"
 
 # Nudge
 nudge =
@@ -25,19 +81,32 @@ resize =
   down: S.op('resize', { width: '+0', height: "+#{resizeAmt}" })
 
 # Bindings
-hyper = 'ctrl,alt,cmd,shift'
+hyper = (k) -> "#{k}:ctrl,alt,cmd,shift"
+mod1= (k) -> "#{k}:ctrl,shift"
+mod2 = (k) -> "#{k}:ctrl,alt"
 
-S.bind "r:#{hyper}", S.op('relaunch')
-S.bind "u:#{hyper}", S.op('undo')
-S.bind "g:#{hyper}", S.op('grid')
-S.bind "q:#{hyper}", S.op('hint', { characters: 'QWERTYUIOP' })
+S.bind hyper('r'), S.op('relaunch')
+S.bind hyper('z'), S.op('undo')
+S.bind hyper('w'), S.op('grid')
+S.bind hyper('q'), S.op('hint', { characters: 'QWERTYUIOP' })
 
-S.bind 'left:ctrl,shift', nudge.left
-S.bind 'right:ctrl,shift', nudge.right
-S.bind 'up:ctrl,shift', nudge.up
-S.bind 'down:ctrl,shift', nudge.down
+S.bind hyper('g'), S.op('move', pos.centered)
+S.bind hyper('o'), S.op('move', pos.fullscreen)
+S.bind hyper('h'), S.op('move', pos.leftHalf)
+S.bind hyper('j'), S.op('move', pos.bottomHalf)
+S.bind hyper('k'), S.op('move', pos.topHalf)
+S.bind hyper('l'), S.op('move', pos.rightHalf)
+S.bind hyper('u'), S.op('move', pos.topLeftQuarter)
+S.bind hyper('i'), S.op('move', pos.topRightQuarter)
+S.bind hyper('n'), S.op('move', pos.bottomLeftQuarter)
+S.bind hyper('m'), S.op('move', pos.bottomRightQuarter)
 
-S.bind 'left:alt,shift', resize.left
-S.bind 'right:alt,shift', resize.right
-S.bind 'up:alt,shift', resize.up
-S.bind 'down:alt,shift', resize.down
+S.bind mod1('left'), nudge.left
+S.bind mod1('right'), nudge.right
+S.bind mod1('up'), nudge.up
+S.bind mod1('down'), nudge.down
+
+S.bind mod2('left'), resize.left
+S.bind mod2('right'), resize.right
+S.bind mod2('up'), resize.up
+S.bind mod2('down'), resize.down
