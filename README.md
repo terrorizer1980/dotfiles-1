@@ -24,4 +24,4 @@ ASCII art font is [smkeyboard.flf by Kent Nassen](http://www.forkable.eu/utils/f
 
 ---
 
-Do What The Fuck You Want To Public License (WTFPL). Copyright (c) 2014 Nicholas Scheurich.
+Do What The Fuck You Want To Public License (WTFPL). Copyright (c) 2015 Nicholas Scheurich.
