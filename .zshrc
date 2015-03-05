@@ -1,18 +1,4 @@
-#
-# Holy Cow
-#
-# if ! [ -n "$TMUX" ]; then
-#   opts=(b d g p s t w y)
-#   opt=${opts[$[RANDOM % 7]]}
-#   echo $'\n'
-#   cowsay -$opt `fortune`
-#   echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# fi
-
-
-#
 # Prezto!
-#
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
@@ -20,14 +6,11 @@ fi
 autoload -Uz promptinit
 promptinit
 
-
-#
 # Key Bindings
 # https://github.com/JeanMertz/omz-to-prezto/blob/omz-to-prezto/zsh/key-bindings.zsh
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Zle-Builtins
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Standard-Widgets
-#
 bindkey -v                                          # Use vi key bindings
 
 bindkey '\ew' kill-region                           # [Esc-w] - Kill from the cursor to the mark
@@ -58,11 +41,8 @@ bindkey '^[[3~' delete-char                         # [fn-Delete] - delete forwa
 bindkey '^[3;5~' delete-char
 bindkey '\e[3~' delete-char
 
-
-#
 # Less Colors for Man Pages
 # http://linuxtidbits.wordpress.com/2009/03/23/less-colors-for-man-pages/
-#
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
 export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
 export LESS_TERMCAP_me=$'\E[0m'           # end mode
@@ -71,24 +51,18 @@ export LESS_TERMCAP_so=$'\E[38;33;246m'   # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
-
-#
 # Editor
-#
 export EDITOR='vim'
 
+# Get rid of lag when entering vi mode
+export KEYTIMEOUT=1
 
-#
 # Basic Path Config
-#
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl"
 export PATH="$PATH:/bin:/usr/sbin:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/lib/python2.7/site-packages"
 
-
-#
 # rbenv
-#
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
@@ -98,18 +72,12 @@ function rbenv_prompt_info() {
   echo "‹$ruby_version" | sed 's/[ \t].*$/›/'
 }
 
-
-#
 # pyenv
-#
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-
-#
 # Aliases
-#
 alias rbweb="ruby -run -e httpd . -p 5000"
 alias zshconfig="vim ~/.zshrc"
 alias zshsource="source ~/.zshrc"
@@ -117,4 +85,5 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 alias wtfpl="curl -o LICENSE 'http://www.wtfpl.net/txt/copying/'"
 alias mm="middleman"
 
+# Get local config
 source ~/.zshrc.local
