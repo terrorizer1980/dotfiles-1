@@ -116,3 +116,5 @@ alias zshsource="source ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias wtfpl="curl -o LICENSE 'http://www.wtfpl.net/txt/copying/'"
 alias mm="middleman"
+
+source ~/.zshrc.local
