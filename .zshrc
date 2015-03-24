@@ -84,6 +84,11 @@ alias zshsource="source ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias wtfpl="curl -o LICENSE 'http://www.wtfpl.net/txt/copying/'"
 alias mm="middleman"
+alias gst="git status -s"
+alias gad="git add"
+alias gco="git commit -m"
+alias gdf="git diff"
+alias gam="git commit -am"
 
 # Get local config
 source ~/.zshrc.local
