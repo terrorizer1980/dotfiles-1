@@ -72,7 +72,7 @@ call plug#end()
 " Colors
 syntax on
 set background=dark
-colorscheme base16-default
+colorscheme base16-paraiso
 let g:rainbow_active=1
 
 " NERDTree
