@@ -86,6 +86,11 @@ alias wtfpl="curl -o LICENSE 'http://www.wtfpl.net/txt/copying/'"
 alias mm="middleman"
 alias bunx="bundle exec"
 alias buni="bundle install"
+alias gst="git status -s"
+alias gad="git add"
+alias gco="git commit -m"
+alias gdf="git diff"
+alias gam="git commit -am"
 
 # Get local config
 source ~/.zshrc.local
