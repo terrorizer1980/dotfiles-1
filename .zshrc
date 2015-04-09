@@ -72,11 +72,6 @@ function rbenv_prompt_info() {
   echo "‹$ruby_version" | sed 's/[ \t].*$/›/'
 }
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
 # Aliases
 alias rbweb="ruby -run -e httpd . -p 5000"
 alias zshconfig="vim ~/.zshrc"
