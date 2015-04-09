@@ -91,7 +91,12 @@ enabled = false
 #  .txt
 
 [spotify]
-username = my_username
-password = my_password
+enabled = true
+username = ; Spotify username 
+password = ; Spotify password
 bitrate = 320
+timeout = 10
+cache_dir = $XDG_CACHE_DIR/mopidy/spotify
+settings_dir = $XDG_CONFIG_DIR/mopidy/spotify
 toplist_countries = US
+
