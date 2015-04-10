@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 link ()
 {
@@ -13,8 +13,9 @@ d_vim="y"
 d_zsh="y"
 d_prezto="y"
 d_tmux="y"
-d_Slate="n"
-d_X="n"
+d_slate="n"
+d_x="n"
+d_sublime="n"
 
 # Get user choices
 echo -n "Link Vim config? (Y/n) "
@@ -41,6 +42,10 @@ echo -n "Link X configs? (y/N) "
 read x
 [ -z "$x" ] && x=$d_x
 
+echo -n "Link Sublime Text configs? (y/N) "
+read sublime
+[ -z "$sublime" ] && sublime=$d_sublime
+
 # Link the chosen files
 [ "$vim" == "y" ] && link ".vimrc"
 
@@ -58,5 +63,9 @@ fi
 if [ "$x" == "y" ]; then
   link ".xinitrc"
   link ".Xresources"
+fi
+
+if [ "$sublime" == "y" ]; then
+  link "Preferences.sublime-settings" "${HOME}/Library/Application Support/Sublime Text 3/Packages/User"
 fi
 

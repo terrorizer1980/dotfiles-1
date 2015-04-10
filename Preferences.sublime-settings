@@ -1,0 +1,27 @@
+{
+  // Global Settings
+	"ignored_packages": [],
+	"theme": "Spacegray.sublime-theme",
+
+  // Whitespace and Indentation
+  "tab_size": 2,
+  "translate_tabs_to_spaces": true,
+  "use_tab_stops": true,
+
+  // Visual Settings
+  "color_scheme": "Packages/Theme - Spacegray/base16-ocean.dark.tmTheme",
+  "rulers": 80,
+  "match_brackets": true,
+
+  // Automatic Behavior
+  "auto_match_enabled": true,
+  "ensure_newline_at_eof_on_save": true,
+
+  // System and Miscellaneous Settings
+  "spell_check": false,
+  "fallback_encoding": "UTF-8",
+  "default_line_ending": "unix",
+
+  // Input Settings
+  "command_mode": true
+}
