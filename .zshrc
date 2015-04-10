@@ -72,6 +72,9 @@ function rbenv_prompt_info() {
   echo "‹$ruby_version" | sed 's/[ \t].*$/›/'
 }
 
+# nvm
+source ~/.nvm/nvm.sh
+
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -91,6 +94,9 @@ alias gad="git add"
 alias gco="git commit -m"
 alias gdf="git diff"
 alias gam="git commit -am"
+alias djadmin="django-admin.py "
+alias djmanage="python manage.py "
+alias sctl="sudo systemctl "
 
 # Get local config
 source ~/.zshrc.local
