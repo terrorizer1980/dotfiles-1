@@ -27,8 +27,14 @@ function prompt_sorin_precmd {
   fi
 
   # Get Virtual env info
-  if (( $+functions[python-info] )); then
-    python-info
+  # if (( $+functions[python-info] )); then
+  #   python-info
+  # fi
+
+  # Get Python info
+  python_version=''
+  if (( $+commands[pyenv] )); then
+    python_version=" %F{220}py:$(pyenv version-name)"
   fi
 
   # Get Node info
@@ -74,17 +80,17 @@ function prompt_sorin_setup {
     'rprompt' '%A%B%S%a%d%m%r%U%u'
 
   # Set ruby-info parameters.
-  zstyle ':prezto:module:ruby:info:version' format '%F{red}rb:%v%f'
+  zstyle ':prezto:module:ruby:info:version' format ' %F{red}rb:%v%f'
 
   # Set python-info parameters.
-  zstyle ':prezto:module:python:info:virtualenv' format '%F{220}py:%v%f'
+  # zstyle ':prezto:module:python:info:virtualenv' format '%F{220}py:%v%f'
 
   # Set node-info parameters
-  zstyle ':prezto:module:node:info:version' format '%F{106}node:%v%f'
+  zstyle ':prezto:module:node:info:version' format ' %F{106}node:%v%f'
 
   # Define prompts.
   PROMPT='
-%F{cyan}%n@%F{white}%m%f %F{cyan}%~%f ${ruby_info[version]} ${node_info[version]} ${python_info[virtualenv]}
+%F{cyan}%n@%F{white}%m%f %F{cyan}%~%f${ruby_info[version]}${node_info[version]}$python_version
 %(!. %B%F{red}#%f%b.)${editor_info[keymap]} '
   RPROMPT='${editor_info[overwrite]}%(?:: %F{red}⏎%f)${VIM:+" %B%F{green}V%f%b"}${git_info[rprompt]} ${git_info:+${(e)git_info[prompt]}} %F{white}[%*]'
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
