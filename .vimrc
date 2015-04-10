@@ -48,6 +48,8 @@ nmap <silent> <F12> :if bufloaded($HOME . '/.vimrc') && bufnr(@%) == bufnr($HOME
 
 "" Run Ruby file
 nmap <silent> <F10> :w<CR> :!ruby %<CR>
+"" Run Python file
+nmap <silent> <F11> :w<CR> :!ruby %<CR>
 "" Switch off highlighting
 nmap <silent> <F9> :nohl<CR>
 "" Toggle paste mode 
