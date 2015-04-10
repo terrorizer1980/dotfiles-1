@@ -1,3 +1,4 @@
+#IfWinActive ahk_class TV_CClientWindowClass
 ; Bind Caps Lock to Hyper
 *CapsLock::
   SetKeyDelay -1
@@ -12,3 +13,4 @@ return
 ; Mimic OS X keyboard layout
 LAlt::Lwin
 LWin::LAlt
+#IfWinActive
