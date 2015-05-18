@@ -97,6 +97,7 @@ alias gam="git commit -am"
 alias djadmin="django-admin.py "
 alias djmanage="python manage.py "
 alias sctl="sudo systemctl "
+alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
 
 # Get local config
 source ~/.zshrc.local
