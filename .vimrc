@@ -29,6 +29,7 @@ set nowb
 " Editor
 set nowrap                   " don't wrap lines
 set number                   " Show line numbers
+set relativenumber           " Show relative line numbers
 set ruler                    " Show line and column number
 syntax enable                " Turn on syntax highlighting allowing local overrides
 set listchars=""             " Reset the listchars
@@ -37,7 +38,6 @@ set listchars+=trail:.       " show trailing spaces as dots
 set listchars+=extends:>     " The character to show in the last column when wrap is
                              " off and the line continues beyond the right of the screen
 set listchars+=precedes:<    " The character to show in the last column when wrap is
-                             " off and the line continues beyond the left of the screen
 
 " File type settings
 au BufRead,BufNewFile *.markdown setlocal textwidth=80
@@ -49,7 +49,7 @@ nmap <silent> <F12> :if bufloaded($HOME . '/.vimrc') && bufnr(@%) == bufnr($HOME
 "" Run Ruby file
 nmap <silent> <F10> :w<CR> :!ruby %<CR>
 "" Run Python file
-nmap <silent> <F11> :w<CR> :!ruby %<CR>
+nmap <silent> <F11> :w<CR> :!python %<CR>
 "" Switch off highlighting
 nmap <silent> <F9> :nohl<CR>
 "" Toggle paste mode 
@@ -67,8 +67,8 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'luochen1990/rainbow'
 Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-dispatch'
-Plug 'OmniSharp/omnisharp-vim'
 Plug 'luochen1990/rainbow'
+Plug 'ngmy/vim-rubocop'
 call plug#end()
 
 " Colors
@@ -82,3 +82,6 @@ let NERDTreeShowHidden=1
 
 " Ctrl-P ignores
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
+
+" Syntastic
+let g:syntastic_haml_checkers = ['haml_lint']
