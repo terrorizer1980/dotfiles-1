@@ -81,6 +81,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 # Aliases
+alias curlh="curl -s -D - -o /dev/null"
 alias rbweb="ruby -run -e httpd . -p 5000"
 alias zshconfig="vim ~/.zshrc"
 alias zshsource="source ~/.zshrc"
@@ -89,14 +90,20 @@ alias wtfpl="curl -o LICENSE 'http://www.wtfpl.net/txt/copying/'"
 alias mm="middleman"
 alias bunx="bundle exec"
 alias buni="bundle install"
-alias gst="git status -s"
-alias gad="git add"
-alias gco="git commit -m"
-alias gdf="git diff"
-alias gam="git commit -am"
-alias djadmin="django-admin.py "
-alias djmanage="python manage.py "
+alias gstat="git status -s"
+alias gadd="git add"
+alias gcomm="git commit -m"
+alias gdiff="git diff"
+alias gcam="git commit -am"
+alias gchk="git checkout"
+alias gpush="git push"
+alias gpull="git pull"
 alias sctl="sudo systemctl "
+alias fuck='eval $(thefuck $(fc -ln -1))'
+alias boilerplate="curl -LO https://raw.githubusercontent.com/ngscheurich/boilerplate/master/README.md; curl -LO https://raw.githubusercontent.com/ngscheurich/boilerplate/master/LICENSE"
 
 # Get local config
 source ~/.zshrc.local
+
+# added by travis gem
+[ -f /home/nick/.travis/travis.sh ] && source /home/nick/.travis/travis.sh
