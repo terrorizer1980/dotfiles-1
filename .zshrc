@@ -101,7 +101,7 @@ alias gpull="git pull"
 alias sctl="sudo systemctl "
 alias fuck='eval $(thefuck $(fc -ln -1))'
 alias boilerplate="curl -LO https://raw.githubusercontent.com/ngscheurich/boilerplate/master/README.md; curl -LO https://raw.githubusercontent.com/ngscheurich/boilerplate/master/LICENSE"
-
+#
 # Get local config
 source ~/.zshrc.local
 
