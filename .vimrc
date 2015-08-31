@@ -1,5 +1,3 @@
-let g:airline_powerline_fonts=1
-
 " Basic Setup
 set nocompatible      " Use vim, no vi defaults
 set encoding=utf-8    " Set default encoding to UTF-8
@@ -45,7 +43,6 @@ au BufRead,BufNewFile *.markdown setlocal textwidth=80
 " Hotkey functions
 "" Edit .vimrc
 nmap <silent> <F12> :if bufloaded($HOME . '/.vimrc') && bufnr(@%) == bufnr($HOME.'/.vimrc') <CR>w<CR>execute 'source ' . $HOME . '/.vimrc'<CR>bd<CR>else<CR>execute 'tabe ' . $HOME . '/.vimrc'<CR>endif<CR><CR>
-
 "" Run Ruby file
 nmap <silent> <F10> :w<CR> :!ruby %<CR>
 "" Run Python file
@@ -62,8 +59,6 @@ Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'kien/ctrlp.vim'
 Plug 'chriskempson/base16-vim'
-Plug 'bling/vim-airline'
-Plug 'edkolev/tmuxline.vim'
 Plug 'luochen1990/rainbow'
 Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-dispatch'
@@ -71,10 +66,15 @@ Plug 'luochen1990/rainbow'
 Plug 'ngmy/vim-rubocop'
 call plug#end()
 
+" Powerline
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+
 " Colors
 syntax on
 set background=dark
-colorscheme base16-paraiso
+colorscheme base16-default
 let g:rainbow_active=1
 
 " NERDTree
