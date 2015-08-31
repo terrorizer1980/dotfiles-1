@@ -80,6 +80,13 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+# Powerline
+if [[ ${OSTYPE//[0-9.]/} == "darwin" ]]; then
+  export POWERLINE_ROOT="$HOME/Library/Python/2.7/lib/python/site-packages/powerline/"
+else
+  # export POWERLINE_ROOT="/powerline/"
+fi
+
 # Aliases
 alias curlh="curl -s -D - -o /dev/null"
 alias rbweb="ruby -run -e httpd . -p 5000"
