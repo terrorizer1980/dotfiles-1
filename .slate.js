@@ -16,7 +16,7 @@ nudge_amt = "3%";
 
 resize_amt = "3%";
 
-gap = "14";
+gap = "0";
 
 pos = {
   origin_x: sox + "+" + gap,
