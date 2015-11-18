@@ -58,9 +58,8 @@ export EDITOR='vim'
 export KEYTIMEOUT=1
 
 # Basic Path Config
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl"
-export PATH="$PATH:/bin:/usr/sbin:$HOME/.local/bin"
-export PATH="$PATH:$HOME/.local/lib/python2.7/site-packages"
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin/core_perl"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/lib/python2.7/site-packages"
 
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -88,6 +87,7 @@ else
 fi
 
 # Aliases
+alias git=hub
 alias curlh="curl -s -D - -o /dev/null"
 alias rbweb="ruby -run -e httpd . -p 5000"
 alias zshconfig="vim ~/.zshrc"
@@ -108,7 +108,28 @@ alias gpull="git pull"
 alias sctl="sudo systemctl "
 alias fuck='eval $(thefuck $(fc -ln -1))'
 alias boilerplate="curl -LO https://raw.githubusercontent.com/ngscheurich/boilerplate/master/README.md; curl -LO https://raw.githubusercontent.com/ngscheurich/boilerplate/master/LICENSE"
-#
+
+# Ruby convenience stuff
+function rails {
+  if [ -x bin/rails ]; then
+    bin/rails $@
+  elif [[ (-f Gemfile || -f .bundle) ]]; then
+    bundle exec rails $@
+  else
+    $HOME/.rbenv/shims/rails $@
+  fi
+}
+
+function rake {
+  if [ -x bin/rake ]; then
+    bin/rake $@
+  elif [[ (-f Gemfile || -f .bundle) ]]; then
+    bundle exec rake $@
+  else
+    $HOME/.rbenv/shims/rake $@
+  fi
+}
+
 # Get local config
 source ~/.zshrc.local
 
