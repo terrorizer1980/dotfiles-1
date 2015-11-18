@@ -37,6 +37,9 @@ set listchars+=extends:>     " The character to show in the last column when wra
                              " off and the line continues beyond the right of the screen
 set listchars+=precedes:<    " The character to show in the last column when wrap is
 
+" Font
+set guifont=InputMono\ ExLight\ Plus\ Nerd\ File\ Types:h13
+
 " File type settings
 au BufRead,BufNewFile *.markdown setlocal textwidth=80
 
@@ -64,6 +67,7 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-dispatch'
 Plug 'luochen1990/rainbow'
 Plug 'ngmy/vim-rubocop'
+Plug 'mileszs/ack.vim'
 call plug#end()
 
 " Powerline
@@ -76,6 +80,9 @@ syntax on
 set background=dark
 colorscheme base16-default
 let g:rainbow_active=1
+
+" ack.vim + The Silver Searcher
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " NERDTree
 let NERDTreeShowHidden=1
