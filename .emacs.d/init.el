@@ -13,12 +13,12 @@
   (pallet-mode t))
 
 (defun ngs/include-code-paths ()
-  (add-to-list 'load-path "~/.emacs.d/prefs")
-  (add-to-list 'load-path "~/.emacs.d/modes"))
+  (add-to-list 'load-path "~/.emacs.d/prefs/")
+  (add-to-list 'load-path "~/.emacs.d/modes/"))
 
 (defun ngs/configure-modes ()
   (mapcar (lambda (mode-file-name) (load mode-file-name))
-	  (directory-files "~/.emacs.d/modes" nil ".el")))
+	  (directory-files "~/.emacs.d/modes/" nil ".el")))
 
 (custom-set-variables
  '(custom-safe-themes
@@ -30,7 +30,6 @@
 
 (load "ui.el")
 (load "keybindings.el")
-
 (load-file "~/.emacs.d/prefs/smart-mode-line.el")
 
 (ngs/configure-modes)
