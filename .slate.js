@@ -153,7 +153,7 @@ layouts = {
 };
 
 hyper = function(k) {
-  return k + ":ctrl,alt,cmd,shift";
+  return k + ":ctrl,alt,cmd";
 };
 
 mod1 = function(k) {

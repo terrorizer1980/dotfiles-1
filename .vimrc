@@ -58,16 +58,20 @@ set pastetoggle=<F2>
 " Vim-Plug 
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-speeddating'
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'kien/ctrlp.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'luochen1990/rainbow'
 Plug 'kchmck/vim-coffee-script'
-Plug 'tpope/vim-dispatch'
-Plug 'luochen1990/rainbow'
 Plug 'ngmy/vim-rubocop'
 Plug 'mileszs/ack.vim'
+Plug 't9md/vim-ruby-xmpfilter'
 call plug#end()
 
 " Powerline
@@ -92,3 +96,12 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
 
 " Syntastic
 let g:syntastic_haml_checkers = ['haml_lint']
+
+" vim-ruby-xmpfilter
+autocmd FileType ruby nmap <buffer> <F3> <Plug>(xmpfilter-mark)
+autocmd FileType ruby xmap <buffer> <F3> <Plug>(xmpfilter-mark)
+autocmd FileType ruby imap <buffer> <F3> <Plug>(xmpfilter-mark)
+
+autocmd FileType ruby nmap <buffer> <F4> <Plug>(xmpfilter-run)
+autocmd FileType ruby xmap <buffer> <F4> <Plug>(xmpfilter-run)
+autocmd FileType ruby imap <buffer> <F4> <Plug>(xmpfilter-run)

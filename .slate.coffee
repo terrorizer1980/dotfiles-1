@@ -106,7 +106,7 @@ layouts =
   })
 
 # Bindings
-hyper = (k) -> "#{k}:ctrl,alt,cmd,shift"
+hyper = (k) -> "#{k}:ctrl,alt,cmd"
 mod1 = (k) -> "#{k}:ctrl,shift"
 mod2 = (k) -> "#{k}:ctrl,alt"
 mod3 = (k) -> "#{k}:ctrl,cmd"
