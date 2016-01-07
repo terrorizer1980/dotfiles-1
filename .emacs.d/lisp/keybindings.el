@@ -1,9 +1,9 @@
 ;;; ngs-emacs/keybindings --- Custom keybindings
-
+;;;
 ;;; Commentary:
-
+;;;
 ;;; Custom keybindings
-
+;;;
 ;;; Code:
 
 (load "setup-keys.el")

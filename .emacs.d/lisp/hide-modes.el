@@ -1,10 +1,10 @@
 ;;; ngs-emacs/hide-modes --- Hide minor modes
-
+;;;
 ;;; Commentary:
-
+;;;
 ;;; Hides minor modes using diminish.el, replacing some
 ;;; with abbreviations
-
+;;;
 ;;; Code:
 
 (defmacro diminish-minor-mode (filename mode &optional abbrev)
