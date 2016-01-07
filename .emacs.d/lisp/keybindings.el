@@ -1,9 +1,9 @@
 ;;; ngs-emacs/keybindings --- Custom keybindings
-
+;;;
 ;;; Commentary:
-
+;;;
 ;;; Custom keybindings
-
+;;;
 ;;; Code:
 
 (global-set-key (kbd "M-x") 'helm-M-x)
