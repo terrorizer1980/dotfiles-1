@@ -1,10 +1,10 @@
 ;;; ngs-emacs/ui-prefs --- User interface preferences
-
+;;;
 ;;; Commentary:
-
+;;;
 ;;; Preferences for user interface elements, e.g. tool bar,
 ;;; scroll bar, mode line
-
+;;;
 ;;; Code:
 
 (load "hide-modes.el")
