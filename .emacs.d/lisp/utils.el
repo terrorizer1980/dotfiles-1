@@ -1,9 +1,9 @@
 ;;; ngs-emacs/utils --- Utility functions
-
+;;;
 ;;; Commentary:
-
+;;;
 ;;; Utility functions
-
+;;;
 ;;; Code:
 
 (defun hrs/mac? ()
