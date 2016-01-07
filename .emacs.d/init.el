@@ -1,9 +1,16 @@
 ;;; ngs-emacs/init --- My Emacs config
-
+;;;
 ;;; Copyright (c) 2016 Nicholas Scheurich
-
+;;;
+;;; Commentary:
+;;;
+;;; My Emacs initialization file. Opinions are my own. Vim, you will
+;;; always be my first ❤. Lots of good stuff lifted from the Emacs
+;;; setup of Mr. Harry R. Schwartz <http://harryrschwartz.com/>.
+;;; There be dragons here.
+;;;
 ;;; License:
-
+;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU General Public License as published by
 ;;; the Free Software Foundation, either version 3 of the License, or
@@ -16,14 +23,7 @@
 ;;;
 ;;; You should have received a copy of the GNU General Public License
 ;;; along with this program.  If not, see <http://www.gnu.org/licenses
-
-;;; Commentary:
-
-;;; My Emacs initialization file. Opinions are my own. Vim, you will
-;;; always be my first ❤. Lots of good stuff lifted from the Emacs
-;;; setup of Mr. Harry R. Schwartz <http://harryrschwartz.com/>.
-;;; There be dragons here.
-
+;;;
 ;;; Code:
 
 (defun ngs/configure-cask ()
@@ -54,6 +54,10 @@
 	'("~/.emacs.d/snippets"
 	  "~/.emacs.d/snippets/yasnippet-snippets"))
   (yas-global-mode 1))
+
+(defun ngs/configure-terminal ()
+  "Gotta have my terminal."
+  (setq multi-term-program "/bin/zsh"))
 
 (setq custom-file "~/.emacs.d/custom.el")
 (setq system-uses-terminfo nil)

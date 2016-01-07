@@ -22,7 +22,7 @@
 
 (defun ngs/set-font ()
   "Set default font."
-  (set-frame-font "InputMonoExtraLight-14"))
+  (set-frame-font "InputMonoExtraLight-13"))
 
 (defun ngs/customize-colors ()
   "Set up color theme."
@@ -60,7 +60,7 @@
 
 (global-hl-line-mode)
 
-(ngs/fullscreen-on-macs)
+; (ngs/fullscreen-on-macs)
 (ngs/disable-window-chrome)
 (ngs/set-font)
 (ngs/customize-colors)
