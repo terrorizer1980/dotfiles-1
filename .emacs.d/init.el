@@ -1,9 +1,9 @@
 ;;; ngs-emacs/init --- My Emacs config
-
+;;;
 ;;; Copyright (c) 2016 Nicholas Scheurich
-
+;;;
 ;;; License:
-
+;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU General Public License as published by
 ;;; the Free Software Foundation, either version 3 of the License, or
@@ -16,14 +16,14 @@
 ;;;
 ;;; You should have received a copy of the GNU General Public License
 ;;; along with this program.  If not, see <http://www.gnu.org/licenses
-
+;;;
 ;;; Commentary:
-
+;;;
 ;;; My Emacs initialization file. Opinions are my own. Vim, you will
 ;;; always be my first ❤. Lots of good stuff lifted from the Emacs
 ;;; setup of Mr. Harry R. Schwartz <http://harryrschwartz.com/>.
 ;;; There be dragons here.
-
+;;;
 ;;; Code:
 
 (defun ngs/configure-cask ()
