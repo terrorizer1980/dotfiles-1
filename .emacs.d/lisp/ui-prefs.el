@@ -22,7 +22,7 @@
 
 (defun ngs/set-font ()
   "Set default font."
-  (set-frame-font "InputMonoExtraLight-13"))
+  (set-frame-font "Input Mono Extra Light-13"))
 
 (defun ngs/customize-colors ()
   "Set up color theme."

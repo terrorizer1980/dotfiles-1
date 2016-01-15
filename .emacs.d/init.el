@@ -57,7 +57,18 @@
 
 (defun ngs/configure-terminal ()
   "Gotta have my terminal."
-  (setq multi-term-program "/bin/zsh"))
+  (setq multi-term-program "/bin/bash"))
+
+(defun ngs/configure-environment-variables ()
+  (when (memq window-system '(ns))
+    (exec-path-from-shell-initialize)))
+
+(defun ngs/save-backups-in-one-location ()
+  "Force file backups and auto-saves into a sane location."
+  (setq backup-directory-alist
+	`((".*" . ,temporary-file-directory)))
+  (setq auto-save-file-name-transforms
+	`((".*" ,temporary-file-directory t))))
 
 (setq custom-file "~/.emacs.d/custom.el")
 (setq system-uses-terminfo nil)
@@ -67,6 +78,8 @@
 (ngs/include-custom-code-paths)
 (ngs/configure-all-custom-modes)
 (ngs/configure-yasnippet)
+(ngs/configure-environment-variables)
+(ngs/save-backups-in-one-location)
 
 (load "utils.el")
 (load "ui-prefs.el")
