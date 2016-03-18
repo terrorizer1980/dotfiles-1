@@ -72,12 +72,13 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'ngmy/vim-rubocop'
 Plug 'mileszs/ack.vim'
 Plug 't9md/vim-ruby-xmpfilter'
+Plug 'vim-airline/vim-airline'
+Plug 'Valloric/YouCompleteMe'
+Plug 'jdonaldson/vaxe'
 call plug#end()
 
-" Powerline
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+" Airline
+let g:airline_powerline_fonts = 1
 
 " Colors
 syntax on
