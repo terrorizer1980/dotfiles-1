@@ -1,6 +1,3 @@
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.haml\\'" . web-mode))
-
 (defun ngs-web-mode-hook ()
   "Hook for web-mode."
   (setq web-mode-markup-indent-offset 2)

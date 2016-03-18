@@ -70,6 +70,11 @@
   (setq auto-save-file-name-transforms
 	`((".*" ,temporary-file-directory t))))
 
+(defun kill-other-buffers ()
+  "Kill all other buffers. -- https://www.emacswiki.org/emacs-test/KillingBuffers#toc2"
+  (interactive)
+  (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
+
 (setq custom-file "~/.emacs.d/custom.el")
 (setq system-uses-terminfo nil)
 
@@ -81,9 +86,15 @@
 (ngs/configure-environment-variables)
 (ngs/save-backups-in-one-location)
 
+(which-key-mode)
+
 (load "utils.el")
 (load "ui-prefs.el")
 (load "keybindings.el")
+(load "rcodetools.el")
+(load "haxeflixel-mode.el")
+(load "rotate.el")
+(load "auto-modes.el")
 
 (load custom-file)
 

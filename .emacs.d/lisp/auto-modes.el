@@ -1,10 +1,11 @@
-;;; ngs-emacs/keybindings --- Custom keybindings
+;;; ngs-emacs/auto-modes --- File type to mode mapping
 ;;;
 ;;; Copyright (c) 2016 Nicholas Scheurich
 ;;;
 ;;; Commentary:
 ;;;
-;;; Custom keybindings
+;;; Automatically loads modes when editing a file, based on the file's
+;;; type.
 ;;;
 ;;; License:
 ;;;
@@ -23,12 +24,10 @@
 ;;;
 ;;; Code:
 
-(load "setup-keys.el")
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.haml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.hx\\'" . haxeflixel-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x b") 'helm-buffers-list)
-(global-set-key (kbd "C-x g") 'magit-status)
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier 'super)
-
-;;; keybindings.el ends here
+;;; auto-modes.el ends here
