@@ -30,5 +30,7 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'super)
+(global-evil-surround-mode 1)
+;; (define-key haskell-mode-map (kbd "<f8>") 'haskell-navigate-imports)
 
 ;;; keybindings.el ends here

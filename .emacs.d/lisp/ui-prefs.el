@@ -38,27 +38,31 @@
 (defun ngs/set-font ()
   "Set default font."
   (set-frame-font "Input-13"))
+  ;;(set-frame-font "Fantasque Sans Mono-16"))
 
 (defun ngs/customize-colors ()
   "Set up color theme."
   (load-theme 'base16-default-dark t))
+  ;; (load-theme 'gruvbox t))
   
-(defun ngs/spaceline-mode-line ()
-  "Configure mode line with spaceline."
-  (require 'spaceline-config)
-  (spaceline-spacemacs-theme)
-  (spaceline-helm-mode)
-  (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
-  (setq powerline-default-separator 'slant)
-  (setq spaceline-minor-modes-separator " ")
+(defun ngs/configure-mode-line ()
+  "Configure mode line."
+  ;; (require 'spaceline-config)
+  ;; (spaceline-spacemacs-theme)
+  ;; (spaceline-helm-mode)
+  ;; (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
+  ;; (setq powerline-default-separator 'slant)
+  ;; (setq spaceline-minor-modes-separator " ")
   ;; TODO: What's up with the #?
-  (add-hook 'after-init-hook #'fancy-battery-mode)
+  ;; (add-hook 'after-init-hook #'fancy-battery-mode)
   ;; TODO: Why +1 and not t or 1?
   (global-anzu-mode +1)
-  (setq spaceline-window-numbers-unicode t)
-  (fancy-battery-mode)
-  (display-time-mode))
-  ;; (window-numbering-mode))
+  ;; (setq spaceline-window-numbers-unicode t)
+  ;; (fancy-battery-mode)
+  ;; (display-time-mode)
+  ;; (sml/setup)
+  (setq column-number-mode t)
+  (window-numbering-mode))
 
 (defun ngs/configure-ido ()
   ;; (ido-everywhere 1)
@@ -92,10 +96,12 @@
 (ngs/disable-window-chrome)
 (ngs/set-font)
 (ngs/customize-colors)
-(ngs/spaceline-mode-line)
+(ngs/configure-mode-line)
 (ngs/relative-line-numbers)
 (ngs/disable-srgb-colors-on-macs)
 (ngs/use-pretty-symbols)
 (ngs/configure-ido)
+
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;;; ui-prefs.el ends here

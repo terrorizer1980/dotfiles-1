@@ -60,7 +60,7 @@
   (setq multi-term-program "/bin/bash"))
 
 (defun ngs/configure-environment-variables ()
-  (when (memq window-system '(ns))
+  (when (memq window-system '(mac ns))
     (exec-path-from-shell-initialize)))
 
 (defun ngs/save-backups-in-one-location ()
@@ -79,7 +79,7 @@
 (setq system-uses-terminfo nil)
 
 (ngs/configure-cask)
-(ngs/extend-exec-path)
+;; (ngs/extend-exec-path)
 (ngs/include-custom-code-paths)
 (ngs/configure-all-custom-modes)
 (ngs/configure-yasnippet)

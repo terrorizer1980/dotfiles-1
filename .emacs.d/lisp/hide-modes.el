@@ -32,8 +32,12 @@
 (diminish-minor-mode 'undo-tree 'undo-tree-mode)
 (diminish-minor-mode 'which-key 'which-key-mode)
 
-(diminish-minor-mode 'flycheck 'flycheck-mode "Ⓕ")
-(diminish-minor-mode 'projectile-rails 'projectile-rails-mode "Ⓡ")
-(diminish-minor-mode 'yasnippet 'yas-minor-mode "ⓨ")
+;; (diminish-minor-mode 'flycheck 'flycheck-mode "Ⓕ")
+;; (diminish-minor-mode 'projectile-rails 'projectile-rails-mode "Ⓡ")
+;; (diminish-minor-mode 'yasnippet 'yas-minor-mode "ⓨ")
+
+(diminish-minor-mode 'flycheck 'flycheck-mode " F")
+(diminish-minor-mode 'projectile-rails 'projectile-rails-mode " Rails")
+(diminish-minor-mode 'yasnippet 'yas-minor-mode " y")
 
 ;;; hide-modes.el ends here

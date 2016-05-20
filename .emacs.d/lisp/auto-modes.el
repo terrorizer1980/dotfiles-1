@@ -25,9 +25,39 @@
 ;;; Code:
 
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.haml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.haml\\'" . haml-mode))
 (add-to-list 'auto-mode-alist '("\\.hx\\'" . haxeflixel-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+;; http://stackoverflow.com/questions/6886643/file-extension-hook-in-emacs
+(defun ngs/use-projectile-rails-mode-for-erb ()
+  "Enables projectile-rails-mode when editing ERB files."
+  (when (and (stringp buffer-file-name)
+             (string-match "\\.erb\\'" buffer-file-name))
+    (projectile-rails-mode)))
+
+(defun ngs/use-rspec-mode-for-erb ()
+  "Enables rspec-mode when editing ERB files."
+  (when (and (stringp buffer-file-name)
+             (string-match "\\.erb\\'" buffer-file-name))
+    (rspec-mode)))
+
+(defun ngs/use-projectile-rails-mode-for-haml ()
+  "Enables projectile-rails-mode when editing HAML files."
+  (when (and (stringp buffer-file-name)
+             (string-match "\\.haml\\'" buffer-file-name))
+    (projectile-rails-mode)))
+
+(defun ngs/use-rspec-mode-for-haml ()
+  "Enables rspec-mode when editing HAML files."
+  (when (and (stringp buffer-file-name)
+             (string-match "\\.haml\\'" buffer-file-name))
+    (rspec-mode)))
+
+(add-hook 'find-file-hook 'ngs/use-projectile-rails-mode-for-haml)
+(add-hook 'find-file-hook 'ngs/use-rspec-mode-for-haml)
+(add-hook 'find-file-hook 'ngs/use-projectile-rails-mode-for-erb)
+(add-hook 'find-file-hook 'ngs/use-rspec-mode-for-erb)
 
 ;;; auto-modes.el ends here
