@@ -73,7 +73,6 @@ Plug 'ngmy/vim-rubocop'
 Plug 'mileszs/ack.vim'
 Plug 't9md/vim-ruby-xmpfilter'
 Plug 'vim-airline/vim-airline'
-Plug 'Valloric/YouCompleteMe'
 Plug 'jdonaldson/vaxe'
 call plug#end()
 
@@ -106,3 +105,6 @@ autocmd FileType ruby imap <buffer> <F3> <Plug>(xmpfilter-mark)
 autocmd FileType ruby nmap <buffer> <F4> <Plug>(xmpfilter-run)
 autocmd FileType ruby xmap <buffer> <F4> <Plug>(xmpfilter-run)
 autocmd FileType ruby imap <buffer> <F4> <Plug>(xmpfilter-run)
+
+" For Vaxe completion
+set autowrite
