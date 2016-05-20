@@ -12,35 +12,28 @@ promptinit
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Zle-Builtins
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Standard-Widgets
 bindkey -v                                          # Use vi key bindings
-
 bindkey '\ew' kill-region                           # [Esc-w] - Kill from the cursor to the mark
 bindkey -s '\el' 'ls\n'                             # [Esc-l] - run command: ls
 bindkey -s '\e.' '..\n'                             # [Esc-.] - run command: .. (up directory)
 bindkey '^r' history-incremental-search-backward    # [Ctrl-r] - Search backward incrementally for a specified string. The string may begin with ^ to anchor the search to the beginning of the line.
 bindkey '^[[5~' up-line-or-history                  # [PageUp] - Up a line of history
 bindkey '^[[6~' down-line-or-history                # [PageDown] - Down a line of history
-
 bindkey '^[[A' up-line-or-search                    # start typing + [Up-Arrow] - fuzzy find history forward
 bindkey '^[[B' down-line-or-search                  # start typing + [Down-Arrow] - fuzzy find history backward
-
 bindkey '^[[H' beginning-of-line                    # [Home] - Go to beginning of line
 bindkey '^[[1~' beginning-of-line                   # [Home] - Go to beginning of line
 bindkey '^[OH' beginning-of-line                    # [Home] - Go to beginning of line
 bindkey '^[[F'  end-of-line                         # [End] - Go to end of line
 bindkey '^[[4~' end-of-line                         # [End] - Go to end of line
 bindkey '^[OF' end-of-line                          # [End] - Go to end of line
-
 bindkey ' ' magic-space                             # [Space] - do history expansion
-
 bindkey '^[[1;5C' forward-word                      # [Ctrl-RightArrow] - move forward one word
 bindkey '^[[1;5D' backward-word                     # [Ctrl-LeftArrow] - move backward one word
-
 # Make the delete key (or Fn + Delete on the Mac) work instead of outputting a ~
 bindkey '^?' backward-delete-char                   # [Delete] - delete backward
 bindkey '^[[3~' delete-char                         # [fn-Delete] - delete forward
 bindkey '^[3;5~' delete-char
 bindkey '\e[3~' delete-char
-
 
 # rbenv
 eval "$(rbenv init -)"
@@ -58,7 +51,44 @@ source ~/.nvm/nvm.sh
 eval "$(pyenv init -)"
 
 # Docker
-eval "$(docker-machine env default)"
+# eval "$(docker-machine env default)"
+
+# Lunchy
+LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
+if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
+  . $LUNCHY_DIR/lunchy-completion.zsh
+fi
+
+# Less Colors for Man Pages
+# http://linuxtidbits.wordpress.com/2009/03/23/less-colors-for-man-pages/
+export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
+export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
+export LESS_TERMCAP_me=$'\E[0m'           # end mode
+export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
+export LESS_TERMCAP_so=$'\E[38;33;246m'   # begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\E[0m'           # end underline
+export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
+
+# Editor
+export EDITOR='emacs'
+
+# Get rid of lag when entering vi mode
+export KEYTIMEOUT=1
+
+# PATH Config
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin/core_perl"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/lib/python2.7/site-packages"
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PATH:/usr/local/Cellar/node/5.6.0/bin"
+
+# Powerline
+if [[ ${OSTYPE//[0-9.]/} == "darwin" ]]; then
+  export POWERLINE_ROOT="$HOME/Library/Python/2.7/lib/python/site-packages/powerline"
+else
+  # export POWERLINE_ROOT="/powerline/"
+fi
 
 # Aliases
 alias git=hub
@@ -74,41 +104,17 @@ alias dc-rake="docker-compose run app bin/rake"
 alias dc-bundle="docker-compose run app bundle"
 alias dc-rspec="docker-compose run app bundle exec rspec"
 alias rspec="bundle exec rspec"
-alias emacs="/usr/local/Cellar/emacs/24.5/bin/emacs"
 alias docker-rm-dangling='docker rmi --force $(docker images -q -f dangling=true)'
-
-# Ruby convenience stuff
-function rails {
-  if [ -x bin/rails ]; then
-    bin/rails $@
-  elif [[ (-f Gemfile || -f .bundle) ]]; then
-    bundle exec rails $@
-  else
-    $HOME/.rbenv/shims/rails $@
-  fi
-}
-
-function rake {
-  if [ -x bin/rake ]; then
-    bin/rake $@
-  elif [[ (-f Gemfile || -f .bundle) ]]; then
-    bundle exec rake $@
-  else
-    $HOME/.rbenv/shims/rake $@
-  fi
-}
+alias emacs="/usr/local/Cellar/emacs-mac/emacs-24.5-z-mac-5.15/bin/emacs"
 
 # Get local config
 source ~/.zshrc.local
 
-# Lunchy
-LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
-if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
-  . $LUNCHY_DIR/lunchy-completion.zsh
-fi
+# Vagrant niceties
+function vrails {
+  vagrant ssh -c "cd /vagrant && bin/rails $@"
+}
 
-# added by travis gem
-[ -f /home/nick/.travis/travis.sh ] && source /home/nick/.travis/travis.sh
-
-# added by travis gem
-[ -f /Users/nscheurich/.travis/travis.sh ] && source /Users/nscheurich/.travis/travis.sh
+function vrake {
+  vagrant ssh -c "cd /vagrant && bin/rake $@"
+}
