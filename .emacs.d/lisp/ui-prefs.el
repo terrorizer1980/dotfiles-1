@@ -37,8 +37,8 @@
 
 (defun ngs/set-font ()
   "Set default font."
-  (set-frame-font "Input-13"))
-  ;;(set-frame-font "Fantasque Sans Mono-16"))
+  (set-frame-font "Fira Code Retina-14")
+  (mac-auto-operator-composition-mode))
 
 (defun ngs/customize-colors ()
   "Set up color theme."
