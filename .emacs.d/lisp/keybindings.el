@@ -32,5 +32,6 @@
 (setq mac-option-modifier 'super)
 (global-evil-surround-mode 1)
 ;; (define-key haskell-mode-map (kbd "<f8>") 'haskell-navigate-imports)
+(define-key ruby-mode-map (kbd "C-c C-c") 'xmp)
 
 ;;; keybindings.el ends here
