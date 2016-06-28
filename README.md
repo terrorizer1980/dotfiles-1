@@ -17,6 +17,4 @@ ASCII art font is [smkeyboard.flf by Kent Nassen](http://www.forkable.eu/utils/f
 
 ---
 
-[(ↄ) Copyleft](http://www.gnu.org/licenses/copyleft.en.html)
-Nicholas Gunther Scheurich under the
-[GNU General Public License](http://www.gnu.org/licenses/gpl.txt)
+Copyright (c) 2016 Nicholas Scheurich under the [MIT License (MIT)](https://opensource.org/licenses/MIT)
