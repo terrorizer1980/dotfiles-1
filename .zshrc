@@ -76,12 +76,11 @@ export EDITOR='emacs'
 export KEYTIMEOUT=1
 
 # PATH Config
-export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin/core_perl"
-export PATH="$PATH:$HOME/.local/bin:$HOME/.local/lib/python2.7/site-packages"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin/core_perl:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-export PATH="$PATH:/usr/local/Cellar/node/5.6.0/bin"
+export PATH="$HOME/.pyenv/bin:$PATH"
+export PATH="/usr/local/Cellar/node/5.6.0/bin:$PATH"
+export PATH="/usr/local/share/dotnet:$PATH"
 
 # Powerline
 if [[ ${OSTYPE//[0-9.]/} == "darwin" ]]; then
@@ -95,7 +94,7 @@ alias git=hub
 alias curlh="curl -s -D - -o /dev/null"
 alias rbweb="ruby -run -e httpd . -p 5000"
 alias zshconfig="vim ~/.zshrc"
-alias zshsource="source ~/.zshrc && source ~/.zshenv"
+alias zshsource="source ~/.zshrc"
 alias sctl="sudo systemctl "
 alias fuck='eval $(thefuck $(fc -ln -1))'
 alias boilerplate="curl -LO https://raw.githubusercontent.com/ngscheurich/boilerplate/master/README.md; curl -LO https://raw.githubusercontent.com/ngscheurich/boilerplate/master/LICENSE"
@@ -105,7 +104,7 @@ alias dc-bundle="docker-compose run app bundle"
 alias dc-rspec="docker-compose run app bundle exec rspec"
 alias rspec="bundle exec rspec"
 alias docker-rm-dangling='docker rmi --force $(docker images -q -f dangling=true)'
-alias emacs="/usr/local/Cellar/emacs-mac/emacs-24.5-z-mac-5.15/bin/emacs"
+alias emacs='/usr/local/Cellar/emacs-mac/emacs-24.5-z-mac-5.15/bin/emacs'
 
 # Get local config
 source ~/.zshrc.local
@@ -118,3 +117,6 @@ function vrails {
 function vrake {
   vagrant ssh -c "cd /vagrant && bin/rake $@"
 }
+
+# DNVM stuff
+source dnvm.sh

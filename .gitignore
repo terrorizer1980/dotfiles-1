@@ -6,3 +6,5 @@ mopidy.conf
 .emacs.d/eshell
 .emacs.d/projectile-bookmarks.eld
 .emacs.d/#*
+.atom/.apm
+.atom/packages

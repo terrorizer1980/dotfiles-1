@@ -24,9 +24,17 @@
 atom-text-editor {
   // color: white;
   // background-color: hsl(180, 24%, 12%);
+  // Enable Fira Code ligatures
+  text-rendering: optimizeLegibility;
 }
 
 // To style other content in the text editor's shadow DOM, use the ::shadow expression
 atom-text-editor::shadow .cursor {
   // border-color: red;
+}
+
+atom-text-editor::shadow .string.quoted,
+atom-text-editor::shadow .string.regexp {
+  // Disable Fira Code ligatures inside of strings and regexps
+  -webkit-font-feature-settings: "liga" off, "calt" off;
 }
