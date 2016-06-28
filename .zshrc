@@ -70,7 +70,7 @@ export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
 # Editor
-export EDITOR='emacs'
+export EDITOR='emacs -c'
 
 # Get rid of lag when entering vi mode
 export KEYTIMEOUT=1
@@ -93,7 +93,7 @@ fi
 alias git=hub
 alias curlh="curl -s -D - -o /dev/null"
 alias rbweb="ruby -run -e httpd . -p 5000"
-alias zshconfig="vim ~/.zshrc"
+alias zshconfig="$EDITOR ~/.zshrc"
 alias zshsource="source ~/.zshrc"
 alias sctl="sudo systemctl "
 alias fuck='eval $(thefuck $(fc -ln -1))'
@@ -107,7 +107,7 @@ alias docker-rm-dangling='docker rmi --force $(docker images -q -f dangling=true
 alias emacs='/usr/local/Cellar/emacs-mac/emacs-24.5-z-mac-5.15/bin/emacs'
 
 # Get local config
-source ~/.zshrc.local
+# source ~/.zshrc.local
 
 # Vagrant niceties
 function vrails {
