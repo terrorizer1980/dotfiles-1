@@ -70,7 +70,7 @@ export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
 # Editor
-export EDITOR='emacs -c'
+export EDITOR='emacsclient'
 
 # Get rid of lag when entering vi mode
 export KEYTIMEOUT=1
@@ -105,6 +105,7 @@ alias dc-rspec="docker-compose run app bundle exec rspec"
 alias rspec="bundle exec rspec"
 alias docker-rm-dangling='docker rmi --force $(docker images -q -f dangling=true)'
 alias emacs='/usr/local/Cellar/emacs-mac/emacs-24.5-z-mac-5.15/bin/emacs'
+alias emacsclient='/usr/local/Cellar/emacs-mac/emacs-24.5-z-mac-5.15/bin/emacsclient'
 
 # Get local config
 # source ~/.zshrc.local
