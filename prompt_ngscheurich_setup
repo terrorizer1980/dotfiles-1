@@ -97,3 +97,7 @@ function prompt_sorin_setup {
 }
 
 prompt_sorin_setup "$@"
+
+zstyle ':prezto:module:editor:info:keymap:primary' format '%F{white}#%f'
+zstyle ':prezto:module:editor:info:keymap:alternate' format '%F{cyan}-%f'
+
