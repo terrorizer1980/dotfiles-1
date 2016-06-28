@@ -7,7 +7,9 @@
 
 Setup
 -----
-Execute `link_dotfiles.sh` to link these bad boys into your home directory.
+~~Execute `link_dotfiles.sh` to symlink these bad boys into your home directory.~~
+
+Please stand by…
 
 Thanks
 ------
@@ -15,4 +17,6 @@ ASCII art font is [smkeyboard.flf by Kent Nassen](http://www.forkable.eu/utils/f
 
 ---
 
-Do What The Fuck You Want To Public License (WTFPL). Copyright (c) Nicholas Scheurich.
+[(ↄ) Copyleft](http://www.gnu.org/licenses/copyleft.en.html)
+Nicholas Gunther Scheurich under the
+[GNU General Public License](http://www.gnu.org/licenses/gpl.txt)
