@@ -1,7 +1,30 @@
 "*":
+  "activate-power-mode":
+    autoToggle: false
+  "advanced-open-file":
+    createDirectories: true
+  core:
+    packagesWithKeymapsDisabled: [
+      "activate-power-mode"
+    ]
   editor:
     fontFamily: "FiraCode-Retina"
+    lineHeight: 1.45
   "exception-reporting":
     userId: "8372acc1-2517-6969-0b52-663c58e5ec86"
+  "file-icons":
+    tabPaneIcon: false
+  minimap:
+    autoToggle: false
+  "omnisharp-atom": {}
+  "one-dark-ui": {}
+  "show-invisibles-plus": {}
   welcome:
     showOnStartup: false
+".blade.html.php.text":
+  editor:
+    commentEnd: " --}}"
+    commentStart: "{{-- "
+".html.php.text":
+  editor:
+    tabLength: 4
