@@ -112,7 +112,7 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(sanityinc-tomorrow-night
+   dotspacemacs-themes '(gruvbox
                          sanityinc-tomorrow-day)
 
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -261,7 +261,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (add-to-list 'auto-mode-alist '("\\.blade.php\\'" . web-mode))
   (setq tramp-ssh-controlmaster-options
         "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
-  (mac-auto-operator-composition-mode)
+  ;; (mac-auto-operator-composition-mode)
   (setq powerline-default-separator 'slant)
   (setq neo-theme 'ascii)
   (setq-default dotspacemacs-persistent-server t)
@@ -271,6 +271,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(css-indent-offset 2)
  '(js-indent-level 2)
  '(web-mode-markup-indent-offset 2))
 (custom-set-faces
