@@ -8,3 +8,4 @@ mopidy.conf
 .emacs.d/#*
 .atom/.apm
 .atom/packages
+.slate.js
