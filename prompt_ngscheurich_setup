@@ -20,17 +20,39 @@ function prompt_sorin_precmd {
   if (( $+functions[git-info] )); then
     git-info
   fi
+  
+  search_path=$PWD
+  tool_versions_file=""
 
-  # Get Ruby info.
-  if (( $+functions[ruby-info] )); then
-    ruby-info
+  while [[ $search_path != "/" && $search_path != $HOME && $tool_versions_file = "" ]]; do
+    result=$(find $search_path -maxdepth 1 -name ".tool-versions")
+    if [[ $result != "" ]]; then
+        tool_versions_file="$search_path/.tool-versions"
+    else
+        search_path="$(dirname "$search_path")"
+    fi
+  done
+  unset search_path
+
+  tool_versions=()
+  if [[ $tool_versions_file != "" ]]; then
+    while read line; do
+      tool=$(echo $line | sed 's/^\([^ ]*\) \(.*\)/\1/')
+      # version=$(echo $line | sed 's/^\([^ ]*\) \(.*\)/\2/'n)
+      case $tool in
+        erlang)
+          tool_versions[$(($#tool_versions+1))]="%F{red}erl:$(asdf which erlang)";;
+        elixir)
+          tool_versions[$(($#tool_versions+1))]="%F{magenta}ex:$(asdf which elixir)";;
+        nodejs)
+          tool_versions[$(($#tool_versions+1))]="%F{green}js:$(asdf which nodejs)";;
+        python)
+          tool_versions[$(($#tool_versions+1))]="%F{yellow}py:$(asdf which python)";;
+        ruby)
+          tool_versions[$(($#tool_versions+1))]="%F{red}rb:$(asdf which ruby)";;
+      esac
+    done < $tool_versions_file
   fi
-
-  # Get Python info.
-  python_version=" %F{yellow}py:$(python -V 2>&1 | sed 's/Python //')"
-
-  # Get Node info.
-  node_version=" %F{green}js:$(node -v | sed 's/v//')"
 }
 
 function prompt_sorin_setup {
@@ -69,12 +91,9 @@ function prompt_sorin_setup {
     'prompt' '(%F{blue}git%f$(coalesce "%b" "%p" "%c")%s)' \
     'rprompt' '%A%B%S%a%d%m%r%U%u'
 
-  # Set ruby-info parameters.
-  zstyle ':prezto:module:ruby:info:version' format ' %F{red}rb:%v%f'
-
   # Define prompts.
   PROMPT='
-%F{cyan}%n@%F{white}%m%f %F{cyan}%~%f${ruby_info[version]}$python_version$node_version
+%F{cyan}%n@%F{white}%m%f %F{cyan}%~%f $tool_versions
 %(!. %B%F{red}#%f%b.)${editor_info[keymap]} '
   RPROMPT='${editor_info[overwrite]}%(?:: %F{red}⏎%f)${VIM:+" %B%F{green}V%f%b"}${git_info[rprompt]} ${git_info:+${(e)git_info[prompt]}} %F{white}[%*]'
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
@@ -84,4 +103,3 @@ prompt_sorin_setup "$@"
 
 zstyle ':prezto:module:editor:info:keymap:primary' format '%F{white}%%%f'
 zstyle ':prezto:module:editor:info:keymap:alternate' format '%F{cyan}-%f'
-
