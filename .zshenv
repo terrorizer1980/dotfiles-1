@@ -3,4 +3,4 @@ export PATH="/usr/local/Cellar/node/5.6.0/bin:$PATH"
 export PATH="/usr/local/share/dotnet:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="/usr/local/Cellar/mysql/5.7.13/bin/:$PATH"
-
+export PATH=$PWD/bin:$PATH
