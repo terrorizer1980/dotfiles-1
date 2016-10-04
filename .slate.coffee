@@ -12,7 +12,7 @@ S.config("gridRoundedCornerSize", 2)
 S.config("gridCellRoundedCornerSize", 2)
 nudge_amt = "3%"
 resize_amt= "3%"
-gap = "0"
+gap = "15"
 
 # Presets
 pos =
