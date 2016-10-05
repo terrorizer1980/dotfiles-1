@@ -14,7 +14,8 @@ Run the installation script:
     
 ## Configuration
 
-The installation script will install the defaults configs if no config file is found. Currently, those are:
+The installation script will install the configs for the default application if no config .install file is found.
+Currently, those are:
 
 - Prezto
 - Pry
