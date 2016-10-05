@@ -30,8 +30,8 @@ you’d like configured have a `+` in front and applications you aren’t intere
 
 Some configs expect their respective application to be installed.
 
-- Prezto requires [Prezto](https://github.com/sorin-ionescu/prezto) (or a `~/.prezto directory`)
-- Spacemacs requires [Spacemacs](http://spacemacs.org/) (or a `~/.emacs.d directory`)
+- Prezto requires [Prezto](https://github.com/sorin-ionescu/prezto) (or a `~/.prezto` directory)
+- Spacemacs requires [Spacemacs](http://spacemacs.org/) (or a `~/.emacs.d` directory)
 - Sublime Text requires [Sublime Text 3](https://www.sublimetext.com/3) (only works on macOS)
 
 ## License
