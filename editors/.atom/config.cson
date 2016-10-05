@@ -1,0 +1,71 @@
+"*":
+  "activate-power-mode": {}
+  "advanced-open-file": {}
+  "atom-beautify": {}
+  "autoupdate-packages":
+    lastUpdateTimestamp: 1473182758720
+  core:
+    disabledPackages: [
+      "ide-haskell"
+      "omnisharp-atom"
+      "json-schema"
+      "linter-tidy"
+      "swackets"
+      "atom-jade"
+      "linter-haml"
+      "language-cshtml"
+      "minimap"
+      "linter-tslint"
+      "project-manager"
+      "atom-yeoman"
+      "language-elixir"
+      "vim-mode"
+      "atom-typescript"
+      "linter-sass-lint"
+      "atom-elixir"
+      "language-haskell"
+      "linter-pep8"
+      "linter-erb"
+      "minimap-split-diff"
+      "language-haml"
+      "linter-eslint"
+      "linter-elixirc"
+      "emmet"
+      "angularjs"
+      "platformio-ide-terminal"
+      "linter-ruby"
+      "language-lisp"
+      "language-blade"
+      "linter-php"
+      "pigments"
+      "tabs"
+      "merge-conflicts"
+      "linter"
+    ]
+  "easy-motion-redux": {}
+  editor:
+    fontSize: 13
+  "exception-reporting":
+    userId: "28d58fc7-7462-cdd1-6492-9aa25a4b878a"
+  "file-icons": {}
+  "gruvbox-plus-syntax": {}
+  linter: {}
+  minimap: {}
+  "omnisharp-atom": {}
+  "one-dark-ui": {}
+  "platformio-ide-terminal": {}
+  proton:
+    core:
+      selectedLayers: [
+        "core"
+      ]
+  "show-invisibles-plus": {}
+  "theme-switch": {}
+  "tree-view": {}
+  "vim-mode": {}
+  "vim-mode-plus": {}
+  welcome:
+    showOnStartup: false
+  zentabs: {}
+rspec:
+  command: "bundle exec rspec"

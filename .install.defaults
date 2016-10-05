@@ -1,0 +1,10 @@
+- Atom
++ Prezto
++ Pry
++ Rubocop
+- Slate
++ Spacemacs
+- Sublime Text
+- Vim
++ Zsh
+- tmux

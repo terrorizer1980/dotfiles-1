@@ -1,0 +1,19 @@
+# Spacemacs-inspired keybindings
+'background-tips, .tree-view, atom-text-editor.vim-mode:not(.insert-mode)':
+  # Core
+  'space p t': 'tree-view:toggle'
+  'space a s': 'application:show-settings'
+
+  # Editing
+  'space space': 'easy-motion-redux:letter'
+
+  # Errors
+  'space e n'  : 'linter:next-error'
+  'space e p'  : 'linter:previous-error'
+  'space e N'  : 'linter:previous-error'
+  'space e e'  : 'linter:lint'
+  'space t m f': 'linter:toggle'
+  'space e t'  : 'linter:toggle'
+
+  # Source control
+  'space g s'  : 'git-plus:status'
