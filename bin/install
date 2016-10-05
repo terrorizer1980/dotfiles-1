@@ -56,7 +56,8 @@ install ()
         "Slate")
             symlink "tools/slate/.slate.js" ".slate.js";;
         "Spacemacs")
-            symlink "editors/.spacemacs" ".spacemacs";;
+            symlink "editors/.spacemacs" ".spacemacs"
+            symlink "editors/.emacs.d/private" ".emacs.d/private";;
         "Sublime Text")
             symlink "editor/Preferences.sublime-settings"\
                     "Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings";;
