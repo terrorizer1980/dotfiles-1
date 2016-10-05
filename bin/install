@@ -45,6 +45,8 @@ install ()
     case "$name" in
         "Atom")
             symlink "editors/.atom" ".atom";;
+        "Homebrew")
+            symlink "tools/Brewfile" "Brewfile";;
         "Prezto")
             symlink "shell/.zpreztorc" ".zpreztorc"
             symlink "shell/prompt_ngscheurich_setup"\
