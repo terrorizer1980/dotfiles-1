@@ -1,4 +1,4 @@
-# My configuration files
+# My system config files
 
 <img src="https://media.giphy.com/media/DBfYJqH5AokgM/giphy.gif" width="100%" alt="I HATE THIS HACKER CRAP">
 
@@ -23,15 +23,16 @@ Currently, those are:
 - Spacemacs
 - Zsh
 
-To configure the installation, copy `.install.defaults` to `.install` and modify the file such that configs
-you’d like installed have a `+` in front and configs you aren’t interested in have a `-`.
+To configure the installation, copy `.install.defaults` to `.install` and modify the file such that applications
+you’d like configured have a `+` in front and applications you aren’t interested in have a `-`.
 
 ## Prerequisites
 
 Some configs expect their respective application to be installed.
 
-- Prezto requires [Prezto](https://github.com/sorin-ionescu/prezto)
-- Spacemacs requires [Spacemacs](http://spacemacs.org/)
+- Prezto requires [Prezto](https://github.com/sorin-ionescu/prezto) (or a ~/.prezto directory)
+- Spacemacs requires [Spacemacs](http://spacemacs.org/) (or a ~/.emacs.d directory)
+- Sublime Text requires [Sublime Text 3](https://www.sublimetext.com/3) (only works on macOS)
 
 ## License
 
