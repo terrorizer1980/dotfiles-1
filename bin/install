@@ -53,6 +53,8 @@ install ()
             symlink "tools/.pryrc" ".pryrc";;
         "Rubocop")
             symlink "tools/.rubocop" ".rubocop";;
+        "The Silver Searcher")
+            symlink "tools/.agignore" ".agignore";;
         "Slate")
             symlink "tools/slate/.slate.js" ".slate.js";;
         "Spacemacs")
