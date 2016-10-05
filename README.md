@@ -14,7 +14,7 @@ Run the installation script:
     
 ## Configuration
 
-The installation script will install the configs for the default application if no config .install file is found.
+The installation script will install the configs for the default applications if no `.install` file is found.
 Currently, those are:
 
 - Prezto
@@ -23,7 +23,7 @@ Currently, those are:
 - Spacemacs
 - Zsh
 
-To configure the installation, copy .install.defaults to .install and modify the file such that configs
+To configure the installation, copy `.install.defaults` to `.install` and modify the file such that configs
 you’d like installed have a `+` in front and configs you aren’t interested in have a `-`.
 
 ## Prerequisites
