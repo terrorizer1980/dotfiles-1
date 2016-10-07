@@ -336,6 +336,19 @@ you should place your code here."
   (global-unset-key (kbd "C-x C-0"))
   (global-set-key (kbd "C-x C-0") 'spacemacs/zoom-frm-unzoom)
 
+  (defun ngs/smartparens-toggle ()
+    (interactive)
+    (if (bound-and-true-p smartparens-mode)
+        (ngs/smartparens-mode-disable)
+      (ngs/smartparens-mode-enable)))
+  (defun ngs/smartparens-mode-disable ()
+    (smartparens-mode -1)
+    (message "smartparens-mode disabled"))
+  (defun ngs/smartparens-mode-enable ()
+    (smartparens-mode)
+    (message "smartparens-mode enabled"))
+  (define-key evil-insert-state-map (kbd "M-p") 'ngs/smartparens-toggle)
+
   (load custom-file)
   (spaceline-compile))
 
