@@ -318,16 +318,24 @@ you should place your code here."
   (global-linum-mode)
   (linum-relative-mode)
   (mac-auto-operator-composition-mode)
+
   (setq custom-file "~/.emacs.d/private/custom.el")
   (setq neo-theme 'ascii)
   (setq powerline-default-separator 'slant)
   (setq-default dotspacemacs-persistent-server t)
+  (setq css-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-enable-engine-detection t)
+
   (global-unset-key (kbd "C-x C-="))
   (global-set-key (kbd "C-x C-=") 'spacemacs/zoom-frm-in)
   (global-unset-key (kbd "C-x C--"))
   (global-set-key (kbd "C-x C--") 'spacemacs/zoom-frm-out)
   (global-unset-key (kbd "C-x C-0"))
   (global-set-key (kbd "C-x C-0") 'spacemacs/zoom-frm-unzoom)
+
   (load custom-file)
   (spaceline-compile))
 
