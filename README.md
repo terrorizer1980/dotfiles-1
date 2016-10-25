@@ -41,4 +41,4 @@ Some configs expect their respective application to be installed.
 
 ## License
 
-This project is licensed under the [MIT License (MIT)](https://opensource.org/licenses/MIT)
+This project is licensed under the [MIT License (MIT)](https://opensource.org/licenses/MIT).
