@@ -17,10 +17,12 @@ Run the installation script:
 The installation script will install the configs for the default applications if no `.install` file is found.
 Currently, those are:
 
+- **Emacs**
+- Homebrew
 - Prezto
 - Pry
 - Rubocop
-- Spacemacs
+- The Silver Searcher
 - Zsh
 
 To configure the installation, copy `.install.defaults` to `.install` and modify the file such that applications

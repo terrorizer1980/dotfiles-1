@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: web-mode comment for liquid engine
-# key: engine:liquid
-# --
-<!-- -*- engine:liquid -*- -->

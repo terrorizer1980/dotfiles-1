@@ -45,6 +45,8 @@ install ()
     case "$name" in
         "Atom")
             symlink "editors/.atom" ".atom";;
+        "Emacs")
+            symlink "editors/.emacs.d" ".emacs.d";;
         "Homebrew")
             symlink "tools/Brewfile" "Brewfile";;
         "Prezto")
@@ -59,9 +61,6 @@ install ()
             symlink "tools/.agignore" ".agignore";;
         "Slate")
             symlink "tools/slate/.slate.js" ".slate.js";;
-        "Spacemacs")
-            symlink "editors/.spacemacs" ".spacemacs"
-            symlink "editors/.emacs.d/private" ".emacs.d/private";;
         "Sublime Text")
             symlink "editor/Preferences.sublime-settings"\
                     "Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings";;

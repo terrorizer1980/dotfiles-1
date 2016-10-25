@@ -1,0 +1,5 @@
+#+TITLE: Emacs configuration
+#+AUTHOR: Nicholas Scheurich
+
+#+BEGIN_SRC emacs-lisp
+#+END_SRC
