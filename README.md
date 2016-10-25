@@ -12,10 +12,6 @@ Run the installation script:
 
     $ $HOME/dotfiles/bin/install
 
-<a href="https://asciinema.org/a/au4cjsltj2qgdijp8iy79buul">
-    <img src="https://asciinema.org/a/au4cjsltj2qgdijp8iy79buul.png" width="100%" alt="Dotfiles installation screenshot">
-</a>
-
 ## Configuration
 
 The installation script will install the configs for the default applications if no `.install` file is found.
@@ -38,6 +34,12 @@ Some configs expect their respective application to be installed.
 
 - Prezto requires [Prezto](https://github.com/sorin-ionescu/prezto)
 - Sublime Text requires [Sublime Text 3](https://www.sublimetext.com/3) (only works on macOS)
+
+## Installation demo
+
+<a href="https://asciinema.org/a/au4cjsltj2qgdijp8iy79buul">
+    <img src="https://asciinema.org/a/au4cjsltj2qgdijp8iy79buul.png" width="100%" alt="Dotfiles installation screenshot">
+</a>
 
 ## License
 
