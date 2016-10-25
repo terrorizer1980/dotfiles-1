@@ -17,13 +17,13 @@ Run the installation script:
 The installation script will install the configs for the default applications if no `.install` file is found.
 Currently, those are:
 
-- **Emacs**
-- Homebrew
-- Prezto
-- Pry
-- Rubocop
-- The Silver Searcher
-- Zsh
+- [Emacs](https://www.gnu.org/software/emacs/)
+- [Homebrew](http://brew.sh/)
+- [Prezto](https://github.com/sorin-ionescu/prezto)
+- [Pry](http://pryrepl.org/)
+- [Rubocop](http://batsov.com/rubocop/)
+- [The Silver Searcher](http://geoff.greer.fm/ag/)
+- [Zsh](http://www.zsh.org/)
 
 To configure the installation, copy `.install.defaults` to `.install` and modify the file such that applications
 you’d like configured have a `+` in front and applications you aren’t interested in have a `-`.
@@ -32,8 +32,7 @@ you’d like configured have a `+` in front and applications you aren’t intere
 
 Some configs expect their respective application to be installed.
 
-- Prezto requires [Prezto](https://github.com/sorin-ionescu/prezto) (or a `~/.zprezto/modules/prompt/functions` directory)
-- Spacemacs requires [Spacemacs](http://spacemacs.org/) (or a `~/.emacs.d` directory)
+- Prezto requires [Prezto](https://github.com/sorin-ionescu/prezto)
 - Sublime Text requires [Sublime Text 3](https://www.sublimetext.com/3) (only works on macOS)
 
 ## License
