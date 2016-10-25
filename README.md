@@ -11,7 +11,11 @@ Clone this repo to your home directory:
 Run the installation script:
 
     $ $HOME/dotfiles/bin/install
-    
+
+<a href="https://asciinema.org/a/au4cjsltj2qgdijp8iy79buul">
+    <img src="https://asciinema.org/a/au4cjsltj2qgdijp8iy79buul.png" width="100%" alt="Dotfiles installation screenshot">
+</a>
+
 ## Configuration
 
 The installation script will install the configs for the default applications if no `.install` file is found.
