@@ -1,7 +1,7 @@
 #+TITLE: Emacs configuration
 #+AUTHOR: Nicholas Scheurich
 
-* Set personal information
+* Personal information
 
 Tell Emacs a little bit about myself.
 
