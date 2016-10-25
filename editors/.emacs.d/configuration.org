@@ -1,5 +1,37 @@
 #+TITLE: Emacs configuration
 #+AUTHOR: Nicholas Scheurich
 
+* Set personal information
+
+Tell Emacs a little bit about myself.
+
 #+BEGIN_SRC emacs-lisp
+  (setq user-full-name "Nicholas Gunther Scheurich"
+        user-mail-address "nick@scheurich.me")
+#+END_SRC
+
+* Package management
+
+I use the [[https://github.com/jwiegley/use-package][use-package]] macro for all my packagement management needs; it keeps
+things neat, tidy, and all in one place. The only prerequisites it requires are
+package.el with MELPA added as a source and =use-package= installed
+(=M-x package-install use-package=).
+
+#+BEGIN_SRC emacs-lisp
+  (require 'package)
+
+  (add-to-list
+   'package-archives
+   '("MELPA" . "https://melpa.org/packages/"))
+  (package-initialize)
+#+END_SRC
+
+* Be evil
+
+Vim will always be my first ♥︎. [[https://melpa.org/#/evil][evil]] helps fill the void.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package evil
+    :ensure t
+    :config (evil-mode 1))
 #+END_SRC
