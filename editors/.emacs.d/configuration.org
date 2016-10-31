@@ -1,7 +1,7 @@
-#+TITLE: Emacs configuration
+#+TITLE: My Emacs Configuration; or, What a Lovely Editor I Have
 #+AUTHOR: Nicholas Scheurich
 
-* Set personal information
+* Personal information
 
 Tell Emacs a little bit about myself.
 
@@ -20,6 +20,8 @@ package.el with MELPA added as a source and =use-package= installed
 #+BEGIN_SRC emacs-lisp
   (require 'package)
 
+  (package-initialize)
+
   (add-to-list
    'package-archives
    '("MELPA" . "https://melpa.org/packages/"))
@@ -28,10 +30,253 @@ package.el with MELPA added as a source and =use-package= installed
 
 * Be evil
 
-Vim will always be my first ♥︎. [[https://melpa.org/#/evil][evil]] helps fill the void.
+Vim will always be my first ♥︎. [[https://melpa.org/#/evil][evil]] helps fill the void. I use the
+[[https://www.emacswiki.org/emacs/KeyChord][key chord]] `jk` to quickly exit insert mode.
 
 #+BEGIN_SRC emacs-lisp
   (use-package evil
     :ensure t
+    :init (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
     :config (evil-mode 1))
+
+  (use-package key-chord
+    :ensure t
+    :config (key-chord-mode 1))
+#+END_SRC
+
+* Terminal access
+
+I prefer [[https://www.emacswiki.org/emacs/MultiTerm][MultiTerm]] over the built-in Emacs terminal emulator, primarily for its
+better keystroke support and because it doesn’t leave dangling exited-terminal
+buffers hanging around.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package multi-term
+    :ensure t)
+#+END_SRC
+
+* Error checking
+
+I love [[http://www.flycheck.org/en/latest/][Flycheck]] and always have it turned on.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package flycheck
+    :ensure t
+    :diminish flycheck-mode
+    :config (global-flycheck-mode))
+#+END_SRC
+
+* User interface
+** Basics
+
+I don't need any extra UI junk, i.e. the menu, tool, and scroll bars.
+
+#+BEGIN_SRC emacs-lisp
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+  (global-hl-line-mode)
+#+END_SRC
+
+Set Fira Code, at a reasonable size, as my default font. Also, enable auto
+operator composition mode to see Fira Code’s fancy programming ligatures.
+
+#+BEGIN_SRC emacs-lisp
+  (set-frame-font "Fira Code-14")
+  (mac-auto-operator-composition-mode)
+#+END_SRC
+
+** Mode line
+
+I like my mode line clean and simple. [[https://github.com/TheBB/spaceline][Spaceline]] provides an excellent framework
+with some nice predefined segments that I wrangle into something that works for
+me. I also use Spaceline’s Helm theme.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package spaceline-config
+    :ensure spaceline
+    :config
+    (spaceline-helm-mode)
+    (setq powerline-default-separator nil)
+    (spaceline-compile
+     'ngs
+     '((window-number)
+       (buffer-modified buffer-size buffer-id)
+       major-mode
+       (process :when active)
+       ((flycheck-error flycheck-warning flycheck-info)
+        :when active)
+       version-control
+       (minor-modes :when active))
+     '((buffer-encoding-abbrev "|" line-column)
+       buffer-position))
+    (setq-default mode-line-format '("%e" (:eval (spaceline-ml-ngs)))))
+#+END_SRC
+
+** Color theme
+
+[[http://ethanschoonover.com/solarized][Solarized]] has become my go-to color theme. So easy on the eyes, and looks
+great in dark or light mode.
+
+Here are some handy functions I use to make my Spaceline mode line look good
+with the Solarized palette.
+
+#+BEGIN_SRC emacs-lisp
+  (defun ngs/config-solarized-mode-line (bg fg bg2)
+    "Set mode line colors.  BG is the background and FG is the foreground.
+  BG2 is the inactive modeline."
+    (set-face-attribute 'mode-line nil :box `(:line-width 5 :color ,bg))
+    (set-face-attribute 'mode-line nil :background fg)
+    (set-face-attribute 'mode-line nil :foreground bg)
+    (set-face-attribute 'modeline-inactive nil :box `(:line-width 5 :color ,bg2))
+    (set-face-attribute 'modeline-inactive nil :background fg)
+    (set-face-attribute 'modeline-inactive nil :foreground bg2))
+
+  (defun ngs/config-solarized-powerline (bg fg bg2 fg2)
+    "Set Powerline colors.  BG is the background color and FG is the foreground.
+  BG2 and FG2 are for the inactive modeline."
+    (set-face-attribute 'powerline-active1 nil :background fg)
+    (set-face-attribute 'powerline-active2 nil :background fg)
+    (set-face-attribute 'powerline-active1 nil :foreground bg)
+    (set-face-attribute 'powerline-active2 nil :foreground bg)
+    (set-face-attribute 'powerline-inactive1 nil :background fg2)
+    (set-face-attribute 'powerline-inactive2 nil :background fg2)
+    (set-face-attribute 'powerline-inactive1 nil :foreground bg2)
+    (set-face-attribute 'powerline-inactive2 nil :foreground bg2))
+   
+  (defun ngs/config-solarized-flycheck (bg error warning info)
+    "Set Spaceline Flycheck colors.  BG is the background color.
+  ERROR, WARNING, and INFO are the foreground colors for their respective Flycheck outputs."
+      (set-face-attribute 'spaceline-flycheck-error   nil :distant-foreground bg)
+      (set-face-attribute 'spaceline-flycheck-warning nil :distant-foreground bg)
+      (set-face-attribute 'spaceline-flycheck-info    nil :distant-foreground bg)
+      (set-face-attribute 'spaceline-flycheck-error   nil :foreground bg)
+      (set-face-attribute 'spaceline-flycheck-warning nil :foreground bg)
+      (set-face-attribute 'spaceline-flycheck-info    nil :foreground bg)
+      (set-face-attribute 'spaceline-flycheck-error   nil :background error)
+      (set-face-attribute 'spaceline-flycheck-warning nil :background warning)
+      (set-face-attribute 'spaceline-flycheck-info    nil :background info))
+#+END_SRC
+
+Define a function that can apply either a dark or light Solarized theme.
+
+#+BEGIN_SRC emacs-lisp
+  (defun ngs/config-solarized-theme (mode)
+    "Apply a Solarized 'light or 'dark MODE."
+    (set-frame-parameter nil 'background-mode mode)
+    (enable-theme 'solarized)
+    (let ((modeline-bg       (if (eq mode 'dark) "#00232a" "#e9e1c8"))
+          (modeline-fg1      (if (eq mode 'dark) "#93a1a1" "#657b83"))
+          (modeline-fg2      (if (eq mode 'dark) "#2aa198" "#2aa198"))
+          (flycheck-error    (if (eq mode 'dark) "#d33682" "#d33682"))
+          (flycheck-warning  (if (eq mode 'dark) "#b58900" "#b58900"))
+          (flycheck-info     (if (eq mode 'dark) "#268bd2" "#2628bd"))
+          (fringe            (if (eq mode 'dark) "#002b36" "#fdf6e3"))
+          (linum-current-bg  (if (eq mode 'dark) "#073642" "#eee8d5"))
+          (linum-current-fg  (if (eq mode 'dark) "#859900" "#859900")))
+      (set-face-attribute 'fringe nil :background fringe)
+      (set-face-attribute 'linum-relative-current-face nil :background linum-current-bg)
+      (set-face-attribute 'linum-relative-current-face nil :foreground linum-current-fg)
+      (ngs/config-solarized-modeline modeline-bg modeline-fg1 linum-current-bg)
+      (ngs/config-solarized-powerline modeline-bg modeline-fg2 linum-current-bg modeline-fg1)
+      (ngs/config-solarized-flycheck modeline-bg flycheck-error flycheck-warning flycheck-info)))
+#+END_SRC
+
+Define an interactive function I can use to toggle between Solarized
+light/dark modes.
+
+#+BEGIN_SRC emacs-lisp
+  (defun ngs/solarized-toggle ()
+      "Toggle between light and dark Solarized themes."
+      (interactive)
+      (ngs/config-solarized-theme
+       (if (eq (frame-parameter nil 'background-mode) 'light) 'dark 'light)))
+#+END_SRC
+
+Load up Solarized dark when Emacs starts.
+
+#+BEGIN_SRC emacs-lisp
+  (defvar color-themes)
+  (use-package color-theme-solarized
+    :ensure t
+    :init (setq color-themes '())
+    :config (progn (load-theme 'solarized)
+                   (ngs/config-solarized-theme 'dark)))
+#+END_SRC
+
+* Programming
+** Clojure
+   
+Clojure is great, but it’s even better with good Emacs integration. Clojure mode
+gives me good syntax highlighting, CIDER provides a powerful REPL, and Paredit
+is a must for writing any sort of Lisp. I got lots of good info about
+implementing all this from the Clojure for the Brave and True [[https://github.com/flyingmachine/emacs-for-clojure/blob/master/customizations/setup-clojure.el][recommended config]].
+
+#+BEGIN_SRC emacs-lisp
+  (use-package clojure-mode
+    :ensure t
+    :init
+    (add-hook 'clojure-mode-hook 'enable-paredit-mode)
+    (add-hook 'clojure-mode-hook 'subword-mode)
+    :mode ("\\.clj'"
+           "\\.cljs'"
+           "\\.cljs.*'"
+           "\\.edn'"
+           "\\.boot'"
+           "lein-env"))
+  (use-package clojure-mode-extra-font-locking
+    :ensure t)
+  (defvar cider-repl-pop-to-buffer-on-connect)
+  (defvar cider-show-error-buffer)
+  (defvar cider-auto-select-error-buffer)
+  (defvar cider-repl-history-file)
+  (use-package cider
+    :init
+    (add-hook 'cider-repl-mode-hook 'paredit-mode)
+    (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+    (setq cider-repl-pop-to-buffer-on-connect t)
+    (setq cider-show-error-buffer t)
+    (setq cider-auto-select-error-buffer t)
+    (setq cider-repl-history-file "~/.emacs.d/cider-history")
+    :ensure t)
+
+  (use-package paredit
+    :ensure t
+    :mode("\\.lisp'"
+          "\\.el'"
+          "\\.clj'"
+          "\\.cljs'"))
+#+END_SRC
+
+* TODO 
+
+Smartparens, because who has time to type closing delimiters?
+
+#+BEGIN_SRC emacs-lisp
+  (use-package smartparens
+    :ensure t
+    :diminish smartparens-mode
+    :config (smartparens-mode 1))
+#+END_SRC
+   
+Rainbow Delimiters, to make it easy to see where expressions begin and end.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package rainbow-delimiters
+    :ensure t
+    :init (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+#+END_SRC
+   
+Undo Tree, because CTRL-Z is so passe.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package undo-tree
+    :diminish undo-tree-mode)
+#+END_SRC
+
+Auto Revert, to keep buffers up-to-date.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package autorevert
+    :diminish auto-revert-mode)
 #+END_SRC
