@@ -1,12 +1,11 @@
-- Atom
-+ Emacs
++ Atom
+- Emacs
 + Homebrew
 + Prezto
 + Pry
 + Rubocop
 + The Silver Searcher
 - Slate
-- Sublime Text
 - Vim
 + Zsh
-- tmux
++ tmux
