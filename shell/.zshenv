@@ -16,12 +16,7 @@ export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
 # Editor
-export EDITOR='atom'
+export EDITOR="/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/bin/emacsclient"
 
 # Get rid of lag when entering vi mode
 export KEYTIMEOUT=1
-
-# Powerline
-if [[ ${OSTYPE//[0-9.]/} == "darwin" ]]; then
-  export POWERLINE_ROOT="$HOME/Library/Python/2.7/lib/python/site-packages/powerline"
-fi
