@@ -1,6 +1,9 @@
 **/#*
 **/.atom/.apm/
 **/.atom/packages/
+**/.atom/git-time-machine/
+**/.atom/projects.cson
+**/.atom/split-diff
 **/.emacs.d/bookmarks
 **/.emacs.d/configuration.el
 **/.emacs.d/custom.el
@@ -11,3 +14,4 @@
 **/.emacs.d/smex-items
 *.swp
 node_modules/
+configuration.el
