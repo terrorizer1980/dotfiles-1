@@ -1,3 +1,55 @@
 "*":
+  "atom-material-ui":
+    fonts: {}
+    tabs: {}
+    treeView:
+      compactList: true
+    ui:
+      panelContrast: true
+  "autocomplete-elixir":
+    elixirPath: "/usr/local/bin/elixir"
+    erlangHome: "/usr/local/bin"
+  core:
+    disabledPackages: [
+      "linter-sass-lint"
+      "linter-write-good"
+      "build-elixir"
+    ]
+    packagesWithKeymapsDisabled: []
+    telemetryConsent: "limited"
+    themes: [
+      "one-dark-ui"
+      "atom-material-syntax"
+    ]
+    useCustomTitleBar: true
+  editor:
+    fontFamily: "Hack"
   "exception-reporting":
     userId: "2ae9e915-1710-f0f7-913e-2f2db5936dc9"
+  "file-icons": {}
+  "git-plus":
+    general:
+      _analyticsUserId: "491f4722-3cbd-4cea-82ed-7f6c65236d36"
+  linter:
+    errorPanelHeight: 24
+  "linter-eslint":
+    lintHtmlFiles: true
+  "one-dark-ui": {}
+  "project-manager":
+    includeGitRepositories: true
+  "rspec-tree-runner":
+    rspecPathCommand: "echo '1'"
+  "split-diff":
+    diffWords: true
+    ignoreWhitespace: true
+    leftEditorColor: "red"
+    rightEditorColor: "green"
+    syncHorizontalScroll: true
+  "tree-view":
+    hideIgnoredNames: true
+    hideVcsIgnoredFiles: true
+  welcome:
+    showOnStartup: false
+".elixir.text":
+  editor:
+    showIndentGuide: false

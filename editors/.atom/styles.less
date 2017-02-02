@@ -1,32 +1,50 @@
-/*
- * Your Stylesheet
- *
- * This stylesheet is loaded when Atom starts up and is reloaded automatically
- * when it is changed and saved.
- *
- * Add your own CSS or Less to fully customize Atom.
- * If you are unfamiliar with Less, you can read more about it here:
- * http://lesscss.org
- */
+.editor {
+  //padding-top: 5px;
+  -webkit-font-smoothing: antialiased;
+}
 
+atom-panel.header {
+  background-color: transparent;
+  border-bottom: 0;
 
-/*
- * Examples
- * (To see them, uncomment and save)
- */
+  .title-bar {
+    background-color: transparent;
+    // height: 5px;
+  }
 
-// style the background color of the tree view
+  .title {
+    display: none;
+  }
+}
+
 .tree-view {
-  // background-color: whitesmoke;
+  // padding: 35px 0 0 12px;
+  //
+  // &::before {
+  //   display: none;
+  // }
+  //
+  // .selected:before {
+  //   background-color: transparent;
+  // }
 }
 
-// style the background and foreground colors on the atom-text-editor-element itself
-atom-text-editor {
-  // color: white;
-  // background-color: hsl(180, 24%, 12%);
-}
+.theme-atom-material-syntax {
+  atom-text-editor {
+    &,
+    .syntax--variable,
+    .syntax--js .syntax--variable.syntax--other.syntax--object {
+      color: rgba(255, 255, 255, .95);
+    }
 
-// To style other content in the text editor's shadow DOM, use the ::shadow expression
-atom-text-editor::shadow .cursor {
-  // border-color: red;
+    .cursor-line {
+      background-color: rgba(0, 0, 0, .1);
+    }
+
+    .gutter .line-number.cursor-line,
+    &.editor .relative.current-line {
+      background-color: transparent;
+      color: rgba(255, 255, 255, .5);
+    }
+  }
 }
