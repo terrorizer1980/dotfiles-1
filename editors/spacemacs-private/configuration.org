@@ -13,8 +13,8 @@ Tell Emacs a little bit about myself.
 * Core initialization
 
 Spacemacs initialization function. This is called by Spacemacs on init, prior to
-layers configuration. The most noteworthy bit is the the font setting—Fira Code
-at 14 px.
+layers configuration. The most noteworthy bit is the the font setting—
+[[https://github.com/chrissimpkins/Hack][Hack]] at 14 px.
 
 #+BEGIN_SRC emacs-lisp
   (defun dotspacemacs/init ()
@@ -33,7 +33,7 @@ at 14 px.
      dotspacemacs-themes '(spacemacs-dark
                            spacemacs-light)
      dotspacemacs-colorize-cursor-according-to-state t
-     dotspacemacs-default-font '("Fira Code"
+     dotspacemacs-default-font '("Hack"
                                  :size 14
                                  :weight normal
                                  :width normal
