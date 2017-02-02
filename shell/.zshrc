@@ -20,6 +20,7 @@ fi
 alias boilerplate="curl -LO https://raw.githubusercontent.com/ngscheurich/boilerplate/master/README.md; curl -LO https://raw.githubusercontent.com/ngscheurich/boilerplate/master/LICENSE"
 alias brails="bin/rails"
 alias brake="bin/rake"
+alias bx="bundle exec"
 alias curlh="curl -s -D - -o /dev/null"
 alias dcbundle="docker-compose run app bundle"
 alias dcrails="docker-compose run app bin/rails"
