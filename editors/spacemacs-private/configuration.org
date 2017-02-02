@@ -13,8 +13,8 @@ Tell Emacs a little bit about myself.
 * Core initialization
 
 Spacemacs initialization function. This is called by Spacemacs on init, prior to
-layers configuration. The most noteworthy bit is the the font setting—
-[[https://github.com/chrissimpkins/Hack][Hack]] at 14 px.
+layers configuration. The most noteworthy bit is the the font setting—[[https://github.com/chrissimpkins/Hack][Hack]]
+at 14 px.
 
 #+BEGIN_SRC emacs-lisp
   (defun dotspacemacs/init ()
