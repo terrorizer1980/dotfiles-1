@@ -14,7 +14,7 @@ Tell Emacs a little bit about myself.
 
 Spacemacs initialization function. This is called by Spacemacs on init, prior to
 layers configuration. The most noteworthy bit is the the font setting—
-[[https://github.com/chrissimpkins/Hack][Hack]] at 14 px.
+[[https://github.com/chrissimpkins/Hack][Input Mono]] at 14 px.
 
 #+BEGIN_SRC emacs-lisp
   (defun dotspacemacs/init ()
@@ -33,8 +33,8 @@ layers configuration. The most noteworthy bit is the the font setting—
      dotspacemacs-themes '(spacemacs-dark
                            spacemacs-light)
      dotspacemacs-colorize-cursor-according-to-state t
-     dotspacemacs-default-font '("Hack"
-                                 :size 14
+     dotspacemacs-default-font '("Input Mono"
+                                 :size 13
                                  :weight normal
                                  :width normal
                                  :powerline-scale 1.45)
@@ -87,12 +87,31 @@ layers configuration. The most noteworthy bit is the the font setting—
 
 This function is called by Spacemacs just after `dotspacemacs/init' and before
 layers configuration, making it the ideal spot for variables that need to be set
-before packages are loaded. I haven't needed to add anything here yet.
+before packages are loaded.
 
 #+BEGIN_SRC emacs-lisp
   (defun dotspacemacs/user-init ()
-    )
+    (custom-set-variables '(spacemacs-theme-custom-colors
+                            '((bg1           . "#263238")
+                              (bg2           . "#242d33")
+                              (comment-bg    . "#283239")
+                              (type          . "#efce5c")
+                              (base          . "#eeffff")
+                              (keyword       . "#c792ea")
+                              (str           . "#c3e88d")
+                              (func          . "#82aaff")
+                              (comment       . "#546e7a")
+                              (const         . "#f78c6a")
+                              (var           . "#f1f2f2")
+                              (border        . "#20272c")
+                              (act2          . "#20272c")
+                              (act1          . "#20272c")
+                              (highlight     . "#36484c")
+                              (highlight-dim . "#2a3d42")))))
 #+END_SRC
+
+#+RESULTS:
+: dotspacemacs/user-init
 
 * Layers
 
@@ -104,34 +123,40 @@ as well as custom layers I've created.
 #+BEGIN_SRC emacs-lisp
   (defun ngs/configuration-layers ()
       '(
-        ;; Checkers
+        ;; +checkers
         syntax-checking
 
-        ;; Completion
+        ;; +completion
         (auto-completion :variables
                          auto-completion-enable-snippets-in-popup t
                          auto-completion-complete-with-key-sequence "jk")
 
-        ;; Emacs
+        ;; +emacs
         org
 
-        ;; Frameworks
-        ruby-on-rails
+        ;; +frameworks
+        ruby-on-rails vue react
 
-        ;; Languages
+        ;; +languages
         c-c++ csharp clojure elixir emacs-lisp haskell html javascript markdown
         typescript php ruby shell-scripts sql typescript yaml
 
-        ;; Source control
+        ;; +os
+        osx
+
+        ;; +source control
         git github version-control
 
-        ;; Tools
+        ;; +themes
+        themes-megapack
+
+        ;; +tools
         dash ranger restclient
         (shell :variables
                shell-default-height 30
                shell-default-position 'bottom)
 
-        ;; Web services
+        ;; +web-services
         spotify))
 #+END_SRC
 
@@ -143,7 +168,8 @@ installed and loaded.
 
 #+BEGIN_SRC emacs-lisp
   (defun ngs/additional-packages ()
-    '())
+    '(all-the-icons
+      zerodark-theme))
   (defun ngs/frozen-packages ()
     '())
   (defun ngs/excluded-packages ()
@@ -186,6 +212,19 @@ Settings for Emacs that are not necessarily specific to Spacemacs.
      dotspacemacs-persistent-server t))
 #+END_SRC
 
+** Packages
+
+Settings for Emacs packages.
+
+   #+BEGIN_SRC emacs-lisp
+     (defun ngs/user-configuration-packages ()
+       (setq css-indent-offset 2)
+       (setq js-indent-level 2)
+       (setq web-mode-css-indent-offset 2)
+       (setq web-mode-code-indent-offset 2)
+       (setq web-mode-markup-indent-offset 2)
+       (setq web-mode-enable-engine-detection t))
+   #+END_SRC
 ** User interface
 
 Settings that affect the editor UI, e.g. mode line, neotree, line numbering.
@@ -193,12 +232,13 @@ Settings that affect the editor UI, e.g. mode line, neotree, line numbering.
 #+BEGIN_SRC emacs-lisp
   (defun ngs/user-configuration-ui ()
     (setq-default
-     neo-theme 'ascii
-     powerline-default-separator 'slant)
+     neo-theme 'icons
+     linum-relative-format "%4s "
+     powerline-default-separator 'slant
+     line-spacing 2)
 
     (global-linum-mode)
-    (linum-relative-mode)
-    (mac-auto-operator-composition-mode))
+    (linum-relative-mode))
 #+END_SRC
 
 ** Keybindings
@@ -216,7 +256,7 @@ Settings that change how input works.
     (global-set-key (kbd "C-x C-0") 'spacemacs/zoom-frm-unzoom))
 #+END_SRC
 
-** User configuration functions
+** User configuration function
 
 Function that Spacemacs calls at the very end of initialization. First, run the
 above-defined functions, then define some miscellaneous functions that don't fit
@@ -226,6 +266,7 @@ mode line.
 #+BEGIN_SRC emacs-lisp
   (defun dotspacemacs/user-config ()
     (ngs/user-configuration-emacs)
+    (ngs/user-configuration-packages)
     (ngs/user-configuration-ui)
     (ngs/user-configuration-keybindings)
 
@@ -242,6 +283,19 @@ mode line.
       (message "smartparens-mode enabled"))
     (define-key evil-insert-state-map (kbd "M-p") 'ngs/smartparens-toggle)
 
+    ;; TODO This should run automatically during initialization
+    (defun ngs/set-face-attributes ()
+      (interactive)
+      (set-face-attribute 'linum nil :foreground "#43535a")
+      (set-face-attribute 'linum nil :background "#263238")
+      (set-face-attribute 'linum-relative-current-face nil :foreground "#708088")
+      (set-face-attribute 'linum-relative-current-face nil :background "#263238")
+      ;; (set-face-attribute 'mode-line nil :box `(:line-width 2 :color "#20272c"))
+      ;; (set-face-attribute 'mode-line-inactive  nil :background "#222d33")
+      ;; (set-face-attribute 'powerline-inactive1 nil :background "#222d33")
+      ;; (set-face-attribute 'powerline-inactive2 nil :background "#222d33")
+      ;; (set-face-attribute 'mode-line-inactive  nil :box `(:line-width 2 :color "#222d33"))
+      )
 
     (load custom-file)
     (spaceline-compile))
