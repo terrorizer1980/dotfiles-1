@@ -1,4 +1,4 @@
-+ Atom
+- Atom
 - Emacs
 + Homebrew
 + Prezto
@@ -6,6 +6,6 @@
 + Rubocop
 + The Silver Searcher
 - Slate
-- Vim
++ Vim
 + Zsh
 + tmux
