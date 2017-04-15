@@ -1,0 +1,7 @@
+" Backups settings.
+
+set noswapfile
+set nobackup
+set nowb
+
+" vim:ft=vim

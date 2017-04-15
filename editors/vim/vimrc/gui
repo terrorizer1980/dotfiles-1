@@ -1,0 +1,10 @@
+" Options for GUI Vim.
+
+set guifont=Fira\ Code:h13 " Set font
+set guioptions-=l          " Don't show left scrollbar
+set guioptions-=L          " Don't show left scrollbar
+set guioptions-=r          " Don't show right scrollbar
+set guioptions-=R          " Don't show right scrollbar
+set guioptions-=e          " Don't use the macOS native tabline
+
+" vim:ft=vim

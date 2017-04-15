@@ -1,0 +1,11 @@
+" ctrlp.vim — Full path fuzzy file, buffer, mru, tag, … finder for Vim.
+" https://github.com/ctrlpvim/ctrlp.vim
+
+Plug 'ctrlpvim/ctrlp.vim'
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
+
+" vim:ft=vim

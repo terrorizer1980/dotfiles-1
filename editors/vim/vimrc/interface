@@ -1,0 +1,10 @@
+" General interface settings.
+
+set linespace=3        " Increase leading
+set ruler              " Show line and column number
+set nowrap             " Don't wrap lines
+set number             " Show line numbers
+set relativenumber     " Show relative line numbers
+set listchars+=trail:. " Show trailing spaces as dots
+
+" vim:ft=vim
