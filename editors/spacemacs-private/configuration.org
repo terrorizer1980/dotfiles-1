@@ -90,28 +90,8 @@ layers configuration, making it the ideal spot for variables that need to be set
 before packages are loaded.
 
 #+BEGIN_SRC emacs-lisp
-  (defun dotspacemacs/user-init ()
-    (custom-set-variables '(spacemacs-theme-custom-colors
-                            '((bg1           . "#263238")
-                              (bg2           . "#242d33")
-                              (comment-bg    . "#283239")
-                              (type          . "#efce5c")
-                              (base          . "#eeffff")
-                              (keyword       . "#c792ea")
-                              (str           . "#c3e88d")
-                              (func          . "#82aaff")
-                              (comment       . "#546e7a")
-                              (const         . "#f78c6a")
-                              (var           . "#f1f2f2")
-                              (border        . "#20272c")
-                              (act2          . "#20272c")
-                              (act1          . "#20272c")
-                              (highlight     . "#36484c")
-                              (highlight-dim . "#2a3d42")))))
+  (defun dotspacemacs/user-init ())
 #+END_SRC
-
-#+RESULTS:
-: dotspacemacs/user-init
 
 * Layers
 
@@ -161,7 +141,7 @@ as well as custom layers I've created.
 #+END_SRC
 
 ** Additional layer options
-
+   
 Select any non-layer-wrapped packages that should be loaded, define packages
 that should not recieve updates, and exclude certain packages from being
 installed and loaded.
@@ -169,7 +149,8 @@ installed and loaded.
 #+BEGIN_SRC emacs-lisp
   (defun ngs/additional-packages ()
     '(all-the-icons
-      zerodark-theme))
+      zerodark-theme
+      doom-themes))
   (defun ngs/frozen-packages ()
     '())
   (defun ngs/excluded-packages ()
@@ -283,19 +264,8 @@ mode line.
       (message "smartparens-mode enabled"))
     (define-key evil-insert-state-map (kbd "M-p") 'ngs/smartparens-toggle)
 
-    ;; TODO This should run automatically during initialization
-    (defun ngs/set-face-attributes ()
-      (interactive)
-      (set-face-attribute 'linum nil :foreground "#43535a")
-      (set-face-attribute 'linum nil :background "#263238")
-      (set-face-attribute 'linum-relative-current-face nil :foreground "#708088")
-      (set-face-attribute 'linum-relative-current-face nil :background "#263238")
-      ;; (set-face-attribute 'mode-line nil :box `(:line-width 2 :color "#20272c"))
-      ;; (set-face-attribute 'mode-line-inactive  nil :background "#222d33")
-      ;; (set-face-attribute 'powerline-inactive1 nil :background "#222d33")
-      ;; (set-face-attribute 'powerline-inactive2 nil :background "#222d33")
-      ;; (set-face-attribute 'mode-line-inactive  nil :box `(:line-width 2 :color "#222d33"))
-      )
+    (require 'doom-themes)
+    (require 'doom-neotree)    ; all-the-icons fonts must be installed!
 
     (load custom-file)
     (spaceline-compile))
