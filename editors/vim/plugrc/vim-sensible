@@ -1,5 +1,4 @@
 " sensible.vim — Defaults everyone can agree on.
-" https://github.com/tpope/vim-sensible
 
 Plug 'tpope/vim-sensible'
 

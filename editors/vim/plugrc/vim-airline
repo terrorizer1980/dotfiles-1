@@ -1,5 +1,4 @@
 " vim-airline — Lean and mean status/tabline for Vim that‘s light as air.
-" https://github.com/vim-airline/vim-airline
 
 Plug 'vim-airline/vim-airline'
 

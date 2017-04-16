@@ -1,0 +1,5 @@
+" YouCompleteMe — A code-completion engine for Vim
+
+Plug 'Valloric/YouCompleteMe'
+
+" vim:ft=vim

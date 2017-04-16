@@ -1,0 +1,6 @@
+" vim-yankstack — A lightweight implementation of Emacs’s kill-ring for Vim.
+
+Plug 'maxbrunsfeld/vim-yankstack'
+
+" vim:ft=vim
+

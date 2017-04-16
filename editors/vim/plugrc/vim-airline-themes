@@ -1,0 +1,6 @@
+" vim-airline-themes — Official themes for vim-airline
+
+Plug 'vim-airline/vim-airline-themes'
+
+" vim:ft=vim
+

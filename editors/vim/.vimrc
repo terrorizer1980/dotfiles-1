@@ -1,5 +1,8 @@
-" My Vim configuration. There be dragons here.
-" — Nick
+"     __  __ /\_\    ___ ___   _ __   ___
+"    /\ \/\ \\/\ \ /' __` __`\/\`'__\/'___\
+"  __\ \ \_/ |\ \ \/\ \/\ \/\ \ \ \//\ \__/
+" /\_\\ \___/  \ \_\ \_\ \_\ \_\ \_\\ \____\
+" \/_/ \/__/    \/_/\/_/\/_/\/_/\/_/ \/____/
 
 " Loads all valid config files in a `directory`.
 " https://github.com/christoomey/dotfiles/blob/master/vim/vimrc
@@ -13,20 +16,13 @@ function! s:SourceConfigFilesIn(directory)
   endfor
 endfunction
 
-" Plugins (vim-plug)
-call plug#begin('~/.vim/plugged')
-Plug 'vim-airline/vim-airline-themes'        " Colorschemes for the statusline
-Plug 'elixir-lang/vim-elixir'
-Plug 'scrooloose/nerdtree'
-Plug 'mileszs/ack.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rails'
-Plug 'posva/vim-vue'
-call s:SourceConfigFilesIn('plugrc')
-call plug#end()
-
 " Set character encoding.
 set encoding=utf-8
+
+" Plugins (vim-plug)
+call plug#begin('~/.vim/plugged')
+call s:SourceConfigFilesIn('plugrc')
+call plug#end()
 
 " Enable the native filetype plugin
 filetype plugin on
@@ -38,4 +34,5 @@ colorscheme hybrid_material                  " Use hybrid_material colorscheme
 " Set wildcard ignores.
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
+" All other Vim settings
 call s:SourceConfigFilesIn('vimrc')

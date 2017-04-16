@@ -1,0 +1,14 @@
+" EditorConfig Vim Plugin — This is an EditorConfig plugin for Vim.
+
+Plug 'editorconfig/editorconfig-vim'
+
+" Ensure that this plugin works well with Tim Pope's fugitive
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" Avoid loading EditorConfig for any remote files over ssh
+let g:EditorConfig_exclude_patterns = ['scp://.*']
+
+" Specify EditorConfig Core path
+let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
+
+" vim:ft=vim
