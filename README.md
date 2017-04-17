@@ -17,7 +17,6 @@ Run the installation script:
 The installation script will install the configs for the default applications if no `.install` file is found.
 Currently, those are:
 
-- [Atom](https://atom.io/)
 - [Homebrew](http://brew.sh/)
 - [Prezto](https://github.com/sorin-ionescu/prezto)
 - [Pry](http://pryrepl.org/)
@@ -25,6 +24,7 @@ Currently, those are:
 - [The Silver Searcher](http://geoff.greer.fm/ag/)
 - [Zsh](http://www.zsh.org/)
 - [tmux](https://tmux.github.io/)
+- [Vim](https://vim.sourceforge.io/)
 
 To configure the installation, copy `.install.defaults` to `.install` and modify the file such that applications
 you’d like configured have a `+` in front and applications you aren’t interested in have a `-`.

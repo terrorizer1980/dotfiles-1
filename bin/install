@@ -65,7 +65,9 @@ install ()
             symlink "editor/Preferences.sublime-settings"\
                     "Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings";;
         "Vim")
-            symlink "editors/.vimrc" ".vimrc";;
+            symlink "editors/vim/.vimrc" ".vimrc";;
+            symlink "editors/vim/vimrc" ".vim/vimrc";;
+            symlink "editors/vim/plugrc" ".vim/plugrc";;
         "Zsh")
             symlink "shell/.zshrc" ".zshrc"
             symlink "shell/.zshenv" ".zshenv";;
