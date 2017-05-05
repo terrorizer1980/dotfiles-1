@@ -1,0 +1,5 @@
+" tmuxline.vim -- Simple tmux statusline generator with support for lightline statusline integration
+
+Plug 'edkolev/tmuxline.vim'
+
+let g:tmuxline_powerline_separators = 0

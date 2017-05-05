@@ -1,4 +1,4 @@
-" Backups settings.
+" Backups
 
 set noswapfile
 set nobackup

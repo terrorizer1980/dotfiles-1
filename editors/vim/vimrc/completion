@@ -1,0 +1,9 @@
+" Completion settings.
+
+" `completeopt` (completion pop-up) settings
+
+" Make <Enter> insert match
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+
+" vim:ft=vim

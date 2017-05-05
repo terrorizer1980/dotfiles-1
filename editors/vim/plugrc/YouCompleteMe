@@ -1,5 +1,8 @@
 " YouCompleteMe — A code-completion engine for Vim
 
+" Don’t forget that this plugin has a compiled component!
+" https://github.com/Valloric/YouCompleteMe#installation
+
 Plug 'Valloric/YouCompleteMe'
 
 " vim:ft=vim

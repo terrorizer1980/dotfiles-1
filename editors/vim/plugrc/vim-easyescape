@@ -1,0 +1,13 @@
+" vim-easyescape — Allows custom bindings and timeouts for ESCing.
+
+Plug 'zhou13/vim-easyescape'
+
+let g:easyescape_chars = { "j": 1, "k": 1 } " Set j and k as potential easyescape chars
+" let g:easyescape_timeout = 100              " Set timeout to 100 ms
+
+" Set jk and kj as escape sequences
+cnoremap jk <ESC>
+" cnoremap kj <ESC>
+
+" vim:ft=vim
+

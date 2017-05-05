@@ -1,6 +1,0 @@
-" vim-material-hybrid — Material color scheme for Vim based on w0ng/vim-hybrid color scheme.
-
-Plug 'kristijanhusak/vim-hybrid-material'
-
-" vim:ft=vim
-

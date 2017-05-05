@@ -1,3 +1,4 @@
+"             __
 "     __  __ /\_\    ___ ___   _ __   ___
 "    /\ \/\ \\/\ \ /' __` __`\/\`'__\/'___\
 "  __\ \ \_/ |\ \ \/\ \/\ \/\ \ \ \//\ \__/
@@ -10,7 +11,6 @@ function! s:SourceConfigFilesIn(directory)
   let directory_splat = '~/.vim/' . a:directory . '/*'
   for config_file in split(glob(directory_splat), '\n')
     if filereadable(config_file)
-      echom config_file
       execute 'source' config_file
     endif
   endfor
@@ -22,17 +22,27 @@ set encoding=utf-8
 " Plugins (vim-plug)
 call plug#begin('~/.vim/plugged')
 call s:SourceConfigFilesIn('plugrc')
+" TODO These need to be moved into their own files
+Plug 'jacoborus/tender.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 call plug#end()
 
 " Enable the native filetype plugin
 filetype plugin on
 
 " Set colorscheme.
-set background=dark                          " Use light-on-dark colors
-colorscheme hybrid_material                  " Use hybrid_material colorscheme
+if (has("termguicolors"))
+  set termguicolors
+endif
+syntax enable
+colorscheme tender
+let g:lightline = { 'colorscheme': 'tender' }
+let macvim_skip_colorscheme=1
+highlight SignColumn guibg=#1D1D1D
 
 " Set wildcard ignores.
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
-" All other Vim settings
-call s:SourceConfigFilesIn('vimrc')
+" Always change to dir of current file
+autocmd BufEnter * silent! lcd %:p:h
