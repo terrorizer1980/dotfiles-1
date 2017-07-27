@@ -1,7 +1,0 @@
-" Gundo.vim — Vim plugin to visualize your Vim undo tree.
-
-Plug 'sjl/gundo.vim'
-
-" vim:ft=vim
-
-

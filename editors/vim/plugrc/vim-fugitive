@@ -1,5 +1,0 @@
-" fugitive.vim — The best Git wrapper of all time.
-
-Plug 'tpope/vim-fugitive'
-
-" vim:ft=vim

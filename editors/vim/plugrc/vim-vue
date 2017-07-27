@@ -1,5 +1,0 @@
-" vim-vue — Vim syntax highlighting for Vue components.
-
-Plug 'posva/vim-vue'
-
-" vim:ft=vim

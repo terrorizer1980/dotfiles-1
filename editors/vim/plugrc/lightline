@@ -1,8 +1,0 @@
-" lightline.vim -- A light and configurable statusline/tabline for Vim
-
-Plug 'itchyny/lightline.vim'
-
-
-let g:lightline = { 'colorscheme': 'tender' }
-
-" vim:ft=vim

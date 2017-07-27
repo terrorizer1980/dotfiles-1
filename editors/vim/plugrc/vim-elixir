@@ -1,5 +1,0 @@
-" vim-elixir — Elixir support for Vim. This plugin also adds support for Elixir’s templating language, EEx.
-
-Plug 'elixir-lang/vim-elixir'
-
-" vim:ft=vim

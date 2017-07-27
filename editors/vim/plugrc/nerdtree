@@ -1,5 +1,0 @@
-" The NERD Tree — A tree explorer plugin for Vim.
-
-Plug 'scrooloose/nerdtree'
-
-" vim:ft=vim

@@ -1,5 +1,0 @@
-" tender -- A 24bit colorscheme for Vim, Airline and Lightline
-
-Plug 'jacoborus/tender.vim'
-
-" vim:ft=vim
