@@ -11,10 +11,10 @@ promptinit
 . $HOME/.asdf/completions/asdf.bash
 
 # Lunchy
-LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
-if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
-  . $LUNCHY_DIR/lunchy-completion.zsh
-fi
+# LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
+# if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
+#   . $LUNCHY_DIR/lunchy-completion.zsh
+# fi
 
 # Aliases
 alias boilerplate="curl -LO https://raw.githubusercontent.com/ngscheurich/boilerplate/master/README.md; curl -LO https://raw.githubusercontent.com/ngscheurich/boilerplate/master/LICENSE"
@@ -26,20 +26,24 @@ alias dcbundle="docker-compose run app bundle"
 alias dcrails="docker-compose run app bin/rails"
 alias dcrake="docker-compose run app bin/rake"
 alias dcrspec="docker-compose run app bundle exec rspec"
-alias emacs="/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/bin/emacs"
-alias emacscl="/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/bin/emacsclient"
+alias emacsclient="/usr/local/Cellar/emacs-mac/HEAD-7403929/bin/emacsclient"
+alias exunit="mix test"
 alias fuck='eval $(thefuck $(fc -ln -1))'
 alias git=hub
+alias hk=heroku
+alias hkstaging='heroku --remote staging'
 alias mm='bundle exec middleman'
 alias rmdangling='docker rmi --force $(docker images -q -f dangling=true)'
-alias rspec="bundle exec rspec"
 alias sctl="sudo systemctl "
 alias vboxls="VBoxManage list runningvms"
-alias vim="/usr/local/Cellar/macvim/8.0-110/MacVim.app/Contents/MacOS/Vim"
+alias vim="nvim"
+alias virtualenv="python /Users/nscheurich/.asdf/installs/python/3.6.1/lib/python3.6/site-packages/virtualenv.py"
 alias weather="curl wttr.in/Baton+Rouge"
 alias webrick="ruby -run -e httpd . -p 5000"
+alias pyhttp="python -m http.server"
 alias zshconfig="$EDITOR ~/.zshrc"
 alias zshsource="source ~/.zshrc"
+alias vimconfig="$EDITOR $HOME/.config/nvim/init.vim"
 
 # Vagrant niceties
 function vrails {
@@ -80,7 +84,21 @@ bindkey '^?' backward-delete-char                   # [Delete] - delete backward
 bindkey '^[[3~' delete-char                         # [fn-Delete] - delete forward
 bindkey '^[3;5~' delete-char
 bindkey '\e[3~' delete-char
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
 
 if [ -f $HOME/.zshrc.local ]; then
   source $HOME/.zshrc.local
 fi
+
+# Base16 Shell
+# BASE16_SHELL="$HOME/.config/base16-shell/base16-material.dark.sh"
+# [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+. /usr/local/etc/profile.d/z.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source ~/.bin/tmuxinator.zsh
+eval "$(direnv hook zsh)"
+
