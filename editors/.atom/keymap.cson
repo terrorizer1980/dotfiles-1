@@ -1,5 +1,0 @@
-'atom-text-editor':
-  'cmd-k cmd-h': 'window:focus-pane-on-left'
-  'cmd-k cmd-j': 'window:focus-pane-below'
-  'cmd-k cmd-k': 'window:focus-pane-above'
-  'cmd-k cmd-l': 'window:focus-pane-on-right'
