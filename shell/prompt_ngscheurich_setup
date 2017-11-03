@@ -20,7 +20,7 @@ function prompt_sorin_precmd {
   if (( $+functions[git-info] )); then
     git-info
   fi
-  
+
   search_path=$PWD
   tool_versions_file=""
 
@@ -38,18 +38,18 @@ function prompt_sorin_precmd {
   if [[ $tool_versions_file != "" ]]; then
     while read line; do
       tool=$(echo $line | sed 's/^\([^ ]*\) \(.*\)/\1/')
-      # version=$(echo $line | sed 's/^\([^ ]*\) \(.*\)/\2/'n)
+      version=$(echo $line | sed 's/^\([^ ]*\) \(.*\)/\2/'n)
       case $tool in
         erlang)
-          tool_versions[$(($#tool_versions+1))]="%F{red}erl:$(asdf which erlang)";;
+          tool_versions[$(($#tool_versions+1))]="%F{red}erl:$(asdf current erlang)";;
         elixir)
-          tool_versions[$(($#tool_versions+1))]="%F{magenta}ex:$(asdf which elixir)";;
+          tool_versions[$(($#tool_versions+1))]="%F{magenta}ex:$(asdf current elixir)";;
         nodejs)
-          tool_versions[$(($#tool_versions+1))]="%F{green}js:$(asdf which nodejs)";;
+          tool_versions[$(($#tool_versions+1))]="%F{green}js:$(asdf current nodejs)";;
         python)
-          tool_versions[$(($#tool_versions+1))]="%F{yellow}py:$(asdf which python)";;
+          tool_versions[$(($#tool_versions+1))]="%F{yellow}py:$(asdf current python)";;
         ruby)
-          tool_versions[$(($#tool_versions+1))]="%F{red}rb:$(asdf which ruby)";;
+          tool_versions[$(($#tool_versions+1))]="%F{red}rb:$(asdf current ruby)";;
       esac
     done < $tool_versions_file
   fi
