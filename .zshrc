@@ -36,14 +36,14 @@ alias mm='bundle exec middleman'
 alias rmdangling='docker rmi --force $(docker images -q -f dangling=true)'
 alias sctl="sudo systemctl "
 alias vboxls="VBoxManage list runningvms"
-alias vim="nvim"
+# alias vim="nvim"
 alias virtualenv="python /Users/nscheurich/.asdf/installs/python/3.6.1/lib/python3.6/site-packages/virtualenv.py"
 alias weather="curl wttr.in/Baton+Rouge"
 alias webrick="ruby -run -e httpd . -p 5000"
 alias pyhttp="python -m http.server"
 alias zshconfig="$EDITOR ~/.zshrc"
 alias zshsource="source ~/.zshrc"
-alias vimconfig="$EDITOR $HOME/.config/nvim/init.vim"
+alias vimconfig="$EDITOR $HOME/.vimrc"
 
 # Vagrant niceties
 function vrails {
@@ -102,3 +102,10 @@ fi
 source ~/.bin/tmuxinator.zsh
 eval "$(direnv hook zsh)"
 
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/nscheurich/.config/yarn/global/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/nscheurich/.config/yarn/global/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/nscheurich/.config/yarn/global/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/nscheurich/.config/yarn/global/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh

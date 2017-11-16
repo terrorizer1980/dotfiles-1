@@ -1,11 +1,10 @@
 "
-"		   __
-"   __          __/\ \__               __
-"  /\_\    ___ /\_\ \ ,_\      __  __ /\_\    ___ ___
-"  \/\ \ /' _ `\/\ \ \ \/     /\ \/\ \\/\ \ /' __` __`\
-"   \ \ \/\ \/\ \ \ \ \ \_  __\ \ \_/ |\ \ \/\ \/\ \/\ \
-"    \ \_\ \_\ \_\ \_\ \__\/\_\\ \___/  \ \_\ \_\ \_\ \_\
-"     \/_/\/_/\/_/\/_/\/__/\/_/ \/__/    \/_/\/_/\/_/\/_/
+"             __
+"     __  __ /\_\    ___ ___   _ __   ___
+"    /\ \/\ \\/\ \ /' __` __`\/\`'__\/'___\
+"  __\ \ \_/ |\ \ \/\ \/\ \/\ \ \ \//\ \__/
+" /\_\\ \___/  \ \_\ \_\ \_\ \_\ \_\\ \____\
+" \/_/ \/__/    \/_/\/_/\/_/\/_/\/_/ \/____/
 "
 "
 "
@@ -18,112 +17,105 @@
 "" Plugins
 "" ------------------------------------------------------
 
-set runtimepath+=/Users/nscheurich/.config/dein/repos/github.com/Shougo/dein.vim
+call plug#begin('~/.vim/plugged')
 
-if dein#load_state('/Users/nscheurich/.config/dein')
-call dein#begin('/Users/nscheurich/.config/dein')
-call dein#add('/Users/nscheurich/.config/dein/repos/github.com/Shougo/dein.vim')
-
-
-call dein#add('tpope/vim-sensible')                      " Some sensible defaults to start with
+Plug 'tpope/vim-sensible'                         " Some sensible defaults to start with
 
 
 " UI niceities
 " -------------------------------------------------------
 
-call dein#add('edkolev/tmuxline.vim')                    " vim-airline-like status bar for tmux
-call dein#add('jacoborus/tender.vim')                    " My colorscheme of choice
-call dein#add('majutsushi/tagbar')                       " Tag navigation bar
-call dein#add('mhinz/vim-startify')                      " Fancy start screen
-call dein#add('osyo-manga/vim-over')                     " Preview :substitute commands
-call dein#add('rakr/vim-one')                            " Another nice colorscheme
-call dein#add('ryanoasis/vim-devicons')                  " Icons in status bar, NERDTree, etc.
-call dein#add('scrooloose/nerdtree')                     " Project tree drawer
-call dein#add('sjl/gundo.vim')                           " Undo tree visualizer
-call dein#add('szw/vim-maximizer')                       " Maximize/restore current window
-call dein#add('tiagofumo/vim-nerdtree-syntax-highlight') " Colored devicons
-call dein#add('vim-airline/vim-airline')                 " Fancy status bar
+Plug 'edkolev/tmuxline.vim'                    " vim-airline-like status bar for tmux
+Plug 'jacoborus/tender.vim'                    " My colorscheme of choice
+Plug 'majutsushi/tagbar'                       " Tag navigation bar
+Plug 'mhinz/vim-startify'                      " Fancy start screen
+Plug 'osyo-manga/vim-over'                     " Preview :substitute commands
+Plug 'rakr/vim-one'                            " Another nice colorscheme
+Plug 'ryanoasis/vim-devicons'                  " Icons in status bar, NERDTree, etc.
+Plug 'scrooloose/nerdtree'                     " Project tree drawer
+Plug 'sjl/gundo.vim'                           " Undo tree visualizer
+Plug 'szw/vim-maximizer'                       " Maximize/restore current window
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Colored devicons
+Plug 'vim-airline/vim-airline'                 " Fancy status bar
 
 
 " Language and framework support
 " -------------------------------------------------------
 
-call dein#add('carlitux/deoplete-ternjs',
-      \ { 'build': 'npm install -g tern' })             " Autocompletion for JavaScript
-call dein#add('ElmCast/elm-vim')                        " Elm integration
-call dein#add('HerringtonDarkholme/yats.vim')           " TypeScript autocompletion
-call dein#add('alols/vim-love-efm')                     " LÖVE support
-call dein#add('c-brenn/phoenix.vim')                    " Phoenix integration
-call dein#add('cespare/vim-toml')                       " TOML syntax highlighting
-call dein#add('elixir-lang/vim-elixir')                 " Elixir syntax highlihting and indentation
-call dein#add('joukevandermaas/vim-ember-hbs')          " Ember Handlebars/HTMLBars
-call dein#add('justinj/vim-pico8-syntax')               " PICO-8 syntax support
-call dein#add('mattn/emmet-vim')                        " Expand abbreviations à la Emment
-call dein#add('mxw/vim-jsx')                            " JSX syntax support
-call dein#add('othree/html5.vim')                       " HTML5 omnicomplete and syntax
-call dein#add('pangloss/vim-javascript')                " Improved JavaScript indentation and syntax highlighting
-call dein#add('posva/vim-vue')                          " Syntax highlighting for Vue.js single file components
-call dein#add('slashmili/alchemist.vim')                " Elixir integration via ElixirSense
-call dein#add('thoughtbot/vim-rspec')                   " RSpec integration
-call dein#add('tmux-plugins/vim-tmux')                  " Niceties for editing Tmux config files
-call dein#add('tpope/vim-projectionist')                " Project file navigation; required for phoenix.vim
-call dein#add('tpope/vim-rails')                        " Ruby on Rails integration
+Plug 'carlitux/deoplete-ternjs'               " Autocompletion for JavaScript
+  \ { 'build': 'npm install -g tern' }
+Plug 'ElmCast/elm-vim'                        " Elm integration
+Plug 'HerringtonDarkholme/yats.vim'           " TypeScript autocompletion
+Plug 'alols/vim-love-efm'                     " LÖVE support
+Plug 'c-brenn/phoenix.vim'                    " Phoenix integration
+Plug 'cespare/vim-toml'                       " TOML syntax highlighting
+Plug 'elixir-lang/vim-elixir'                 " Elixir syntax highlihting and indentation
+Plug 'joukevandermaas/vim-ember-hbs'          " Ember Handlebars/HTMLBars
+Plug 'justinj/vim-pico8-syntax'               " PICO-8 syntax support
+Plug 'mattn/emmet-vim'                        " Expand abbreviations à la Emment
+Plug 'mxw/vim-jsx'                            " JSX syntax support
+Plug 'othree/html5.vim'                       " HTML5 omnicomplete and syntax
+Plug 'pangloss/vim-javascript'                " Improved JavaScript indentation and syntax highlighting
+Plug 'posva/vim-vue'                          " Syntax highlighting for Vue.js single file components
+Plug 'slashmili/alchemist.vim'                " Elixir integration via ElixirSense
+Plug 'thoughtbot/vim-rspec'                   " RSpec integration
+Plug 'tmux-plugins/vim-tmux'                  " Niceties for editing Tmux config files
+Plug 'tpope/vim-projectionist'                " Project file navigation; required for phoenix.vim
+Plug 'tpope/vim-rails'                        " Ruby on Rails integration
 
 
 " Markdown and prose
 " -------------------------------------------------------
 
-call dein#add('junegunn/goyo.vim')                      " Distraction-free writing
-call dein#add('junegunn/limelight.vim')                 " Dim text that is not focused
-call dein#add('reedes/vim-pencil')                      " Tons of prose-related features
-call dein#add('robertbasic/vim-hugo-helper')            " Helpers for writing posts for Hugo
+Plug 'junegunn/goyo.vim'                          " Distraction-free writing
+Plug 'junegunn/limelight.vim'                     " Dim text that is not focused
+Plug 'reedes/vim-pencil'                          " Tons of prose-related features
+Plug 'robertbasic/vim-hugo-helper'                " Helpers for writing posts for Hugo
 
 
 " Utilities
 " -------------------------------------------------------
 
-call dein#add('Rykka/colorv.vim')                       " Make working with colors easier
-call dein#add('Shougo/deoplete.nvim',
-      \ { 'build': ':UpdateRemotePlugins' })            " Asynchronous completion engine
-call dein#add('Shougo/neosnippet')                      " Support for snippets
-call dein#add('Shougo/neosnippet-snippets')             " Some basic snippets
-call dein#add('abaldwin88/roamer.vim')                  " Manage files with roamer
-call dein#add('airblade/vim-gitgutter')                 " Display file changes in the sign column
-call dein#add('bogado/file-line')                       " Open files to a given line with file:lineno
-call dein#add('christoomey/vim-tmux-navigator')         " Navigate seamlessly between vim and tmux splits
-call dein#add('csexton/trailertrash.vim')               " Deal with EOL whitespace
-call dein#add('dietsche/vim-lastplace')                 " Open files where you left them
-call dein#add('editorconfig/editorconfig-vim')          " EditorConfig support
-call dein#add('godlygeek/tabular')                      " Easily align text
-call dein#add('junegunn/fzf.vim')                       " Integrate with fzf
-call dein#add('justinmk/vim-sneak')                     " Jump to any location specified by two characters
-call dein#add('ludovicchabant/vim-gutentags')           " Manage tag files
-call dein#add('mklabs/split-term.vim')                  " Utilites around neovim’s :terminal
-call dein#add('powerman/vim-plugin-AnsiEsc')            " Deal with ANSI escape sequences
-call dein#add('roxma/vim-tmux-clipboard')               " Better Vim/Tmux clipboard interop
-call dein#add('svermeulen/vim-easyclip')                " Simplified clipboard functionality
-call dein#add('tmux-plugins/vim-tmux-focus-events')     " Tmux compatibility fixes
-call dein#add('tpope/vim-abolish')                      " Operate on variants of a word (plural, case, etc.)
-call dein#add('tpope/vim-bundler')                      " Integrate with Bundler
-call dein#add('tpope/vim-commentary')                   " Toggle comments
-call dein#add('tpope/vim-dispatch')                     " Perform async tasks in a tmux split
-call dein#add('tpope/vim-endwise')                      " End coding structures automatically, i.e. `do`...`end`
-call dein#add('tpope/vim-fugitive')                     " Git integration
-call dein#add('tpope/vim-projectionist')                " Project configuration
-call dein#add('tpope/vim-repeat')                       " Remap . in a way that plugins can tap into it
-call dein#add('tpope/vim-sleuth')                       " Heuristically set buffer indentation options
-call dein#add('tpope/vim-speeddating')                  " Use CTRL-A/CTRL-X to increment dates, times, and more
-call dein#add('tpope/vim-vinegar')                      " Navigate up a directory in netrw
-call dein#add('tpope/vim-unimpaired')                   " Complementary key mappings based around [ and ]
-call dein#add('w0rp/ale')                               " Asynchronous Lint Engine
+Plug 'Rykka/colorv.vim'                       " Make working with colors easier
+Plug 'djoshea/vim-autoread'                   " Reload buffers whose files have been modified
+Plug 'Shougo/neosnippet'                      " Support for snippets
+Plug 'Shougo/neosnippet-snippets'             " Some basic snippets
+Plug 'abaldwin88/roamer.vim'                  " Manage files with roamer
+Plug 'airblade/vim-gitgutter'                 " Display file changes in the sign column
+Plug 'bogado/file-line'                       " Open files to a given line with file:lineno
+Plug 'christoomey/vim-tmux-navigator'         " Navigate seamlessly between vim and tmux splits
+Plug 'csexton/trailertrash.vim'               " Deal with EOL whitespace
+Plug 'dietsche/vim-lastplace'                 " Open files where you left them
+Plug 'editorconfig/editorconfig-vim'          " EditorConfig support
+Plug 'godlygeek/tabular'                      " Easily align text
+Plug 'junegunn/fzf.vim'                       " Integrate with fzf
+Plug 'justinmk/vim-sneak'                     " Jump to any location specified by two characters
+Plug 'ludovicchabant/vim-gutentags'           " Manage tag files
+Plug 'mklabs/split-term.vim'                  " Utilites around neovim’s :terminal
+Plug 'powerman/vim-plugin-AnsiEsc'            " Deal with ANSI escape sequences
+Plug 'roxma/vim-tmux-clipboard'               " Better Vim/Tmux clipboard interop
+Plug 'svermeulen/vim-easyclip'                " Simplified clipboard functionality
+Plug 'tmux-plugins/vim-tmux-focus-events'     " Tmux compatibility fixes
+Plug 'tpope/vim-abolish'                      " Operate on variants of a word (plural, case, etc.)
+Plug 'tpope/vim-bundler'                      " Integrate with Bundler
+Plug 'tpope/vim-commentary'                   " Toggle comments
+Plug 'tpope/vim-dispatch'                     " Perform async tasks in a tmux split
+Plug 'tpope/vim-endwise'                      " End coding structures automatically, i.e. `do`...`end`
+Plug 'tpope/vim-fugitive'                     " Git integration
+Plug 'tpope/vim-projectionist'                " Project configuration
+Plug 'tpope/vim-repeat'                       " Remap . in a way that plugins can tap into it
+Plug 'tpope/vim-sleuth'                       " Heuristically set buffer indentation options
+Plug 'tpope/vim-speeddating'                  " Use CTRL-A/CTRL-X to increment dates, times, and more
+Plug 'tpope/vim-surround'                     " Operate on 'surroundings', e.g., parentheses, brackets, quotes
+Plug 'tpope/vim-vinegar'                      " Navigate up a directory in netrw
+Plug 'tpope/vim-unimpaired'                   " Complementary key mappings based around [ and ]
+Plug 'w0rp/ale'                               " Asynchronous Lint Engine
 
-call dein#end()
-call dein#save_state()
-endif
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 
-if dein#check_install()
-  call dein#install()
-endif
+call plug#end()
 
 
 
@@ -169,12 +161,12 @@ endif
 "" Filetype-based settings
 "" ------------------------------------------------------
 
-augroup elm
-  autocmd!
-  autocmd BufNewFile,BufRead *.elm setlocal tabstop=4
-  autocmd BufNewFile,BufRead *.elm setlocal shiftwidth=4
-  autocmd BufNewFile,BufRead *.elm setlocal softtabstop=4
-augroup END
+autocmd BufNewFile,BufRead *.elm setlocal tabstop=4
+autocmd BufNewFile,BufRead *.elm setlocal shiftwidth=4
+autocmd BufNewFile,BufRead *.elm setlocal softtabstop=4
+
+autocmd BufWritePost *.exs silent :!mix format %
+autocmd BufWritePost *.ex silent :!mix format %
 
 
 
@@ -186,7 +178,11 @@ augroup END
 let mapleader = ","
 
 " Open current file’s directory in Finder
-map <Leader>d :!open %/..<CR>
+nmap <Leader>d :!open %/..<CR>
+
+" Switch to next/previous tab
+nmap <Leader>h :tabprevious <CR>
+nmap <Leader>l :tabnext <CR>
 
 " Neosnippet
 " Plugin key-mappings.
@@ -212,12 +208,6 @@ endif
 
 " Stop highlighting search results on <ESC>
 map <ESC> :noh<CR>
-
-" Navigate splits
-tnoremap <buffer> <C-h> <C-\><C-n><C-w>h
-tnoremap <buffer> <C-j> <C-\><C-n><C-w>j
-tnoremap <buffer> <C-k> <C-\><C-n><C-w>k
-tnoremap <buffer> <C-l> <C-\><C-n><C-w>l
 
 " Next/previous tab
 nnoremap <Tab> :bnext<CR>
@@ -345,7 +335,7 @@ let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
 " ALE
 let g:ale_lint_delay = 5000
 
-let g:ale_sign_error = '>>'
+let g:ale_sign_error = '**'
 let g:ale_sign_warning = '--'
 let g:ale_sign_column_always = 1
 
