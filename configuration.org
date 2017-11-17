@@ -1,0 +1,1 @@
+/Users/nscheurich/dotfiles/editors/spacemacs-private/configuration.org
