@@ -6,26 +6,42 @@ fi
 autoload -Uz promptinit
 promptinit
 
-# asdf
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/share/dotnet:/opt/X11/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands"
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin/core_perl"
+export PATH="$PATH:/usr/local/Cellar/node/7.1.0/bin"
+export PATH="$PATH:/usr/local/share/dotnet"
+export PATH="$HOME:/.composer/vendor/bin"
+export PATH="$PATH:/usr/local/Cellar/mysql/5.7.13/bin"
+export PATH="$PATH:/usr/local/opt/go/libexec/bin"
+export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:/Applications/PICO-8/PICO-8.app/Contents/MacOS"
+export PATH="$PATH:~/.asdf/installs/python/3.6.1/lib/python3.6/site-packages"
+export PATH="$PATH:/Users/nscheurich/.asdf/installs/elixir/1.4.4/.mix/escripts"
+export PATH="$PATH:$HOME/pear/bin"
+export PATH="$PATH:/Applications/love.app/Contents/MacOS"
+eval `/usr/libexec/path_helper -s`
 
-# Lunchy
-# LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
-# if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
-#   . $LUNCHY_DIR/lunchy-completion.zsh
-# fi
+# Less Colors for Man Pages
+# http://linuxtidbits.wordpress.com/2009/03/23/less-colors-for-man-pages/
+export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
+export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
+export LESS_TERMCAP_me=$'\E[0m'           # end mode
+export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
+export LESS_TERMCAP_so=$'\E[38;33;246m'   # begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\E[0m'           # end underline
+export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
+
+# Editor
+export EDITOR="nvim"
+
+# Get rid of lag when entering vi mode
+export KEYTIMEOUT=1
+
+# https://github.com/junegunn/fzf#respecting-gitignore-hgignore-and-svnignore
+export FZF_DEFAULT_COMMAND='/usr/local/bin/ag -g ""'
 
 # Aliases
-alias boilerplate="curl -LO https://raw.githubusercontent.com/ngscheurich/boilerplate/master/README.md; curl -LO https://raw.githubusercontent.com/ngscheurich/boilerplate/master/LICENSE"
-alias brails="bin/rails"
-alias brake="bin/rake"
-alias bx="bundle exec"
 alias curlh="curl -s -D - -o /dev/null"
-alias dcbundle="docker-compose run app bundle"
-alias dcrails="docker-compose run app bin/rails"
-alias dcrake="docker-compose run app bin/rake"
-alias dcrspec="docker-compose run app bundle exec rspec"
 alias emacsclient="/usr/local/Cellar/emacs-mac/HEAD-7403929/bin/emacsclient"
 alias exunit="mix test"
 alias fuck='eval $(thefuck $(fc -ln -1))'
@@ -33,28 +49,15 @@ alias git=hub
 alias hk=heroku
 alias hkstaging='heroku --remote staging'
 alias mm='bundle exec middleman'
-alias rmdangling='docker rmi --force $(docker images -q -f dangling=true)'
 alias sctl="sudo systemctl "
 alias vboxls="VBoxManage list runningvms"
-# alias vim="nvim"
+alias vim="nvim"
 alias virtualenv="python /Users/nscheurich/.asdf/installs/python/3.6.1/lib/python3.6/site-packages/virtualenv.py"
 alias weather="curl wttr.in/Baton+Rouge"
-alias webrick="ruby -run -e httpd . -p 5000"
 alias pyhttp="python -m http.server"
 alias zshconfig="$EDITOR ~/.zshrc"
 alias zshsource="source ~/.zshrc"
-alias vimconfig="$EDITOR $HOME/.vimrc"
-
-# Vagrant niceties
-function vrails {
-  vagrant ssh -c "cd /vagrant && bin/rails $@"
-}
-function vrake {
-  vagrant ssh -c "cd /vagrant && bin/rake $@"
-}
-
-# DNVM stuff
-source dnvm.sh
+alias vimconfig="$EDITOR $HOME/.config/nvim/init.vim"
 
 # Key Bindings
 # https://github.com/JeanMertz/omz-to-prezto/blob/omz-to-prezto/zsh/key-bindings.zsh
@@ -91,17 +94,12 @@ if [ -f $HOME/.zshrc.local ]; then
   source $HOME/.zshrc.local
 fi
 
-# Base16 Shell
-# BASE16_SHELL="$HOME/.config/base16-shell/base16-material.dark.sh"
-# [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
-
 . /usr/local/etc/profile.d/z.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source ~/.bin/tmuxinator.zsh
+# source ~/.bin/tmuxinator.zsh
 eval "$(direnv hook zsh)"
-
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
