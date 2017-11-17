@@ -81,7 +81,7 @@ Plug 'godlygeek/tabular'                  " Easily align text
 Plug 'junegunn/fzf.vim'                   " Integrate with fzf
 Plug 'justinmk/vim-sneak'                 " Jump to any location specified by two characters
 Plug 'ludovicchabant/vim-gutentags'       " Manage tag files
-Plug 'mklabs/split-term.vim'              " Utilites around neovim’s :terminal
+Plug 'mklabs/split-term.vim'              " Utilites around Neovim’s :terminal
 Plug 'powerman/vim-plugin-AnsiEsc'        " Deal with ANSI escape sequences
 Plug 'roxma/vim-tmux-clipboard'           " Better Vim/Tmux clipboard interop
 Plug 'tmux-plugins/vim-tmux-focus-events' " Tmux compatibility fixes
