@@ -30,26 +30,26 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Colored devicons
 Plug 'vim-airline/vim-airline'                 " Fancy status bar
 " }}}
 " Languages and frameworks {{{
-Plug 'carlitux/deoplete-ternjs'        " Autocompletion for JavaScript
-            \ { 'build': 'npm install -g tern' }
-Plug 'ElmCast/elm-vim'                 " Elm integration
-Plug 'HerringtonDarkholme/yats.vim'    " TypeScript autocompletion
-Plug 'alols/vim-love-efm'              " LÖVE support
-Plug 'c-brenn/phoenix.vim'             " Phoenix integration
-Plug 'cespare/vim-toml'                " TOML syntax highlighting
-Plug 'elixir-lang/vim-elixir'          " Elixir syntax highlihting and indentation
-Plug 'joukevandermaas/vim-ember-hbs'   " Ember Handlebars/HTMLBars
-Plug 'justinj/vim-pico8-syntax'        " PICO-8 syntax support
-Plug 'mattn/emmet-vim'                 " Expand abbreviations à la Emment
-Plug 'mxw/vim-jsx'                     " JSX syntax support
-Plug 'othree/html5.vim'                " HTML5 omnicomplete and syntax
-Plug 'pangloss/vim-javascript'         " Improved JavaScript indentation and syntax highlighting
-Plug 'posva/vim-vue'                   " Syntax highlighting for Vue.js single file components
-Plug 'slashmili/alchemist.vim'         " Elixir integration via ElixirSense
-Plug 'thoughtbot/vim-rspec'            " RSpec integration
-Plug 'tmux-plugins/vim-tmux'           " Niceties for editing Tmux config files
-Plug 'tpope/vim-projectionist'         " Project file navigation; required for phoenix.vim
-Plug 'tpope/vim-rails'                 " Ruby on Rails integration
+Plug 'carlitux/deoplete-ternjs'
+            \ { 'build': 'npm install -g tern' } " Autocompletion for JavaScript
+Plug 'ElmCast/elm-vim'                           " Elm integration
+Plug 'HerringtonDarkholme/yats.vim'              " TypeScript autocompletion
+Plug 'alols/vim-love-efm'                        " LÖVE support
+Plug 'c-brenn/phoenix.vim'                       " Phoenix integration
+Plug 'cespare/vim-toml'                          " TOML syntax highlighting
+Plug 'elixir-lang/vim-elixir'                    " Elixir syntax highlihting and indentation
+Plug 'joukevandermaas/vim-ember-hbs'             " Ember Handlebars/HTMLBars
+Plug 'justinj/vim-pico8-syntax'                  " PICO-8 syntax support
+Plug 'mattn/emmet-vim'                           " Expand abbreviations à la Emment
+Plug 'mxw/vim-jsx'                               " JSX syntax support
+Plug 'othree/html5.vim'                          " HTML5 omnicomplete and syntax
+Plug 'pangloss/vim-javascript'                   " Improved JavaScript indentation and syntax highlighting
+Plug 'posva/vim-vue'                             " Syntax highlighting for Vue.js single file components
+Plug 'slashmili/alchemist.vim'                   " Elixir integration via ElixirSense
+Plug 'thoughtbot/vim-rspec'                      " RSpec integration
+Plug 'tmux-plugins/vim-tmux'                     " Niceties for editing Tmux config files
+Plug 'tpope/vim-projectionist'                   " Project file navigation; required for phoenix.vim
+Plug 'tpope/vim-rails'                           " Ruby on Rails integration
 " }}}
 " Markdown and prose {{{
 Plug 'junegunn/goyo.vim'           " Distraction-free writing
