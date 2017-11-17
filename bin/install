@@ -69,7 +69,7 @@ install ()
                     "Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings";;
         "Vim")
             symlink ".vimrc" ".vimrc";;
-            symlink "banner-nvim" ".vim/banner";;
+            # symlink "banner-nvim" ".vim/banner";;
         "Zsh")
             symlink ".zshrc" ".zshrc"
             symlink ".zshenv" ".zshenv";;
