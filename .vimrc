@@ -62,9 +62,9 @@ if has('nvim')
     Plug 'Shougo/deoplete.nvim',
                 \{ 'do': ':UpdateRemotePlugins' } " Asynchronous completion framework
 else
-    Plug 'Shougo/deoplete.nvim'             " Asynchronous completion framework
-    Plug 'roxma/nvim-yarp'                  " Remote plugin framework
-    Plug 'roxma/vim-hug-neovim-rpc'         " Compatibility layer for Neovim RPC client
+    Plug 'Shougo/deoplete.nvim'                   " Asynchronous completion framework
+    Plug 'roxma/nvim-yarp'                        " Remote plugin framework
+    Plug 'roxma/vim-hug-neovim-rpc'               " Compatibility layer for Neovim RPC client
 endif
 " }}}
 " Utilities {{{
