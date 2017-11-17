@@ -46,7 +46,10 @@ install ()
         "Atom")
             symlink ".atom" ".atom";;
         "Emacs")
-            symlink ".emacs.d" ".emacs.d";;
+            symlink "init.el" ".emacs.d/init.el";;
+            symlink "configuration.org" ".emacs.d/private/configuration.org";;
+        "Exuberant Ctags")
+            symlink ".ctags" ".ctags";;
         "Homebrew")
             symlink "Brewfile" "Brewfile";;
         "Neovim")
