@@ -398,9 +398,9 @@ augroup END
 " Miscellany {{{
 
 set modelines=1
-set encoding=utf-8                                      " Set character encoding
-filetype plugin on                                      " Enable the native filetype plugin
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip                " Set wildcard ignores
+set encoding=utf-8                       " Set character encoding
+filetype plugin on                       " Enable the native filetype plugin
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip " Set wildcard ignores
 
 " }}}
 
