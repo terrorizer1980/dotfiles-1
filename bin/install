@@ -75,6 +75,7 @@ install ()
             symlink ".zshenv" ".zshenv";;
         "tmux")
             symlink ".tmux.conf" ".tmux.conf";;
+            symlink ".tmuxline" ".tmuxline";;
         *)
             echo "$name is not a recognized application"
     esac
