@@ -268,16 +268,16 @@ set tabstop=2     " Number of spaces per <TAB>
 " }}}
 " User Interface {{{
 
-let g:netrw_banner=0                                    " No netrw banner
-set cursorline                                          " Highlight current line
-set fillchars+=vert:│                                   " Customize split borders
-set guifont=Fira\ Code:h13                              " Set font for GUI Vim
-set noshowmode                                          " Don't display editing mode below status bar (vim-airline shows this)
-set number                                              " Show line numbers
-set relativenumber                                      " Show relative line numbers
-set signcolumn=yes                                      " Show signs to the left of line numbers
-set splitbelow                                          " Open horizontal splits below current window
-set splitright                                          " Open vertical splits to the right of the current window
+let g:netrw_banner=0       " No netrw banner
+set cursorline             " Highlight current line
+set fillchars+=vert:│      " Customize split borders
+set guifont=Fira\ Code:h13 " Set font for GUI Vim
+set noshowmode             " Don't display editing mode below status bar (vim-airline shows this)
+set number                 " Show line numbers
+set relativenumber         " Show relative line numbers
+set signcolumn=yes         " Show signs to the left of line numbers
+set splitbelow             " Open horizontal splits below current window
+set splitright             " Open vertical splits to the right of the current window
 
 " }}}
 " Folds {{{
