@@ -9,11 +9,11 @@ nc="\33[0m"
 
 setup ()
 {
-    file="$HOME/dotfiles/.install"
+    file="$HOME/dotfiles/bin/.install"
 
     if [[ ! -f "$file" ]]; then
         printf "\n${c3}Using default options.${nc}\n"
-        file="$HOME/dotfiles/.install.defaults"
+        file="$HOME/dotfiles/bin/.install.defaults"
     else
         printf "\n${c3}Configuration file detected.${nc}\n"
     fi
@@ -44,35 +44,37 @@ install ()
 
     case "$name" in
         "Atom")
-            symlink "editors/.atom" ".atom";;
+            symlink ".atom" ".atom";;
         "Emacs")
-            symlink "editors/.emacs.d" ".emacs.d";;
+            symlink ".emacs.d" ".emacs.d";;
         "Homebrew")
-            symlink "tools/Brewfile" "Brewfile";;
+            symlink "Brewfile" "Brewfile";;
+        "Neovim")
+            symlink ".vimrc" ".config/nvim/init.mv";;
+            symlink "banner-nvim" ".config/nvim/banner";;
         "Prezto")
-            symlink "shell/.zpreztorc" ".zpreztorc"
-            symlink "shell/prompt_ngscheurich_setup"\
+            symlink ".zpreztorc" ".zpreztorc"
+            symlink "prompt_ngscheurich_setup"\
                     ".zprezto/modules/prompt/functions/prompt_ngscheurich_setup";;
         "Pry")
-            symlink "tools/.pryrc" ".pryrc";;
+            symlink ".pryrc" ".pryrc";;
         "Rubocop")
-            symlink "tools/.rubocop" ".rubocop";;
+            symlink ".rubocop.yml" ".rubocop.yml";;
         "The Silver Searcher")
-            symlink "tools/.agignore" ".agignore";;
+            symlink ".agignore" ".agignore";;
         "Slate")
-            symlink "tools/slate/.slate.js" ".slate.js";;
+            symlink "slate/.slate.js" ".slate.js";;
         "Sublime Text")
-            symlink "editor/Preferences.sublime-settings"\
+            symlink "Preferences.sublime-settings"\
                     "Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings";;
         "Vim")
-            symlink "editors/vim/.vimrc" ".vimrc";;
-            symlink "editors/vim/vimrc" ".vim/vimrc";;
-            symlink "editors/vim/plugrc" ".vim/plugrc";;
+            symlink ".vimrc" ".vimrc";;
+            symlink "banner-nvim" ".vim/banner";;
         "Zsh")
-            symlink "shell/.zshrc" ".zshrc"
-            symlink "shell/.zshenv" ".zshenv";;
+            symlink ".zshrc" ".zshrc"
+            symlink ".zshenv" ".zshenv";;
         "tmux")
-            symlink "tools/.tmux.conf" ".tmux.conf";;
+            symlink ".tmux.conf" ".tmux.conf";;
         *)
             echo "$name is not a recognized application"
     esac
