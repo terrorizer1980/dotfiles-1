@@ -1,11 +1,12 @@
 - Atom
 - Emacs
 + Homebrew
++ Neovim
 + Prezto
 + Pry
 + Rubocop
 + The Silver Searcher
 - Slate
-+ Vim
+- Vim
 + Zsh
 + tmux
