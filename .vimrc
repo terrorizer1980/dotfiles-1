@@ -30,7 +30,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Colored devicons
 Plug 'vim-airline/vim-airline'                 " Fancy status bar
 " }}}
 " Languages and frameworks {{{
-Plug 'carlitux/deoplete-ternjs'
+Plug 'carlitux/deoplete-ternjs',
             \ { 'build': 'npm install -g tern' } " Autocompletion for JavaScript
 Plug 'ElmCast/elm-vim'                           " Elm integration
 Plug 'HerringtonDarkholme/yats.vim'              " TypeScript autocompletion
@@ -114,7 +114,7 @@ command! -bang -nargs=* Ag
             \ call fzf#vim#ag(<q-args>, fzf#vim#with_preview(), <bang>0)
 "}}}
 " Deoplete {{{
-" let g:deoplete#enable_at_startup = 1
+ let g:deoplete#enable_at_startup = 1
 " let g:echodoc_enable_at_startup = 0
 " autocmd CompleteDone * pclose
 
@@ -295,6 +295,12 @@ nnoremap <space> za
 " Map leader to comma
 let mapleader = ","
 
+" Navigate popup menu
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 " Show current file in Finder
 nmap <Leader>d :!open %/..<CR>
 
@@ -327,9 +333,6 @@ map <Leader>gp :Gpush<CR>
 map <Leader>gl :Glog<CR>
 map <Leader>gd :Gdiff<CR>
 
-" Expand Emmet abbreviations
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
-
 " Toggle NERDTree
 map <Leader>\ :NERDTreeToggle<CR>
 
@@ -344,7 +347,7 @@ nnoremap ; :
 nmap <silent> <Leader>e <Plug>(ale_next_wrap)
 
 " `make` current file
-map <Leader>m :make<CR>
+map <Leader>m :silent make<CR>
 
 " }}}
 " Backups {{{
