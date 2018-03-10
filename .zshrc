@@ -40,8 +40,6 @@ export KEYTIMEOUT=1
 # https://github.com/junegunn/fzf#respecting-gitignore-hgignore-and-svnignore
 export FZF_DEFAULT_COMMAND='/usr/local/bin/ag -g ""'
 
-export HOMEBREW_GITHUB_API_TOKEN="71032008ee331106ccfc1155ccb6c3676f08c1bd"
-
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 # Aliases
@@ -158,3 +156,5 @@ complete -F _yargs_completions graphql
 ###-end-graphql-completions-###
 
 eval $(thefuck --alias)
+
+. $HOME/.secrets
