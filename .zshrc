@@ -40,11 +40,15 @@ export KEYTIMEOUT=1
 # https://github.com/junegunn/fzf#respecting-gitignore-hgignore-and-svnignore
 export FZF_DEFAULT_COMMAND='/usr/local/bin/ag -g ""'
 
+export HOMEBREW_GITHUB_API_TOKEN="71032008ee331106ccfc1155ccb6c3676f08c1bd"
+
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 # Aliases
+alias cask="brew cask"
 alias curlh="curl -s -D - -o /dev/null"
 alias emacsclient="/usr/local/Cellar/emacs-mac/HEAD-7403929/bin/emacsclient"
 alias exunit="mix test"
-alias fuck='eval $(thefuck $(fc -ln -1))'
 alias git=hub
 alias hk=heroku
 alias hkstaging='heroku --remote staging'
@@ -94,7 +98,7 @@ if [ -f $HOME/.zshrc.local ]; then
   source $HOME/.zshrc.local
 fi
 
-. /usr/local/etc/profile.d/z.sh
+# . /usr/local/etc/profile.d/z.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -107,3 +111,50 @@ eval "$(direnv hook zsh)"
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /Users/nscheurich/.config/yarn/global/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/nscheurich/.config/yarn/global/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash
+
+# OPAM configuration
+. /Users/nscheurich/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+now-playing() {
+  s=`spotify-cli now-playing`
+  a=("${(f)s}")
+
+  x=$(echo ${a[1]} | grep -Eo '"(.*)"' | sed 's/"//g')
+  y=$(echo ${a[2]} | grep -Eo '"(.*)"' | sed 's/"//g')
+
+  echo "$x - $y"
+}
+###-begin-graphql-completions-###
+#
+# yargs command completion script
+#
+# Installation: ../../.asdf/installs/nodejs/6.12.3/.npm/bin/graphql completion >> ~/.bashrc
+#    or ../../.asdf/installs/nodejs/6.12.3/.npm/bin/graphql completion >> ~/.bash_profile on OSX.
+#
+_yargs_completions()
+{
+    local cur_word args type_list
+
+    cur_word="${COMP_WORDS[COMP_CWORD]}"
+    args=("${COMP_WORDS[@]}")
+
+    # ask yargs to generate completions.
+    type_list=$(../../.asdf/installs/nodejs/6.12.3/.npm/bin/graphql --get-yargs-completions "${args[@]}")
+
+    COMPREPLY=( $(compgen -W "${type_list}" -- ${cur_word}) )
+
+    # if no match was found, fall back to filename completion
+    if [ ${#COMPREPLY[@]} -eq 0 ]; then
+      COMPREPLY=( $(compgen -f -- "${cur_word}" ) )
+    fi
+
+    return 0
+}
+complete -F _yargs_completions graphql
+###-end-graphql-completions-###
+
+eval $(thefuck --alias)

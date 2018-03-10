@@ -21,7 +21,6 @@ Plug 'jacoborus/tender.vim'                    " My colorscheme of choice
 Plug 'joshdick/onedark.vim'                    " Another nice colorscheme
 Plug 'majutsushi/tagbar'                       " Tag navigation bar
 Plug 'mhinz/vim-startify'                      " Fancy start screen
-Plug 'osyo-manga/vim-over'                     " Preview :substitute commands
 Plug 'ryanoasis/vim-devicons'                  " Icons in status bar, NERDTree, etc.
 Plug 'scrooloose/nerdtree'                     " Project tree drawer
 Plug 'sjl/gundo.vim'                           " Undo tree visualizer
@@ -32,9 +31,10 @@ Plug 'vim-airline/vim-airline'                 " Fancy status bar
 " Languages and frameworks {{{
 Plug 'carlitux/deoplete-ternjs',
             \ { 'build': 'npm install -g tern' } " Autocompletion for JavaScript
+Plug 'davisdude/vim-love-docs'                   " LÖVE syntax hightlighting and helpfile
 Plug 'ElmCast/elm-vim'                           " Elm integration
 Plug 'HerringtonDarkholme/yats.vim'              " TypeScript autocompletion
-Plug 'alols/vim-love-efm'                        " LÖVE support
+Plug 'alols/vim-love-efm'                        " Loads LÖVE error into the quickfix list
 Plug 'c-brenn/phoenix.vim'                       " Phoenix integration
 Plug 'cespare/vim-toml'                          " TOML syntax highlighting
 Plug 'elixir-lang/vim-elixir'                    " Elixir syntax highlihting and indentation
@@ -46,6 +46,7 @@ Plug 'othree/html5.vim'                          " HTML5 omnicomplete and syntax
 Plug 'pangloss/vim-javascript'                   " Improved JavaScript indentation and syntax highlighting
 Plug 'posva/vim-vue'                             " Syntax highlighting for Vue.js single file components
 Plug 'slashmili/alchemist.vim'                   " Elixir integration via ElixirSense
+Plug 'tbastos/vim-lua'                           " Improved Lua 5.3 syntax and indentation
 Plug 'thoughtbot/vim-rspec'                      " RSpec integration
 Plug 'tmux-plugins/vim-tmux'                     " Niceties for editing Tmux config files
 Plug 'tpope/vim-projectionist'                   " Project file navigation; required for phoenix.vim
@@ -118,7 +119,7 @@ command! -bang -nargs=* Ag
 " let g:echodoc_enable_at_startup = 0
 " autocmd CompleteDone * pclose
 
-call deoplete#custom#set('buffer', 'mark', '')
+call deoplete#custom#set('buffer', 'mark', '⧉')
 call deoplete#custom#set('ternjs', 'mark', '')
 call deoplete#custom#set('omni', 'mark', '⦾')
 call deoplete#custom#set('file', 'mark', '')
@@ -126,8 +127,10 @@ call deoplete#custom#set('jedi', 'mark', '')
 call deoplete#custom#set('typescript', 'mark', '')
 call deoplete#custom#set('neosnippet', 'mark', '✄')
 call deoplete#custom#set('alchemist', 'mark', '')
-call deoplete#custom#set('alchemist', 'rank', 1)
 call deoplete#custom#set('tag', 'mark', '')
+call deoplete#custom#set('around', 'mark', '♻')
+
+call deoplete#custom#set('alchemist', 'rank', 9999)
 
 " deoplete-ternjs
 let g:tern_request_timeout = 1
@@ -161,7 +164,7 @@ let g:ale_fixers['scss'] = ['prettier']
 let g:ale_fix_on_save = 1
 " }}}
 " vim-airline {{{
-let g:airline_theme='onedark'
+let g:airline_theme='tender'
 let g:airline_powerline_fonts = 0
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#neomake#error_symbol='• '
@@ -194,11 +197,6 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 "" Close Vim if the only window left open is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " }}}
-" over.vim {{{
-cabbrev %s OverCommandLine<cr>%s
-cabbrev s OverCommandLine<cr>s
-cabbrev '<,'>s OverCommandLine<cr>'<,'>s
-" }}}
 " Miscelleneous {{{
 " editorconfig-vim
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
@@ -229,7 +227,7 @@ let g:tmuxline_powerline_separators = 0
 " Colors {{{
 
 syntax enable             "  Enable syntax processing
-colorscheme onedark       " Set colorscheme
+colorscheme tender        " Set colorscheme
 
 if (has("termguicolors"))
     set termguicolors       " Use 24-bit color if the terminal supports it
@@ -404,7 +402,10 @@ set modelines=1
 set encoding=utf-8                       " Set character encoding
 filetype plugin on                       " Enable the native filetype plugin
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip " Set wildcard ignores
+set inccommand=nosplit
 
 " }}}
+
+autocmd VimEnter * call system("tmux source-file ~/.tmux.conf")
 
 " vim:foldmethod=marker:foldlevel=0
