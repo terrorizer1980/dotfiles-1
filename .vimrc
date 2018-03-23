@@ -13,20 +13,21 @@
 " Plugins {{{
 
 " vim-plug {{{
-call plug#begin('~/.vim/plugged')"
+call plug#begin('~/.local/share/nvim/plugged')"
 " UI niceities {{{
-Plug 'airblade/vim-gitgutter'                  " Display file changes in the sign column
-Plug 'edkolev/tmuxline.vim'                    " vim-airline-like status bar for tmux
-Plug 'jacoborus/tender.vim'                    " My colorscheme of choice
-Plug 'joshdick/onedark.vim'                    " Another nice colorscheme
-Plug 'majutsushi/tagbar'                       " Tag navigation bar
-Plug 'mhinz/vim-startify'                      " Fancy start screen
-Plug 'ryanoasis/vim-devicons'                  " Icons in status bar, NERDTree, etc.
-Plug 'scrooloose/nerdtree'                     " Project tree drawer
-Plug 'sjl/gundo.vim'                           " Undo tree visualizer
-Plug 'szw/vim-maximizer'                       " Maximize/restore current window
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Colored devicons
-Plug 'vim-airline/vim-airline'                 " Fancy status bar
+Plug 'airblade/vim-gitgutter'                    " Display file changes in the sign column
+Plug 'edkolev/tmuxline.vim'                      " vim-airline-like status bar for tmux
+Plug 'jacoborus/tender.vim'                      " My colorscheme of choice
+Plug 'joshdick/onedark.vim'                      " Another nice colorscheme
+Plug 'majutsushi/tagbar'                         " Tag navigation bar
+Plug 'mhinz/vim-startify'                        " Fancy start screen
+Plug 'ryanoasis/vim-devicons'                    " Icons in status bar, NERDTree, etc.
+Plug 'scrooloose/nerdtree'                       " Project tree drawer
+Plug 'sjl/gundo.vim'                             " Undo tree visualizer
+Plug 'szw/vim-maximizer'                         " Maximize/restore current window
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'   " Colored devicons
+" Plug '~/Web/vim-nerdtree-syntax-highlight'       " Colored devicon
+Plug 'vim-airline/vim-airline'                   " Fancy status bar
 " }}}
 " Languages and frameworks {{{
 Plug 'carlitux/deoplete-ternjs',
@@ -42,7 +43,9 @@ Plug 'joukevandermaas/vim-ember-hbs'             " Ember Handlebars/HTMLBars
 Plug 'justinj/vim-pico8-syntax'                  " PICO-8 syntax support
 Plug 'mattn/emmet-vim'                           " Expand abbreviations à la Emment
 Plug 'mxw/vim-jsx'                               " JSX syntax support
+Plug 'OmniSharp/omnisharp-vim'                   " C# code completion, definition jumping, etc.
 Plug 'othree/html5.vim'                          " HTML5 omnicomplete and syntax
+Plug 'mhinz/vim-mix-format'                      " Integrate Elixir’s formatter
 Plug 'pangloss/vim-javascript'                   " Improved JavaScript indentation and syntax highlighting
 Plug 'posva/vim-vue'                             " Syntax highlighting for Vue.js single file components
 Plug 'slashmili/alchemist.vim'                   " Elixir integration via ElixirSense
@@ -119,7 +122,7 @@ command! -bang -nargs=* Ag
 " let g:echodoc_enable_at_startup = 0
 " autocmd CompleteDone * pclose
 
-call deoplete#custom#set('buffer', 'mark', '⧉')
+call deoplete#custom#set('buffer', 'mark', '')
 call deoplete#custom#set('ternjs', 'mark', '')
 call deoplete#custom#set('omni', 'mark', '⦾')
 call deoplete#custom#set('file', 'mark', '')
@@ -135,6 +138,30 @@ call deoplete#custom#set('alchemist', 'rank', 9999)
 " deoplete-ternjs
 let g:tern_request_timeout = 1
 let g:tern#filetypes = ['js', 'jsx', 'javascript.jsx', 'vue']
+" }}}
+" vim-devicons {{{
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {}
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['package.json'] = ''
+
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols = {}
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*\.ex$'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*\.exs$'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*\.lock$'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*\.log$'] = ''
+"}}}
+" vim-nerdtree-syntax-highlight {{{
+" let s:purple = "834F79"
+" let s:lightPurple = "834F79"
+" let s:red = "AE403F"
+
+" let g:NERDTreeExtensionHighlightColor = {}
+" let g:NERDTreeExtensionHighlightColor['erl'] = s:red
+" let g:NERDTreeExtensionHighlightColor['ex'] = s:purple
+" let g:NERDTreeExtensionHighlightColor['exs'] = s:lightPurple
+
+" let g:NERDTreeSyntaxDisableDefaultExtensions = 1
+" let g:NERDTreeDisableExactMatchHighlight = 1
+" let g:NERDTreeDisablePatternMatchHighlight = 1
 " }}}
 " elm-vim {{{
 let g:elm_format_autosave = 1
@@ -197,6 +224,9 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 "" Close Vim if the only window left open is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " }}}
+" omnisharp-vim {{{
+"
+" }}}
 " Miscelleneous {{{
 " editorconfig-vim
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
@@ -224,9 +254,10 @@ let g:tmuxline_powerline_separators = 0
 " }}}
 
 " }}}
+
 " Colors {{{
 
-syntax enable             "  Enable syntax processing
+syntax enable              "  Enable syntax processing
 colorscheme tender        " Set colorscheme
 
 if (has("termguicolors"))
@@ -236,7 +267,7 @@ endif
 highlight VertSplit guifg=#4b5263
 highlight EndOfBuffer guifg=#282C34
 
-" Customize fzf colors 
+" Customize fzf colors
 let g:fzf_colors =
             \ { 'fg':      ['fg', 'Normal'],
             \ 'bg':      ['bg', 'Normal'],
@@ -382,11 +413,6 @@ augroup END
 " Elm {{{
 augroup elm
     autocmd FileType elm setlocal tabstop=4 softtabstop=4 shiftwidth=4
-augroup END
-" }}}
-" Elixir {{{
-augroup elixir
-    autocmd BufWritePost *.exs,*.exs silent :!mix format %
 augroup END
 " }}}
 " Vue.js {{{

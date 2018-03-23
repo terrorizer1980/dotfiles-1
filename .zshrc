@@ -59,7 +59,7 @@ alias weather="curl wttr.in/Baton+Rouge"
 alias pyhttp="python -m http.server"
 alias zshconfig="$EDITOR ~/.zshrc"
 alias zshsource="source ~/.zshrc"
-alias vimconfig="$EDITOR $HOME/.config/nvim/init.vim"
+alias vimconfig="$EDITOR $HOME/.local/share/nvim/init.vim"
 
 # Key Bindings
 # https://github.com/JeanMertz/omz-to-prezto/blob/omz-to-prezto/zsh/key-bindings.zsh
@@ -158,3 +158,5 @@ complete -F _yargs_completions graphql
 eval $(thefuck --alias)
 
 . $HOME/.secrets
+
+eval "$(fasd --init auto)"
