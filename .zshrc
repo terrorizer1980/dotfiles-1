@@ -45,6 +45,7 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # Aliases
 alias cask="brew cask"
 alias curlh="curl -s -D - -o /dev/null"
+alias dokku='bash $HOME/.dokku/contrib/dokku_client.sh'
 alias emacsclient="/usr/local/Cellar/emacs-mac/HEAD-7403929/bin/emacsclient"
 alias exunit="mix test"
 alias git=hub
@@ -60,6 +61,8 @@ alias pyhttp="python -m http.server"
 alias zshconfig="$EDITOR ~/.zshrc"
 alias zshsource="source ~/.zshrc"
 alias vimconfig="$EDITOR $HOME/.local/share/nvim/init.vim"
+alias virtualenv="~/.asdf/installs/python/3.6.4/lib/python3.6/site-packages/virtualenv.py"
+alias php="/usr/local/bin/php"
 
 # Key Bindings
 # https://github.com/JeanMertz/omz-to-prezto/blob/omz-to-prezto/zsh/key-bindings.zsh
