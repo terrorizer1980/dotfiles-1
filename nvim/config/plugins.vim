@@ -42,7 +42,8 @@ call deoplete#custom#set('tag', 'mark', '')
 call deoplete#custom#set('around', 'mark', '♻')
 
 call deoplete#custom#set('alchemist', 'rank', 9999)
-" }}} ----------------------------------------------------------------" deoplete-ternjs {{{
+" }}} ----------------------------------------------------------------
+" deoplete-ternjs {{{
 let g:tern_request_timeout = 1
 let g:tern#filetypes = ['js', 'jsx', 'javascript.jsx', 'vue']
 " }}} ----------------------------------------------------------------
