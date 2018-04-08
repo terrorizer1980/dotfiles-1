@@ -88,7 +88,8 @@ let g:ale_linters = {}
 let g:ale_linters['javascript'] = ['eslint']
 let g:ale_linters['scss'] = ['stylelint', 'sasslint']
 let g:ale_linters['startify'] = []
-let g:ale_linters['php'] = ['langserver']
+let g:ale_linters['php'] = ['php', 'phpcs']
+let g:ale_php_phpcs_standard = 'PSR2'
 
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier']
