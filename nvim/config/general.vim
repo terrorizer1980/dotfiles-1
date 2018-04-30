@@ -15,8 +15,6 @@ set splitbelow                 " Open horizontal splits below current window
 set splitright                 " Open vertical splits to the right of the current window
 " }}} ----------------------------------------------------------------
 " Backups {{{
-set backupcopy=yes             " Overwrites original file with backup
-set nobackup                   " Don't keep backups around
 set noswapfile                 " Don't use swapfiles
 set nowritebackup              " Don't create a backup before writing a file
 " }}} ----------------------------------------------------------------
