@@ -1,1 +1,0 @@
-set -g status-right "#(~/dotfiles/bin/now-playing) #[fg=colour145,bg=colour245] %Y-%m-%d | %H:%M #[fg=#4E4E4E,bg=##A3D9FC] #h "
