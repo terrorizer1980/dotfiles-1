@@ -12,8 +12,9 @@
 
 source $HOME/.config/nvim/config/setup.vim
 source $HOME/.config/nvim/config/general.vim
-source $HOME/.config/nvim/config/plugins.vim
 source $HOME/.config/nvim/config/colors.vim
+source $HOME/.config/nvim/config/plugins.vim
 source $HOME/.config/nvim/config/keys.vim
+source $HOME/.config/nvim/config/auto.vim
 
 " vim:foldmethod=marker:foldlevel=0

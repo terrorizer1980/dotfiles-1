@@ -18,16 +18,18 @@ Plug 'szw/vim-maximizer'                       " Maximize/restore current window
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Colored devicons
 Plug 'rakr/vim-two-firewatch'                  " Yet another nice colorscheme, come on Nick
 Plug 'vim-airline/vim-airline'                 " Fancy status bar
+Plug '~/Projects/Misc/soft-era-vim'
 " }}} ----------------------------------------------------------------
 " Languages and frameworks {{{
-Plug 'davisdude/vim-love-docs'                 " LÖVE syntax hightlighting and helpfile
+Plug 'alvan/vim-closetag'                      " Automatically close (X)HTML tags
 Plug 'ElmCast/elm-vim'                         " Elm integration
 Plug 'HerringtonDarkholme/yats.vim'            " TypeScript autocompletion
 Plug 'alols/vim-love-efm'                      " Loads LÖVE errors into the quickfix list
 Plug 'c-brenn/phoenix.vim'                     " Phoenix integration
+Plug 'davisdude/vim-love-docs',                " Documentation for LÖVE
+    \ { 'branch': 'build' }                    
 Plug 'cespare/vim-toml'                        " TOML syntax highlighting
 Plug 'elixir-lang/vim-elixir'                  " Elixir syntax highlihting and indentation
-Plug 'joukevandermaas/vim-ember-hbs'           " Ember Handlebars/HTMLBars
 Plug 'justinj/vim-pico8-syntax'                " PICO-8 syntax support
 Plug 'mattn/emmet-vim'                         " Expand abbreviations à la Emment
 Plug 'mxw/vim-jsx'                             " JSX syntax support
@@ -42,6 +44,9 @@ Plug 'thoughtbot/vim-rspec'                    " RSpec integration
 Plug 'tmux-plugins/vim-tmux'                   " Niceties for editing Tmux config files
 Plug 'tpope/vim-projectionist'                 " Project file navigation; required for phoenix.vim
 Plug 'tpope/vim-rails'                         " Ruby on Rails integration
+
+Plug 'xolox/vim-lua-ftplugin'
+Plug 'xolox/vim-misc'
 " }}} ----------------------------------------------------------------
 " Markdown and prose {{{
 Plug 'junegunn/goyo.vim'                       " Distraction-free writing
@@ -51,10 +56,13 @@ Plug 'robertbasic/vim-hugo-helper'             " Helpers for writing posts for H
 " }}} ----------------------------------------------------------------
 " Completion {{{
 Plug 'Shougo/deoplete.nvim',
-            \{ 'do': ':UpdateRemotePlugins' }  " Asynchronous completion framework
+    \ { 'do': ':UpdateRemotePlugins' }         " Asynchronous completion framework
+Plug 'cyansprite/deoplete-omnisharp',          " Completion for C#
+    \ {'do': './install.sh'}
 
-Plug 'carlitux/deoplete-ternjs',
-            \ { 'do': 'npm install -g tern' }  " Autocompletion for JavaScript
+" Plug 'carlitux/deoplete-ternjs',
+"     \ { 'do': 'npm install -g tern' }        " Autocompletion for JavaScript
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --cs-completer' }
 " }}} ----------------------------------------------------------------
 " Utilities {{{
 Plug '/usr/local/opt/fzf'                      " Location of fzf binary
@@ -67,10 +75,13 @@ Plug 'csexton/trailertrash.vim'                " Deal with EOL whitespace
 Plug 'dietsche/vim-lastplace'                  " Open files where you left them
 Plug 'editorconfig/editorconfig-vim'           " EditorConfig support
 Plug 'godlygeek/tabular'                       " Easily align text
+Plug 'jiangmiao/auto-pairs'                    " Automatically pair brackets, parens, and quotes
 Plug 'junegunn/fzf.vim'                        " Integrate with fzf
 Plug 'justinmk/vim-sneak'                      " Jump to any location specified by two characters
 Plug 'ludovicchabant/vim-gutentags'            " Manage tag files
 Plug 'mklabs/split-term.vim'                   " Utilites around Neovim’s :terminal
+Plug 'Shougo/neosnippet'                       " Adds snippet support to Vim
+Plug 'Shougo/neosnippet-snippets'              " The standard snippets repository for neosnippet
 Plug 'powerman/vim-plugin-AnsiEsc'             " Deal with ANSI escape sequences
 Plug 'roxma/vim-tmux-clipboard'                " Better Vim/Tmux clipboard interop
 Plug 'tmux-plugins/vim-tmux-focus-events'      " Tmux compatibility fixes
@@ -88,7 +99,8 @@ Plug 'tpope/vim-speeddating'                   " Use CTRL-A/CTRL-X to increment 
 Plug 'tpope/vim-surround'                      " Operate on 'surroundings', e.g., parentheses, brackets, quotes
 Plug 'tpope/vim-vinegar'                       " Navigate up a directory in netrw
 Plug 'tpope/vim-unimpaired'                    " Complementary key mappings based around [ and ]
-Plug 'w0rp/ale'                                " Asynchronous Lint Engine
+" Plug 'w0rp/ale'                                " Asynchronous Lint Engine
+Plug 'vim-syntastic/syntastic'                 " Syntax checking hacks for vim
 " }}} ----------------------------------------------------------------
 call plug#end()
 

@@ -28,23 +28,24 @@ let g:fzf_colors =
             \ 'header':  ['fg', 'Comment'] }
 " }}} ----------------------------------------------------------------
 " Deoplete {{{
- let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 
-call deoplete#custom#set('buffer', 'mark', '')
-call deoplete#custom#set('ternjs', 'mark', '')
-call deoplete#custom#set('omni', 'mark', '⦾')
-call deoplete#custom#set('file', 'mark', '')
-call deoplete#custom#set('jedi', 'mark', '')
-call deoplete#custom#set('typescript', 'mark', '')
-call deoplete#custom#set('neosnippet', 'mark', '✄')
-call deoplete#custom#set('alchemist', 'mark', '')
-call deoplete#custom#set('tag', 'mark', '')
-call deoplete#custom#set('around', 'mark', '♻')
+call deoplete#custom#source('alchemist', 'mark', 'ex')
+call deoplete#custom#source('around', 'mark', '♻')
+call deoplete#custom#source('buffer', 'mark', '')
+call deoplete#custom#source('file', 'mark', '')
+call deoplete#custom#source('jedi', 'mark', '')
+call deoplete#custom#source('neosnippet', 'mark', '✄')
+call deoplete#custom#source('omni', 'mark', '⦾')
+call deoplete#custom#source('tag', 'mark', '')
+call deoplete#custom#source('ternjs', 'mark', '')
+call deoplete#custom#source('typescript', 'mark', '')
 
-call deoplete#custom#set('alchemist', 'rank', 9999)
-" }}} ----------------------------------------------------------------" deoplete-ternjs {{{
-let g:tern_request_timeout = 1
-let g:tern#filetypes = ['js', 'jsx', 'javascript.jsx', 'vue']
+call deoplete#custom#source('alchemist', 'rank', 9999)
+" }}} ----------------------------------------------------------------
+" deoplete-ternjs {{{
+" let g:tern_request_timeout = 1
+" let g:tern#filetypes = ['js', 'jsx', 'javascript.jsx', 'vue']
 " }}} ----------------------------------------------------------------
 " vim-devicons {{{
 let g:tern_request_timeout = 1
@@ -59,16 +60,6 @@ let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*\.lock$'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*\.log$'] = ''
 " }}} ----------------------------------------------------------------
 " elm-vim {{{
-let g:tern_request_timeout = 1
-
-let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {}
-let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['package.json'] = ''
-
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols = {}
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*\.ex$'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*\.exs$'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*\.lock$'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*\.log$'] = ''
 let g:elm_format_autosave = 1
 let g:elm_detailed_complete = 1
 let g:elm_syntastic_show_warnings = 1
@@ -77,32 +68,9 @@ let g:elm_browser_command = 'open'
 let g:elm_make_show_warnings = 1
 let g:elm_setup_keybindings = 1
 " }}} ----------------------------------------------------------------
-" ALE {{{
-let g:ale_lint_delay = 5000
-
-let g:ale_sign_error = '㤮 '
-let g:ale_sign_warning = '⚠ '
-let g:ale_sign_column_always = 1
-
-let g:ale_linters = {}
-let g:ale_linters['javascript'] = ['eslint']
-let g:ale_linters['scss'] = ['stylelint', 'sasslint']
-let g:ale_linters['startify'] = []
-let g:ale_linters['php'] = ['php', 'phpcs']
-let g:ale_php_phpcs_standard = 'PSR2'
-
-let g:ale_fixers = {}
-let g:ale_fixers['javascript'] = ['prettier']
-let g:ale_fixers['css'] = ['prettier']
-let g:ale_fixers['scss'] = ['prettier']
-let g:ale_fix_on_save = 1
-" }}} ----------------------------------------------------------------
 " vim-airline {{{
 let g:airline_theme='twofirewatch'
 let g:airline_powerline_fonts = 0
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#neomake#error_symbol='• '
-let g:airline#extensions#neomake#warning_symbol='•  '
 hi StatusLine ctermbg=red
 " }}} ----------------------------------------------------------------
 " tagbar {{{
@@ -133,7 +101,10 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " }}} ----------------------------------------------------------------
 " omnisharp-vim {{{
-let g:OmniSharp_server_path = '/Users/nscheurich/Omnisharp/omnisharp/OmniSharp.exe'
+let g:OmniSharp_server_path = '/Users/nscheurich/OmniSharp/omnisharp/OmniSharp.exe'
+let g:OmniSharp_timeout = 1
+set completeopt=longest,menuone,preview
+set previewheight=5
 " }}} ----------------------------------------------------------------
 " editorconfig-vim {{{
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
@@ -145,6 +116,19 @@ let g:jsx_ext_required = 0
 " rspec-vim {{{
 let g:rspec_command = 'Dispatch rspec {spec}'
 " }}} ----------------------------------------------------------------
+" Syntastic {{{
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_error_symbol = '㤮 '
+let g:syntastic_warning_symbol = '⚠ '
+" }}}
 " vim-javascript {{{
 let g:javascript_plugin_flow = 1
 " }}} ----------------------------------------------------------------
@@ -158,5 +142,11 @@ let g:startify_custom_header =
 " tmuxline {{{
 let g:tmuxline_powerline_separators = 0
 " }}} ----------------------------------------------------------------
+" closetag.vim {{{
+let g:closetag_filenames = '*.html,*.html.erb,*.html.eex'
+" }}}
+" vim-lua-ftplugin {{{
+let g:lua_complete_omni = 1
+" }}}
 
 " vim:foldmethod=marker:foldlevel=0
