@@ -43,8 +43,6 @@ filetype plugin on               " Enable the native filetype plugin
 set wildignore+=*/tmp/*,*.so,
             \*.swp,*.zip       " Set wildcard ignores
 set inccommand=nosplit         " TODO Add description
-highlight Comment cterm=italic " Italic comments
-highlight Todo cterm=italic    " Italic TODOs
 " }}} ----------------------------------------------------------------
 
 " vim:foldmethod=marker:foldlevel=0
