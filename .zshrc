@@ -32,7 +32,7 @@ export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
 # Editor
-export EDITOR="nvim"
+export EDITOR="vim"
 
 # Get rid of lag when entering vi mode
 export KEYTIMEOUT=1
@@ -43,6 +43,7 @@ export FZF_DEFAULT_COMMAND='/usr/local/bin/ag -g ""'
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 # Aliases
+alias aseprite="/Applications/Aseprite.app/Contents/MacOS/aseprite"
 alias cask="brew cask"
 alias curlh="curl -s -D - -o /dev/null"
 alias dokku='bash $HOME/.dokku/contrib/dokku_client.sh'
@@ -60,7 +61,7 @@ alias weather="curl wttr.in/Baton+Rouge"
 alias pyhttp="python -m http.server"
 alias zshconfig="$EDITOR ~/.zshrc"
 alias zshsource="source ~/.zshrc"
-alias vimconfig="$EDITOR $HOME/.local/share/nvim/init.vim"
+alias vimconfig="$EDITOR $HOME/.config/nvim/init.vim"
 alias virtualenv="~/.asdf/installs/python/3.6.4/lib/python3.6/site-packages/virtualenv.py"
 alias php="/usr/local/bin/php"
 
@@ -98,8 +99,6 @@ bindkey "${terminfo[kend]}" end-of-line
 if [ -f $HOME/.zshrc.local ]; then
   source $HOME/.zshrc.local
 fi
-
-# . /usr/local/etc/profile.d/z.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
