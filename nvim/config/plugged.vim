@@ -1,6 +1,6 @@
-" Settings that should happen first
+" Plugin definitions
 "
-" Author: N. G. Scheurich
+" Author: N. G. Scheurich <nick@scheurich.me>
 " Repo: https://github.com/ngscheurich/dotfiles
 
 call plug#begin('~/.local/share/nvim/plugged')"
@@ -16,9 +16,8 @@ Plug 'scrooloose/nerdtree'                     " Project tree drawer
 Plug 'sjl/gundo.vim'                           " Undo tree visualizer
 Plug 'szw/vim-maximizer'                       " Maximize/restore current window
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Colored devicons
-Plug 'rakr/vim-two-firewatch'                  " Yet another nice colorscheme, come on Nick
+Plug 'rakr/vim-two-firewatch'                  " My preferred colorscheme
 Plug 'vim-airline/vim-airline'                 " Fancy status bar
-Plug '~/Projects/Misc/soft-era-vim'
 " }}} ----------------------------------------------------------------
 " Languages and frameworks {{{
 Plug 'alvan/vim-closetag'                      " Automatically close (X)HTML tags
@@ -27,7 +26,7 @@ Plug 'HerringtonDarkholme/yats.vim'            " TypeScript autocompletion
 Plug 'alols/vim-love-efm'                      " Loads LÖVE errors into the quickfix list
 Plug 'c-brenn/phoenix.vim'                     " Phoenix integration
 Plug 'davisdude/vim-love-docs',                " Documentation for LÖVE
-    \ { 'branch': 'build' }                    
+            \ { 'branch': 'build' }                    
 Plug 'cespare/vim-toml'                        " TOML syntax highlighting
 Plug 'elixir-lang/vim-elixir'                  " Elixir syntax highlihting and indentation
 Plug 'justinj/vim-pico8-syntax'                " PICO-8 syntax support
@@ -44,9 +43,9 @@ Plug 'thoughtbot/vim-rspec'                    " RSpec integration
 Plug 'tmux-plugins/vim-tmux'                   " Niceties for editing Tmux config files
 Plug 'tpope/vim-projectionist'                 " Project file navigation; required for phoenix.vim
 Plug 'tpope/vim-rails'                         " Ruby on Rails integration
+Plug 'xolox/vim-lua-ftplugin'                  " Lua filetype plugin
+Plug 'xolox/vim-misc'                          " Miscellaneous auto-load Vim scripts (req. for vim-lua-ftplugin)
 
-Plug 'xolox/vim-lua-ftplugin'
-Plug 'xolox/vim-misc'
 " }}} ----------------------------------------------------------------
 " Markdown and prose {{{
 Plug 'junegunn/goyo.vim'                       " Distraction-free writing
@@ -56,13 +55,9 @@ Plug 'robertbasic/vim-hugo-helper'             " Helpers for writing posts for H
 " }}} ----------------------------------------------------------------
 " Completion {{{
 Plug 'Shougo/deoplete.nvim',
-    \ { 'do': ':UpdateRemotePlugins' }         " Asynchronous completion framework
+            \ { 'do': ':UpdateRemotePlugins' } " Asynchronous completion framework
 Plug 'cyansprite/deoplete-omnisharp',          " Completion for C#
-    \ {'do': './install.sh'}
-
-" Plug 'carlitux/deoplete-ternjs',
-"     \ { 'do': 'npm install -g tern' }        " Autocompletion for JavaScript
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --cs-completer' }
+            \ {'do': './install.sh'}
 " }}} ----------------------------------------------------------------
 " Utilities {{{
 Plug '/usr/local/opt/fzf'                      " Location of fzf binary
@@ -80,6 +75,8 @@ Plug 'junegunn/fzf.vim'                        " Integrate with fzf
 Plug 'justinmk/vim-sneak'                      " Jump to any location specified by two characters
 Plug 'ludovicchabant/vim-gutentags'            " Manage tag files
 Plug 'mklabs/split-term.vim'                   " Utilites around Neovim’s :terminal
+Plug 'prettier/vim-prettier',
+            \ { 'do': 'yarn install' }         " Prettier integration
 Plug 'Shougo/neosnippet'                       " Adds snippet support to Vim
 Plug 'Shougo/neosnippet-snippets'              " The standard snippets repository for neosnippet
 Plug 'powerman/vim-plugin-AnsiEsc'             " Deal with ANSI escape sequences
@@ -99,9 +96,11 @@ Plug 'tpope/vim-speeddating'                   " Use CTRL-A/CTRL-X to increment 
 Plug 'tpope/vim-surround'                      " Operate on 'surroundings', e.g., parentheses, brackets, quotes
 Plug 'tpope/vim-vinegar'                       " Navigate up a directory in netrw
 Plug 'tpope/vim-unimpaired'                    " Complementary key mappings based around [ and ]
-" Plug 'w0rp/ale'                                " Asynchronous Lint Engine
 Plug 'vim-syntastic/syntastic'                 " Syntax checking hacks for vim
 " }}} ----------------------------------------------------------------
+" Local {{{
+Plug '~/Projects/Misc/soft-era-vim'            " Light pastel syntax theme for cozy, cute coding
+" }}}
 call plug#end()
 
 " vim:foldmethod=marker:foldlevel=0

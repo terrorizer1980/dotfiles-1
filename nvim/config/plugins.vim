@@ -1,6 +1,6 @@
 " Settings for plugins
 "
-" Author: N. G. Scheurich
+" Author: N. G. Scheurich <nick@scheurich.me>
 " Repo: https://github.com/ngscheurich/dotfiles
 
 " fzf.vim {{{
@@ -42,10 +42,6 @@ call deoplete#custom#source('ternjs', 'mark', '')
 call deoplete#custom#source('typescript', 'mark', '')
 
 call deoplete#custom#source('alchemist', 'rank', 9999)
-" }}} ----------------------------------------------------------------
-" deoplete-ternjs {{{
-" let g:tern_request_timeout = 1
-" let g:tern#filetypes = ['js', 'jsx', 'javascript.jsx', 'vue']
 " }}} ----------------------------------------------------------------
 " vim-devicons {{{
 let g:tern_request_timeout = 1
@@ -92,14 +88,6 @@ let g:tagbar_type_elixir = {
             \ ]
             \ }
 " }}} ----------------------------------------------------------------
-" NERDTree {{{
-"" Open automatically when Vim opens a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
-"" Close Vim if the only window left open is NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" }}} ----------------------------------------------------------------
 " omnisharp-vim {{{
 let g:OmniSharp_server_path = '/Users/nscheurich/OmniSharp/omnisharp/OmniSharp.exe'
 let g:OmniSharp_timeout = 1
@@ -117,23 +105,28 @@ let g:jsx_ext_required = 0
 let g:rspec_command = 'Dispatch rspec {spec}'
 " }}} ----------------------------------------------------------------
 " Syntastic {{{
+set statusline+=
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
+let g:syntastic_loc_list_height = 5
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_error_symbol = '㤮 '
 let g:syntastic_warning_symbol = '⚠ '
+
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = './node_modules/.bin/eslint'
 " }}}
 " vim-javascript {{{
 let g:javascript_plugin_flow = 1
 " }}} ----------------------------------------------------------------
 " vim-gutentags {{{
-let g:gutentags_cache_dir = '~/.tags_cache'
+let g:gutentags_cache_dir = '~/.tags'
 " }}} ----------------------------------------------------------------
 " vim-startify {{{
 let g:startify_custom_header =
@@ -147,6 +140,18 @@ let g:closetag_filenames = '*.html,*.html.erb,*.html.eex'
 " }}}
 " vim-lua-ftplugin {{{
 let g:lua_complete_omni = 1
-" }}}
+" }}} ----------------------------------------------------------------
+" Prettier {{{
+let g:prettier#exec_cmd_async = 1
+let g:prettier#quickfix_enabled = 0
+let g:prettier#autoformat = 0
+
+let g:prettier#config#single_quote = 'false'
+let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#jsx_bracket_same_line = 'false'
+let g:prettier#config#arrow_parens = 'avoid'
+let g:prettier#config#trailing_comma = 'none'
+let g:prettier#config#parser = 'babylon'
+" }}} ----------------------------------------------------------------
 
 " vim:foldmethod=marker:foldlevel=0

@@ -1,6 +1,6 @@
 " Color settings
 "
-" Author: N. G. Scheurich
+" Author: N. G. Scheurich <nick@scheurich.me>
 " Repo: https://github.com/ngscheurich/dotfiles
 
 syntax enable                 " Enable syntax processing

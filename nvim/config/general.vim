@@ -1,6 +1,6 @@
 " General settings
 "
-" Author: N. G. Scheurich
+" Author: N. G. Scheurich <nick@scheurich.me>
 " Repo: https://github.com/ngscheurich/dotfiles
 
 " User Interface {{{
@@ -28,8 +28,6 @@ set smartcase                  " Ignore case when searching lowercase
 set foldenable                 " Enable folding
 set foldlevelstart=5           " Maximum fold depth open by default
 set foldnestmax=10             " Maximum allowed fold depth  
-" Toggle folds with <space>
-nnoremap <space> za
 " }}} ----------------------------------------------------------------
 " Indentation {{{
 set autoindent                 " Copy indent from current line when starting a new line
@@ -43,7 +41,7 @@ set tabstop=2                  " Number of spaces per <TAB>
 " Miscellany {{{
 set modelines=1                " TODO Add description
 set encoding=utf-8             " Set character encoding
-filetype plugin on             " Enable the native filetype plugin
+filetype plugin on               " Enable the native filetype plugin
 set wildignore+=*/tmp/*,*.so,
             \*.swp,*.zip       " Set wildcard ignores
 set inccommand=nosplit         " TODO Add description
