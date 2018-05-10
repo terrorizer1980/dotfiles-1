@@ -18,6 +18,17 @@ Plug 'szw/vim-maximizer'                       " Maximize/restore current window
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Colored devicons
 Plug 'rakr/vim-two-firewatch'                  " My preferred colorscheme
 Plug 'vim-airline/vim-airline'                 " Fancy status bar
+
+Plug 'Erichain/vim-monokai-pro'
+Plug 'challenger-deep-theme/vim'
+Plug 'nightsense/vimspectr'
+Plug 'gilgigilgil/anderson.vim'
+Plug 'romainl/Apprentice'
+Plug 'jdsimcoe/abstract.vim'
+Plug 'andreasvc/vim-256noir'
+" Plug 'itchyny/lightline.vim'
+Plug 'joshdick/onedark.vim'
+Plug 'rakr/vim-one'
 " }}} ----------------------------------------------------------------
 " Languages and frameworks {{{
 Plug 'alvan/vim-closetag'                      " Automatically close (X)HTML tags
@@ -26,7 +37,7 @@ Plug 'HerringtonDarkholme/yats.vim'            " TypeScript autocompletion
 Plug 'alols/vim-love-efm'                      " Loads LÖVE errors into the quickfix list
 Plug 'c-brenn/phoenix.vim'                     " Phoenix integration
 Plug 'davisdude/vim-love-docs',                " Documentation for LÖVE
-            \ { 'branch': 'build' }                    
+            \ { 'branch': 'build' }
 Plug 'cespare/vim-toml'                        " TOML syntax highlighting
 Plug 'elixir-lang/vim-elixir'                  " Elixir syntax highlihting and indentation
 Plug 'justinj/vim-pico8-syntax'                " PICO-8 syntax support
@@ -54,10 +65,9 @@ Plug 'reedes/vim-pencil'                       " Tons of prose-related features
 Plug 'robertbasic/vim-hugo-helper'             " Helpers for writing posts for Hugo
 " }}} ----------------------------------------------------------------
 " Completion {{{
-Plug 'Shougo/deoplete.nvim',
-            \ { 'do': ':UpdateRemotePlugins' } " Asynchronous completion framework
-Plug 'cyansprite/deoplete-omnisharp',          " Completion for C#
-            \ {'do': './install.sh'}
+Plug 'Valloric/YouCompleteMe'
+" Plug 'Shougo/deoplete.nvim',
+"             \ { 'do': ':UpdateRemotePlugins' } " Asynchronous completion framework
 " }}} ----------------------------------------------------------------
 " Utilities {{{
 Plug '/usr/local/opt/fzf'                      " Location of fzf binary
@@ -77,8 +87,6 @@ Plug 'ludovicchabant/vim-gutentags'            " Manage tag files
 Plug 'mklabs/split-term.vim'                   " Utilites around Neovim’s :terminal
 Plug 'prettier/vim-prettier',
             \ { 'do': 'yarn install' }         " Prettier integration
-Plug 'Shougo/neosnippet'                       " Adds snippet support to Vim
-Plug 'Shougo/neosnippet-snippets'              " The standard snippets repository for neosnippet
 Plug 'powerman/vim-plugin-AnsiEsc'             " Deal with ANSI escape sequences
 Plug 'roxma/vim-tmux-clipboard'                " Better Vim/Tmux clipboard interop
 Plug 'tmux-plugins/vim-tmux-focus-events'      " Tmux compatibility fixes

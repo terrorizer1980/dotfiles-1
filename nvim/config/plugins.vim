@@ -27,22 +27,6 @@ let g:fzf_colors =
             \ 'spinner': ['fg', 'Label'],
             \ 'header':  ['fg', 'Comment'] }
 " }}} ----------------------------------------------------------------
-" Deoplete {{{
-let g:deoplete#enable_at_startup = 1
-
-call deoplete#custom#source('alchemist', 'mark', 'ex')
-call deoplete#custom#source('around', 'mark', '♻')
-call deoplete#custom#source('buffer', 'mark', '')
-call deoplete#custom#source('file', 'mark', '')
-call deoplete#custom#source('jedi', 'mark', '')
-call deoplete#custom#source('neosnippet', 'mark', '✄')
-call deoplete#custom#source('omni', 'mark', '⦾')
-call deoplete#custom#source('tag', 'mark', '')
-call deoplete#custom#source('ternjs', 'mark', '')
-call deoplete#custom#source('typescript', 'mark', '')
-
-call deoplete#custom#source('alchemist', 'rank', 9999)
-" }}} ----------------------------------------------------------------
 " vim-devicons {{{
 let g:tern_request_timeout = 1
 
@@ -67,8 +51,15 @@ let g:elm_setup_keybindings = 1
 " vim-airline {{{
 let g:airline_theme='twofirewatch'
 let g:airline_powerline_fonts = 0
-hi StatusLine ctermbg=red
+let g:airline#left_sep = '░'
+let g:airline#left_alt_sep = '░'
+" hi StatusLine ctermbg=red
 " }}} ----------------------------------------------------------------
+" lightline.vim {{{
+" let g:lightline = {}
+" let g:lightline.separator = { 'left': '░', 'right': '░' }
+" let g:lightline.subseparator = { 'left': '', 'right': '' }
+" }}}
 " tagbar {{{
 let g:tagbar_type_elixir = {
             \ 'ctagstype' : 'elixir',
@@ -88,11 +79,25 @@ let g:tagbar_type_elixir = {
             \ ]
             \ }
 " }}} ----------------------------------------------------------------
+" Deoplete {{{
+" let g:deoplete#enable_at_startup = 1
+
+" call deoplete#custom#source('alchemist', 'mark', '')
+" call deoplete#custom#source('around', 'mark', '♻')
+" call deoplete#custom#source('buffer', 'mark', '')
+" call deoplete#custom#source('file', 'mark', '')
+" call deoplete#custom#source('jedi', 'mark', '')
+" call deoplete#custom#source('neosnippet', 'mark', '✄')
+" call deoplete#custom#source('omni', 'mark', '⦾')
+" call deoplete#custom#source('tag', 'mark', '')
+" call deoplete#custom#source('ternjs', 'mark', '')
+" call deoplete#custom#source('typescript', 'mark', '')
+
+" call deoplete#custom#source('alchemist', 'rank', 9999)
+" }}} ----------------------------------------------------------------
 " omnisharp-vim {{{
-let g:OmniSharp_server_path = '/Users/nscheurich/OmniSharp/omnisharp/OmniSharp.exe'
+let g:OmniSharp_server_path = '~/omnisharp/omnisharp/OmniSharp.exe'
 let g:OmniSharp_timeout = 1
-set completeopt=longest,menuone,preview
-set previewheight=5
 " }}} ----------------------------------------------------------------
 " editorconfig-vim {{{
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']

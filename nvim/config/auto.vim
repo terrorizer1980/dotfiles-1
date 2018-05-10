@@ -3,10 +3,6 @@
 " Author: N. G. Scheurich <nick@scheurich.me>
 " Repo: https://github.com/ngscheurich/dotfiles
 
-if exists('$TMUX')
-    autocmd VimEnter * :Tmuxline vim_statusline_3
-endif
-
 " PICO-8 {{{
 augroup pico8 
     autocmd!
