@@ -9,6 +9,7 @@ promptinit
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/share/dotnet:/opt/X11/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands"
 export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin/core_perl"
 export PATH="$PATH:/usr/local/Cellar/node/7.1.0/bin"
+export PATH="$PATH:/Users/nscheurich/.asdf/installs/nodejs/8.11.1/.npm/bin"
 export PATH="$PATH:/usr/local/share/dotnet"
 export PATH="$HOME:/.composer/vendor/bin"
 export PATH="$PATH:/usr/local/Cellar/mysql/5.7.13/bin"

@@ -75,14 +75,6 @@ augroup omnisharp
     autocmd FileType cs nnoremap <buffer> <C-j> :OmniSharpNavigateDown<CR>
 augroup END
 " }}} ----------------------------------------------------------------
-" vim-prettier {{{
-augroup prettier
-    autocmd!
-    autocmd BufWritePre,InsertLeave
-                \ *.js,*.jsx,*.ts,*.tsx,*.css,*.scss,*.json,*.graphql,*.md
-                \ PrettierAsync
-augroup END
-" }}} ----------------------------------------------------------------
 " NERDTree {{{
 augroup nerdtree
     autocmd!
@@ -92,4 +84,4 @@ augroup nerdtree
 augroup END
 " }}} ----------------------------------------------------------------
 
-    " vim:foldmethod=marker:foldlevel=0
+" vim:foldmethod=marker:foldlevel=0

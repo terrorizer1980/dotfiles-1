@@ -8,7 +8,6 @@ call plug#begin('~/.local/share/nvim/plugged')"
 Plug 'airblade/vim-gitgutter'                  " Display file changes in the sign column
 Plug 'edkolev/tmuxline.vim'                    " vim-airline-like status bar for tmux
 Plug 'jacoborus/tender.vim'                    " My colorscheme of choice
-Plug 'joshdick/onedark.vim'                    " Another nice colorscheme
 Plug 'majutsushi/tagbar'                       " Tag navigation bar
 Plug 'mhinz/vim-startify'                      " Fancy start screen
 Plug 'ryanoasis/vim-devicons'                  " Icons in status bar, NERDTree, etc.
@@ -18,17 +17,6 @@ Plug 'szw/vim-maximizer'                       " Maximize/restore current window
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Colored devicons
 Plug 'rakr/vim-two-firewatch'                  " My preferred colorscheme
 Plug 'vim-airline/vim-airline'                 " Fancy status bar
-
-Plug 'Erichain/vim-monokai-pro'
-Plug 'challenger-deep-theme/vim'
-Plug 'nightsense/vimspectr'
-Plug 'gilgigilgil/anderson.vim'
-Plug 'romainl/Apprentice'
-Plug 'jdsimcoe/abstract.vim'
-Plug 'andreasvc/vim-256noir'
-" Plug 'itchyny/lightline.vim'
-Plug 'joshdick/onedark.vim'
-Plug 'rakr/vim-one'
 " }}} ----------------------------------------------------------------
 " Languages and frameworks {{{
 Plug 'alvan/vim-closetag'                      " Automatically close (X)HTML tags
@@ -65,9 +53,8 @@ Plug 'reedes/vim-pencil'                       " Tons of prose-related features
 Plug 'robertbasic/vim-hugo-helper'             " Helpers for writing posts for Hugo
 " }}} ----------------------------------------------------------------
 " Completion {{{
-Plug 'Valloric/YouCompleteMe'
-" Plug 'Shougo/deoplete.nvim',
-"             \ { 'do': ':UpdateRemotePlugins' } " Asynchronous completion framework
+Plug 'Shougo/deoplete.nvim',
+            \ { 'do': ':UpdateRemotePlugins' } " Asynchronous completion framework
 " }}} ----------------------------------------------------------------
 " Utilities {{{
 Plug '/usr/local/opt/fzf'                      " Location of fzf binary
@@ -85,8 +72,6 @@ Plug 'junegunn/fzf.vim'                        " Integrate with fzf
 Plug 'justinmk/vim-sneak'                      " Jump to any location specified by two characters
 Plug 'ludovicchabant/vim-gutentags'            " Manage tag files
 Plug 'mklabs/split-term.vim'                   " Utilites around Neovim’s :terminal
-Plug 'prettier/vim-prettier',
-            \ { 'do': 'yarn install' }         " Prettier integration
 Plug 'powerman/vim-plugin-AnsiEsc'             " Deal with ANSI escape sequences
 Plug 'roxma/vim-tmux-clipboard'                " Better Vim/Tmux clipboard interop
 Plug 'tmux-plugins/vim-tmux-focus-events'      " Tmux compatibility fixes
@@ -104,10 +89,11 @@ Plug 'tpope/vim-speeddating'                   " Use CTRL-A/CTRL-X to increment 
 Plug 'tpope/vim-surround'                      " Operate on 'surroundings', e.g., parentheses, brackets, quotes
 Plug 'tpope/vim-vinegar'                       " Navigate up a directory in netrw
 Plug 'tpope/vim-unimpaired'                    " Complementary key mappings based around [ and ]
-Plug 'vim-syntastic/syntastic'                 " Syntax checking hacks for vim
+Plug 'w0rp/ale'                                " Asynchronous Lint Engine
 " }}} ----------------------------------------------------------------
 " Local {{{
 Plug '~/Projects/Misc/soft-era-vim'            " Light pastel syntax theme for cozy, cute coding
+Plug '~/.local/share/nvim/plugged/gloam.vim'   " Cool, moody colorscheme for Vim
 " }}}
 call plug#end()
 
