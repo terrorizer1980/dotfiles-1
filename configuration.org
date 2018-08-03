@@ -33,7 +33,7 @@ layers configuration. The most noteworthy bit is the the font setting—
      dotspacemacs-themes '(spacemacs-dark
                            spacemacs-light)
      dotspacemacs-colorize-cursor-according-to-state t
-     dotspacemacs-default-font '("Input Mono"
+     dotspacemacs-default-font '("Fira Code"
                                  :size 13
                                  :weight normal
                                  :width normal
@@ -92,26 +92,23 @@ before packages are loaded.
 #+BEGIN_SRC emacs-lisp
   (defun dotspacemacs/user-init ()
     (custom-set-variables '(spacemacs-theme-custom-colors
-                            '((bg1           . "#263238")
-                              (bg2           . "#242d33")
-                              (comment-bg    . "#283239")
-                              (type          . "#efce5c")
-                              (base          . "#eeffff")
-                              (keyword       . "#c792ea")
-                              (str           . "#c3e88d")
-                              (func          . "#82aaff")
-                              (comment       . "#546e7a")
-                              (const         . "#f78c6a")
-                              (var           . "#f1f2f2")
-                              (border        . "#20272c")
-                              (act2          . "#20272c")
-                              (act1          . "#20272c")
-                              (highlight     . "#36484c")
-                              (highlight-dim . "#2a3d42")))))
+                            '((bg1           . "#1f1f1f")
+                              (bg2           . "#191919")
+                              (comment-bg    . "#1f1f1f")
+                              (type          . "#ff5370")
+                              (base          . "#e2ebe5")
+                              (keyword       . "#7db0c5")
+                              (str           . "#9ec99e")
+                              (func          . "#b06698")
+                              (comment       . "#929c95")
+                              (const         . "#daa0c7")
+                              (var           . "#f8a663")
+                              (border        . "#151515")
+                              (act2          . "#151515")
+                              (act1          . "#151515")
+                              (highlight     . "#2e2c2c")
+                              (highlight-dim . "#2e2c2c")))))
 #+END_SRC
-
-#+RESULTS:
-: dotspacemacs/user-init
 
 * Layers
 
@@ -121,43 +118,40 @@ Select what layers I'd like to load. These include layers shipped with Spacemacs
 as well as custom layers I've created.
 
 #+BEGIN_SRC emacs-lisp
-  (defun ngs/configuration-layers ()
-      '(
-        ;; +checkers
-        syntax-checking
+    (defun ngs/configuration-layers ()
+        '(
+          ;; +checkers
+          syntax-checking
 
-        ;; +completion
-        (auto-completion :variables
-                         auto-completion-enable-snippets-in-popup t
-                         auto-completion-complete-with-key-sequence "jk")
+          ;; +completion
+          (auto-completion :variables
+                           auto-completion-enable-snippets-in-popup t
+                           auto-completion-complete-with-key-sequence "jk")
 
-        ;; +emacs
-        org
+          ;; +emacs
+          org
 
-        ;; +frameworks
-        ruby-on-rails vue react
+          ;; +frameworks
+          ruby-on-rails react
 
-        ;; +languages
-        c-c++ csharp clojure elixir emacs-lisp haskell html javascript markdown
-        typescript php ruby shell-scripts sql typescript yaml
+          ;; +languages
+          c-c++ csharp clojure elixir emacs-lisp haskell html
+          javascript markdown ruby shell-scripts sql typescript yaml
 
-        ;; +os
-        osx
+          ;; +os
+          osx
 
-        ;; +source control
-        git github version-control
+          ;; +source control
+          git github version-control
 
-        ;; +themes
-        themes-megapack
+          ;; +tools
+          dash ranger restclient
+          (shell :variables
+                 shell-default-height 30
+                 shell-default-position 'bottom)
 
-        ;; +tools
-        dash ranger restclient
-        (shell :variables
-               shell-default-height 30
-               shell-default-position 'bottom)
-
-        ;; +web-services
-        spotify))
+          ;; +web-services
+          spotify))
 #+END_SRC
 
 ** Additional layer options
@@ -169,7 +163,7 @@ installed and loaded.
 #+BEGIN_SRC emacs-lisp
   (defun ngs/additional-packages ()
     '(all-the-icons
-      zerodark-theme))
+      prettier-js))
   (defun ngs/frozen-packages ()
     '())
   (defun ngs/excluded-packages ()
@@ -199,7 +193,7 @@ Then, load the rest of our layer configuration.
 
 * User configuration
 
-This is where /most/ user-defined behavior should go (see: [[User initialization]])  (defun ngs/emacs-settings ()
+This is where /most/ user-defined behavior should go (see: [[User initialization]]).
 
 ** Emacs
 
@@ -209,7 +203,8 @@ Settings for Emacs that are not necessarily specific to Spacemacs.
   (defun ngs/user-configuration-emacs ()
     (setq-default
      custom-file "~/.emacs.d/private/custom.el"
-     dotspacemacs-persistent-server t))
+     dotspacemacs-persistent-server t)
+    (mac-auto-operator-composition-mode))
 #+END_SRC
 
 ** Packages
@@ -223,7 +218,9 @@ Settings for Emacs packages.
        (setq web-mode-css-indent-offset 2)
        (setq web-mode-code-indent-offset 2)
        (setq web-mode-markup-indent-offset 2)
-       (setq web-mode-enable-engine-detection t))
+       (setq web-mode-enable-engine-detection t)
+       (add-hook 'js2-mode-hook 'prettier-js-mode)
+       (add-hook 'web-mode-hook 'prettier-js-mode))
    #+END_SRC
 ** User interface
 
@@ -234,11 +231,11 @@ Settings that affect the editor UI, e.g. mode line, neotree, line numbering.
     (setq-default
      neo-theme 'icons
      linum-relative-format "%4s "
-     powerline-default-separator 'slant
+     powerline-default-separator 'nil
      line-spacing 2)
 
-    (global-linum-mode)
-    (linum-relative-mode))
+    (linum-relative-mode)
+    (vi-tilde-fringe-mode))
 #+END_SRC
 
 ** Keybindings
@@ -270,26 +267,13 @@ mode line.
     (ngs/user-configuration-ui)
     (ngs/user-configuration-keybindings)
 
-    (defun ngs/smartparens-toggle ()
-      (interactive)
-      (if (bound-and-true-p smartparens-mode)
-          (ngs/smartparens-mode-disable)
-        (ngs/smartparens-mode-enable)))
-    (defun ngs/smartparens-mode-disable ()
-      (smartparens-mode -1)
-      (message "smartparens-mode disabled"))
-    (defun ngs/smartparens-mode-enable ()
-      (smartparens-mode)
-      (message "smartparens-mode enabled"))
-    (define-key evil-insert-state-map (kbd "M-p") 'ngs/smartparens-toggle)
-
     ;; TODO This should run automatically during initialization
     (defun ngs/set-face-attributes ()
       (interactive)
-      (set-face-attribute 'linum nil :foreground "#43535a")
-      (set-face-attribute 'linum nil :background "#263238")
-      (set-face-attribute 'linum-relative-current-face nil :foreground "#708088")
-      (set-face-attribute 'linum-relative-current-face nil :background "#263238")
+      ;; (set-face-attribute 'linum nil :foreground "#43535a")
+      ;; (set-face-attribute 'linum nil :background "#263238")
+      ;; (set-face-attribute 'linum-relative-current-face nil :foreground "#708088")
+      ;; (set-face-attribute 'linum-relative-current-face nil :background "#263238")
       ;; (set-face-attribute 'mode-line nil :box `(:line-width 2 :color "#20272c"))
       ;; (set-face-attribute 'mode-line-inactive  nil :background "#222d33")
       ;; (set-face-attribute 'powerline-inactive1 nil :background "#222d33")
