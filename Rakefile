@@ -12,7 +12,7 @@ require "dotfiles"
 include Dotfiles::Utils
 include Dotfiles::Links
 include Dotfiles::Asdf
-include Dotfiles::Packages
+include Dotfiles::Libraries
 
 desc "Run all tasks"
 task :install do
@@ -20,30 +20,32 @@ task :install do
   Rake::Task[:dotfiles].execute
   Rake::Task[:directories].execute
   Rake::Task[:languages].execute
-  Rake::Task[:packages].execute
+  Rake::Task[:libraries].execute
 
-  puts "\n👨‍💻 Happy hacking!"
+  puts ""
+  puts "👨‍💻  Happy hacking!"
+  puts "https://github.com/ngscheurich/dotfiles".colorize(:light_black)
 end
 
 desc "Install Homebrew dependencies"
 task :homebrew do
-  intro("Homebrew")
+  intro("📦  Homebrew")
 
-  # Install Homebrew if it's missing
+  # Install Homebrew if needed
   `which brew`
   unless $?.success?
     run %{ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"}
   end
 
-  run %{brew update}
+  # run %{brew update}
   # run %{brew bundle}
 
-  outro("Homebrew packages installed")
+  outro("Homebrew libraries installed")
 end
 
 desc "Link runcoms to their appropriate system locations"
 task :dotfiles do
-  intro("Dotfiles")
+  intro("🔗  Dotfiles")
 
   # Download dotfiles if needed
   unless File.exists? File.join(ENV["HOME"], "dotfiles")
@@ -57,7 +59,7 @@ end
 
 desc "Create common directories"
 task :directories do
-  intro("Directories")
+  intro("📁  Directories")
 
   create_dir("$HOME/bin")
   create_dir("$HOME/devel")
@@ -69,7 +71,7 @@ end
 
 desc "Install programming languages"
 task :languages do
-  intro("Languages")
+  intro("🤖  Languages")
 
   # Install asdf if needed
   `which asdf`
@@ -83,15 +85,15 @@ task :languages do
   outro("Languages installed")
 end
 
-desc "Install language packages"
-task :packages do
-  intro("Packages")
+desc "Install language libraries"
+task :libraries do
+  intro("📚  Libraries")
 
-  elixir_packages
-  nodejs_packages
-  ruby_packages
+  elixir_libraries
+  nodejs_libraries
+  ruby_libraries
 
-  outro("Packages installed")
+  outro("Libraries installed")
 end
 
 task :default => :install

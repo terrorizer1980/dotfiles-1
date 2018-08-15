@@ -1,4 +1,35 @@
 {
-    "explorer.confirmDragAndDrop": false,
-    "editor.minimap.enabled": false
+  "csharp.referencesCodeLens.enabled": false,
+
+  "editor.cursorBlinking": "phase",
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 13,
+  "editor.formatOnSave": false,
+  "editor.lineNumbers": "relative",
+  "editor.minimap.enabled": false,
+  "editor.minimap.renderCharacters": false,
+  "editor.tabSize": 2,
+
+  "elixirLS.fetchDeps": false,
+
+  "vim.easymotion": true,
+  "vim.enableNeovim": true,
+  "vim.leader": ",",
+  "vim.neovimPath": "/usr/local/bin/nvim",
+  "vim.sneak": true,
+
+  "window.zoomLevel": 0,
+
+  "workbench.colorCustomizations": {
+    "[Monokai Pro (Filter Octagon)]": {
+      "editorGroupHeader.tabsBackground": "#1d1f2a",
+      "tab.activeBorder": "#272a39",
+      "tab.border": "#1d1f2a",
+      "tab.inactiveBackground": "#1d1f2a",
+    },
+  },
+  "workbench.colorTheme": "Monokai Pro (Filter Octagon)",
+  "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
+  "workbench.startupEditor": "newUntitledFile",
 }

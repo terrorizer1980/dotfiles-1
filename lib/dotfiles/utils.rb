@@ -7,25 +7,39 @@ module Dotfiles
       end
     end
 
+    def reset_color
+      
+    end
+
     def intro(text)
       div = ""
-      40.times { div += "-" }
+      40.times { div << "-" }
       out = "#{div}\n#{text}\n#{div}".colorize(:magenta)
       puts out
     end
 
     def outro(text)
       out = "\n ✔ ".colorize(:green)
-      out += "#{text}\n\n"
+      out << "#{text}\n\n"
       puts out
     end
 
     def run(cmd)
+      print "\033[0m"
       out = "=> ".colorize(:blue)
-      out += "[Running] ".colorize(:yellow)
-      out += cmd
+      out << "[Running] ".colorize(:yellow)
+      out << cmd
       puts out
+      print "\033[90m"
       `#{cmd}` unless dry_run?
+    end
+
+    def run_output(cmd, status, done = false)
+      out = "=> ".colorize(:blue)
+      out << "[#{status}] ".colorize(:yellow)
+      out << cmd
+      out << if done then "\n" else "\r" end
+      print out
     end
 
     def dry_run?
@@ -37,8 +51,8 @@ module Dotfiles
       return true if override?(program)
 
       out = " ? ".colorize(:blue)
-      out += "Install configuration files for #{program}? ".colorize(:cyan)
-      out += "[y]es/[n]o ".colorize(:light_black)
+      out << "Install configuration files for #{program}? ".colorize(:cyan)
+      out << "[y]es/[n]o ".colorize(:light_black)
       print out
       
       STDIN.gets.chomp == 'y'

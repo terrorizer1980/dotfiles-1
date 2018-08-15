@@ -1,15 +1,15 @@
 module Dotfiles
-  module Packages
-    def elixir_packages
-      return unless install_packages?("Elixir")
+  module Libraries
+    def elixir_libraries
+      return unless install_libraries?("Elixir")
 
       run %{mix local.hex --force}
       run %{mix local.rebar --force}
       run %{mix archive.install https://github.com/phoenixframework/archives/raw/master/phx_new.ez --force}
     end
 
-    def nodejs_packages
-      return unless install_packages?("Node.js")
+    def nodejs_libraries
+      return unless install_libraries?("Node.js")
 
       run %{npm config set scripts-prepend-node-path true}
       run %{npm install -g create-react-app}
@@ -22,8 +22,8 @@ module Dotfiles
       run %{npm install -g typescript}
     end
 
-    def ruby_packages
-      return unless install_packages?("Ruby")
+    def ruby_libraries
+      return unless install_libraries?("Ruby")
 
       run %{gem install bundler}
       run %{gem install pry}
@@ -33,13 +33,13 @@ module Dotfiles
 
     private
 
-    def install_packages?(lang)
+    def install_libraries?(lang)
       return true if ENV["ASK"] == "false"
       return true if override?(lang)
 
       out = " ? ".colorize(:blue)
-      out += "Install packages for #{lang}? ".colorize(:cyan)
-      out += "[y]es/[n]o ".colorize(:light_black)
+      out << "Install libraries for #{lang}? ".colorize(:cyan)
+      out << "[y]es/[n]o ".colorize(:light_black)
       print out
       
       STDIN.gets.chomp == 'y'
