@@ -1,0 +1,18 @@
+[user]
+    name = Nicholas Scheurich
+    email = nick@scheurich.me
+[github]
+    user = ngscheurich
+[core]
+	editor = nvim
+	excludesfile = $HOME/.gitignore
+[color]
+    ui = true
+[merge]
+    ff = only
+[fetch]
+    prune = true
+[rebase]
+    autosquash = true
+[aliases]
+    stat = status

@@ -1,0 +1,10 @@
+{
+	"Insert_Pry_Statement": {
+		"prefix": "pry",
+		"body": [
+			"require IEx",
+			"IEx.pry()"
+		],
+		"description": "Require IEx and call `IEx.pry/0`"
+	}
+}
