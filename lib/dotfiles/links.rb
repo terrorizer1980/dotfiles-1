@@ -46,8 +46,8 @@ module Dotfiles
 
     def link_git
       return unless install_config?("Git")
-      link_file("gitconfig")
-      link_file("gitignore")
+      link_file("git/gitconfig")
+      link_file("git/gitignore")
     end
 
     def link_neovim
