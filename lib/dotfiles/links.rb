@@ -32,6 +32,7 @@ module Dotfiles
         "Brewfile",
         "ctags",
         "editorconfig",
+        "hushlogin",
         "npmrc",
         "pryrc",
         "rubocop.yml",
