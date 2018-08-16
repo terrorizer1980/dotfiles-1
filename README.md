@@ -20,7 +20,7 @@ The contents herein have been inspired by lots of other people; I’ll list them
 
 * [x] Laptop setup guide
 * [ ] Add iTerm2 configs and setup
-* [ ] [Global gitignore](https://gist.github.com/octocat/9257657)
+* [ ] [Create a global .gitignore](https://help.github.com/articles/ignoring-files/#create-a-global-gitignore)
 
 ## License
 
