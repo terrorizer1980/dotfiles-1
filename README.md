@@ -19,6 +19,7 @@ The contents herein have been inspired by lots of other people; I’ll list them
 ## Roadmap
 
 * [x] Laptop setup guide
+* [ ] Add iTerm2 configs and setup
 
 ## License
 
