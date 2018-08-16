@@ -21,6 +21,7 @@ The contents herein have been inspired by lots of other people; I’ll list them
 * [x] Laptop setup guide
 * [ ] Add iTerm2 configs and setup
 * [ ] [Create a global .gitignore](https://help.github.com/articles/ignoring-files/#create-a-global-gitignore)
+* [ ] Add summary of setup script to [SETUP.md](https://github.com/ngscheurich/dotfiles/blob/master/SETUP.md)
 
 ## License
 
