@@ -72,8 +72,6 @@ $ mas signin user@example.com
 
 ### Clone dotfiles
 
-Clone the dotfiles:
-
 ```sh
 $ git clone git@github.com:ngscheurich/dotfiles.git $HOME/dotfiles
 ```
