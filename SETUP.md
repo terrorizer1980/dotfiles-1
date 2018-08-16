@@ -79,8 +79,11 @@ $ git clone git@github.com:ngscheurich/dotfiles.git $HOME/dotfiles
 ### Run the setup script
 
 ```sh
-$ $HOME/dotfiles/scripts/setup.sh
+$ cd $HOME/dotfiles
+$ rake
 ```
+
+See `rake --tasks` for a listing of individual setup tasks.
 
 Customize environment
 ---------------------
