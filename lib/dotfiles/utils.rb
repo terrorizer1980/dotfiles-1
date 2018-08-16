@@ -7,10 +7,6 @@ module Dotfiles
       end
     end
 
-    def reset_color
-      
-    end
-
     def intro(text)
       div = ""
       40.times { div << "-" }
@@ -18,7 +14,7 @@ module Dotfiles
       puts out
     end
 
-    def outro(text)
+    def outro(text = "Done")
       out = "\n ✔ ".colorize(:green)
       out << "#{text}\n\n"
       puts out
@@ -31,7 +27,7 @@ module Dotfiles
       out << cmd
       puts out
       print "\033[90m"
-      `#{cmd}` unless dry_run?
+      system(cmd) unless dry_run?
     end
 
     def run_output(cmd, status, done = false)
@@ -46,30 +42,47 @@ module Dotfiles
       ENV["DRY_RUN"] == "true"
     end
 
-    def install_config?(program)
-      return true if ENV["ASK"] == "false"
-      return true if override?(program)
-
-      out = " ? ".colorize(:blue)
-      out << "Install configuration files for #{program}? ".colorize(:cyan)
-      out << "[y]es/[n]o ".colorize(:light_black)
-      print out
-      
-      STDIN.gets.chomp == 'y'
+    def user_wants?(key, default, what = "configuration files")
+      user_var = env_var(key)
+      if user_var == "true"
+        true
+      elsif user_var == "false"
+        false
+      else
+        get_user_choice(default, what, key)
+      end
     end
 
-    def override?(section)
-      section =
-        case section
+    def env_var(key)
+      key =
+        case key
         when "Visual Studio Code"
           "VSCODE"
         when "Node.js"
           "NODEJS"
+        when "Node.js release team’s"
+          "NODEJS_PGP"
         else
-          section.upcase
+          key.upcase
         end
 
-      ENV[section] == "true"
+      ENV[key]
+    end
+
+    def get_user_choice(default, what, key)
+      choices = if default then "(Y/n) " else "(y/N) " end
+
+      out = " ? ".colorize(:blue)
+      out << "Install #{what} for #{key}? ".colorize(:cyan)
+      out << choices.colorize(:light_black)
+      print out
+
+      input = STDIN.gets.chomp
+      if default
+        if input == "n" then false else true end
+      else
+        if input == "y" then true else false end
+      end
     end
   end
 end

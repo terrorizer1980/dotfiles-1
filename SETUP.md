@@ -7,10 +7,11 @@ Base configuration
 ### Set the hostname
 
 ```sh
-$ sudo scutil --set HostName bienjensu
-$ sudo scutil --set LocalHostName bienjensu
-$ sudo scutil --set ComputerName bienjensu
-$ dscacheutil -flushcache
+sudo scutil --set ComputerName "0x6269656e6a656e7375"
+sudo scutil --set HostName "0x6269656e6a656e7375"
+sudo scutil --set LocalHostName "0x6269656e6a656e7375"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "0x6269656e6a656e7375"
+
 ```
 
 ### Set the shell
@@ -24,6 +25,7 @@ $ chsh -s /bin/zsh
 
 ```sh
 $ ssh-keygen
+$ cat $HOME/.ssh/id_rsa.pub | pbcopy
 ```
 
 ### Final steps
@@ -31,8 +33,10 @@ $ ssh-keygen
 1. [Add your SSH public key to GitHub](https://github.com/settings/keys)
 2. Restart the computer
 
-System dependencies
--------------------
+System setup
+------------
+
+This step install
 
 ### Install Homebrew
 
@@ -62,21 +66,6 @@ $ git clone git@github.com:ngscheurich/dotfiles.git $HOME/dotfiles
 $ bash $HOME/dotfiles/scripts/setup.sh
 ```
 
-Configure applications
-----------------------
-
-### Install (neo)vim plugins
-
-```sh
-$ $HOME/dotfiles/scripts/vim.sh
-```
-
-### Install VS Code extensions
-
-```sh
-$ $HOME/dotfiles/scripts/vscode.sh
-```
-
 Customize environment
 ---------------------
 
@@ -98,9 +87,3 @@ The following preferences should be set up in Karabiner Elements.
 #### Complex modifications
 
 * [Vi Style Arrows](https://pqrs.org/osx/karabiner/complex_modifications/#vi_style_arrows)
-
-### Apply macOS customizations
-
-```sh
-$ $HOME/dotfiles/scripts/macos.sh
-```

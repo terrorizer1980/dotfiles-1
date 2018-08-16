@@ -1,1 +1,0 @@
-/Users/nscheurich/dotfiles/init.vim

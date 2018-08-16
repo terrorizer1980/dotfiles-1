@@ -12,7 +12,7 @@ require "dotfiles"
 include Dotfiles::Utils
 include Dotfiles::Links
 include Dotfiles::Asdf
-include Dotfiles::Libraries
+include Dotfiles::Packages
 
 desc "Run all tasks"
 task :install do
@@ -20,7 +20,8 @@ task :install do
   Rake::Task[:dotfiles].execute
   Rake::Task[:directories].execute
   Rake::Task[:languages].execute
-  Rake::Task[:libraries].execute
+  Rake::Task[:packages].execute
+  Rake::Task[:macos].execute
 
   puts ""
   puts "👨‍💻  Happy hacking!"
@@ -29,7 +30,7 @@ end
 
 desc "Install Homebrew dependencies"
 task :homebrew do
-  intro("📦  Homebrew")
+  intro("📦  System Packages")
 
   # Install Homebrew if needed
   `which brew`
@@ -40,12 +41,12 @@ task :homebrew do
   # run %{brew update}
   # run %{brew bundle}
 
-  outro("Homebrew libraries installed")
+  outro()
 end
 
 desc "Link runcoms to their appropriate system locations"
 task :dotfiles do
-  intro("🔗  Dotfiles")
+  intro("⚙️  Dotfiles")
 
   # Download dotfiles if needed
   unless File.exists? File.join(ENV["HOME"], "dotfiles")
@@ -54,7 +55,7 @@ task :dotfiles do
 
   link_dotfiles
 
-  outro("Dotfiles linked")
+  outro()
 end
 
 desc "Create common directories"
@@ -66,7 +67,7 @@ task :directories do
   create_dir("$HOME/devel/archived")
   create_dir("$HOME/Screenshots")
 
-  outro("Directories created")
+  outro()
 end
 
 desc "Install programming languages"
@@ -82,18 +83,27 @@ task :languages do
   install_asdf_plugins
   install_asdf_versions
 
-  outro("Languages installed")
+  outro()
 end
 
-desc "Install language libraries"
-task :libraries do
-  intro("📚  Libraries")
+desc "Install language packages"
+task :packages do
+  intro("🎁  Language Packages")
 
-  elixir_libraries
-  nodejs_libraries
-  ruby_libraries
+  elixir_packages
+  nodejs_packages
+  ruby_packages
 
-  outro("Libraries installed")
+  outro()
+end
+
+desc "Set macOS defaults"
+task :macos do
+  intro("🍎  macOS")
+
+  run %{./.macos} if user_wants?("macOS", true, "preferences")
+
+  outro()
 end
 
 task :default => :install

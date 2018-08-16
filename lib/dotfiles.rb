@@ -1,7 +1,7 @@
 require "dotfiles/links"
 require "dotfiles/utils"
 require "dotfiles/asdf"
-require "dotfiles/libraries"
+require "dotfiles/packages"
 
 module Dotfiles
 end

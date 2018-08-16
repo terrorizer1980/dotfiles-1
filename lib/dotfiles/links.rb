@@ -32,6 +32,7 @@ module Dotfiles
         "Brewfile",
         "ctags",
         "editorconfig",
+        "npmrc",
         "pryrc",
         "rubocop.yml",
         "tmux.conf",
@@ -40,31 +41,31 @@ module Dotfiles
     end
 
     def link_emacs
-      return unless install_config?("Emacs")
+      return unless user_wants?("Emacs", false)
       link_file("emacs/configuration.org", "$HOME/.emacs.d/private", false)
       link_file("emacs/spacemacs")
     end
 
     def link_git
-      return unless install_config?("Git")
+      return unless user_wants?("Git", true)
       link_file("git/gitconfig")
       link_file("git/gitignore")
     end
 
     def link_neovim
-      return unless install_config?("Neovim")
+      return unless user_wants?("Neovim", true)
       run %{ln -nfs #{DOTFILES_DIR}/vim $HOME/.config/nvim}
       link_file("init.vim", "$HOME/.config/nvim", false)
     end
 
     def link_vim
-      return unless install_config?("Vim")
+      return unless user_wants?("Vim", false)
       link_file("vim")
       link_file("vimrc")
     end
 
     def link_vscode
-      return unless install_config?("Visual Studio Code")
+      return unless user_wants?("Visual Studio Code", true)
       run %{while read l; do code --install-extension $l; done < vscode/extensions.manifest}
       link_file("vscode/snippets", "$HOME/Library/Application\\ Support/Code/User/snippets", false)
       link_file("vscode/settings.json", "$HOME/Library/Application\\ Support/Code/User", false)
