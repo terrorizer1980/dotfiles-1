@@ -97,7 +97,7 @@ task :packages do
   outro()
 end
 
-desc "Set macOS defaults"
+desc "Set macOS preferences"
 task :macos do
   intro("🍎  macOS")
 
