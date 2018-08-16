@@ -56,8 +56,6 @@ $ cat $HOME/.ssh/id_rsa.pub | pbcopy
 System setup
 ------------
 
-This step install
-
 ### Install Homebrew
 
 ```sh
