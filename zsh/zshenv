@@ -8,7 +8,7 @@
 # Get rid of lag when entering vi mode
 export KEYTIMEOUT=1
 
-# https://github.com/junegunn/fzf
+# fzf
 export FZF_DEFAULT_COMMAND='/usr/local/bin/ag -g ""'
 
 # Erlang
@@ -17,7 +17,7 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # Tweego
 export TWEEGO_PATH="$HOME/.local/share/twine/story-formats"
 
-# Less Colors for Man Pages
+# Customize man page colors with ‘less’ definitions
 # http://linuxtidbits.wordpress.com/2009/03/23/less-colors-for-man-pages/
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
 export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
