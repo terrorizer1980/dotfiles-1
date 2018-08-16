@@ -38,8 +38,9 @@ task :homebrew do
     run %{ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"}
   end
 
-  # run %{brew update}
-  # run %{brew bundle}
+  run %{brew update}
+  run %{brew upgrade}
+  run %{brew bundle}
 
   outro()
 end

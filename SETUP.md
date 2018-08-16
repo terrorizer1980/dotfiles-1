@@ -1,5 +1,22 @@
-New Laptop Setup Protocol
-=========================
+💻 Laptop Setup Protocol
+========================
+
+* [Base configuration](#base-configuration)
+  * [Set the hostname](#set-the-hostname)
+  * [Set the shell](#set-the-shell)
+  * [Generate an SSH keypair](#generate-an-ssh-keypair)
+  * [Final steps](#final-steps)
+* [System setup](#system-setup)
+  * [Install Homebrew](#install-homebrew)
+  * [Install Mac App Store CLI](#install-mac-app-store-cli)
+  * [Clone dotfiles](#clone-dotfiles)
+  * [Run the setup script](#run-the-setup-script)
+* [Customize environment](#customize-environment)
+  * [Configure keyboard](#configure-keyboard)
+      * [For all devices](#for-all-devices)
+      * [For non-Apple keyboards](#for-non-apple-keyboards)
+      * [Complex modifications](#complex-modifications)
+
 
 Base configuration
 ------------------
@@ -63,7 +80,7 @@ $ git clone git@github.com:ngscheurich/dotfiles.git $HOME/dotfiles
 ### Run the setup script
 
 ```sh
-$ bash $HOME/dotfiles/scripts/setup.sh
+$ $HOME/dotfiles/scripts/setup.sh
 ```
 
 Customize environment
