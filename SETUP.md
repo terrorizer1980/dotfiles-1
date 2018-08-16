@@ -24,11 +24,10 @@ Base configuration
 ### Set the hostname
 
 ```sh
-sudo scutil --set ComputerName "0x6269656e6a656e7375"
-sudo scutil --set HostName "0x6269656e6a656e7375"
-sudo scutil --set LocalHostName "0x6269656e6a656e7375"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "0x6269656e6a656e7375"
-
+$ sudo scutil --set ComputerName "0x6269656e6a656e7375"
+$ sudo scutil --set HostName "0x6269656e6a656e7375"
+$ sudo scutil --set LocalHostName "0x6269656e6a656e7375"
+$ sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "0x6269656e6a656e7375"
 ```
 
 ### Set the shell
