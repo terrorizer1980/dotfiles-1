@@ -14,7 +14,7 @@ include Dotfiles::Links
 include Dotfiles::Asdf
 include Dotfiles::Packages
 
-desc "Run all tasks"
+desc "Run all tasks (default)"
 task :install do
   Rake::Task[:homebrew].execute
   Rake::Task[:dotfiles].execute
@@ -28,7 +28,7 @@ task :install do
   puts "https://github.com/ngscheurich/dotfiles".colorize(:light_black)
 end
 
-desc "Install Homebrew dependencies"
+desc "Install system packages using Homebrew"
 task :homebrew do
   intro("📦  System Packages")
 
@@ -45,7 +45,7 @@ task :homebrew do
   outro()
 end
 
-desc "Link runcoms to their appropriate system locations"
+desc "Link config files to their appropriate system locations"
 task :dotfiles do
   intro("⚙️  Dotfiles")
 
