@@ -64,9 +64,8 @@ task :directories do
   intro("📁  Directories")
 
   create_dir("$HOME/bin")
-  create_dir("$HOME/devel")
-  create_dir("$HOME/devel/archived")
   create_dir("$HOME/Screenshots")
+  create_dir("$HOME/Workspace")
 
   outro()
 end
