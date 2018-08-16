@@ -2,7 +2,8 @@
 
 <img src="https://media.giphy.com/media/DBfYJqH5AokgM/giphy.gif" width="100%" alt="I HATE THIS HACKER CRAP">
 
-These are my system configuration files, my dotfiles, my whole setup, my _grimoire_.
+These are my system configuration files, my dotfiles, my whole setup, my _grimoire_. I realize the term
+“dotfiles” here is a bit of a misnomer, but c’est la vie, eh?
 
 If you’re me and are setting up a new laptop, you’ll want to have a look at
 [SETUP.md](https://github.com/ngscheurich/dotfiles/blob/master/SETUP.md).
