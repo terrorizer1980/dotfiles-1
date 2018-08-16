@@ -41,6 +41,10 @@ $ chsh -s /bin/zsh
 
 ```sh
 $ ssh-keygen
+```
+It would be handy to have your public key on the clipboard at this point.
+
+```sh
 $ cat $HOME/.ssh/id_rsa.pub | pbcopy
 ```
 
