@@ -7,9 +7,9 @@ module Dotfiles
 
       link_file("zsh/zlogin")
       link_file("zsh/zlogout")
+      link_file("zsh/zpreztorc")
       link_file("zsh/zshenv")
       link_file("zsh/zshrc")
-      link_file("zsh/zpreztorc")
 
       link_emacs
       link_git
