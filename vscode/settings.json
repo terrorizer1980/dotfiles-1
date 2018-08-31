@@ -1,18 +1,17 @@
 {
   "csharp.referencesCodeLens.enabled": false,
-
   "editor.cursorBlinking": "phase",
-  "editor.fontFamily": "Fira Code",
+  "editor.fontFamily": "Iosevka",
   "editor.fontLigatures": true,
-  "editor.fontSize": 13,
-  "editor.formatOnSave": false,
+  "editor.fontSize": 14,
+  "editor.formatOnSave": true,
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
   "editor.minimap.renderCharacters": false,
   "editor.tabSize": 2,
-
   "elixirLS.fetchDeps": false,
-
+  "explorer.confirmDelete": false,
+  "eslint.autoFixOnSave": true,
   "files.associations": {
     "gitignore": "gitignore",
     "pryrc": "ruby",
@@ -22,27 +21,34 @@
     "zlogout": "shellscript",
     "zpreztorc": "shellscript",
     "zshenv": "shellscript",
-    "zshrc": "shellscript",
+    "zshrc": "shellscript"
   },
-
+  "javascript.format.enable": false,
+  "[javascript]": {},
+  "tslint.jsEnable": false,
   "vim.easymotion": true,
   "vim.enableNeovim": true,
   "vim.leader": ",",
   "vim.neovimPath": "/usr/local/bin/nvim",
   "vim.sneak": true,
-
-  "window.zoomLevel": 0,
-
   "workbench.colorCustomizations": {
     "[Monokai Pro (Filter Octagon)]": {
       "editorGroupHeader.tabsBackground": "#1d1f2a",
+      "editorCursor.foreground": "#fff7",
       "tab.activeBorder": "#272a39",
       "tab.border": "#1d1f2a",
-      "tab.inactiveBackground": "#1d1f2a",
-    },
+      "tab.inactiveBackground": "#1d1f2a"
+    }
   },
   "workbench.colorTheme": "Monokai Pro (Filter Octagon)",
   "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
   "workbench.startupEditor": "newUntitledFile",
-  "explorer.confirmDelete": false,
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "explorer.confirmDragAndDrop": false,
+  "ruby.codeCompletion": "rcodetools",
+  "ruby.format": "rubocop",
+  "ruby.intellisense": "rubyLocate",
+  "ruby.useLanguageServer": true
 }
