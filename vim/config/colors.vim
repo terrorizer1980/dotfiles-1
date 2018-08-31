@@ -5,9 +5,9 @@
 
 syntax enable                  " Enable syntax processing
 set background=dark            " Use light-on-dark colors
-colorscheme gloam
-" let g:two_firewatch_italics=1  " Enable italics for colorscheme
-" colorscheme two-firewatch      " Set colorscheme
+colorscheme OceanicNext
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
 
 if (has("termguicolors"))
     set termguicolors          " Use 24-bit color if the terminal supports it
