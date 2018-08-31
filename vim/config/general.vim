@@ -25,7 +25,7 @@ set smartcase                  " Ignore case when searching lowercase
 " Folds {{{
 set foldenable                 " Enable folding
 set foldlevelstart=5           " Maximum fold depth open by default
-set foldnestmax=10             " Maximum allowed fold depth  
+set foldnestmax=10             " Maximum allowed fold depth
 " }}} ----------------------------------------------------------------
 " Indentation {{{
 set autoindent                 " Copy indent from current line when starting a new line
@@ -44,5 +44,11 @@ set wildignore+=*/tmp/*,*.so,
             \*.swp,*.zip       " Set wildcard ignores
 set inccommand=nosplit         " TODO Add description
 " }}} ----------------------------------------------------------------
+"
+:set guioptions-=m  "remove menu bar
+:set guioptions-=T  "remove toolbar
+:set guioptions-=r  "remove right-hand scroll bar
+:set guioptions-=L  "remove left-hand scroll bar
+:set guifont=FuraCodeNerdFontComplete-Regular:h13
 
 " vim:foldmethod=marker:foldlevel=0
