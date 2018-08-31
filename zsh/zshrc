@@ -130,3 +130,5 @@ _yargs_completions()
 }
 complete -F _yargs_completions graphql
 ###-end-graphql-completions-###export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
