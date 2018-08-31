@@ -49,9 +49,8 @@ let g:elm_make_show_warnings = 1
 let g:elm_setup_keybindings = 1
 " }}} ----------------------------------------------------------------
 " vim-airline {{{
-let g:airline_theme='gloam'
+let g:airline_theme='oceanicnext'
 let g:airline_powerline_fonts = 0
-" hi StatusLine ctermbg=red
 " }}} ----------------------------------------------------------------
 " lightline.vim {{{
 " let g:lightline = {}
@@ -118,7 +117,7 @@ let g:tmuxline_powerline_separators = 0
 " }}} ----------------------------------------------------------------
 " closetag.vim {{{
 let g:closetag_filenames = '*.html,*.html.erb,*.html.eex'
-" }}}
+" }}} ----------------------------------------------------------------
 " ALE {{{
 let g:ale_lint_delay = 5000
 
@@ -144,6 +143,10 @@ let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fixers['css'] = ['prettier']
 let g:ale_fixers['scss'] = ['prettier']
 let g:ale_fix_on_save = 1
+" }}} ----------------------------------------------------------------
+" vim-mix-format {{{
+let g:mix_format_on_save = 1
+let g:mix_format_silent_errors = 1
 " }}} ----------------------------------------------------------------
 
 " vim:foldmethod=marker:foldlevel=0

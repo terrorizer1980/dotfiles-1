@@ -5,6 +5,7 @@
 
 call plug#begin('~/.local/share/nvim/plugged')"
 " UI niceities {{{
+Plug 'ngscheurich/gloam-vim'                   " Cool, moody colorscheme
 Plug 'airblade/vim-gitgutter'                  " Display file changes in the sign column
 Plug 'edkolev/tmuxline.vim'                    " vim-airline-like status bar for tmux
 Plug 'majutsushi/tagbar'                       " Tag navigation bar
@@ -15,7 +16,9 @@ Plug 'sjl/gundo.vim'                           " Undo tree visualizer
 Plug 'szw/vim-maximizer'                       " Maximize/restore current window
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Colored devicons
 Plug 'vim-airline/vim-airline'                 " Fancy status bar
-Plug 'ngscheurich/gloam-vim'
+
+Plug 'mhartington/oceanic-next'
+
 " }}} ----------------------------------------------------------------
 " Languages and frameworks {{{
 Plug 'alvan/vim-closetag'                      " Automatically close (X)HTML tags
@@ -25,7 +28,8 @@ Plug 'c-brenn/phoenix.vim'                     " Phoenix integration
 Plug 'elixir-lang/vim-elixir'                  " Elixir syntax highlihting and indentation
 Plug 'justinj/vim-pico8-syntax'                " PICO-8 syntax support
 Plug 'mattn/emmet-vim'                         " Expand abbreviations à la Emment
-Plug 'mxw/vim-jsx'                             " JSX syntax support
+" Plug 'mxw/vim-jsx'                             " JSX syntax support
+Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'mhinz/vim-mix-format'                    " Integrate Elixir’s formatter
 Plug 'pangloss/vim-javascript'                 " Improved JavaScript indentation and syntax highlighting
 Plug 'slashmili/alchemist.vim'                 " Elixir integration via ElixirSense
@@ -36,10 +40,11 @@ Plug 'tpope/vim-projectionist'                 " Project file navigation; requir
 Plug 'tpope/vim-rails'                         " Ruby on Rails integration
 Plug 'xolox/vim-lua-ftplugin'                  " Lua filetype plugin
 Plug 'xolox/vim-misc'                          " Miscellaneous auto-load Vim scripts (req. for vim-lua-ftplugin)
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript',
-          \ {'do': './install.sh'}             " TypeScript support
-
+Plug 'HerringtonDarkholme/yats.vim'            " The most advanced TypeScript Syntax Highlighting in Vim
+if has('nvim')
+  Plug 'mhartington/nvim-typescript',
+            \ {'do': './install.sh'}           " TypeScript tooling for Neovim
+endif
 " }}} ----------------------------------------------------------------
 " Markdown and prose {{{
 Plug 'junegunn/goyo.vim'                       " Distraction-free writing
@@ -66,6 +71,7 @@ Plug 'csexton/trailertrash.vim'                " Deal with EOL whitespace
 Plug 'dietsche/vim-lastplace'                  " Open files where you left them
 Plug 'editorconfig/editorconfig-vim'           " EditorConfig support
 Plug 'godlygeek/tabular'                       " Easily align text
+Plug 'janko-m/vim-test'                        " Run your tests at the speed of thought
 Plug 'jiangmiao/auto-pairs'                    " Automatically pair brackets, parens, and quotes
 Plug 'junegunn/fzf.vim'                        " Integrate with fzf
 Plug 'justinmk/vim-sneak'                      " Jump to any location specified by two characters
