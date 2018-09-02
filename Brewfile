@@ -40,6 +40,7 @@ brew "neovim", args: ["HEAD"]
 brew "ocaml"
 brew "opam"
 brew "openssl"
+brew "packer"
 brew "phantomjs"
 brew "postgresql", restart_service: true
 brew "qt@5.5"
@@ -108,6 +109,5 @@ cask "zoomus"
 mas "GarageBand", id: 682658836
 mas "Magnet", id: 441258766
 mas "Spark", id: 1176895641
-mas "Tweetbot", id: 1384080005
 mas "Unclutter", id: 577085396
 mas "Xcode", id: 497799835
