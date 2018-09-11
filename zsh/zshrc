@@ -25,6 +25,7 @@ alias emacsclient="/usr/local/Cellar/emacs-mac/HEAD-7403929/bin/emacsclient"
 alias git=hub
 alias http="python -m http.server"
 alias lg="lazygit"
+alias mux="tmuxinator"
 alias sctl="sudo systemctl "
 alias vboxls="VBoxManage list runningvms"
 alias vim="nvim"

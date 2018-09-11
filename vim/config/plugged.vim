@@ -5,7 +5,6 @@
 
 call plug#begin('~/.local/share/nvim/plugged')"
 " UI niceities {{{
-Plug 'ngscheurich/gloam-vim'                   " Cool, moody colorscheme
 Plug 'airblade/vim-gitgutter'                  " Display file changes in the sign column
 Plug 'edkolev/tmuxline.vim'                    " vim-airline-like status bar for tmux
 Plug 'majutsushi/tagbar'                       " Tag navigation bar
@@ -17,8 +16,8 @@ Plug 'szw/vim-maximizer'                       " Maximize/restore current window
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Colored devicons
 Plug 'vim-airline/vim-airline'                 " Fancy status bar
 
+Plug 'jacoborus/tender.vim'
 Plug 'mhartington/oceanic-next'
-
 " }}} ----------------------------------------------------------------
 " Languages and frameworks {{{
 Plug 'alvan/vim-closetag'                      " Automatically close (X)HTML tags
@@ -28,7 +27,7 @@ Plug 'c-brenn/phoenix.vim'                     " Phoenix integration
 Plug 'elixir-lang/vim-elixir'                  " Elixir syntax highlihting and indentation
 Plug 'justinj/vim-pico8-syntax'                " PICO-8 syntax support
 Plug 'mattn/emmet-vim'                         " Expand abbreviations à la Emment
-" Plug 'mxw/vim-jsx'                             " JSX syntax support
+Plug 'mxw/vim-jsx'                             " JSX syntax support
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'mhinz/vim-mix-format'                    " Integrate Elixir’s formatter
 Plug 'pangloss/vim-javascript'                 " Improved JavaScript indentation and syntax highlighting
@@ -78,7 +77,7 @@ Plug 'justinmk/vim-sneak'                      " Jump to any location specified 
 Plug 'ludovicchabant/vim-gutentags'            " Manage tag files
 Plug 'mklabs/split-term.vim'                   " Utilites around Neovim’s :terminal
 Plug 'powerman/vim-plugin-AnsiEsc'             " Deal with ANSI escape sequences
-Plug 'roxma/vim-tmux-clipboard'                " Better Vim/Tmux clipboard interop
+" Plug 'roxma/vim-tmux-clipboard'                " Better Vim/Tmux clipboard interop (This makes Vim really slow in some cases)
 Plug 'tmux-plugins/vim-tmux-focus-events'      " Tmux compatibility fixes
 Plug 'tpope/vim-abolish'                       " Operate on variants of a word (plural, case, etc.)
 Plug 'tpope/vim-bundler'                       " Integrate with Bundler

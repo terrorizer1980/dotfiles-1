@@ -49,7 +49,8 @@ let g:elm_make_show_warnings = 1
 let g:elm_setup_keybindings = 1
 " }}} ----------------------------------------------------------------
 " vim-airline {{{
-let g:airline_theme='oceanicnext'
+" let g:airline_theme='oceanicnext'
+let g:airline_theme='tender'
 let g:airline_powerline_fonts = 0
 " }}} ----------------------------------------------------------------
 " lightline.vim {{{
@@ -129,19 +130,17 @@ let g:ale_sign_column_always = 1
 
 let g:ale_linters = {}
 let g:ale_linters['javascript'] = ['eslint', 'flow']
-" let g:ale_linters['typescript'] = ['tslint']
-" let g:ale_linters['typescript.jsx'] = ['tslint']
 let g:ale_linters['scss'] = ['stylelint', 'sasslint']
 let g:ale_linters['startify'] = []
-let g:ale_linters['php'] = ['php', 'phpcs']
-let g:ale_php_phpcs_standard = 'PSR2'
+let g:ale_linters['typescript'] = ['tslint']
+let g:ale_linters['typescript.jsx'] = ['tslint']
 
 let g:ale_fixers = {}
-let g:ale_fixers['javascript'] = ['prettier']
-" let g:ale_fixers['typescript'] = ['prettier']
-" let g:ale_fixers['typescript.jsx'] = ['prettier']
 let g:ale_fixers['css'] = ['prettier']
+let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fixers['scss'] = ['prettier']
+let g:ale_fixers['typescript'] = ['prettier']
+let g:ale_fixers['typescript.jsx'] = ['prettier']
 let g:ale_fix_on_save = 1
 " }}} ----------------------------------------------------------------
 " vim-mix-format {{{

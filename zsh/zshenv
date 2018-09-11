@@ -65,6 +65,7 @@ export PATH="$PATH:/usr/local/opt/go/libexec/bin"
 export PATH="$PATH:/Applications/PICO-8/PICO-8.app/Contents/MacOS"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:/usr/local/opt/openssl/bin"
+export PATH="$PATH:$(brew --prefix qt@5.5)/bin"
 
 # -------------------------------------
 # Less
