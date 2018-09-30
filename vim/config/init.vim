@@ -7,7 +7,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'                  " Shows a git diff in the sign column and stages/undoes hunks
-Plug 'edkolev/tmuxline.vim'                    " vim-airline-like status bar for tmux
+" Plug 'edkolev/tmuxline.vim'                  " vim-airline-like status bar for tmux
 Plug 'HerringtonDarkholme/yats.vim'            " TypeScript syntax highlighting
 Plug 'MaxMEllon/vim-jsx-pretty'                " React JSX syntax pretty highlighting
 Plug 'Shougo/deoplete.nvim'                    " Asynchronous completion framework

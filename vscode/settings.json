@@ -6,7 +6,7 @@
   "editor.fontSize": 13,
   "editor.formatOnSave": true,
   "editor.lineNumbers": "relative",
-  "editor.rulers": [80, 120],
+  // "editor.rulers": [80, 120],
   "editor.minimap.enabled": false,
   "editor.minimap.renderCharacters": false,
   "editor.tabSize": 2,
@@ -40,18 +40,14 @@
       "editorCursor.foreground": "#fff7",
       "tab.activeBorder": "#272a39",
       "tab.border": "#1d1f2a",
-      "tab.inactiveBackground": "#1d1f2a"
-    },
-    "[Monokai Pro]": {
-      "editorGroupHeader.tabsBackground": "#1d1f2a",
-      "editorCursor.foreground": "#fff7",
-      "tab.activeBorder": "#272a39",
-      "tab.border": "#1d1f2a",
-      "tab.inactiveBackground": "#1d1f2a"
+      "tab.inactiveBackground": "#1d1f2a",
+      "tab.unfocusedActiveBorder": "#272a39"
     }
   },
   "workbench.colorTheme": "Monokai Pro (Filter Octagon)",
   "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
   "workbench.startupEditor": "newUntitledFile",
-  "terminal.integrated.rendererType": "dom"
+  "css.validate": false,
+  "breadcrumbs.enabled": false,
+  "workbench.statusBar.feedback.visible": false
 }

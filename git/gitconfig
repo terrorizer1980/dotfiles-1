@@ -4,8 +4,8 @@
 [github]
     user = ngscheurich
 [core]
-	editor = nvim
-	excludesfile = $HOME/.gitignore
+    editor = vim
+    excludesfile = $HOME/.gitignore
 [color]
     ui = true
 [merge]
@@ -16,3 +16,8 @@
     autosquash = true
 [aliases]
     stat = status
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
