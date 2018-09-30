@@ -19,13 +19,16 @@ promptinit
 # Aliases
 # -------------------------------------
 alias aseprite="/Applications/Aseprite.app/Contents/MacOS/aseprite"
+alias bx="bundle exec"
 alias curlh="curl -s -D - -o /dev/null"
 alias dokku='bash $HOME/.dokku/contrib/dokku_client.sh'
 alias emacsclient="/usr/local/Cellar/emacs-mac/HEAD-7403929/bin/emacsclient"
-alias git=hub
+alias giga="gigalixir"
+alias git="hub"
 alias http="python -m http.server"
 alias lg="lazygit"
 alias mux="tmuxinator"
+alias rm="trash"
 alias sctl="sudo systemctl "
 alias vboxls="VBoxManage list runningvms"
 alias vim="nvim"

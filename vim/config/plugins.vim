@@ -3,62 +3,182 @@
 " Author: N. G. Scheurich <nick@scheurich.me>
 " Repo: https://github.com/ngscheurich/dotfiles
 
-" fzf.vim {{{
-" Show preview of :Files results
-command! -bang -nargs=? -complete=dir Files
-            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+" Ale
+" -------------------------------------------------------------------------------------
+let g:ale_lint_delay = 5000
 
-" Show preview of :Ag results
-command! -bang -nargs=* Ag
-            \ call fzf#vim#ag(<q-args>, fzf#vim#with_preview(), <bang>0)
+highlight ALEErrorSign guibg=clear guifg=#FF5370
+highlight ALEWarningSign guibg=clear guifg=#F8A663
 
-let g:fzf_colors =
-            \ { 'fg':      ['fg', 'Normal'],
-            \ 'bg':      ['bg', 'Normal'],
-            \ 'hl':      ['fg', 'Comment'],
-            \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-            \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-            \ 'hl+':     ['fg', 'Statement'],
-            \ 'info':    ['fg', 'PreProc'],
-            \ 'border':  ['fg', 'Ignore'],
-            \ 'prompt':  ['fg', 'Conditional'],
-            \ 'pointer': ['fg', 'Exception'],
-            \ 'marker':  ['fg', 'Keyword'],
-            \ 'spinner': ['fg', 'Label'],
-            \ 'header':  ['fg', 'Comment'] }
-" }}} ----------------------------------------------------------------
-" vim-devicons {{{
-let g:tern_request_timeout = 1
+let g:ale_sign_error = '㤮 '
+let g:ale_sign_warning = '⚠ '
+let g:ale_sign_column_always = 0
 
+let g:ale_linters = {}
+let g:ale_linters['javascript'] = ['eslint']
+let g:ale_linters['scss'] = ['stylelint', 'sasslint']
+let g:ale_linters['startify'] = []
+let g:ale_linters['typescript'] = ['tslint', 'tsserver']
+let g:ale_linters['typescript.jsx'] = ['tslint', 'tsserver']
+
+let g:ale_fixers = {}
+let g:ale_fixers['css'] = ['prettier']
+let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fixers['scss'] = ['prettier']
+let g:ale_fixers['typescript'] = ['prettier']
+let g:ale_fixers['typescript.jsx'] = ['prettier']
+let g:ale_fix_on_save = 1
+
+
+" closetag.vim
+" -------------------------------------------------------------------------------------
+let g:closetag_filenames = '*.html,*.html.erb,*.html.eex'
+
+
+" Deoplete
+" -------------------------------------------------------------------------------------
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#source('alchemist', 'mark', '')
+call deoplete#custom#source('around', 'mark', '♻')
+call deoplete#custom#source('buffer', 'mark', '')
+call deoplete#custom#source('file', 'mark', '')
+call deoplete#custom#source('jedi', 'mark', '')
+call deoplete#custom#source('neosnippet', 'mark', '✄')
+call deoplete#custom#source('omni', 'mark', '⦾')
+call deoplete#custom#source('tag', 'mark', '')
+call deoplete#custom#source('ternjs', 'mark', '')
+call deoplete#custom#source('typescript', 'mark', '')
+call deoplete#custom#source('alchemist', 'rank', 9999)
+
+
+" editorconfig-vim
+" -------------------------------------------------------------------------------------
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
+
+
+" NERDTree
+" -------------------------------------------------------------------------------------
+let NERDTreeMinimalUI = 1
+let NERDTreeWinPos = 'right'
+
+
+" rspec-vim
+let g:rspec_command = 'Dispatch rspec {spec}'
+
+
+" vim-airline
+" -------------------------------------------------------------------------------------
+let g:airline_powerline_fonts = 0
+let g:airline_theme = 'srcery'
+let g:airline#extensions#tabline#enabled = 1
+
+
+" tmuxline
+" -------------------------------------------------------------------------------------
+let g:tmuxline_powerline_separators = 0
+
+
+" vim-devicons
+" -------------------------------------------------------------------------------------
 let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {}
 let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['package.json'] = ''
-
 let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols = {}
 let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*\.ex$'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*\.exs$'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*\.lock$'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*\.log$'] = ''
-" }}} ----------------------------------------------------------------
-" elm-vim {{{
-let g:elm_format_autosave = 1
-let g:elm_detailed_complete = 1
-let g:elm_syntastic_show_warnings = 1
-let g:elm_format_fail_silently = 1
-let g:elm_browser_command = 'open'
-let g:elm_make_show_warnings = 1
-let g:elm_setup_keybindings = 1
-" }}} ----------------------------------------------------------------
-" vim-airline {{{
-" let g:airline_theme='oceanicnext'
-let g:airline_theme='tender'
-let g:airline_powerline_fonts = 0
-" }}} ----------------------------------------------------------------
-" lightline.vim {{{
-" let g:lightline = {}
-" let g:lightline.separator = { 'left': '░', 'right': '░' }
-" let g:lightline.subseparator = { 'left': '', 'right': '' }
-" }}}
-" tagbar {{{
+
+" vim-jsx
+let g:jsx_ext_required = 0
+
+" vim-mix-format
+let g:mix_format_on_save = 1
+let g:mix_format_silent_errors = 0
+
+" vim-startify
+let g:startify_custom_header =
+            \ map(split(system('cat ~/.config/nvim/banner.txt'), '\n'), '"   ". v:val')
+
+
+" Srcery
+" -------------------------------------------------------------------------------------
+let g:srcery_italic = 1
+
+
+" Denite
+" -------------------------------------------------------------------------------------
+" Change file/rec command
+call denite#custom#var('file/rec', 'command',
+\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+
+" Change mappings
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-n>',
+      \ '<denite:move_to_next_line>',
+      \ 'noremap'
+      \)
+
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-p>',
+      \ '<denite:move_to_previous_line>',
+      \ 'noremap'
+      \)
+
+" Change matchers
+" call denite#custom#source(
+" \ 'file_mru', 'matchers', ['matcher/fuzzy', 'matcher/project_files'])
+" call denite#custom#source(
+" \ 'file/rec', 'matchers', ['matcher/cpsm'])
+
+" Change sorters.
+" call denite#custom#source(
+" \ 'file/rec', 'sorters', ['sorter/sublime'])
+
+" Add custom menus
+" let s:menus = {}
+
+" let s:menus.zsh = {
+"   \ 'description': 'Edit your import zsh configuration'
+"   \ }
+" let s:menus.zsh.file_candidates = [
+"   \ ['zshrc', '~/.config/zsh/.zshrc'],
+"   \ ['zshenv', '~/.zshenv'],
+"   \ ]
+
+" let s:menus.my_commands = {
+"   \ 'description': 'Example commands'
+"   \ }
+" let s:menus.my_commands.command_candidates = [
+"   \ ['Split the window', 'vnew'],
+"   \ ['Open zsh menu', 'Denite menu:zsh'],
+"   \ ]
+
+" call denite#custom#var('menu', 'menus', s:menus)
+
+" Ag command on grep source
+call denite#custom#var('grep', 'command', ['ag'])
+call denite#custom#var('grep', 'default_opts',
+    \ ['-i', '--vimgrep'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', [])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+
+" Define aliases
+call denite#custom#alias('source', 'file/rec/git', 'file/rec')
+call denite#custom#var('file/rec/git', 'command',
+      \ ['git', 'ls-files', '-co', '--exclude-standard'])
+
+
+" Tagbar
+" -------------------------------------------------------------------------------------
+let g:tagbar_left = 1
+let g:tagbar_compact = 1
+let g:tagbar_show_visibility = 1
+
 let g:tagbar_type_elixir = {
             \ 'ctagstype' : 'elixir',
             \ 'kinds' : [
@@ -76,76 +196,4 @@ let g:tagbar_type_elixir = {
             \ 't:tests'
             \ ]
             \ }
-" }}} ----------------------------------------------------------------
-" Deoplete {{{
-let g:deoplete#enable_at_startup = 1
 
-call deoplete#custom#source('alchemist', 'mark', '')
-call deoplete#custom#source('around', 'mark', '♻')
-call deoplete#custom#source('buffer', 'mark', '')
-call deoplete#custom#source('file', 'mark', '')
-call deoplete#custom#source('jedi', 'mark', '')
-call deoplete#custom#source('neosnippet', 'mark', '✄')
-call deoplete#custom#source('omni', 'mark', '⦾')
-call deoplete#custom#source('tag', 'mark', '')
-call deoplete#custom#source('ternjs', 'mark', '')
-call deoplete#custom#source('typescript', 'mark', '')
-
-call deoplete#custom#source('alchemist', 'rank', 9999)
-" }}} ----------------------------------------------------------------
-" editorconfig-vim {{{
-let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
-let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
-" }}} ----------------------------------------------------------------
-" vim-jsx {{{
-let g:jsx_ext_required = 0
-" }}} ----------------------------------------------------------------
-" rspec-vim {{{
-let g:rspec_command = 'Dispatch rspec {spec}'
-" }}} ----------------------------------------------------------------
-" vim-javascript {{{
-let g:javascript_plugin_flow = 1
-" }}} ----------------------------------------------------------------
-" vim-gutentags {{{
-let g:gutentags_cache_dir = '~/.tags'
-" }}} ----------------------------------------------------------------
-" vim-startify {{{
-let g:startify_custom_header =
-            \ map(split(system('cat ~/.config/nvim/banner.txt'), '\n'), '"   ". v:val')
-" }}} ----------------------------------------------------------------
-" tmuxline {{{
-let g:tmuxline_powerline_separators = 0
-" }}} ----------------------------------------------------------------
-" closetag.vim {{{
-let g:closetag_filenames = '*.html,*.html.erb,*.html.eex'
-" }}} ----------------------------------------------------------------
-" ALE {{{
-let g:ale_lint_delay = 5000
-
-highlight ALEErrorSign guibg=clear guifg=#FF5370
-highlight ALEWarningSign guibg=clear guifg=#F8A663
-let g:ale_sign_error = '㤮 '
-let g:ale_sign_warning = '⚠ '
-let g:ale_sign_column_always = 1
-
-let g:ale_linters = {}
-let g:ale_linters['javascript'] = ['eslint', 'flow']
-let g:ale_linters['scss'] = ['stylelint', 'sasslint']
-let g:ale_linters['startify'] = []
-let g:ale_linters['typescript'] = ['tslint']
-let g:ale_linters['typescript.jsx'] = ['tslint']
-
-let g:ale_fixers = {}
-let g:ale_fixers['css'] = ['prettier']
-let g:ale_fixers['javascript'] = ['prettier']
-let g:ale_fixers['scss'] = ['prettier']
-let g:ale_fixers['typescript'] = ['prettier']
-let g:ale_fixers['typescript.jsx'] = ['prettier']
-let g:ale_fix_on_save = 1
-" }}} ----------------------------------------------------------------
-" vim-mix-format {{{
-let g:mix_format_on_save = 1
-let g:mix_format_silent_errors = 1
-" }}} ----------------------------------------------------------------
-
-" vim:foldmethod=marker:foldlevel=0

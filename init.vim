@@ -1,4 +1,3 @@
-"
 "                 __
 "  __          __/\ \__               __
 " /\_\    ___ /\_\ \ ,_\      __  __ /\_\    ___ ___
@@ -11,9 +10,10 @@
 " Author: N. G. Scheurich <nick@scheurich.me>
 " Repo: https://github.com/ngscheurich/dotfiles
 
-source $HOME/.config/nvim/config/plugged.vim
-source $HOME/.config/nvim/config/general.vim
-source $HOME/.config/nvim/config/colors.vim
+source $HOME/.config/nvim/config/init.vim
 source $HOME/.config/nvim/config/plugins.vim
+source $HOME/.config/nvim/config/general.vim
 source $HOME/.config/nvim/config/keys.vim
 source $HOME/.config/nvim/config/auto.vim
+
+set cc=
