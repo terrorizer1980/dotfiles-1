@@ -9,7 +9,8 @@
 export KEYTIMEOUT=1
 
 # Android SDK
-export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
+# export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
+export ANDROID_SDK="$HOME/Library/Android/sdk"
 
 #fzf
 export FZF_DEFAULT_COMMAND='/usr/local/bin/ag -g ""'
@@ -71,6 +72,7 @@ export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:/usr/local/opt/openssl/bin"
 export PATH="$PATH:$(brew --prefix qt@5.5)/bin"
 export PATH="$PATH:$HOME/.asdf/shims"
+export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
 
 # -------------------------------------
 # Less

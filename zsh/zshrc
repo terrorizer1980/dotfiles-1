@@ -31,8 +31,7 @@ alias mux="tmuxinator"
 alias rm="trash"
 alias sctl="sudo systemctl "
 alias vboxls="VBoxManage list runningvms"
-alias vim="nvim"
-alias vimconfig="$EDITOR $HOME/.config/nvim/init.vim"
+alias vimconfig="$EDITOR $HOME/.vimrc"
 alias weather="curl wttr.in/Baton+Rouge"
 alias zshconfig="$EDITOR $HOME/.zshrc"
 alias zshsource="source $HOME/.zshrc"
@@ -136,3 +135,10 @@ complete -F _yargs_completions graphql
 ###-end-graphql-completions-###export PATH="/usr/local/opt/openssl/bin:$PATH"
 
 test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/ngscheurich/.asdf/installs/nodejs/10.8.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/ngscheurich/.asdf/installs/nodejs/10.8.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/ngscheurich/.asdf/installs/nodejs/10.8.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/ngscheurich/.asdf/installs/nodejs/10.8.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh

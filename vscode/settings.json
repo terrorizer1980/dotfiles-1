@@ -1,12 +1,12 @@
 {
   "csharp.referencesCodeLens.enabled": false,
   "editor.cursorBlinking": "phase",
-  "editor.fontFamily": "IBM Plex Mono",
+  "editor.fontFamily": "Hasklig",
   "editor.fontLigatures": true,
   "editor.fontSize": 13,
+  "editor.fontWeight": "500",
   "editor.formatOnSave": true,
   "editor.lineNumbers": "relative",
-  // "editor.rulers": [80, 120],
   "editor.minimap.enabled": false,
   "editor.minimap.renderCharacters": false,
   "editor.tabSize": 2,
@@ -42,12 +42,25 @@
       "tab.border": "#1d1f2a",
       "tab.inactiveBackground": "#1d1f2a",
       "tab.unfocusedActiveBorder": "#272a39"
+    },
+    "[Monokai Pro (Filter Spectrum)]": {
+      "editorGroupHeader.tabsBackground": "#191919",
+      "editorCursor.foreground": "#fff7",
+      "tab.activeBorder": "#222",
+      "tab.border": "#191919",
+      "tab.inactiveBackground": "#191919",
+      "tab.unfocusedActiveBorder": "#222"
     }
   },
-  "workbench.colorTheme": "Monokai Pro (Filter Octagon)",
   "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
   "workbench.startupEditor": "newUntitledFile",
   "css.validate": false,
   "breadcrumbs.enabled": false,
-  "workbench.statusBar.feedback.visible": false
+  "workbench.statusBar.feedback.visible": false,
+  "csharp.format.enable": false,
+  "workbench.settings.editor": "json",
+  "elixirLS.suggestSpecs": false,
+  "workbench.sideBar.location": "left",
+  "workbench.colorTheme": "Monokai Pro (Filter Octagon)",
+  "editor.renderIndentGuides": true
 }
