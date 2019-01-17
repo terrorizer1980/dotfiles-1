@@ -11,14 +11,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 " ---------------------------------------------------------------------------------------------
 Plug 'edkolev/tmuxline.vim'           " Simple tmux statusline generator
 Plug 'mhinz/vim-startify'             " Fancy start screen
-Plug 'Nequo/vim-allomancer'           " Burn metals to get nice colors
 Plug 'rakr/vim-togglebg'              " Easily toggle background color
+Plug 'rakr/vim-one'                   " Port of Atom's famous One Dark scheme
 Plug 'ryanoasis/vim-devicons'         " Add file type glyphs/icons to popular Vim plugins
 Plug 'srcery-colors/srcery-vim'       " An arcane colorscheme
-Plug 'tomasr/molokai'                 " A simple, classic colorschem
+Plug 'tomasr/molokai'                 " A simple, classic colorscheme
 Plug 'vim-airline/vim-airline'        " Lean and mean status/tab line
-Plug 'vim-airline/vim-airline-themes' " Some additional vim-airline themes
-Plug 'webdevel/tabulous'              " Enhance the tab line
 
 " Languages and frameworks
 " ---------------------------------------------------------------------------------------------
@@ -61,10 +59,5 @@ Plug 'tpope/vim-unimpaired'           " Complementary key mappings based around 
 Plug 'tpope/vim-vinegar'              " Navigate up a directory in netrw
 Plug 'prettier/vim-prettier',         " Integrate Prettier
     \{'do': 'yarn install' }
-
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'morhetz/gruvbox'
-Plug 'rakr/vim-one'
-
 
 call plug#end()
