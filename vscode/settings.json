@@ -1,16 +1,20 @@
 {
+  "breadcrumbs.enabled": false,
+  "csharp.format.enable": false,
   "csharp.referencesCodeLens.enabled": false,
+  "css.validate": false,
   "editor.cursorBlinking": "phase",
-  "editor.fontFamily": "Hasklig",
+  "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": true,
   "editor.fontSize": 13,
-  "editor.fontWeight": "500",
   "editor.formatOnSave": true,
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
   "editor.minimap.renderCharacters": false,
+  "editor.renderIndentGuides": true,
   "editor.tabSize": 2,
   "elixirLS.fetchDeps": false,
+  "elixirLS.suggestSpecs": false,
   "eslint.alwaysShowStatus": true,
   "eslint.autoFixOnSave": true,
   "explorer.confirmDelete": false,
@@ -24,43 +28,58 @@
     "zlogout": "shellscript",
     "zpreztorc": "shellscript",
     "zshenv": "shellscript",
-    "zshrc": "shellscript"
+    "zshrc": "shellscript",
+    "*.eex": "HTML (Eex)"
   },
   "javascript.format.enable": false,
+  "rewrap.wrappingColumn": 80,
   "ruby.format": "rubocop",
+  "terminal.integrated.shell.osx": "/bin/zsh",
   "tslint.jsEnable": false,
   "vim.easymotion": true,
   "vim.enableNeovim": true,
   "vim.leader": ",",
   "vim.neovimPath": "/usr/local/bin/nvim",
   "vim.sneak": true,
+  "workbench.activityBar.visible": false,
   "workbench.colorCustomizations": {
     "[Monokai Pro (Filter Octagon)]": {
       "editorGroupHeader.tabsBackground": "#1d1f2a",
-      "editorCursor.foreground": "#fff7",
+      "editorCursor.foreground": "#fff5",
       "tab.activeBorder": "#272a39",
       "tab.border": "#1d1f2a",
       "tab.inactiveBackground": "#1d1f2a",
       "tab.unfocusedActiveBorder": "#272a39"
-    },
-    "[Monokai Pro (Filter Spectrum)]": {
-      "editorGroupHeader.tabsBackground": "#191919",
-      "editorCursor.foreground": "#fff7",
-      "tab.activeBorder": "#222",
-      "tab.border": "#191919",
-      "tab.inactiveBackground": "#191919",
-      "tab.unfocusedActiveBorder": "#222"
     }
   },
-  "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
-  "workbench.startupEditor": "newUntitledFile",
-  "css.validate": false,
-  "breadcrumbs.enabled": false,
-  "workbench.statusBar.feedback.visible": false,
-  "csharp.format.enable": false,
-  "workbench.settings.editor": "json",
-  "elixirLS.suggestSpecs": false,
-  "workbench.sideBar.location": "left",
   "workbench.colorTheme": "Monokai Pro (Filter Octagon)",
-  "editor.renderIndentGuides": true
+  "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
+  "workbench.startupEditor": "none",
+  "workbench.statusBar.feedback.visible": false,
+  "workbench.settings.editor": "json",
+  "workbench.sideBar.location": "left",
+  "vim.easymotionMarkerFontFamily": "Fira Code",
+  "vim.easymotionMarkerHeight": 18,
+  "vim.easymotionMarkerWidthPerChar": 8,
+  "vim.easymotionMarkerFontSize": "14",
+  "vim.useSystemClipboard": true,
+  "vim.foldfix": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["[", "<Space>"],
+      "commands": ["workbench.action.insertLineBefore"]
+    }
+  ],
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "window.zoomLevel": 0,
+  "csharpfixformat.style.braces.onSameLine": false,
+  "[csharp]": {
+    "editor.tabSize": 4
+  }
 }

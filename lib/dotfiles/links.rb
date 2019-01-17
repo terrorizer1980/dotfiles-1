@@ -28,23 +28,22 @@ module Dotfiles
 
     def core_runcoms
       [
-        "agignore",
-        "Brewfile",
-        "ctags",
-        "editorconfig",
-        "hushlogin",
-        "npmrc",
-        "pryrc",
-        "rubocop.yml",
-        "tmux.conf",
-        "tool-versions"
+        "config/agignore",
+        "config/Brewfile",
+        "config/ctags",
+        "config/editorconfig",
+        "config/hushlogin",
+        "config/npmrc",
+        "config/pryrc",
+        "config/rubocop.yml",
+        "config/tmux.conf",
+        "config/tool-versions"
       ]
     end
 
     def link_emacs
       return unless user_wants?("Emacs", false)
-      link_file("emacs/configuration.org", "$HOME/.emacs.d/private", false)
-      link_file("emacs/spacemacs")
+      run %{ln -nfs #{DOTFILES_DIR}/emacs $HOME/.doom.d}
     end
 
     def link_git
@@ -55,13 +54,12 @@ module Dotfiles
 
     def link_neovim
       return unless user_wants?("Neovim", true)
-      run %{ln -nfs #{DOTFILES_DIR}/vim $HOME/.config/nvim}
+      run %{ln -nfs #{DOTFILES_DIR}/nvim $HOME/.config/nvim}
       link_file("init.vim", "$HOME/.config/nvim", false)
     end
 
     def link_vim
       return unless user_wants?("Vim", false)
-      link_file("vim")
       link_file("vimrc")
     end
 

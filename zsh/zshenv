@@ -53,7 +53,7 @@ if [[ -z "$LANG" ]]; then
 fi
 
 # -------------------------------------
-# Paths
+# Path
 # -------------------------------------
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
@@ -73,6 +73,7 @@ export PATH="$PATH:/usr/local/opt/openssl/bin"
 export PATH="$PATH:$(brew --prefix qt@5.5)/bin"
 export PATH="$PATH:$HOME/.asdf/shims"
 export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
+export PATH="$PATH:$HOME/.emacs.d/bin"
 
 # -------------------------------------
 # Less

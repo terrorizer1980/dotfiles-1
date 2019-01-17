@@ -2,3 +2,4 @@
 bin/.install
 vscode/workspaceStorage
 vscode/projects.json
+.vscode

@@ -10,8 +10,8 @@
 " Author: N. G. Scheurich <nick@scheurich.me>
 " Repo: https://github.com/ngscheurich/dotfiles
 
-source $HOME/.config/nvim/config/_plugged.vim
-source $HOME/.config/nvim/config/_plugins.vim
-source $HOME/.config/nvim/config/_general.vim
-source $HOME/.config/nvim/config/_keybind.vim
-source $HOME/.config/nvim/config/_autocom.vim
+source $HOME/.config/nvim/+plugged.vim
+source $HOME/.config/nvim/+plugins.vim
+source $HOME/.config/nvim/+general.vim
+source $HOME/.config/nvim/+keybind.vim
+source $HOME/.config/nvim/+autocom.vim

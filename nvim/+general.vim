@@ -11,18 +11,12 @@
 " Colors
 " ------------------------------------------------------------------------------
 set background=dark   " Use light-on-dark colors
-set termguicolors     " Use 24-bit color if the terminal supports it
+set termguicolors     " Use 24-bit color
 
 syntax enable         " Enable syntax processing
-colorscheme gruvbox   " Set the colorscheme
 
-hi ALEErrorSign   guibg=clear   guifg=#FF5370
-hi ALEWarningSign guibg=clear   guifg=#F8A663
-hi CursorLine     guibg=#282828
-hi CursorLineNr   guibg=#282828
-hi SignColumn     guibg=clear
-hi TabLineFill    guibg=#282828
-hi TabLineSel     guibg=#1d2021
+" Set colorscheme
+colorscheme one
 
 " Folds
 " ------------------------------------------------------------------------------
@@ -61,3 +55,8 @@ set splitright        " Open vertical splits to the right of the current window
 set inccommand=split  " Preview substitutions in a temporary split
 set ignorecase        " Ignore case when searching
 set smartcase         " Don't ignore case when searching with mixed case
+
+" Swapfiles/backups
+" ------------------------------------------------------------------------------
+set nobackup
+set noswapfile

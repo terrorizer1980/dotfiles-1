@@ -3,7 +3,6 @@ module Dotfiles
     def install_asdf_plugins
       run %{asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git}
       run %{asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git}
-      run %{asdf plugin-add lua https://github.com/Stratus3D/asdf-lua.git}
       run %{asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git}
       run %{asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git}
       run %{asdf plugin-add python https://github.com/tuvistavie/asdf-python.git}

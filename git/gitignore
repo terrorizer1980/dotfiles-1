@@ -22,3 +22,6 @@
 
 # Lockfiles
 *.lock
+
+# Tags
+tags

@@ -16,10 +16,10 @@ inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 " Normal mode
 " ------------------------------------------------------------------------------
 nmap <ESC> :noh<CR>
-nmap <Leader>/ :Denite grep
+map <Leader>/ :Ag<CR>
+map <Leader>b :Buffers<CR>
+map <Leader>f :Files<CR>
 nmap <Leader>\ :NERDTreeToggle<CR>
-nmap <Leader>b :Denite buffer<CR>
-nmap <Leader>f :Denite file/rec<CR>
 nmap <Leader>m :silent make<CR>
 nmap <S-Tab> :tabprev<CR>
 nmap <Tab> :tabnext<CR>
@@ -28,3 +28,9 @@ nmap <silent> t<C-g> :TestVisit<CR>
 nmap <silent> t<C-t> :TestLast<CR>
 nmap <silent> t<C-n> :TestNearest<CR>
 nmap <silent> t<C-s> :TestSuite<CR>
+
+nnoremap <Right> <C-w>l
+nnoremap <Left> <C-w>h
+nnoremap <Up> <C-w>k
+nnoremap <Down> <C-w>j
+

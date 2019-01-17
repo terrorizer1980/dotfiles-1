@@ -11,42 +11,54 @@
 
 " ALE
 " ------------------------------------------------------------------------------
-" let g:ale_lint_delay = 5000
+let g:ale_lint_delay = 5000
 
 let g:ale_sign_error = '㤮 '
 let g:ale_sign_warning = '⚠ '
 
 let g:ale_linters = {
-    \ 'elixir': ['mix']}
+    \ 'cs': ['omnisharp'],
+    \ 'elixir': ['mix'],
+    \ 'javascript': ['eslint']}
 
 let g:ale_fixers = {
-    \ 'elixir': ['mix_format']}
-let g:ale_fix_on_save = 1
+    \ 'elixir': ['mix_format'],
+    \ 'javascript': ['eslint']}
 
-" Denite
-" ------------------------------------------------------------------------------
-call denite#custom#var('file/rec', 'command',
-      \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
-      \ [ '.git/', 'node_modules/', 'build/', 'dist/', 'deps/' ])
-call denite#custom#map('insert', '<Down>',
-      \ '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<Up>',
-      \ '<denite:move_to_previous_line>', 'noremap')
-call denite#custom#map('insert', '<C-v>',
-      \ '<denite:do_action:vsplit>', 'noremap')
-call denite#custom#map('insert', '<C-x>',
-      \ '<denite:do_action:split>', 'noremap')
+let g:ale_fix_on_save = 1
 
 " Deoplete
 " ------------------------------------------------------------------------------
 let g:deoplete#enable_at_startup = 1
 
-" gruvbox
+call deoplete#custom#source('alchemist', 'mark', '')
+call deoplete#custom#source('around', 'mark', '♻')
+call deoplete#custom#source('buffer', 'mark', '')
+call deoplete#custom#source('file', 'mark', '')
+call deoplete#custom#source('jedi', 'mark', '')
+call deoplete#custom#source('neosnippet', 'mark', '✄')
+call deoplete#custom#source('omni', 'mark', '⦾')
+call deoplete#custom#source('tag', 'mark', '')
+call deoplete#custom#source('[TernJS]', 'mark', '')
+call deoplete#custom#source('typescript', 'mark', '')
+
+call deoplete#custom#source('alchemist', 'rank', 9999)
+
+" fzf
 " ------------------------------------------------------------------------------
-let g:gruvbox_bold = 0
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_italic = 1
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 " NERDTree
 " ------------------------------------------------------------------------------
@@ -78,9 +90,33 @@ let tabulousLabelModifiedStr = '◦ '
 let tabulousLabelNameOptions = ''
 let tabulousLabelRightStr = '  '
 
+" Tagbar
+" ------------------------------------------------------------------------------
+let g:tagbar_type_elixir = {
+    \ 'ctagstype' : 'elixir',
+    \ 'kinds' : [
+        \ 'f:functions',
+        \ 'functions:functions',
+        \ 'c:callbacks',
+        \ 'd:delegates',
+        \ 'e:exceptions',
+        \ 'i:implementations',
+        \ 'a:macros',
+        \ 'o:operators',
+        \ 'm:modules',
+        \ 'p:protocols',
+        \ 'r:records',
+        \ 't:tests'
+    \ ]
+    \ }
+
 " test.vim
 " ------------------------------------------------------------------------------
 let test#strategy = "neovim"
+
+" tmuxline.vim
+" ------------------------------------------------------------------------------
+let g:tmuxline_powerline_separators = 0
 
 " TrailerTrash
 " ------------------------------------------------------------------------------
@@ -88,9 +124,10 @@ let g:trailertrash_blacklist = ['vim-plug']
 
 " vim-airline
 " ------------------------------------------------------------------------------
-let g:airline_powerline_fonts = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 0
+let g:airline_powerline_fonts = 0
+let g:airline_theme='one'
 
 " vim-devicons
 " ------------------------------------------------------------------------------
@@ -103,4 +140,7 @@ let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*\.exs$'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*\.lock$'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*\.log$'] = ''
 
+" vim-polyglot
+" ------------------------------------------------------------------------------
+let g:polyglot_disabled = ['typescript']
 

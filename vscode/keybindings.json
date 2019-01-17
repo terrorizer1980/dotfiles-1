@@ -1,59 +1,16 @@
 [
   {
-    "key": "ctrl+j",
-    "command": "selectNextSuggestion",
-    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-  },
-  {
-    "key": "ctrl+k",
-    "command": "selectPrevSuggestion",
-    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-  },
-  {
-    "key": "ctrl+;",
+    "key": "ctrl+/",
     "command": "workbench.action.focusActiveEditorGroup",
     "when": "terminalFocus"
   },
   {
-    "key": "ctrl+;",
+    "key": "ctrl+/",
     "command": "workbench.action.terminal.focus",
     "when": "!terminalFocus"
   },
   {
-    "key": "ctrl+k",
-    "command": "workbench.action.focusActiveEditorGroup",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "cmd+numpad_add",
-    "command": "editor.action.fontZoomIn"
-  },
-  {
-    "key": "shift+cmd+=",
-    "command": "editor.action.fontZoomIn"
-  },
-  {
-    "key": "cmd+=",
-    "command": "editor.action.fontZoomIn"
-  },
-  {
-    "key": "cmd+numpad_subtract",
-    "command": "editor.action.fontZoomOut"
-  },
-  {
-    "key": "shift+cmd+-",
-    "command": "editor.action.fontZoomOut"
-  },
-  {
-    "key": "cmd+-",
-    "command": "editor.action.fontZoomOut"
-  },
-  {
-    "key": "cmd+numpad0",
-    "command": "editor.action.fontZoomReset"
-  },
-  {
-    "key": "cmd+0",
-    "command": "editor.action.fontZoomReset"
-  },
+    "key": "ctrl+\\",
+    "command": "editor.action.toggleMinimap"
+  }
 ]
