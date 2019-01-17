@@ -49,7 +49,7 @@ module Dotfiles
     def link_git
       return unless user_wants?("Git", true)
       link_file("git/gitconfig")
-      link_file("git/gitignore")
+      link_file("git/gitignore_global")
     end
 
     def link_neovim
