@@ -5,6 +5,10 @@ module Dotfiles
 
       core_runcoms.each { |f| link_file(f) }
 
+      link_file("config/Brewfile", "$HOME", false)
+      link_file("config/hushlogin", "$HOME", false)
+      link_file("config/macos", "$HOME", false)
+
       link_file("zsh/zlogin")
       link_file("zsh/zlogout")
       link_file("zsh/zpreztorc")
@@ -29,10 +33,8 @@ module Dotfiles
     def core_runcoms
       [
         "config/agignore",
-        "config/Brewfile",
         "config/ctags",
         "config/editorconfig",
-        "config/hushlogin",
         "config/npmrc",
         "config/pryrc",
         "config/rubocop.yml",
