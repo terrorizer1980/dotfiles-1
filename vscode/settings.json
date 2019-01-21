@@ -11,7 +11,7 @@
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
   "editor.minimap.renderCharacters": false,
-  "editor.renderIndentGuides": true,
+  "editor.renderIndentGuides": false,
   "editor.tabSize": 2,
   "elixirLS.fetchDeps": false,
   "elixirLS.suggestSpecs": false,
@@ -41,7 +41,7 @@
   "vim.leader": ",",
   "vim.neovimPath": "/usr/local/bin/nvim",
   "vim.sneak": true,
-  "workbench.activityBar.visible": false,
+  "workbench.activityBar.visible": true,
   "workbench.colorCustomizations": {
     "[Monokai Pro (Filter Octagon)]": {
       "editorGroupHeader.tabsBackground": "#1d1f2a",
@@ -81,5 +81,7 @@
   "csharpfixformat.style.braces.onSameLine": false,
   "[csharp]": {
     "editor.tabSize": 4
-  }
+  },
+  "csharpfixformat.style.spaces.beforeParenthesis": false,
+  "vim.showmodename": false
 }

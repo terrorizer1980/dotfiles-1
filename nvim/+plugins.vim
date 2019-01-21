@@ -73,9 +73,6 @@ let g:netrw_banner = 0
 " ------------------------------------------------------------------------------
 let g:prettier#autoformat = 0
 
-" Srcery
-" ------------------------------------------------------------------------------
-let g:srcery_italic = 1
 
 " Startify
 " ------------------------------------------------------------------------------
@@ -125,9 +122,12 @@ let g:trailertrash_blacklist = ['vim-plug']
 " vim-airline
 " ------------------------------------------------------------------------------
 let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline_powerline_fonts = 0
-let g:airline_theme='one'
+let g:airline_theme='molokai'
 
 " vim-devicons
 " ------------------------------------------------------------------------------

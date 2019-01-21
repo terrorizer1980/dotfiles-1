@@ -9,10 +9,19 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " User interface
 " ---------------------------------------------------------------------------------------------
+
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'caksoylar/vim-mysticaltutor'
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'drewtempelmeyer/palenight.vim'  " Soothing colorscheme
 Plug 'edkolev/tmuxline.vim'           " Simple tmux statusline generator
+Plug 'kaicataldo/material.vim'        " A dark colorscheme based on the Material color scheme
 Plug 'mhinz/vim-startify'             " Fancy start screen
-Plug 'rakr/vim-togglebg'              " Easily toggle background color
+Plug 'morhetz/gruvbox'                " Retro groove colorscheme
 Plug 'rakr/vim-one'                   " Port of Atom's famous One Dark scheme
+Plug 'rakr/vim-togglebg'              " Easily toggle background color
+Plug 'rakr/vim-two-firewatch'         " A blend between Duotone Light and Firewatch for Atom
 Plug 'ryanoasis/vim-devicons'         " Add file type glyphs/icons to popular Vim plugins
 Plug 'srcery-colors/srcery-vim'       " An arcane colorscheme
 Plug 'tomasr/molokai'                 " A simple, classic colorscheme
@@ -34,7 +43,7 @@ Plug 'carlitux/deoplete-ternjs'       " Deoplete source for Tern
 Plug 'Shougo/deoplete.nvim',          " Dark powered asynchronous completion framework
     \{ 'do': ':UpdateRemotePlugins' }
 Plug 'janko-m/vim-test'               " Run your tests at the speed of thought
-Plug 'ludovicchabant/vim-gutentags'   " Manages/updates tag files
+" Plug 'ludovicchabant/vim-gutentags'   " Manages/updates tag files
 Plug 'majutsushi/tagbar'              " Navigate files by tags
 Plug 'pbogut/deoplete-elm'            " Deoplete source for Elm powered by Elm Oracle
 Plug 'w0rp/ale'                       " Asynchronous linter/fixer with LSP integration
