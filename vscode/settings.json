@@ -134,7 +134,6 @@
       ]
     }
   ],
-  "typescript.updateImportsOnFileMove.enabled": "always",
   "window.zoomLevel": 0,
   "csharpfixformat.style.braces.onSameLine": false,
   "[csharp]": {
