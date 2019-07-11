@@ -43,7 +43,7 @@ brew "openssl"
 brew "packer"
 brew "phantomjs"
 brew "postgresql", restart_service: true
-brew "qt@5.5"
+# brew "qt@5.5"
 brew "redis", restart_service: true
 brew "rename"
 brew "sqlite"

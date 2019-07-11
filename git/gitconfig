@@ -4,12 +4,15 @@
 [github]
     user = ngscheurich
 [core]
-    editor = vim
-    excludesfile = $HOME/.gitignore
+    editor = nvim
+	excludesfile = /Users/ngscheurich/.gitignore_global
 [color]
     ui = true
 [merge]
     ff = only
+    tool = nvimdiff
+    conflictstyle = diff3
+    prompt = false
 [fetch]
     prune = true
 [rebase]
@@ -17,7 +20,11 @@
 [aliases]
     stat = status
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
     required = true
     clean = git-lfs clean -- %f
+[commit]
+    gpgsign = true
+[diff]
+	submodule = log

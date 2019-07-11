@@ -35,6 +35,8 @@ alias vimconfig="$EDITOR $HOME/.vimrc"
 alias weather="curl wttr.in/Baton+Rouge"
 alias zshconfig="$EDITOR $HOME/.zshrc"
 alias zshsource="source $HOME/.zshrc"
+alias vim='nvim'
+alias vi='vim'
 
 # -------------------------------------
 # Key Bindings
@@ -75,6 +77,18 @@ bindkey '\e[3~' delete-char
 
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
+
+# -------------------------------------
+# Options
+# -------------------------------------
+#tells the shell not to store a history line if it's the same as the previous one
+setopt HIST_IGNORE_DUPS
+#preferentially removes duplicates when the history fills up, but does nothing until then
+setopt HIST_EXPIRE_DUPS_FIRST
+#means that even if duplicate lines have been saved, searches backwards with editor commands don't show them more than once.
+setopt HIST_FIND_NO_DUPS
+# Append to history file after each command
+setopt INC_APPEND_HISTORY
 
 # -------------------------------------
 # asdf
@@ -142,3 +156,10 @@ test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /Users/ngscheurich/.asdf/installs/nodejs/10.8.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/ngscheurich/.asdf/installs/nodejs/10.8.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/ngscheurich/.asdf/installs/nodejs/10.8.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/ngscheurich/.asdf/installs/nodejs/10.8.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /Users/ngscheurich/.npm/_npx/74890/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/ngscheurich/.npm/_npx/74890/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh
