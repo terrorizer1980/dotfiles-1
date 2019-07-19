@@ -222,5 +222,6 @@
       "after": ["<Esc>"],
       "commands": ["workbench.action.files.save"]
     }
-  ]
+  ],
+  "workbench.colorTheme": "Gruvbox Minor Dark Hard"
 }

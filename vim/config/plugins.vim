@@ -57,13 +57,15 @@ Plug 'neoclide/coc.nvim',
 
 "" Languages and Frameworks
 "------------------------------------------------------------------------------
-Plug 'elixir-editors/vim-elixir'    " Elixir
 Plug 'HerringtonDarkholme/yats.vim' " TypeScript
+Plug 'elixir-editors/vim-elixir'    " Elixir
+Plug 'sheerun/vim-polyglot'         " A solid language pack
 
 " Tooling
 " ------------------------------------------------------------------------------
 Plug '/usr/local/opt/fzf'           " Location of fzf binary
 Plug 'Shougo/denite.nvim'           " Generic fuzzy finder
+Plug 'diepm/vim-rest-console'       " A REST console
 Plug 'janko-m/vim-test'             " Run your tests at the speed of thought
 Plug 'junegunn/fzf.vim'             " Integrate with fzf
 Plug 'tpope/vim-dispatch'           " Perform async tasks in a tmux split

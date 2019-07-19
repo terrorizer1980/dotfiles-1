@@ -88,8 +88,13 @@ endfunction
 
 " Startify
 " ------------------------------------------------------------------------------
-let g:startify_custom_header =
-      \ map(split(system('cat ~/.config/nvim/misc/banner.txt'), '\n'), '"   ". v:val')
+if has("nvim")
+  let g:startify_custom_header =
+      \ map(split(system('cat ~/.config/vim/misc/nvim-banner.txt'), '\n'), '"   ". v:val')
+else
+  let g:startify_custom_header =
+      \ map(split(system('cat ~/.config/vim/misc/vim-banner.txt'), '\n'), '"   ". v:val')
+end
 
 " VimDevicons
 " ------------------------------------------------------------------------------
