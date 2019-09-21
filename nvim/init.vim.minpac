@@ -12,46 +12,55 @@ scriptencoding utf-8
 " Author: N. G. Scheurich <nick@scheurich.me>
 " Repo: https://github.com/ngscheurich/dotfiles
 
-" ------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------
 " Packages
-" ------------------------------------------------------------------------------
-call plug#begin('~/.local/share/nvim/plugged')
+" --------------------------------------------------------------------------------------------------
+packadd minpac
 
-Plug '/usr/local/opt/fzf'
-Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-Plug 'Shougo/echodoc.vim'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'Shougo/neosnippet.vim'
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
-Plug 'challenger-deep-theme/vim', {'name': 'challenger-deep'}
-Plug 'dense-analysis/ale'
-Plug 'edkolev/tmuxline.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'junegunn/fzf.vim'
-Plug 'lifepillar/vim-solarized8'
-Plug 'liuchengxu/vista.vim'
-Plug 'ncm2/float-preview.nvim'
-Plug 'scrooloose/nerdtree'
-Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-rsi'
-Plug 'tpope/vim-scriptease'
-Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'
+if !exists('*minpac#init')
+  " no minpac; display a helpful message
+else
+  call minpac#init()
+  call minpac#add('Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'})
+  call minpac#add('Shougo/echodoc.vim')
+  call minpac#add('Shougo/neosnippet-snippets')
+  call minpac#add('Shougo/neosnippet.vim')
+  call minpac#add('autozimu/LanguageClient-neovim', {'branch': 'next', 'do': {-> system('bash install.sh')}})
+  call minpac#add('challenger-deep-theme/vim', {'name': 'challenger-deep'})
+  call minpac#add('dense-analysis/ale')
+  call minpac#add('edkolev/tmuxline.vim')
+  call minpac#add('itchyny/lightline.vim')
+  call minpac#add('junegunn/fzf.vim')
+  call minpac#add('k-takata/minpac', {'type': 'opt'})
+  call minpac#add('lifepillar/vim-solarized8')
+  call minpac#add('liuchengxu/vista.vim')
+  call minpac#add('ncm2/float-preview.nvim')
+  call minpac#add('scrooloose/nerdtree')
+  call minpac#add('sheerun/vim-polyglot')
+  call minpac#add('tpope/vim-abolish')
+  call minpac#add('tpope/vim-commentary')
+  call minpac#add('tpope/vim-eunuch')
+  call minpac#add('tpope/vim-fugitive')
+  call minpac#add('tpope/vim-obsession')
+  call minpac#add('tpope/vim-repeat')
+  call minpac#add('tpope/vim-rsi')
+  call minpac#add('tpope/vim-scriptease')
+  call minpac#add('tpope/vim-speeddating')
+  call minpac#add('tpope/vim-surround')
+  call minpac#add('tpope/vim-unimpaired')
+  call minpac#add('tpope/vim-vinegar')
+end
 
-call plug#end()
+command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update()
+command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
+command! PackStatus packadd minpac | source $MYVIMRC | call minpac#status()
 
-" ------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------
 "  General Configuration
-" ------------------------------------------------------------------------------
-set background=dark   " Set background (light/dark)
+" --------------------------------------------------------------------------------------------------
+set completeopt=noinsert,menuone,noselect
+
+set background=light  " Set background (light/dark)
 set cursorline        " Highlight current line
 set expandtab         " Insert proper amount of spaces when inserting a <Tab>
 set fillchars+=vert:│ " Customize split borders
@@ -80,12 +89,11 @@ set termguicolors     " Use 24-bit color
 set undofile          " Persist undo history between sessions
 set updatetime=300    " Improve coc.nvim diagnostics?
 
-" set completeopt=noinsert,menuone,noselect
-
-colorscheme challenger_deep
-highlight SignColumn guibg=#0F0F22
-highlight StatusLine guibg=NONE
-highlight StatusLineNC guibg=NONE
+colorscheme solarized8_flat
+" colorscheme challenger_deep
+" highlight SignColumn guibg=#0F0F22
+" highlight StatusLine guibg=NONE
+" highlight StatusLineNC guibg=NONE
 
 let mapleader=","
 
@@ -97,11 +105,10 @@ nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>/ :Rg<CR>
 nnoremap <Esc> :nohlsearch<CR>
-nnoremap <Leader>\ :NERDTreeToggle<CR>
 
-" ------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------
 "  Package Configuration
-" ------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------
 "  ALE
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
@@ -142,9 +149,9 @@ let g:tmuxline_powerline_separators = 0
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-" ------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------
 " FZF
-" ------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzf_colors = {
       \ 'fg':      ['fg', 'Normal'],
@@ -162,11 +169,11 @@ let g:fzf_colors = {
       \ 'header':  ['fg', 'Comment'],
       \ }
 
-" ------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------
 " Lightline
-" ------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------
 let g:lightline = {
-      \ 'colorscheme': 'challenger_deep',
+      \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [[ 'mode', 'paste' ], [ 'git', 'readonly'], ['filename', 'modified' ]],
       \   'right': [['lineinfo'], ['percent'], ['method', 'obsession', 'filetype', 'fileinfo']]
@@ -202,3 +209,28 @@ endfunction
 function! NearestMethodOrFunction() abort
   return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
+
+" --------------------------------------------------------------------------------------------------
+"  Patch Runtimepath
+" --------------------------------------------------------------------------------------------------
+function! s:BuildRuntimepath(paths)
+  let list = split(&rtp, ",")
+  let i = 0
+
+  for p in list
+    if p =~? '.*/after$'
+      break
+    end
+    let i = i + 1
+  endfor
+  let rtp = ""
+  let rtp .= list[0] . ","
+  let rtp .= join(a:paths, ",") . ","
+  let rtp .= join(list[1:i-1], ",") . ","
+  let rtp .= join(list[i:len(list)-i], ",") . ","
+  let rtp .= list[-1]
+
+  return rtp
+endfunction
+
+let &rtp = s:BuildRuntimepath(["/usr/local/opt/fzf"])

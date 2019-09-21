@@ -14,7 +14,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin('~/.local/share/vim/plugged')
 
 " Defaults
 " ------------------------------------------------------------------------------
@@ -25,11 +25,15 @@ Plug 'tpope/vim-sensible'           " Defaults everyone can agree on
 Plug 'edkolev/tmuxline.vim'         " Simple tmux statusline generator
 Plug 'fatih/molokai'                " A simple, classic color scheme
 Plug 'itchyny/lightline.vim'        " A light and configurable statusline/tabline
+Plug 'mhartington/oceanic-next'     " Port of Oceanic Next by Dmitri Voronianski
 Plug 'mhinz/vim-startify'           " The fancy start screen for Vim
 Plug 'morhetz/gruvbox'              " Retro groove color scheme
-Plug 'rakr/vim-two-firewatch'       " A duotone colorscheme
+Plug 'rakr/vim-one'                 " TODO
+Plug 'rakr/vim-togglebg'            " Toggle background between light and dark
+Plug 'rakr/vim-two-firewatch'       " Calm, duotone colorscheme with vibrant accents
 Plug 'ryanoasis/vim-devicons'       " Adds file type glyphs/icons
 Plug 'scrooloose/nerdtree'          " File system explorer
+Plug 'srcery-colors/srcery-vim'     " Color scheme with clearly defined contrasting colors and a slightly earthy tone
 
 " Editing
 " ------------------------------------------------------------------------------
@@ -53,12 +57,13 @@ Plug 'airblade/vim-gitgutter'       " Shows a Git diff in the gutter and stages/
 " Intellisense
 " ------------------------------------------------------------------------------
 Plug 'neoclide/coc.nvim',
-            \ {'branch': 'release'} " Intellisense engine with full LSP support
+      \ {'branch': 'release'}       " Intellisense engine with full LSP support
 
 "" Languages and Frameworks
 "------------------------------------------------------------------------------
 Plug 'HerringtonDarkholme/yats.vim' " TypeScript
 Plug 'elixir-editors/vim-elixir'    " Elixir
+Plug 'jparise/vim-graphql'          " GraphQL
 Plug 'sheerun/vim-polyglot'         " A solid language pack
 
 " Tooling
@@ -71,5 +76,13 @@ Plug 'junegunn/fzf.vim'             " Integrate with fzf
 Plug 'tpope/vim-dispatch'           " Perform async tasks in a tmux split
 Plug 'tpope/vim-eunuch'             " Sugar for the UNIX shell commands that need it the most
 Plug 'tpope/vim-vinegar'            " Navigate up a directory in netrw
+Plug 'diepm/vim-rest-console'
+
+"""""
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'vim-airline/vim-airline'
+"""""
+
 
 call plug#end()

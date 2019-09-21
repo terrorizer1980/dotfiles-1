@@ -1,13 +1,12 @@
-# This file is sourced by interactive shells.
-# It should define aliases, functions, shell options, and key bindings.
+# This file is sourced by interactive shells. It should define aliases,
+# functions, shell options, and key bindings.
 #
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#   Nicholas Scheurich <nick@scheurich.me>
+# Author: N. G. Scheurich <nick@scheurich.me>
+# Repo: https://github.com/ngscheurich/dotfiles
 
-# -------------------------------------
+# ------------------------------------------------------------------------------
 # Prezto!
-# -------------------------------------
+# ------------------------------------------------------------------------------
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
@@ -15,13 +14,13 @@ fi
 autoload -Uz promptinit
 promptinit
 
-# -------------------------------------
+export SPACESHIP_CHAR_SYMBOL="-> "
+
+# ------------------------------------------------------------------------------
 # Aliases
-# -------------------------------------
-alias aseprite="/Applications/Aseprite.app/Contents/MacOS/aseprite"
+# ------------------------------------------------------------------------------
 alias bx="bundle exec"
 alias curlh="curl -s -D - -o /dev/null"
-alias dokku='bash $HOME/.dokku/contrib/dokku_client.sh'
 alias emacsclient="/usr/local/Cellar/emacs-mac/HEAD-7403929/bin/emacsclient"
 alias giga="gigalixir"
 alias git="hub"
@@ -32,15 +31,16 @@ alias rm="trash"
 alias sctl="sudo systemctl "
 alias vboxls="VBoxManage list runningvms"
 alias vimconfig="$EDITOR $HOME/.vimrc"
+alias vimdiff="nvim -d"
 alias weather="curl wttr.in/Baton+Rouge"
 alias zshconfig="$EDITOR $HOME/.zshrc"
 alias zshsource="source $HOME/.zshrc"
 alias vim='nvim'
 alias vi='vim'
 
-# -------------------------------------
+# ------------------------------------------------------------------------------
 # Key Bindings
-# -------------------------------------
+# ------------------------------------------------------------------------------
 # Based on:
 # https://github.com/JeanMertz/omz-to-prezto/blob/omz-to-prezto/zsh/key-bindings.zsh
 bindkey -v                                          # Use vi key bindings
@@ -78,9 +78,9 @@ bindkey '\e[3~' delete-char
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
 
-# -------------------------------------
+# ------------------------------------------------------------------------------
 # Options
-# -------------------------------------
+# ------------------------------------------------------------------------------
 #tells the shell not to store a history line if it's the same as the previous one
 setopt HIST_IGNORE_DUPS
 #preferentially removes duplicates when the history fills up, but does nothing until then
@@ -90,28 +90,28 @@ setopt HIST_FIND_NO_DUPS
 # Append to history file after each command
 setopt INC_APPEND_HISTORY
 
-# -------------------------------------
+# ------------------------------------------------------------------------------
 # asdf
-# -------------------------------------
+# ------------------------------------------------------------------------------
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
-# -------------------------------------
+# ------------------------------------------------------------------------------
 # fzf
-# -------------------------------------
+# ------------------------------------------------------------------------------
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# -------------------------------------
+# ------------------------------------------------------------------------------
 # direnv
-# -------------------------------------
+# ------------------------------------------------------------------------------
 eval "$(direnv hook zsh)"
 
-# -------------------------------------
+# ------------------------------------------------------------------------------
 # thefuck
-# -------------------------------------
+# ------------------------------------------------------------------------------
 eval $(thefuck --alias)
 
-# -------------------------------------
+# ------------------------------------------------------------------------------
 # fasd
 # -------------------------------------
 eval "$(fasd --init auto)"
@@ -148,7 +148,7 @@ _yargs_completions()
 complete -F _yargs_completions graphql
 ###-end-graphql-completions-###export PATH="/usr/local/opt/openssl/bin:$PATH"
 
-test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
+# test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`

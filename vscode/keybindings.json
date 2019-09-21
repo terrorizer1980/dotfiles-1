@@ -10,7 +10,17 @@
     "when": "!terminalFocus"
   },
   {
+    "key": "cmd+shift+j",
+    "command": "workbench.action.togglePanelPosition"
+  },
+  {
     "key": "ctrl+\\",
-    "command": "editor.action.toggleMinimap"
-  }
+    "command": "editor.action.toggleMinimap",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+/",
+    "command": "workbench.action.terminal.splitInActiveWorkspace",
+    "when": "terminalFocus"
+  },
 ]

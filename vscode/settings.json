@@ -1,26 +1,26 @@
 {
   // =======================================================
-  // General settings
+  // ~ General settings
   // -------------------------------------------------------
   "breadcrumbs.enabled": false,
   "code-runner.showRunIconInEditorTitleMenu": false,
-  "csharp.format.enable": false,
-  "csharp.referencesCodeLens.enabled": false,
+  "csharp.format.enable": true,
+  "csharp.referencesCodeLens.enabled": true,
   "css.validate": false,
+  "editor.acceptSuggestionOnEnter": "smart",
   "editor.cursorBlinking": "phase",
-  "editor.fontFamily": "Fira Code",
+  "editor.fontFamily": "Hack",
   "editor.fontLigatures": true,
-  "editor.fontSize": 13,
   "editor.formatOnSave": true,
-  "editor.lineHeight": 20,
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
   "editor.minimap.renderCharacters": false,
   "editor.renderIndentGuides": false,
   "editor.renderWhitespace": "none",
-  "editor.rulers": [],
   "editor.tabSize": 2,
+  "editor.tabCompletion": "off",
   "elixirLS.fetchDeps": false,
+  "editor.codeLens": true,
   "elixirLS.suggestSpecs": false,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
@@ -31,7 +31,7 @@
   "gitlens.blame.toggleMode": "window",
   "gitlens.codeLens.enabled": false,
   "gitlens.currentLine.enabled": false,
-  "gitlens.hovers.enabled": false,
+  "gitlens.hovers.enabled": true,
   "javascript.format.enable": false,
   "javascript.suggestionActions.enabled": false,
   "ruby.format": "rubocop",
@@ -39,6 +39,7 @@
   "search.location": "sidebar",
   "terminal.external.osxExec": "iTerm.app",
   "terminal.integrated.fontSize": 13,
+  "terminal.integrated.macOptionClickForcesSelection": true,
   "terminal.integrated.shell.osx": "/bin/zsh",
   "window.zoomLevel": 0,
   "workbench.activityBar.visible": true,
@@ -46,13 +47,11 @@
   "workbench.list.keyboardNavigation": "filter",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "none",
-  "workbench.statusBar.feedback.visible": false,
-
   // =======================================================
-  // File associations
+  // ~ File associations
   // -------------------------------------------------------
   "files.associations": {
-    "*.eex": "HTML (EEx)",
+    "*.eex": "html",
     "gitignore": "gitignore",
     "pryrc": "ruby",
     "spacemacs": "lisp",
@@ -64,23 +63,44 @@
     "zshenv": "shellscript",
     "zshrc": "shellscript"
   },
-
   // =======================================================
-  // Color customizations
+  // ~ Color customizations
   // -------------------------------------------------------
   "workbench.colorCustomizations": {
     "[Default Dark+]": {
-      "statusBar.background": "#222"
+      "statusBar.background": "#252525",
+      "editorIndentGuide.activeBackground": "#444",
+      "editorIndentGuide.background": "#303030"
     },
-    "[Default Light+]": {
-      "statusBar.background": "#F3F3F3",
-      "statusBar.foreground": "#444"
+    "[Solarized Light+]": {
+      "terminal.ansiWhite": "#aa9c6f"
+    },
+    "[Gruvbox Dark Hard]": {
+      "titleBar.border": "#32302f",
+      "statusBar.border": "#32302f",
+      "sideBar.background": "#282828",
+      "editorWidget.background": "#282828",
+      "editor.selectionHighlightBackground": "#689d6a33"
+      // "titleBar.activeBackground": "#282828",
+      // "activityBar.border": "#282828",
+      // "activityBar.background": "#282828",
+      // "statusBar.background": "#32302f",
+    },
+    "[Gruvbox Light Medium]": {
+      "titleBar.border": "#EBDBB2"
     }
   },
-
   "editor.tokenColorCustomizations": {
     "[Default Dark+]": {
       "textMateRules": [
+        {
+          "scope": [
+            "comment"
+          ],
+          "settings": {
+            "foreground": "#808080"
+          }
+        },
         {
           "scope": [
             "keyword.operator.assignment.elixir",
@@ -116,16 +136,11 @@
           }
         }
       ]
-    },
-    "[dark-plus-syntax]": {
-      "comments": "#777"
     }
   },
-
   // =======================================================
-  // Vim settings
+  // ~ VsVim settings
   // -------------------------------------------------------
-  "vim.camelCaseMotion.enable": true,
   "vim.debug.silent": true,
   "vim.easymotion": true,
   "vim.easymotionMarkerFontFamily": "Monoid",
@@ -137,35 +152,59 @@
   "vim.neovimPath": "/usr/local/bin/nvim",
   "vim.showmodename": true,
   "vim.sneak": true,
-
   // Normal mode keybindings
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["<leader>", "/"],
-      "commands": ["workbench.action.toggleSidebarVisibility"]
+      "before": [
+        "<leader>",
+        "f"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
     },
     {
-      "before": ["<leader>", "f"],
-      "commands": ["workbench.action.quickOpen"]
+      "before": [
+        "[",
+        "<Space>"
+      ],
+      "commands": [
+        "editor.action.insertLineBefore"
+      ]
     },
     {
-      "before": ["[", "<Space>"],
-      "commands": ["editor.action.insertLineBefore"]
+      "before": [
+        "]",
+        "<Space>"
+      ],
+      "commands": [
+        "editor.action.insertLineAfter"
+      ]
     },
     {
-      "before": ["]", "<Space>"],
-      "commands": ["editor.action.insertLineAfter"]
+      "before": [
+        "[",
+        "e"
+      ],
+      "commands": [
+        "editor.action.moveLinesUpAction"
+      ]
     },
     {
-      "before": ["[", "e"],
-      "commands": ["editor.action.moveLinesUpAction"]
+      "before": [
+        "]",
+        "e"
+      ],
+      "commands": [
+        "editor.action.moveLinesDownAction"
+      ]
     },
     {
-      "before": ["]", "e"],
-      "commands": ["editor.action.moveLinesDownAction"]
-    },
-    {
-      "before": ["<leader>", "t", "f"],
+      "before": [
+        "<leader>",
+        "t",
+        "f"
+      ],
       "commands": [
         {
           "command": "workbench.action.tasks.runTask",
@@ -174,7 +213,11 @@
       ]
     },
     {
-      "before": ["<leader>", "t", "n"],
+      "before": [
+        "<leader>",
+        "t",
+        "n"
+      ],
       "commands": [
         {
           "command": "workbench.action.tasks.runTask",
@@ -183,7 +226,11 @@
       ]
     },
     {
-      "before": ["<leader>", "d", "n"],
+      "before": [
+        "<leader>",
+        "d",
+        "n"
+      ],
       "commands": [
         {
           "command": "workbench.action.tasks.runTask",
@@ -192,7 +239,11 @@
       ]
     },
     {
-      "before": ["<leader>", "t", "l"],
+      "before": [
+        "<leader>",
+        "t",
+        "l"
+      ],
       "commands": [
         {
           "command": "workbench.action.tasks.runTask",
@@ -201,7 +252,11 @@
       ]
     },
     {
-      "before": ["<leader>", "d", "l"],
+      "before": [
+        "<leader>",
+        "d",
+        "l"
+      ],
       "commands": [
         {
           "command": "workbench.action.tasks.runTask",
@@ -210,18 +265,24 @@
       ]
     }
   ],
-
   // Insert mode keybindings
   "vim.insertModeKeyBindings": [
     {
-      "before": ["j", "j"],
-      "after": ["<Esc>"]
-    },
-    {
-      "before": ["j", "w"],
-      "after": ["<Esc>"],
-      "commands": ["workbench.action.files.save"]
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
     }
   ],
-  "workbench.colorTheme": "Gruvbox Minor Dark Hard"
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "diffEditor.ignoreTrimWhitespace": true,
+  "editor.fontSize": 13,
+  "workbench.statusBar.visible": true,
+  "debug.console.fontSize": 13,
+  "workbench.colorTheme": "Solarized Light+"
 }

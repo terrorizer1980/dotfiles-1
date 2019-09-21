@@ -29,7 +29,7 @@ set noswapfile                         " Don't create a swapfile for a new buffe
 set background=dark                    " Use light-on-dark colors
 set termguicolors                      " Use 24-bit color
 syntax enable                          " Enable syntax processing
-colorscheme gruvbox                    " Set the colorscheme
+colorscheme two-firewatch              " Set the colorscheme
 
 " Line numbers
 " ------------------------------------------------------------------------------

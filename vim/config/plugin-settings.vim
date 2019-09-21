@@ -10,7 +10,7 @@ scriptencoding utf-8
 " lightline.vim
 " ------------------------------------------------------------------------------
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'twofirewatch',
       \ }
 
 let g:lightline.active = {
@@ -110,6 +110,7 @@ let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*\.log$'] = ''
 " ------------------------------------------------------------------------------
 let NERDTreeMinimalUI = 1
 let NERDTreeShowHidden = 1
+let NERDTreeWinPos = 'left'
 
 " fzf
 " ------------------------------------------------------------------------------
@@ -141,6 +142,64 @@ let g:coc_status_warning_sign = ' '
 
 " gruvbox
 " ------------------------------------------------------------------------------
-let g:gruvbox_contrast_dark = "hard"
+let g:gruvbox_contrast_dark = "medium"
 let g:gruvbox_italicize_strings = 1
 let g:gruvbox_italic = 1
+
+" Goyo
+" ------------------------------------------------------------------------------
+function! s:goyo_enter()
+  if exists('$TMUX')
+    silent !tmux set status off
+  endif
+  set linebreak
+  nnoremap <buffer> j gj
+  nnoremap <buffer> k gk
+  nnoremap <buffer> ^ g<Home>
+  nnoremap <buffer> $ g<End>
+  vnoremap <buffer> j gj
+  vnoremap <buffer> k gk
+  inoremap <buffer> <Down> <C-o>gj
+  inoremap <buffer> <Up> <C-o>gk
+  Limelight
+endfunction
+
+function! s:goyo_leave()
+  if exists('$TMUX')
+    silent !tmux set status on
+  endif
+  set nolinebreak
+  nunmap <buffer> j
+  nunmap <buffer> k
+  nunmap <buffer> ^
+  nunmap <buffer> $
+  vunmap <buffer> j
+  vunmap <buffer> k
+  iunmap <buffer> <Down>
+  iunmap <buffer> <Up>
+  Limelight!
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+" Airline
+" ------------------------------------------------------------------------------
+let g:airline_theme = 'twofirewatch'
+
+" Oceanic Next
+" ------------------------------------------------------------------------------
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+
+" Two Firewatch
+" ------------------------------------------------------------------------------
+let g:two_firewatch_italics=1
+
+" One
+" ------------------------------------------------------------------------------
+let g:one_allow_italics = 1
+
+" Srcery
+" ------------------------------------------------------------------------------
+let g:srcery_italic = 1
