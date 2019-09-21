@@ -22,19 +22,23 @@ Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'Shougo/echodoc.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/neosnippet.vim'
+Plug 'alvan/vim-closetag'
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'challenger-deep-theme/vim', {'name': 'challenger-deep'}
 Plug 'dense-analysis/ale'
 Plug 'edkolev/tmuxline.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'liuchengxu/vista.vim'
+Plug 'mattn/emmet-vim'
 Plug 'ncm2/float-preview.nvim'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
@@ -51,7 +55,6 @@ call plug#end()
 " ------------------------------------------------------------------------------
 "  General Configuration
 " ------------------------------------------------------------------------------
-set background=dark   " Set background (light/dark)
 set cursorline        " Highlight current line
 set expandtab         " Insert proper amount of spaces when inserting a <Tab>
 set fillchars+=vert:│ " Customize split borders
@@ -82,11 +85,6 @@ set updatetime=300    " Improve coc.nvim diagnostics?
 
 " set completeopt=noinsert,menuone,noselect
 
-colorscheme challenger_deep
-highlight SignColumn guibg=#0F0F22
-highlight StatusLine guibg=NONE
-highlight StatusLineNC guibg=NONE
-
 let mapleader=","
 
 nnoremap <Right> <C-w>l
@@ -98,6 +96,41 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>/ :Rg<CR>
 nnoremap <Esc> :nohlsearch<CR>
 nnoremap <Leader>\ :NERDTreeToggle<CR>
+
+function! ToggleColorscheme()
+  if &background ==# 'dark'
+    call LightMode()
+  else
+    call DarkMode()
+  endif
+endfunction
+
+command! ToggleColorscheme call ToggleColorscheme()
+
+function! DarkMode()
+  set background=dark
+  colorscheme challenger_deep
+  let g:lightline.colorscheme = "challenger_deep"
+  highlight LineNr guibg=#1D1D30
+  highlight SignColumn guibg=#1D1D30
+  highlight StatusLine guibg=NONE
+  highlight StatusLineNC guibg=NONE
+  call LightlineRefresh()
+  echo "Good night"
+endfunction
+
+function! LightMode()
+  set background=light
+  colorscheme solarized8_flat
+  let g:lightline.colorscheme = "solarized"
+  call LightlineRefresh()
+  echo "Good morning"
+endfunction
+
+function LightlineRefresh()
+  call lightline#init()
+  call lightline#colorscheme()
+endfunction
 
 " ------------------------------------------------------------------------------
 "  Package Configuration
@@ -116,7 +149,6 @@ let g:ale_fixers = {
 
 "  Deoplete
 let g:deoplete#enable_at_startup = 1
-" call g:deoplete#enable_logging('DEBUG', '/tmp/deoplete.log')
 
 " Echodoc
 let g:echodoc#enable_at_startup = 1
@@ -139,12 +171,7 @@ nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
 " tmuxline
 let g:tmuxline_powerline_separators = 0
 
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-
-" ------------------------------------------------------------------------------
 " FZF
-" ------------------------------------------------------------------------------
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzf_colors = {
       \ 'fg':      ['fg', 'Normal'],
@@ -162,9 +189,10 @@ let g:fzf_colors = {
       \ 'header':  ['fg', 'Comment'],
       \ }
 
-" ------------------------------------------------------------------------------
+command! -bang -nargs=? -complete=dir Files
+      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
 " Lightline
-" ------------------------------------------------------------------------------
 let g:lightline = {
       \ 'colorscheme': 'challenger_deep',
       \ 'active': {
@@ -175,15 +203,15 @@ let g:lightline = {
       \   'fileencoding': '%{&fenc!=#""?&fenc:&enc}',
       \   'fileformat': '%{&ff}',
       \   'fileinfo': '%{&ff}[%{&fenc!=#""?&fenc:&enc}]',
-		  \   'filename': '%t',
+      \   'filename': '%t',
       \   'filetype': '%{&ft!=#""?&ft:"no ft"}',
       \   'lineinfo': '%3l:%-2v ',
-		  \   'mode': '%{lightline#mode()}',
-		  \   'modified': '[%M]',
+      \   'mode': '%{lightline#mode()}',
+      \   'modified': '[%M]',
       \   'obsession': '%{ObsessionStatus()}',
-		  \   'paste': '%{&paste?"PASTE":""}',
+      \   'paste': '%{&paste?"PASTE":""}',
       \   'percent': '%3p%% ☰ ',
-		  \   'readonly': '%R',
+      \   'readonly': '%R',
       \ },
       \ 'component_function': {
       \   'git': 'LightlineGit',
@@ -199,6 +227,16 @@ function! LightlineGit()
   return " " . fugitive#Head()
 endfunction
 
+" Vista
 function! NearestMethodOrFunction() abort
   return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
+
+" autopairs
+let g:closetag_filetypes = 'html,eelixir'
+
+" emmet
+let g:user_emmet_install_global = 0
+autocmd FileType html,eelixir EmmetInstall
+
+silent call DarkMode()
