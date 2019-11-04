@@ -17,24 +17,19 @@ scriptencoding utf-8
 " ------------------------------------------------------------------------------
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Plug 'jiangmiao/auto-pairs'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 Plug '/usr/local/opt/fzf'
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'alvan/vim-closetag'
 Plug 'chriskempson/base16-vim'
 Plug 'dense-analysis/ale'
 Plug 'edkolev/tmuxline.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'lifepillar/vim-solarized8'
-Plug 'liuchengxu/vim-clap'
 Plug 'mattn/emmet-vim'
 Plug 'maximbaz/lightline-ale'
 Plug 'mike-hearn/base16-vim-lightline'
-Plug 'rakr/vim-two-firewatch'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
@@ -55,34 +50,21 @@ Plug 'tpope/vim-vinegar'
 Plug 'vimwiki/vimwiki'
 
 " Language Server Protocol client
-echo "LSP client: LanguageClient-neovim"
-Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-Plug 'Shougo/echodoc.vim'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'Shougo/neosnippet.vim'
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+echo "LSP client: vim-lsc"
+Plug 'natebosch/vim-lsc'
 
 call plug#end()
 
 " ------------------------------------------------------------------------------
 " LSP Client Config
 " ------------------------------------------------------------------------------
-let g:deoplete#enable_at_startup = 1
-let g:echodoc#enable_at_startup  = 1
-
-let g:LanguageClient_serverCommands = {
-      \ 'elixir':         ['els'],
-      \ 'typescript':     ['typescript-language-server', '--stdio'],
+set shortmess-=F
+let g:lsc_auto_map = v:true
+let g:lsc_server_commands = {
+      \ 'elixir': ['els'],
+      \ 'typescript': ['typescript-language-server', '--stdio'],
       \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
       \ }
-
-let s:elixir_ls_bin = '/usr/local/bin/elixir_ls'
-let g:LanguageClient_useVirtualText = 1
-
-augroup vimrc
-  autocmd!
-  autocmd BufWritePre *.ex,*.exs :call LanguageClient#textDocument_formatting_sync()
-augroup end
 
 " ------------------------------------------------------------------------------
 "  General Configuration
@@ -119,16 +101,6 @@ set completeopt=menuone
 
 let mapleader=","
 
-nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-nnoremap <leader>lp :call LanguageClient#textDocument_peekDefinition()<CR>
-nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> <leader>ls :call LanguageClient#textDocument_signatureHelp()<CR>
-nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
-nnoremap <C-]> :call LanguageClient#textDocument_definition()<CR>
-nnoremap K :call LanguageClient#textDocument_hover()<CR>
-
 nnoremap <Right> <C-w>l
 nnoremap <Left> <C-w>h
 nnoremap <Up> <C-w>k
@@ -152,7 +124,6 @@ function! DarkMode()
   colorscheme base16-tomorrow-night
   let g:lightline.colorscheme = 'base16_tomorrow_night'
   execute 'silent !termcolors dark'
-  execute 'silent !tmux source ~/.tmuxline.tomorrow_night'
   echo 'Good night'
 endfunction
 
@@ -166,7 +137,7 @@ function! LightMode()
   echo 'Good morning'
 endfunction
 
-function LightlineRefresh()
+function! LightlineRefresh()
   call lightline#init()
   call lightline#colorscheme()
 endfunction
@@ -190,6 +161,38 @@ let g:ale_fixers = {
       \ 'javascript': ['prettier'],
       \ 'typescript': ['prettier'],
       \ }
+
+"  Deoplete
+let g:deoplete#enable_at_startup = 1
+
+" Neosnippet
+" let g:neosnippet#enable_completed_snippet = 1
+
+" Echodoc
+let g:echodoc#enable_at_startup = 1
+
+" LanguageClient-neovim
+let g:LanguageClient_serverCommands = {
+      \ 'elixir': ['elixir_ls'],
+      \ 'typescript': ['typescript-language-server', '--stdio'],
+      \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
+      \ }
+let s:elixir_ls_bin = '/usr/local/bin/elixir_ls'
+let g:LanguageClient_useVirtualText = 1
+
+augroup vimrc
+  autocmd!
+  autocmd BufWritePre *.ex,*.exs :call LanguageClient#textDocument_formatting_sync()
+augroup end
+
+nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+nnoremap gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
+nnoremap gh :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> <leader>ls :call LanguageClient#textDocument_signatureHelp()<CR>
+nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
 
 " tmuxline
 let g:tmuxline_powerline_separators = 0
@@ -274,6 +277,11 @@ endfunction
 
 function! LightlineFileformat()
   return &fileformat. ' ' . WebDevIconsGetFileFormatSymbol()
+endfunction
+
+" Vista
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 
 " autopairs

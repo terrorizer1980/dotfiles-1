@@ -17,31 +17,26 @@ scriptencoding utf-8
 " ------------------------------------------------------------------------------
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Plug 'jiangmiao/auto-pairs'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 Plug '/usr/local/opt/fzf'
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'alvan/vim-closetag'
 Plug 'chriskempson/base16-vim'
 Plug 'dense-analysis/ale'
 Plug 'edkolev/tmuxline.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'lifepillar/vim-solarized8'
-Plug 'liuchengxu/vim-clap'
 Plug 'mattn/emmet-vim'
 Plug 'maximbaz/lightline-ale'
 Plug 'mike-hearn/base16-vim-lightline'
-Plug 'rakr/vim-two-firewatch'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'srcery-colors/srcery-vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-endwise'
+" Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
@@ -55,33 +50,67 @@ Plug 'tpope/vim-vinegar'
 Plug 'vimwiki/vimwiki'
 
 " Language Server Protocol client
-echo "LSP client: LanguageClient-neovim"
-Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+echo "LSP client: vim-lsp"
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete-buffer.vim'
 Plug 'Shougo/echodoc.vim'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'Shougo/neosnippet.vim'
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 
 call plug#end()
 
 " ------------------------------------------------------------------------------
 " LSP Client Config
 " ------------------------------------------------------------------------------
-let g:deoplete#enable_at_startup = 1
-let g:echodoc#enable_at_startup  = 1
+if executable('els')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'els',
+        \ 'cmd': {server_info->['els']},
+        \ 'whitelist': ['elixir', 'eelixir'],
+        \ })
+endif
 
-let g:LanguageClient_serverCommands = {
-      \ 'elixir':         ['els'],
-      \ 'typescript':     ['typescript-language-server', '--stdio'],
-      \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
-      \ }
+if executable('typescript-language-server')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'typescript-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+        \ 'whitelist': ['typescript', 'typescript.tsx'],
+        \ })
+endif
 
-let s:elixir_ls_bin = '/usr/local/bin/elixir_ls'
-let g:LanguageClient_useVirtualText = 1
+let mapleader=","
+
+nnoremap <silent> <C-]> :LspDefinition<CR>
+nnoremap <silent> gd :LspPeekDefinition<CR>
+nnoremap <silent> <leader>lp :LspPeekDefinition<CR>
+nnoremap <silent> K :LspHover<CR>
+nnoremap <silent> ]g :LspNextError<CR>
+nnoremap <silent> [g :LspPreviousError<CR>
+nnoremap <silent> ]r :LspNextReference<CR>
+nnoremap <silent> [r :LspPreviousReference<CR>
+nnoremap <silent> <leader>lr :LspReferences<CR>
+nnoremap <silent> <leader>ln :LspRename<CR>
+nnoremap <silent> <leader>ld :LspDocumentDiagnostics<CR>
+nnoremap <silent> <leader>ls :LspDocumentSymbol<CR>
+
+call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+    \ 'name': 'buffer',
+    \ 'whitelist': ['*'],
+    \ 'completor': function('asyncomplete#sources#buffer#completor'),
+    \ }))
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <CR>    pumvisible() ? "\<C-y>" : "\<CR>"
+imap <c-space> <Plug>(asyncomplete_force_refresh)
+
+let g:echodoc#enable_at_startup = 1
 
 augroup vimrc
   autocmd!
-  autocmd BufWritePre *.ex,*.exs :call LanguageClient#textDocument_formatting_sync()
+  autocmd BufWritePre *.ex,*.exs :LspDocumentFormat
 augroup end
 
 " ------------------------------------------------------------------------------
@@ -117,18 +146,6 @@ set updatetime=300    " Improve coc.nvim diagnostics?
 
 set completeopt=menuone
 
-let mapleader=","
-
-nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-nnoremap <leader>lp :call LanguageClient#textDocument_peekDefinition()<CR>
-nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> <leader>ls :call LanguageClient#textDocument_signatureHelp()<CR>
-nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
-nnoremap <C-]> :call LanguageClient#textDocument_definition()<CR>
-nnoremap K :call LanguageClient#textDocument_hover()<CR>
-
 nnoremap <Right> <C-w>l
 nnoremap <Left> <C-w>h
 nnoremap <Up> <C-w>k
@@ -152,7 +169,6 @@ function! DarkMode()
   colorscheme base16-tomorrow-night
   let g:lightline.colorscheme = 'base16_tomorrow_night'
   execute 'silent !termcolors dark'
-  execute 'silent !tmux source ~/.tmuxline.tomorrow_night'
   echo 'Good night'
 endfunction
 
@@ -166,7 +182,7 @@ function! LightMode()
   echo 'Good morning'
 endfunction
 
-function LightlineRefresh()
+function! LightlineRefresh()
   call lightline#init()
   call lightline#colorscheme()
 endfunction
@@ -274,6 +290,11 @@ endfunction
 
 function! LightlineFileformat()
   return &fileformat. ' ' . WebDevIconsGetFileFormatSymbol()
+endfunction
+
+" Vista
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 
 " autopairs

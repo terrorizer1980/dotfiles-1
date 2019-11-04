@@ -12,28 +12,22 @@ scriptencoding utf-8
 " Author: N. G. Scheurich <nick@scheurich.me>
 " Repo: https://github.com/ngscheurich/dotfiles
 
-" ------------------------------------------------------------------------------
-" Packages
-" ------------------------------------------------------------------------------
+echo "LSP client: Coc"
+
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Plug 'jiangmiao/auto-pairs'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 Plug '/usr/local/opt/fzf'
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'alvan/vim-closetag'
 Plug 'chriskempson/base16-vim'
 Plug 'dense-analysis/ale'
+Plug 'dunstontc/vim-vscode-theme'
 Plug 'edkolev/tmuxline.vim'
-Plug 'itchyny/lightline.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'liuchengxu/vim-clap'
+Plug 'liuchengxu/vista.vim'
 Plug 'mattn/emmet-vim'
-Plug 'maximbaz/lightline-ale'
-Plug 'mike-hearn/base16-vim-lightline'
 Plug 'rakr/vim-two-firewatch'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
@@ -41,7 +35,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'srcery-colors/srcery-vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
@@ -54,35 +47,13 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vimwiki/vimwiki'
 
-" Language Server Protocol client
-echo "LSP client: LanguageClient-neovim"
-Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-Plug 'Shougo/echodoc.vim'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'Shougo/neosnippet.vim'
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
-" ------------------------------------------------------------------------------
-" LSP Client Config
-" ------------------------------------------------------------------------------
-let g:deoplete#enable_at_startup = 1
-let g:echodoc#enable_at_startup  = 1
-
-let g:LanguageClient_serverCommands = {
-      \ 'elixir':         ['els'],
-      \ 'typescript':     ['typescript-language-server', '--stdio'],
-      \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
-      \ }
-
-let s:elixir_ls_bin = '/usr/local/bin/elixir_ls'
-let g:LanguageClient_useVirtualText = 1
-
-augroup vimrc
-  autocmd!
-  autocmd BufWritePre *.ex,*.exs :call LanguageClient#textDocument_formatting_sync()
-augroup end
+set background=dark
+colorscheme two-firewatch
 
 " ------------------------------------------------------------------------------
 "  General Configuration
@@ -138,40 +109,7 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>/ :Rg<CR>
 nnoremap <Esc> :nohlsearch<CR>
 nnoremap <Leader>\ :NERDTreeToggle<CR>
-
-function! ToggleColorscheme()
-  if &background ==# 'dark'
-    call LightMode()
-  else
-    call DarkMode()
-  endif
-endfunction
-
-function! DarkMode()
-  set background=dark
-  colorscheme base16-tomorrow-night
-  let g:lightline.colorscheme = 'base16_tomorrow_night'
-  execute 'silent !termcolors dark'
-  execute 'silent !tmux source ~/.tmuxline.tomorrow_night'
-  echo 'Good night'
-endfunction
-
-function! LightMode()
-  set background=light
-  colorscheme solarized8_flat
-  let g:lightline.colorscheme = 'solarized'
-  call LightlineRefresh()
-  execute 'silent !termcolors light'
-  execute 'silent !tmux source ~/.tmuxline.light'
-  echo 'Good morning'
-endfunction
-
-function LightlineRefresh()
-  call lightline#init()
-  call lightline#colorscheme()
-endfunction
-
-command! ToggleColorscheme silent call ToggleColorscheme()
+source $HOME/.config/nvim/config-plugins.vim
 
 " ------------------------------------------------------------------------------
 "  Package Configuration
@@ -215,65 +153,9 @@ let g:fzf_colors = {
 command! -bang -nargs=? -complete=dir Files
       \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-" Lightline
-let g:lightline = {}
-let g:lightline.active = {
-      \   'left': [[ 'mode', 'paste' ], [ 'git', 'readonly'], ['filename', 'modified' ]],
-      \   'right': [
-      \     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
-      \     ['obsession', 'percent', 'lineinfo'],
-      \     ['fileformat'], ['method', 'filetype'],
-      \   ]
-      \ }
-let g:lightline.component = {
-      \   'fileencoding': '%{&fenc!=#""?&fenc:&enc}',
-      \   'fileinfo': '%{&ff}[%{&fenc!=#""?&fenc:&enc}]',
-      \   'filename': '%t',
-      \   'lineinfo': '%3l:%-2v ',
-      \   'mode': '%{lightline#mode()}',
-      \   'modified': '[%M]',
-      \   'obsession': '%{ObsessionStatus()}',
-      \   'paste': '%{&paste?"PASTE":""}',
-      \   'percent': '%3p%% ☰ ',
-      \   'readonly': '%R',
-      \ }
-let g:lightline.component_function = {
-      \   'git': 'LightlineGit',
-      \   'method': 'NearestMethodOrFunction',
-      \   'filetype': 'LightlineFiletype',
-      \   'fileformat': 'LightlineFileformat',
-      \ }
-let g:lightline.component_expand = {
-      \  'linter_checking': 'lightline#ale#checking',
-      \  'linter_warnings': 'lightline#ale#warnings',
-      \  'linter_errors': 'lightline#ale#errors',
-      \  'linter_ok': 'lightline#ale#ok',
-      \ }
-let g:lightline.component_type = {
-      \     'linter_checking': 'left',
-      \     'linter_warnings': 'warning',
-      \     'linter_errors': 'error',
-      \     'linter_ok': 'left',
-      \ }
-let g:lightline.subseparator = {
-      \   'left': '',
-      \   'right': '',
-      \ }
-
-function! LightlineGit()
-  return ' ' . fugitive#Head()
-endfunction
-
-function! LightlineFiletype()
-  if (strlen(&filetype))
-    return &filetype . ' ' . WebDevIconsGetFileTypeSymbol()
-  else
-    return 'no ft'
-  endif
-endfunction
-
-function! LightlineFileformat()
-  return &fileformat. ' ' . WebDevIconsGetFileFormatSymbol()
+" Vista
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 
 " autopairs
@@ -300,5 +182,65 @@ let s:work_wiki = {
 
 let g:vimwiki_list = [s:personal_wiki, s:work_wiki]
 
-silent call DarkMode()
-" silent call LightMode()
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+augroup vimrc
+  autocmd!
+  autocmd BufWritePre *.ex,*.exs :LspDocumentFormat
+augroup end
