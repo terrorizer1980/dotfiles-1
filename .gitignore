@@ -4,3 +4,5 @@ vscode/workspaceStorage
 vscode/projects.json
 .vscode
 tags
+fish/functions/__*
+fish/functions/fzf_key_binding.fish
