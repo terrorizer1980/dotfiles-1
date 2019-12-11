@@ -86,6 +86,12 @@ set tabstop=2         " Number of spaces per <Tab>
 set termguicolors     " Use 24-bit color
 set undofile          " Persist undo history between sessions
 
+let g:netrw_altv = 1
+let g:netrw_banner = 0
+let g:netrw_browse_split = 4
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 30
+
 " set completeopt=noinsert,menuone,noselect
 
 let mapleader=","
@@ -105,14 +111,21 @@ nnoremap <Leader>\ :Lexplore<CR>
 " ------------------------------------------------------------------------------
 "  ALE
 let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1
+
 let g:ale_linters = {
       \ 'css': ['stylelint'],
+      \ 'javascript': ['eslint'],
+      \ 'typescript': ['tslint'],
+      \ 'typescript.tsx': ['tslint'],
       \ }
-let g:ale_fix_on_save = 1
+
 let g:ale_fixers = {
       \ '*': ['trim_whitespace'],
       \ 'javascript': ['prettier'],
       \ 'css': ['prettier'],
+      \ 'typescript': ['prettier'],
+      \ 'typescript.tsx': ['prettier'],
       \ }
 
 "  Deoplete
@@ -120,22 +133,44 @@ let g:deoplete#enable_at_startup = 1
 
 " Echodoc
 let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'floating'
+
+" Neosnippet
+let g:neosnippet#disable_runtime_snippets = {'_' : 1}
+let g:neosnippet#enable_complete_done = 1
+let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
+
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-o> <Plug>(neosnippet_expand_or_jump)
+smap <C-o> <Plug>(neosnippet_expand_or_jump)
+xmap <C-o> <Plug>(neosnippet_expand_target)
+
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 
 " LanguageClient-neovim
 let g:LanguageClient_serverCommands = {
-			\ 'elixir': ['elixir_ls']
+      \ 'elixir': ['elixir_ls'],
+      \ 'javascript': ['typescript-language-server', '--stdio'],
+      \ 'typescript': ['typescript-language-server', '--stdio'],
+      \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
       \ }
 
-augroup vimrc
+function! s:SetLSPShortcuts()
+  nnoremap K :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <C-]> :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <leader>ld :call LanguageClient#textDocument_definition({'gotoCmd': 'split'})<CR>
+  nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+  nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+  nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
+endfunction
+
+augroup lsp
   autocmd!
+  autocmd FileType elixir,typescript,typescript.tsx call s:SetLSPShortcuts()
   autocmd BufWritePre *.ex,*.exs :call LanguageClient#textDocument_formatting_sync()
 augroup end
-
-nnoremap <leader>ld :call LanguageClient#textDocument_definition({'gotoCmd': 'split'})<CR>
-nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
 
 " tmuxline
 let g:tmuxline_powerline_separators = 0
@@ -201,6 +236,11 @@ endfunction
 "  Functions & Commands
 " ------------------------------------------------------------------------------
 function! SetColorscheme(...)
+    let l:defaults = {
+          \ 'bg': 'dark', 'cs': 'default', 'tc': 'default',
+          \ 'll': 'default', 'tm': 'default'
+          \ }
+
   if a:0 == 1
     if a:1 == 'light'
       let l:options = {
@@ -227,12 +267,11 @@ function! SetColorscheme(...)
             \ 'bg': 'dark', 'cs': 'apprentice', 'tc': 'apprentice',
             \ 'll': 'apprentice', 'tm': 'apprentice'
             \ }
+    else
+      let l:options = l:defaults
     endif
   else
-    let l:options = {
-          \ 'bg': 'dark', 'cs': 'default', 'tc': 'default',
-          \ 'll': 'default', 'tm': 'default'
-          \ }
+      let l:options = l:defaults
   endif
 
   call s:ApplyColorscheme(l:options)
@@ -247,10 +286,10 @@ function! s:ApplyColorscheme(options)
   call s:RefreshLightline(a:options['ll'])
 
   if a:options['cs'] == 'challenger_deep'
-    highlight LineNr guibg=#1D1D30
-    highlight SignColumn guibg=#1D1D30
-    highlight StatusLine guibg=NONE
-    highlight StatusLineNC guibg=NONE
+    " highlight LineNr guibg=#1D1D30
+    " highlight SignColumn guibg=#1D1D30
+    " highlight StatusLine guibg=NONE
+    " highlight StatusLineNC guibg=NONE
   elseif a:options['cs'] == 'default'
     highlight CursorLine guifg=#181818
   endif
@@ -281,4 +320,4 @@ endfunction
 
 command! ToggleColorscheme call ToggleColorscheme()
 
-call SetColorscheme('dark')
+call SetColorscheme('challenger-deep')
