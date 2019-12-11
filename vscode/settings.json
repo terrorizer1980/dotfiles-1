@@ -9,11 +9,11 @@
   "css.validate": false,
   "editor.acceptSuggestionOnEnter": "smart",
   "editor.cursorBlinking": "phase",
-  "editor.fontFamily": "Hack",
+  "editor.fontFamily": "Cascadia Code",
   "editor.fontLigatures": true,
   "editor.formatOnSave": true,
   "editor.lineNumbers": "relative",
-  "editor.minimap.enabled": false,
+  "editor.minimap.enabled": true,
   "editor.minimap.renderCharacters": false,
   "editor.renderIndentGuides": false,
   "editor.renderWhitespace": "none",
@@ -40,7 +40,7 @@
   "terminal.external.osxExec": "iTerm.app",
   "terminal.integrated.fontSize": 13,
   "terminal.integrated.macOptionClickForcesSelection": true,
-  "terminal.integrated.shell.osx": "/bin/zsh",
+  "terminal.integrated.shell.osx": "/usr/local/bin/fish",
   "window.zoomLevel": 0,
   "workbench.activityBar.visible": true,
   "workbench.editor.showTabs": true,
@@ -281,8 +281,8 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "diffEditor.ignoreTrimWhitespace": true,
-  "editor.fontSize": 13,
   "workbench.statusBar.visible": true,
   "debug.console.fontSize": 13,
-  "workbench.colorTheme": "Solarized Light+"
+  "editor.fontSize": 13,
+  "editor.lineHeight": 18
 }
