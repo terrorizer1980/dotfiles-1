@@ -33,8 +33,10 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'liuchengxu/vista.vim'
+Plug 'reasonml-editor/vim-reason-plus'
 Plug 'romainl/Apprentice'
 Plug 'ryanoasis/vim-devicons'
+Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'simnalamburt/vim-mundo'
 Plug 'srcery-colors/srcery-vim'
@@ -86,13 +88,7 @@ set tabstop=2         " Number of spaces per <Tab>
 set termguicolors     " Use 24-bit color
 set undofile          " Persist undo history between sessions
 
-let g:netrw_altv = 1
-let g:netrw_banner = 0
-let g:netrw_browse_split = 4
-let g:netrw_liststyle = 3
-let g:netrw_winsize = 30
-
-" set completeopt=noinsert,menuone,noselect
+set completeopt=noinsert,menuone,noselect,preview
 
 let mapleader=","
 
@@ -104,11 +100,18 @@ nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>/ :Rg<CR>
 nnoremap <Esc> :nohlsearch<CR>
-nnoremap <Leader>\ :Lexplore<CR>
+nnoremap <Leader>\ :NERDTreeToggle<CR>
 
 " ------------------------------------------------------------------------------
 "  Package Configuration
 " ------------------------------------------------------------------------------
+"  Netrw
+let g:netrw_altv = 1
+let g:netrw_banner = 0
+let g:netrw_browse_split = 4
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 15
+
 "  ALE
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
@@ -117,6 +120,7 @@ let g:ale_linters = {
       \ 'css': ['stylelint'],
       \ 'javascript': ['eslint'],
       \ 'typescript': ['tslint'],
+      \ 'typescriptreact': ['tslint'],
       \ 'typescript.tsx': ['tslint'],
       \ }
 
@@ -125,11 +129,17 @@ let g:ale_fixers = {
       \ 'javascript': ['prettier'],
       \ 'css': ['prettier'],
       \ 'typescript': ['prettier'],
+      \ 'typescriptreact': ['prettier'],
       \ 'typescript.tsx': ['prettier'],
       \ }
 
 "  Deoplete
 let g:deoplete#enable_at_startup = 1
+
+augroup Deoplete
+  autocmd!
+  autocmd CompleteDone * silent! pclose!
+augroup end
 
 " Echodoc
 let g:echodoc#enable_at_startup = 1
@@ -151,10 +161,12 @@ endif
 
 " LanguageClient-neovim
 let g:LanguageClient_serverCommands = {
-      \ 'elixir': ['elixir_ls'],
+      \ 'elixir': ['elixir-ls'],
       \ 'javascript': ['typescript-language-server', '--stdio'],
       \ 'typescript': ['typescript-language-server', '--stdio'],
+      \ 'typescriptreact': ['typescript-language-server', '--stdio'],
       \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
+      \ 'reason': ['reason-language-server'],
       \ }
 
 function! s:SetLSPShortcuts()
@@ -195,32 +207,32 @@ let g:fzf_colors = {
 
 " Lightline
 let g:lightline = {
-      \ 'active': {
-      \   'left': [[ 'mode', 'paste' ], [ 'git', 'readonly'], ['filename', 'modified' ]],
-      \   'right': [['lineinfo'], ['percent'], ['method', 'obsession', 'filetype', 'fileinfo']]
-      \ },
-      \ 'component': {
-      \   'fileencoding': '%{&fenc!=#""?&fenc:&enc}',
-      \   'fileformat': '%{&ff}',
-      \   'fileinfo': '%{&ff}[%{&fenc!=#""?&fenc:&enc}]',
-      \   'filename': '%t',
-      \   'filetype': '%{&ft!=#""?&ft:"no ft"}',
-      \   'lineinfo': '%3l:%-2v ',
-      \   'mode': '%{lightline#mode()}',
-      \   'modified': '[%M]',
-      \   'obsession': '%{ObsessionStatus()}',
-      \   'paste': '%{&paste?"PASTE":""}',
-      \   'percent': '%3p%% ☰ ',
-      \   'readonly': '%R',
-      \ },
-      \ 'component_function': {
-      \   'git': 'LightlineGit',
-      \   'method': 'NearestMethodOrFunction',
-      \ },
-      \ 'subseparator': {
-      \   'left': '',
-      \   'right': '',
-      \ }
+        \ 'active': {
+        \   'left': [[ 'mode', 'paste' ], [ 'git', 'readonly'], ['filename', 'modified' ]],
+        \   'right': [['lineinfo'], ['percent'], ['method', 'obsession', 'filetype', 'fileinfo']]
+        \ },
+        \ 'component': {
+        \   'fileencoding': '%{&fenc!=#""?&fenc:&enc}',
+        \   'fileformat': '%{&ff}',
+        \   'fileinfo': '%{&ff}[%{&fenc!=#""?&fenc:&enc}]',
+        \   'filename': '%t',
+        \   'filetype': '%{&ft!=#""?&ft:"no ft"}',
+        \   'lineinfo': '%3l:%-2v ',
+        \   'mode': '%{lightline#mode()}',
+        \   'modified': '[%M]',
+        \   'obsession': '%{ObsessionStatus()}',
+        \   'paste': '%{&paste?"PASTE":""}',
+        \   'percent': '%3p%% ☰ ',
+        \   'readonly': '%R',
+        \ },
+        \ 'component_function': {
+        \   'git': 'LightlineGit',
+        \   'method': 'NearestMethodOrFunction',
+        \ },
+        \ 'subseparator': {
+        \   'left': '',
+        \   'right': '',
+        \ },
       \ }
 
 function! LightlineGit()
@@ -320,4 +332,4 @@ endfunction
 
 command! ToggleColorscheme call ToggleColorscheme()
 
-call SetColorscheme('challenger-deep')
+call SetColorscheme('dark')
