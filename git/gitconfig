@@ -5,7 +5,7 @@
   user = ngscheurich
 [core]
   editor = nvim
-  excludesfile = /Users/ngscheurich/.gitignore
+  excludesfile = /Users/ngscheurich/.gitignore_global
 [color]
   ui = true
 [merge]
