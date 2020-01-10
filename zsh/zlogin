@@ -1,13 +1,7 @@
-# This file is sourced by login shells after zshrc, and thus, it should
-# contain commands that need to execute at login. It is usually used for
-# messages such as fortune, msgs, or for the creation of files.
+# Executes commands at login post-zshrc.
 #
-# This is not the file to define aliases, functions, shell options, and
-# key bindings. It should not change the shell environment.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#   Nicholas Scheurich <nick@scheurich.me>
+# Author: Sorin Ionescu <sorin.ionescu@gmail.com>
+# URL: https://github.com/ngscheurich/dotfiles
 
 # Execute code that does not affect the current session in the background.
 {
@@ -17,3 +11,14 @@
     zcompile "$zcompdump"
   fi
 } &!
+
+# Execute code only if STDERR is bound to a TTY.
+[[ -o INTERACTIVE && -t 2 ]] && {
+
+  # Print a random, hopefully interesting, adage.
+  if (( $+commands[fortune] )); then
+    fortune -s
+    print
+  fi
+
+} >&2

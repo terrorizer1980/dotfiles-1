@@ -24,18 +24,21 @@ Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'Shougo/echodoc.vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'arzg/vim-colors-xcode'
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
-Plug 'challenger-deep-theme/vim', {'name': 'challenger-deep'}
 Plug 'dense-analysis/ale'
 Plug 'dhruvasagar/vim-zoom'
 Plug 'edkolev/tmuxline.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'jdonaldson/vaxe'
 Plug 'junegunn/fzf.vim'
+Plug 'justinmk/vim-sneak'
 Plug 'lifepillar/vim-solarized8'
 Plug 'liuchengxu/vista.vim'
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'romainl/Apprentice'
 Plug 'ryanoasis/vim-devicons'
+Plug 'sainnhe/edge'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'simnalamburt/vim-mundo'
@@ -119,9 +122,9 @@ let g:ale_fix_on_save = 1
 let g:ale_linters = {
       \ 'css': ['stylelint'],
       \ 'javascript': ['eslint'],
-      \ 'typescript': ['tslint'],
-      \ 'typescriptreact': ['tslint'],
-      \ 'typescript.tsx': ['tslint'],
+      \ 'typescript': ['eslint'],
+      \ 'typescriptreact': ['eslint'],
+      \ 'typescript.tsx': ['eslint'],
       \ }
 
 let g:ale_fixers = {
@@ -167,7 +170,11 @@ let g:LanguageClient_serverCommands = {
       \ 'typescriptreact': ['typescript-language-server', '--stdio'],
       \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
       \ 'reason': ['reason-language-server'],
+      \ 'haxe': ['node', '/tmp/vshaxe/bin/server.js'],
       \ }
+
+let g:LanguageClient_settingsPath = '/Users/ngscheurich/dev/haxe-game/settings.json'
+let g:LanguageClient_loggingFile = ('/tmp/LanguageClient.log')
 
 function! s:SetLSPShortcuts()
   nnoremap K :call LanguageClient#textDocument_hover()<CR>
@@ -180,8 +187,8 @@ endfunction
 
 augroup lsp
   autocmd!
-  autocmd FileType elixir,typescript,typescript.tsx call s:SetLSPShortcuts()
-  autocmd BufWritePre *.ex,*.exs :call LanguageClient#textDocument_formatting_sync()
+  autocmd FileType elixir,typescript,typescript.tsx,typescriptreact,reason,haxe call s:SetLSPShortcuts()
+  autocmd BufWritePre *.ex,*.exs,*.re,*.rei :call LanguageClient#textDocument_formatting()
 augroup end
 
 " tmuxline
@@ -264,11 +271,6 @@ function! SetColorscheme(...)
             \ 'bg': 'dark', 'cs': 'solarized8_flat', 'tc': 'dark',
             \ 'll': 'solarized', 'tm': 'solarized_dark'
             \ }
-    elseif a:1 == 'challenger-deep'
-      let l:options = {
-            \ 'bg': 'dark', 'cs': 'challenger_deep', 'tc': 'challenger-deep',
-            \ 'll': 'challenger_deep', 'tm': 'challenger_deep'
-            \ }
     elseif a:1 == 'srcery'
       let l:options = {
             \ 'bg': 'dark', 'cs': 'srcery', 'tc': 'srcery',
@@ -277,7 +279,17 @@ function! SetColorscheme(...)
     elseif a:1 == 'apprentice'
       let l:options = {
             \ 'bg': 'dark', 'cs': 'apprentice', 'tc': 'apprentice',
-            \ 'll': 'apprentice', 'tm': 'apprentice'
+            \ 'll': 'wombat', 'tm': 'apprentice'
+            \ }
+    elseif a:1 == 'edge'
+      let l:options = {
+            \ 'bg': 'dark', 'cs': 'edge', 'tc': 'edge',
+            \ 'll': 'wombat', 'tm': 'edge'
+            \ }
+    elseif a:1 == 'xcode'
+      let l:options = {
+            \ 'bg': 'dark', 'cs': 'xcodedark', 'tc': 'xcode',
+            \ 'll': 'xcode', 'tm': 'xcode'
             \ }
     else
       let l:options = l:defaults
@@ -297,12 +309,7 @@ function! s:ApplyColorscheme(options)
   execute 'silent !termcolors ' . a:options['tc']
   call s:RefreshLightline(a:options['ll'])
 
-  if a:options['cs'] == 'challenger_deep'
-    " highlight LineNr guibg=#1D1D30
-    " highlight SignColumn guibg=#1D1D30
-    " highlight StatusLine guibg=NONE
-    " highlight StatusLineNC guibg=NONE
-  elseif a:options['cs'] == 'default'
+  if a:options['cs'] == 'default'
     highlight CursorLine guifg=#181818
   endif
 endfunction
@@ -332,4 +339,4 @@ endfunction
 
 command! ToggleColorscheme call ToggleColorscheme()
 
-call SetColorscheme('dark')
+call SetColorscheme('xcode')

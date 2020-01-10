@@ -1,3 +1,11 @@
+# Sets Prezto options.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   N. G. Scheurich <nick@scheurich.me>
+#
+# URL: https://github.com/ngscheurich/dotfiles
+
 zstyle ':prezto:load' pmodule \
   'environment' \
   'terminal' \
@@ -7,14 +15,15 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'contrib-prompt' \
-  'prompt' \
-  'git' \
-  'ruby' \
-  'syntax-highlighting' \
-  'tmux' \
-  'utility'
+  'prompt'
 
 zstyle ':prezto:*:*' color 'yes'
+zstyle ':prezto:module:syntax-highlighting' color 'yes'
 zstyle ':prezto:module:editor' key-bindings 'vi'
-zstyle ':prezto:module:prompt' theme 'spaceship'
+zstyle ':prezto:module:syntax-highlighting' highlighters \
+  'main' \
+  'brackets' \
+  'pattern' \
+  'line' \
+  'cursor' \
+  'root'

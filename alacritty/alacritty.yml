@@ -1,0 +1,45 @@
+# Configuration for Alacritty
+#
+# Author: N. G. Scheurich <nick@scheurich.me>
+# URL: https://github.com/ngscheurich/dotfiles
+
+window:
+  padding:
+    x: 6
+    y: 6
+
+font:
+  normal:
+    family: FuraCode Nerd Font
+  offset:
+    y: 1
+  size: 12.0
+
+key_bindings:
+  # Required for Ctrl-6 in Vim
+  - { key: Key6, mods: Control, chars: "\x1e" }
+
+colors:
+  primary:
+    background: '0x292a30'
+    foreground: '0xdfdfe0'
+
+    normal:
+      black:   '0x33343c'
+      red:     '0xff8170'
+      green:   '0x78c2b3'
+      yellow:  '0xd9c97c'
+      blue:    '0x4eb0cc'
+      magenta: '0xff7ab2'
+      cyan:    '0xb281eb'
+      white:   '0xdfdfe0'
+
+      bright:
+        black:   '0x7f8c98'
+        red:     '0xff8170'
+        green:   '0xacf2e4'
+        yellow:  '0xffa14f'
+        blue:    '0x6bdfff'
+        magenta: '0xff7ab2'
+        cyan:    '0xdabaff'
+        white:   '0xdfdfe0'

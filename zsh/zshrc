@@ -1,165 +1,59 @@
-# This file is sourced by interactive shells. It should define aliases,
-# functions, shell options, and key bindings.
+# Executes commands at the start of an interactive session.
 #
-# Author: N. G. Scheurich <nick@scheurich.me>
-# Repo: https://github.com/ngscheurich/dotfiles
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   N. G. Scheurich <nick@scheurich.me>
+#
+# URL: https://github.com/ngscheurich/dotfiles
 
 # ------------------------------------------------------------------------------
-# Prezto!
+# Setup
 # ------------------------------------------------------------------------------
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-autoload -Uz promptinit
-promptinit
+eval "$(fasd --init auto)"
+eval "$(starship init zsh)"
+eval "$(thefuck --alias)"
 
-export SPACESHIP_CHAR_SYMBOL="-> "
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# ------------------------------------------------------------------------------
+# Options
+# ------------------------------------------------------------------------------
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_DUPS
+setopt INC_APPEND_HISTORY
 
 # ------------------------------------------------------------------------------
 # Aliases
 # ------------------------------------------------------------------------------
-alias bx="bundle exec"
 alias curlh="curl -s -D - -o /dev/null"
-alias emacsclient="/usr/local/Cellar/emacs-mac/HEAD-7403929/bin/emacsclient"
 alias giga="gigalixir"
 alias git="hub"
 alias http="python -m http.server"
 alias lg="lazygit"
-alias mux="tmuxinator"
-alias rm="trash"
-alias sctl="sudo systemctl "
 alias vboxls="VBoxManage list runningvms"
+alias vim='nvim'
 alias vimconfig="$EDITOR $HOME/.vimrc"
 alias vimdiff="nvim -d"
 alias weather="curl wttr.in/Baton+Rouge"
 alias zshconfig="$EDITOR $HOME/.zshrc"
 alias zshsource="source $HOME/.zshrc"
-alias vim='nvim'
-alias vi='vim'
 
 # ------------------------------------------------------------------------------
-# Key Bindings
+# Keybinds
 # ------------------------------------------------------------------------------
-# Based on:
-# https://github.com/JeanMertz/omz-to-prezto/blob/omz-to-prezto/zsh/key-bindings.zsh
-bindkey -v                                          # Use vi key bindings
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
 
-bindkey '\ew' kill-region                           # [Esc-w] - Kill from the cursor to the mark
-bindkey -s '\el' 'ls\n'                             # [Esc-l] - run command: ls
-bindkey -s '\e.' '..\n'                             # [Esc-.] - run command: .. (up directory)
-bindkey '^r' history-incremental-search-backward    # [Ctrl-r] - Search backward incrementally for a specified string. The string may begin with ^ to anchor the search to the beginning of the line.
-bindkey '^[[5~' up-line-or-history                  # [PageUp] - Up a line of history
-bindkey '^[[6~' down-line-or-history                # [PageDown] - Down a line of history
-
-bindkey '^[[A' up-line-or-search                    # start typing + [Up-Arrow] - fuzzy find history forward
-bindkey '^[[B' down-line-or-search                  # start typing + [Down-Arrow] - fuzzy find history backward
-
-bindkey '^[[H' beginning-of-line                    # [Home] - Go to beginning of line
-bindkey '^[[1~' beginning-of-line                   # [Home] - Go to beginning of line
-bindkey '^[OH' beginning-of-line                    # [Home] - Go to beginning of line
-bindkey '^a' beginning-of-line                      # [Ctrl-A] - Go to beginning of line
-bindkey '^[[F'  end-of-line                         # [End] - Go to end of line
-bindkey '^[[4~' end-of-line                         # [End] - Go to end of line
-bindkey '^[OF' end-of-line                          # [End] - Go to end of line
-bindkey '^e' end-of-line                            # [Ctrl-E] - Go to end of line
-
-bindkey ' ' magic-space                             # [Space] - do history expansion
-
-bindkey '^[[1;5C' forward-word                      # [Ctrl-RightArrow] - move forward one word
-bindkey '^[[1;5D' backward-word                     # [Ctrl-LeftArrow] - move backward one word
-
-# Make the delete key (or Fn + Delete on the Mac) work instead of outputting a ~
-bindkey '^?' backward-delete-char                   # [Delete] - delete backward
-bindkey '^[[3~' delete-char                         # [fn-Delete] - delete forward
-bindkey '^[3;5~' delete-char
-bindkey '\e[3~' delete-char
-
-bindkey "${terminfo[khome]}" beginning-of-line
-bindkey "${terminfo[kend]}" end-of-line
-
-# ------------------------------------------------------------------------------
-# Options
-# ------------------------------------------------------------------------------
-#tells the shell not to store a history line if it's the same as the previous one
-setopt HIST_IGNORE_DUPS
-#preferentially removes duplicates when the history fills up, but does nothing until then
-setopt HIST_EXPIRE_DUPS_FIRST
-#means that even if duplicate lines have been saved, searches backwards with editor commands don't show them more than once.
-setopt HIST_FIND_NO_DUPS
-# Append to history file after each command
-setopt INC_APPEND_HISTORY
-
-# ------------------------------------------------------------------------------
-# asdf
-# ------------------------------------------------------------------------------
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
-
-# ------------------------------------------------------------------------------
-# fzf
-# ------------------------------------------------------------------------------
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# ------------------------------------------------------------------------------
-# direnv
-# ------------------------------------------------------------------------------
 eval "$(direnv hook zsh)"
 
 # ------------------------------------------------------------------------------
-# thefuck
+# Functions
 # ------------------------------------------------------------------------------
-eval $(thefuck --alias)
-
-# ------------------------------------------------------------------------------
-# fasd
-# -------------------------------------
-eval "$(fasd --init auto)"
-
-# -------------------------------------
-# Third-party additions
-# -------------------------------------
-###-begin-graphql-completions-###
-#
-# yargs command completion script
-#
-# Installation: ../../.asdf/installs/nodejs/6.12.3/.npm/bin/graphql completion >> ~/.bashrc
-#    or ../../.asdf/installs/nodejs/6.12.3/.npm/bin/graphql completion >> ~/.bash_profile on OSX.
-#
-_yargs_completions()
-{
-    local cur_word args type_list
-
-    cur_word="${COMP_WORDS[COMP_CWORD]}"
-    args=("${COMP_WORDS[@]}")
-
-    # ask yargs to generate completions.
-    type_list=$(../../.asdf/installs/nodejs/6.12.3/.npm/bin/graphql --get-yargs-completions "${args[@]}")
-
-    COMPREPLY=( $(compgen -W "${type_list}" -- ${cur_word}) )
-
-    # if no match was found, fall back to filename completion
-    if [ ${#COMPREPLY[@]} -eq 0 ]; then
-      COMPREPLY=( $(compgen -f -- "${cur_word}" ) )
-    fi
-
-    return 0
-}
-complete -F _yargs_completions graphql
-###-end-graphql-completions-###export PATH="/usr/local/opt/openssl/bin:$PATH"
-
-# test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/ngscheurich/.asdf/installs/nodejs/10.8.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/ngscheurich/.asdf/installs/nodejs/10.8.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/ngscheurich/.asdf/installs/nodejs/10.8.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/ngscheurich/.asdf/installs/nodejs/10.8.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
-
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /Users/ngscheurich/.asdf/installs/nodejs/10.8.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/ngscheurich/.asdf/installs/nodejs/10.8.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
-# tabtab source for electron-forge package
-# uninstall by removing these lines or running `tabtab uninstall electron-forge`
-[[ -f /Users/ngscheurich/.npm/_npx/74890/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/ngscheurich/.npm/_npx/74890/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh
