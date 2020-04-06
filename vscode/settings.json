@@ -1,288 +1,123 @@
 {
-  // =======================================================
-  // ~ General settings
   // -------------------------------------------------------
-  "breadcrumbs.enabled": false,
-  "code-runner.showRunIconInEditorTitleMenu": false,
-  "csharp.format.enable": true,
-  "csharp.referencesCodeLens.enabled": true,
-  "css.validate": false,
-  "editor.acceptSuggestionOnEnter": "smart",
-  "editor.cursorBlinking": "phase",
-  "editor.fontFamily": "Cascadia Code",
-  "editor.fontLigatures": true,
-  "editor.formatOnSave": true,
-  "editor.lineNumbers": "relative",
-  "editor.minimap.enabled": true,
-  "editor.minimap.renderCharacters": false,
-  "editor.renderIndentGuides": false,
-  "editor.renderWhitespace": "none",
+  // General Settings
+  // -------------------------------------------------------
+  "breadcrumbs.enabled": true,
   "editor.tabSize": 2,
-  "editor.tabCompletion": "off",
-  "elixirLS.fetchDeps": false,
-  "editor.codeLens": true,
-  "elixirLS.suggestSpecs": false,
-  "explorer.confirmDelete": false,
-  "explorer.confirmDragAndDrop": false,
-  "extensions.ignoreRecommendations": false,
-  "git.rebaseWhenSync": true,
-  "git.showPushSuccessNotification": true,
-  "gitlens.blame.avatars": false,
-  "gitlens.blame.toggleMode": "window",
-  "gitlens.codeLens.enabled": false,
-  "gitlens.currentLine.enabled": false,
-  "gitlens.hovers.enabled": true,
-  "javascript.format.enable": false,
-  "javascript.suggestionActions.enabled": false,
-  "ruby.format": "rubocop",
-  "rust-client.channel": "stable",
-  "search.location": "sidebar",
-  "terminal.external.osxExec": "iTerm.app",
-  "terminal.integrated.fontSize": 13,
-  "terminal.integrated.macOptionClickForcesSelection": true,
-  "terminal.integrated.shell.osx": "/usr/local/bin/fish",
-  "window.zoomLevel": 0,
-  "workbench.activityBar.visible": true,
-  "workbench.editor.showTabs": true,
-  "workbench.list.keyboardNavigation": "filter",
-  "workbench.sideBar.location": "left",
-  "workbench.startupEditor": "none",
-  // =======================================================
-  // ~ File associations
+  
+
   // -------------------------------------------------------
+  // Editor UI
+  // -------------------------------------------------------
+  "editor.cursorBlinking": "phase",
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.fontLigatures": true,
+  "editor.lineNumbers": "relative",
+  "editor.minimap.enabled": false,
+  "editor.minimap.renderCharacters": false,
+  "editor.renderIndentGuides": true,
+  "editor.semanticHighlighting.enabled": true,
+  "dayNightThemeSwitcher.dayTheme": "Default Light+",
+  "dayNightThemeSwitcher.nightTheme": "Default Dark+",
+
+
+  // -------------------------------------------------------
+  // Integrated Terminal
+  // -------------------------------------------------------
+  "terminal.external.osxExec": "Kitty.app",
+  "terminal.integrated.shell.osx": "/usr/local/bin/fish",
+  "terminal.integrated.shellArgs.osx": [],
+
+  // -------------------------------------------------------
+  // Languages & Frameworks
+  // -------------------------------------------------------
+  "[csharp]": {
+    "editor.tabSize": 4,
+  },
   "files.associations": {
     "*.eex": "html",
-    "gitignore": "gitignore",
-    "pryrc": "ruby",
-    "spacemacs": "lisp",
-    "TODO": "markdown",
-    "vimrc": "viml",
-    "zlogin": "shellscript",
-    "zlogout": "shellscript",
-    "zpreztorc": "shellscript",
-    "zshenv": "shellscript",
-    "zshrc": "shellscript"
   },
-  // =======================================================
-  // ~ Color customizations
+  "css.validate": false,
+  "dart.debugExternalLibraries": true,
+  "dart.debugSdkLibraries": false,
+  "[elixir]": {
+    "editor.wordBasedSuggestions": true,
+    "editor.acceptSuggestionOnEnter": "on",
+  },
+  "elixirLS.fetchDeps": false,
+  "elixirLS.suggestSpecs": false,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+
   // -------------------------------------------------------
-  "workbench.colorCustomizations": {
-    "[Default Dark+]": {
-      "statusBar.background": "#252525",
-      "editorIndentGuide.activeBackground": "#444",
-      "editorIndentGuide.background": "#303030"
-    },
-    "[Solarized Light+]": {
-      "terminal.ansiWhite": "#aa9c6f"
-    },
-    "[Gruvbox Dark Hard]": {
-      "titleBar.border": "#32302f",
-      "statusBar.border": "#32302f",
-      "sideBar.background": "#282828",
-      "editorWidget.background": "#282828",
-      "editor.selectionHighlightBackground": "#689d6a33"
-      // "titleBar.activeBackground": "#282828",
-      // "activityBar.border": "#282828",
-      // "activityBar.background": "#282828",
-      // "statusBar.background": "#32302f",
-    },
-    "[Gruvbox Light Medium]": {
-      "titleBar.border": "#EBDBB2"
-    }
-  },
-  "editor.tokenColorCustomizations": {
-    "[Default Dark+]": {
-      "textMateRules": [
-        {
-          "scope": [
-            "comment"
-          ],
-          "settings": {
-            "foreground": "#808080"
-          }
-        },
-        {
-          "scope": [
-            "keyword.operator.assignment.elixir",
-            "keyword.operator.other.elixir"
-          ],
-          "settings": {
-            "foreground": "#4EC9B0"
-          }
-        },
-        {
-          "scope": "constant.other.symbol.elixir",
-          "settings": {
-            "foreground": "#B5CEA8"
-          }
-        }
-      ]
-    },
-    "[Default Light+]": {
-      "textMateRules": [
-        {
-          "scope": [
-            "keyword.operator.assignment.elixir",
-            "keyword.operator.other.elixir"
-          ],
-          "settings": {
-            "foreground": "#267F99"
-          }
-        },
-        {
-          "scope": "constant.other.symbol.elixir",
-          "settings": {
-            "foreground": "#795E26"
-          }
-        }
-      ]
-    }
-  },
-  // =======================================================
-  // ~ VsVim settings
+  // Code Quality
   // -------------------------------------------------------
-  "vim.debug.silent": true,
-  "vim.easymotion": true,
-  "vim.easymotionMarkerFontFamily": "Monoid",
-  "vim.easymotionMarkerFontSize": "13",
-  "vim.easymotionMarkerHeight": 18,
-  "vim.easymotionMarkerWidthPerChar": 8,
+  "editor.formatOnSave": true,
+  "prettier.trailingComma": "es5",
+  "prettier.printWidth": 80,
+  
+  // -------------------------------------------------------
+  // Vim Integration
+  // -------------------------------------------------------
+  "vscode-neovim.neovimPath": "/usr/local/bin/nvim",
   "vim.enableNeovim": true,
-  "vim.leader": ",",
+  "vim.leader": "<Space>",
   "vim.neovimPath": "/usr/local/bin/nvim",
-  "vim.showmodename": true,
   "vim.sneak": true,
-  // Normal mode keybindings
   "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": [
-        "<leader>",
-        "f"
-      ],
-      "commands": [
-        "workbench.action.quickOpen"
-      ]
-    },
-    {
-      "before": [
-        "[",
-        "<Space>"
-      ],
-      "commands": [
-        "editor.action.insertLineBefore"
-      ]
-    },
-    {
-      "before": [
-        "]",
-        "<Space>"
-      ],
-      "commands": [
-        "editor.action.insertLineAfter"
-      ]
-    },
-    {
-      "before": [
-        "[",
-        "e"
-      ],
-      "commands": [
-        "editor.action.moveLinesUpAction"
-      ]
-    },
-    {
-      "before": [
-        "]",
-        "e"
-      ],
-      "commands": [
-        "editor.action.moveLinesDownAction"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "t",
-        "f"
-      ],
-      "commands": [
-        {
-          "command": "workbench.action.tasks.runTask",
-          "args": "Test Current File"
-        }
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "t",
-        "n"
-      ],
-      "commands": [
-        {
-          "command": "workbench.action.tasks.runTask",
-          "args": "Run Nearest Test"
-        }
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "d",
-        "n"
-      ],
-      "commands": [
-        {
-          "command": "workbench.action.tasks.runTask",
-          "args": "Debug Nearest Test"
-        }
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "t",
-        "l"
-      ],
-      "commands": [
-        {
-          "command": "workbench.action.tasks.runTask",
-          "args": "Run Last Test"
-        }
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "d",
-        "l"
-      ],
-      "commands": [
-        {
-          "command": "workbench.action.tasks.runTask",
-          "args": "Debug Last Test"
-        }
-      ]
-    }
+    {"before": [ "<C-]>" ],                   "commands": [ "editor.action.revealDefinition" ]},
+    {"before": [ "K" ],                       "commands": [ "editor.action.showHover" ]},
+    {"before": ["<Esc>"],                     "commands": [":nohl"]},
+    {"before": ["<leader>", "p"],             "commands": ["editor.action.peekDefinition"]},
+    {"before": ["<leader>", "r"],             "commands": ["editor.action.rename"]},
+    {"before": ["<leader>", "["],             "commands": ["editor.action.marker.prev"]},
+    {"before": ["<leader>", "<leader>","[" ], "commands": ["editor.action.marker.prevInFiles"]},
+    {"before": ["<leader>", "]"],             "commands": ["editor.action.marker.next"]},
+    {"before": ["<leader>", "<leader>","]" ], "commands": ["editor.action.marker.nextInFiles"]},
+    {"before": ["[", "<Space>"],              "commands": ["editor.action.insertLineBefore"]},
+    {"before": ["]", "<Space>"],              "commands": ["editor.action.insertLineAfter"]},
+    {"before": ["[", "e"],                    "commands": ["editor.action.moveLinesUpAction"]},
+    {"before": ["]", "e"],                    "commands": ["editor.action.moveLinesDownAction"]},
   ],
-  // Insert mode keybindings
-  "vim.insertModeKeyBindings": [
-    {
-      "before": [
-        "j",
-        "j"
+  
+  // -------------------------------------------------------
+  // Theme Customization
+  // -------------------------------------------------------
+  "editor.tokenColorCustomizations": {
+    "[Default Light+]": {
+      "textMateRules": [{
+          "scope": [
+            "keyword.operator.assignment.elixir",
+            "keyword.operator.other.elixir",
+          ],
+          "settings": {"foreground": "#267F99"},
+        },
+        {
+          "scope": "constant.other.symbol.elixir",
+          "settings": {"foreground": "#098658"},
+        },
       ],
-      "after": [
-        "<Esc>"
-      ]
-    }
-  ],
+    },
+    "[Default Dark+]": {
+      "textMateRules": [
+        {
+          "scope": [
+            "keyword.operator.assignment.elixir",
+            "keyword.operator.other.elixir",
+          ],
+          "settings": {"foreground": "#4EC9B0"},
+        },
+        {
+          "scope": "constant.other.symbol.elixir",
+          "settings": {"foreground": "#B5CEA8"},
+        },
+      ],
+    },
+  },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "diffEditor.ignoreTrimWhitespace": true,
-  "workbench.statusBar.visible": true,
-  "debug.console.fontSize": 13,
-  "editor.fontSize": 13,
-  "editor.lineHeight": 18
+  "workbench.colorTheme": "Default Dark+",
+  "gitlens.mode.active": "zen",
 }

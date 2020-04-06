@@ -11,16 +11,15 @@
   },
   {
     "key": "cmd+shift+j",
-    "command": "workbench.action.togglePanelPosition"
+    "command": "workbench.action.positionPanelRight",
   },
   {
-    "key": "ctrl+\\",
-    "command": "editor.action.toggleMinimap",
-    "when": "!terminalFocus"
+    "key": "alt+shift+j",
+    "command": "workbench.action.positionPanelBottom"
   },
   {
-    "key": "ctrl+/",
-    "command": "workbench.action.terminal.splitInActiveWorkspace",
-    "when": "terminalFocus"
+    "key": "ctrl+'",
+    "command": "workbench.action.tasks.runTask",
+    "args": "Test Current File"
   },
 ]

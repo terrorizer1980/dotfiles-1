@@ -1,10 +1,15 @@
 {
-	"Insert_Pry_Statement": {
-		"prefix": "pry",
-		"body": [
-			"require IEx",
-			"IEx.pry()"
-		],
-		"description": "Require IEx and call `IEx.pry/0`"
-	}
+  "Insert Pry Statement": {
+    "description": "Require IEx and call `IEx.pry/0`",
+    "prefix": "pry",
+    "body": [
+      "require IEx",
+      "IEx.pry()"
+    ],
+  },
+  "Inspect Value": {
+    "description": "Call `IO.inspect/2` with a labeled value.",
+    "prefix": "insp",
+    "body": "IO.inspect($1, label: \"$1\")"
+  }
 }
