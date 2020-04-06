@@ -1,5 +1,3 @@
-scriptencoding utf-8
-
 "             __
 "     __  __ /\_\    ___ ___   _ __   ___
 "    /\ \/\ \\/\ \ /' __` __`\/\`'__\/'___\
@@ -11,93 +9,83 @@ scriptencoding utf-8
 " Author: N. G. Scheurich <nick@scheurich.me>
 " Repo: https://github.com/ngscheurich/dotfiles
 
-function! BuildRuntimepath()
-  let slist = split(&rtp, ",") 
-  let i = 0
+" ------------------------------------------------------------------------------
+" Packages
+" ------------------------------------------------------------------------------
+if exists('*minpac#init')
+  call minpac#init()
 
-  for s in slist 
-    let i = i + 1
-    if s =~? '.*/after$'
-      break
-    end
-  endfor
-
-  let j = join(slist[0:i - 1] + ["/opt/local/fzf"] + slist[i:-1])
-endfunction
-
-packadd minpac
-
-if !exists('*minpac#init')
-	" no minpac, so provide helpful message
-else
-	call minpac#init()
-	call minpac#add('k-takata/minpac', {'type': 'opt'})
-  call minpac#add('autozimu/LanguageClient-neovim', {'branch': 'next', 'do': {-> system('bash install.sh')}})
-  call minpac#add('sheerun/vim-polyglot')
-  call minpac#add('lifepillar/vim-mucomplete')
+  call minpac#add('k-takata/minpac', {'type': 'opt'})
   call minpac#add('junegunn/fzf.vim')
-  call minpac#add('roxma/nvim-yarp')
-  call minpac#add('roxma/vim-hug-neovim-rpc')
-  call minpac#add('Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'})
-  call minpac#add('Shougo/echodoc.vim')
-  call minpac#add('lifepillar/vim-solarized8')
-end
+  call minpac#add('justinmk/vim-sneak')
+  call minpac#add('justinmk/vim-dirvish')
+  call minpac#add('sheerun/vim-polyglot')
+  call minpac#add('tpope/vim-abolish')
+  call minpac#add('tpope/vim-commentary')
+  call minpac#add('tpope/vim-eunuch')
+  call minpac#add('tpope/vim-repeat')
+  call minpac#add('tpope/vim-rsi')
+  call minpac#add('tpope/vim-sensible')
+  call minpac#add('tpope/vim-speeddating')
+  call minpac#add('tpope/vim-surround')
+  call minpac#add('tpope/vim-unimpaired')
+  call minpac#add('tpope/vim-vinegar')
+  call minpac#add('vimwiki/vimwiki')
+endif
 
-let g:deoplete#enable_at_startup = 1
-let g:echodoc#enable_at_startup = 1
+let g:vimwiki_list = [{
+      \ 'path': '~/Dropbox/wiki/',
+			\ 'syntax': 'markdown',
+			\ 'ext': 'md',
+			\}]
 
-let g:LanguageClient_serverCommands = {'elixir': ['/usr/local/bin/exls']}
+" ------------------------------------------------------------------------------
+" Settings 
+" ------------------------------------------------------------------------------
+set belloff=all
+set backupdir=~/.vim/backup
+set cscopeverbose
+set directory=~/.vim/swap
+set nofsync
+set hlsearch
+set langnoremap
+set listchars=tab:>\ ,trail:-,nbsp:+
+set relativenumber
+set rtp+=/usr/local/opt/fzf
+set shortmess+=F
+set shortmess-=S
+set showcmd
+set shiftwidth=2
+set sidescroll=1
+set smartindent
+set softtabstop=2
+set splitbelow
+set splitright
+set tabstop=2
+set undodir=~/.vim/undo
+set undofile
 
-command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update('', {'do': 'call minpac#status()'})
+" ------------------------------------------------------------------------------
+" Mappings & Commands
+" ------------------------------------------------------------------------------
+let mapleader=" "
+
+nnoremap <Right>  <C-w>l
+nnoremap <Left>   <C-w>h
+nnoremap <Up>     <C-w>k
+nnoremap <Down>   <C-w>j
+nnoremap <Leader>ra :%s/\<<C-r><C-w>\>/
+nnoremap <Leader>rl :s/\<<C-r><C-w>\>/
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <Leader>/ :Rg<CR>
+
+command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update()
 command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
 command! PackStatus packadd minpac | source $MYVIMRC | call minpac#status()
 
-set background=light  " Set background (light/dark)
-set cursorline        " Highlight current line
-set expandtab         " Insert proper amount of spaces when inserting a <Tab>
-set fillchars+=vert:│ " Customize split borders
-set foldenable        " Enable folding
-set foldlevelstart=5  " Maximum fold depth open by default
-set foldmethod=marker " Use character sequences to denote folds
-set foldnestmax=10    " Maximum allowed fold depth
-set hidden            " Hide a buffer when it is abandoned
-set ignorecase        " Ignore case when searching
-set nobackup          " Don't create a backup before overwriting a file
-set noshowmode        " Don't display editing mode (vim-airline shows this)
-set noswapfile        " Don't create a swapfile for a new buffer
-set number            " Show line numbers
-set relativenumber    " Show relative line numbers
-set scrolloff=5       " Keep a few lines above and below the cursor
-set shiftwidth=2      " Number of spaces to use for each step of (auto)indent
-set signcolumn=yes    " Show signs to the left of line numbers
-set smartcase         " Don't ignore case when searching with mixed case
-set smartindent       " Intelligently indent new lines
-set softtabstop=2     " Number of spaces per <Tab> while editing
-set splitbelow        " Open horizontal splits below current window
-set splitright        " Open vertical splits to the right of the current window
-set tabstop=2         " Number of spaces per <Tab>
-set termguicolors     " Use 24-bit color
-set undofile          " Persist undo history between sessions
-set updatetime=300    " Improve coc.nvim diagnostics?
-
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-syntax enable
-colorscheme solarized8_flat
-
-let mapleader = ","
-
-nnoremap <Right> <C-w>l
-nnoremap <Left> <C-w>h
-nnoremap <Up> <C-w>k
-nnoremap <Down> <C-w>j
-nmap <silent> <Leader>f :Files<CR>
-nmap <silent> <Leader>b :Buffers<CR>
-nmap <silent> <Leader>/ :Rg<CR>
-nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
-
-autocmd FileType help wincmd L
+augroup wiki
+	autocmd!
+	autocmd! BufEnter *.md setlocal textwidth=80
+	autocmd! BufWrite *.md :VimwikiTOC
+augroup END
