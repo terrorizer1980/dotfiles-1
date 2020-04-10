@@ -38,13 +38,15 @@ alias giga="gigalixir"
 alias git="hub"
 alias http="python -m http.server"
 alias lg="lazygit"
-alias vboxls="VBoxManage list runningvms"
-alias vim='nvim'
 alias vimconfig="$EDITOR $HOME/.vimrc"
-alias vimdiff="nvim -d"
+alias vimdiff="vim -d"
+alias vboxls="VBoxManage list runningvms"
 alias weather="curl wttr.in/Baton+Rouge"
 alias zshconfig="$EDITOR $HOME/.zshrc"
 alias zshsource="source $HOME/.zshrc"
+
+# Load gem man pages
+alias man="gem man -ls"
 
 # ------------------------------------------------------------------------------
 # Keybinds
@@ -54,6 +56,3 @@ bindkey '^e' end-of-line
 
 eval "$(direnv hook zsh)"
 
-# ------------------------------------------------------------------------------
-# Functions
-# ------------------------------------------------------------------------------

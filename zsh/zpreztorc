@@ -15,11 +15,15 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
+  'osx' \
+  'syntax-highlighting' \
+  'autosuggestions' \
+  'history-substring-search' \
   'prompt'
 
+zstyle ':prezto:module:editor' key-bindings 'vi'
 zstyle ':prezto:*:*' color 'yes'
 zstyle ':prezto:module:syntax-highlighting' color 'yes'
-zstyle ':prezto:module:editor' key-bindings 'vi'
 zstyle ':prezto:module:syntax-highlighting' highlighters \
   'main' \
   'brackets' \

@@ -26,9 +26,13 @@
   graph = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
   pf = push --force
-  rb = rebase --interactive origin/master
+  rb = rebase
+  rba = rebase --abort
+  rbc = rebase --continue
+  rbm = rebase --interactive origin/master
   st = status
   unstage = reset --soft HEAD^
+	pub=push --set-upstream origin HEAD
 [filter "lfs"]
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
