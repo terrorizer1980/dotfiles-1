@@ -4,13 +4,11 @@
   // -------------------------------------------------------
   "breadcrumbs.enabled": true,
   "editor.tabSize": 2,
-  
-
   // -------------------------------------------------------
   // Editor UI
   // -------------------------------------------------------
   "editor.cursorBlinking": "phase",
-  "editor.fontFamily": "JetBrains Mono",
+  "editor.fontFamily": "PragmataPro Mono Liga",
   "editor.fontLigatures": true,
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
@@ -19,15 +17,12 @@
   "editor.semanticHighlighting.enabled": true,
   "dayNightThemeSwitcher.dayTheme": "Default Light+",
   "dayNightThemeSwitcher.nightTheme": "Default Dark+",
-
-
   // -------------------------------------------------------
   // Integrated Terminal
   // -------------------------------------------------------
   "terminal.external.osxExec": "Kitty.app",
-  "terminal.integrated.shell.osx": "/usr/local/bin/fish",
+  "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
   "terminal.integrated.shellArgs.osx": [],
-
   // -------------------------------------------------------
   // Languages & Frameworks
   // -------------------------------------------------------
@@ -49,14 +44,12 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
-
   // -------------------------------------------------------
   // Code Quality
   // -------------------------------------------------------
   "editor.formatOnSave": true,
   "prettier.trailingComma": "es5",
   "prettier.printWidth": 80,
-  
   // -------------------------------------------------------
   // Vim Integration
   // -------------------------------------------------------
@@ -66,36 +59,143 @@
   "vim.neovimPath": "/usr/local/bin/nvim",
   "vim.sneak": true,
   "vim.normalModeKeyBindingsNonRecursive": [
-    {"before": [ "<C-]>" ],                   "commands": [ "editor.action.revealDefinition" ]},
-    {"before": [ "K" ],                       "commands": [ "editor.action.showHover" ]},
-    {"before": ["<Esc>"],                     "commands": [":nohl"]},
-    {"before": ["<leader>", "p"],             "commands": ["editor.action.peekDefinition"]},
-    {"before": ["<leader>", "r"],             "commands": ["editor.action.rename"]},
-    {"before": ["<leader>", "["],             "commands": ["editor.action.marker.prev"]},
-    {"before": ["<leader>", "<leader>","[" ], "commands": ["editor.action.marker.prevInFiles"]},
-    {"before": ["<leader>", "]"],             "commands": ["editor.action.marker.next"]},
-    {"before": ["<leader>", "<leader>","]" ], "commands": ["editor.action.marker.nextInFiles"]},
-    {"before": ["[", "<Space>"],              "commands": ["editor.action.insertLineBefore"]},
-    {"before": ["]", "<Space>"],              "commands": ["editor.action.insertLineAfter"]},
-    {"before": ["[", "e"],                    "commands": ["editor.action.moveLinesUpAction"]},
-    {"before": ["]", "e"],                    "commands": ["editor.action.moveLinesDownAction"]},
+    {
+      "before": [
+        "<C-]>"
+      ],
+      "commands": [
+        "editor.action.revealDefinition"
+      ]
+    },
+    {
+      "before": [
+        "K"
+      ],
+      "commands": [
+        "editor.action.showHover"
+      ]
+    },
+    {
+      "before": [
+        "<Esc>"
+      ],
+      "commands": [
+        ":nohl"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "p"
+      ],
+      "commands": [
+        "editor.action.peekDefinition"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "r"
+      ],
+      "commands": [
+        "editor.action.rename"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "["
+      ],
+      "commands": [
+        "editor.action.marker.prev"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "<leader>",
+        "["
+      ],
+      "commands": [
+        "editor.action.marker.prevInFiles"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "]"
+      ],
+      "commands": [
+        "editor.action.marker.next"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "<leader>",
+        "]"
+      ],
+      "commands": [
+        "editor.action.marker.nextInFiles"
+      ]
+    },
+    {
+      "before": [
+        "[",
+        "<Space>"
+      ],
+      "commands": [
+        "editor.action.insertLineBefore"
+      ]
+    },
+    {
+      "before": [
+        "]",
+        "<Space>"
+      ],
+      "commands": [
+        "editor.action.insertLineAfter"
+      ]
+    },
+    {
+      "before": [
+        "[",
+        "e"
+      ],
+      "commands": [
+        "editor.action.moveLinesUpAction"
+      ]
+    },
+    {
+      "before": [
+        "]",
+        "e"
+      ],
+      "commands": [
+        "editor.action.moveLinesDownAction"
+      ]
+    },
   ],
-  
   // -------------------------------------------------------
   // Theme Customization
   // -------------------------------------------------------
   "editor.tokenColorCustomizations": {
     "[Default Light+]": {
-      "textMateRules": [{
+      "textMateRules": [
+        {
           "scope": [
             "keyword.operator.assignment.elixir",
             "keyword.operator.other.elixir",
           ],
-          "settings": {"foreground": "#267F99"},
+          "settings": {
+            "foreground": "#267F99"
+          },
         },
         {
           "scope": "constant.other.symbol.elixir",
-          "settings": {"foreground": "#098658"},
+          "settings": {
+            "foreground": "#098658"
+          },
         },
       ],
     },
@@ -106,11 +206,15 @@
             "keyword.operator.assignment.elixir",
             "keyword.operator.other.elixir",
           ],
-          "settings": {"foreground": "#4EC9B0"},
+          "settings": {
+            "foreground": "#4EC9B0"
+          },
         },
         {
           "scope": "constant.other.symbol.elixir",
-          "settings": {"foreground": "#B5CEA8"},
+          "settings": {
+            "foreground": "#B5CEA8"
+          },
         },
       ],
     },
@@ -118,6 +222,13 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.colorTheme": "Default Dark+",
   "gitlens.mode.active": "zen",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.fontSize": 13,
+  "javascript.format.enable": false,
+  "window.zoomLevel": 0,
+  "terminal.integrated.fontSize": 13,
+  "workbench.colorTheme": "Xcode Default (Dark)",
 }

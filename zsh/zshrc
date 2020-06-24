@@ -18,7 +18,10 @@ eval "$(starship init zsh)"
 eval "$(thefuck --alias)"
 
 . $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+fpath=(${ASDF_DIR}/completions $fpath)
+autoload -Uz compinit
+compinit
+kitty + complete setup zsh | source /dev/stdin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -38,12 +41,16 @@ alias giga="gigalixir"
 alias git="hub"
 alias http="python -m http.server"
 alias lg="lazygit"
-alias vimconfig="$EDITOR $HOME/.vimrc"
-alias vimdiff="vim -d"
+alias vim="$EDITOR"
+alias vimconfig="$EDITOR $HOME/.config/nvim/init.vim"
+alias vimdiff="nvim -d"
 alias vboxls="VBoxManage list runningvms"
 alias weather="curl wttr.in/Baton+Rouge"
 alias zshconfig="$EDITOR $HOME/.zshrc"
 alias zshsource="source $HOME/.zshrc"
+alias l="exa"
+alias ls="exa --all"
+alias ll="exa --long --all"
 
 # Load gem man pages
 alias man="gem man -ls"

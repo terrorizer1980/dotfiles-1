@@ -25,23 +25,24 @@ if exists('*minpac#init')
 
   " UI enhancements
   call minpac#add('airblade/vim-gitgutter')
-  call minpac#add('edkolev/tmuxline.vim')
+  call minpac#add('hoov/tmuxline.vim', {'branch': 'truecolor-lightline'})
   call minpac#add('itchyny/lightline.vim')
   call minpac#add('ryanoasis/vim-devicons')
 
-  " Language support
+  " Language/framework support
   call minpac#add('calviken/vim-gdscript3')
   call minpac#add('dart-lang/dart-vim-plugin')
+  call minpac#add('heavenshell/vim-jsdoc')
   call minpac#add('jdonaldson/vaxe')
   call minpac#add('sheerun/vim-polyglot')
   call minpac#add('thosakwe/vim-flutter')
 
   " Colorschemes
-	call minpac#add('tomasiser/vim-code-dark')
+  call minpac#add('arzg/vim-colors-xcode')
   call minpac#add('chriskempson/base16-vim')
   call minpac#add('lifepillar/vim-solarized8')
-  call minpac#add('morhetz/gruvbox')
-  call minpac#add('romainl/Apprentice')
+  call minpac#add('nightsense/cosmic_latte')
+	call minpac#add('tomasiser/vim-code-dark')
 
   " Snippets support
   call minpac#add('hrsh7th/vim-vsnip')
@@ -51,16 +52,21 @@ if exists('*minpac#init')
   call minpac#add('vimwiki/vimwiki')
 
   " General enhancements
+  call minpac#add('andymass/vim-matchup')
+  call minpac#add('editorconfig/editorconfig-vim')
   call minpac#add('fsharpasharp/vim-dirvinist')
   call minpac#add('janko/vim-test')
   call minpac#add('junegunn/fzf.vim')
   call minpac#add('justinmk/vim-dirvish')
   call minpac#add('justinmk/vim-sneak')
   call minpac#add('mbbill/undotree')
+  call minpac#add('mileszs/ack.vim')
   call minpac#add('preservim/nerdtree')
+  call minpac#add('romainl/vim-qf')
   call minpac#add('sunaku/vim-dasht')
   call minpac#add('tpope/vim-abolish')
   call minpac#add('tpope/vim-commentary')
+  call minpac#add('tpope/vim-dispatch')
   call minpac#add('tpope/vim-endwise')
   call minpac#add('tpope/vim-eunuch')
   call minpac#add('tpope/vim-fugitive')
@@ -78,8 +84,7 @@ endif
 " ------------------------------------------------------------------------------
 "  General Configuration
 " ------------------------------------------------------------------------------
-set background=dark
-set completeopt=menuone,preview,noselect
+set completeopt=menuone,preview
 set cursorline
 set expandtab
 set fillchars+=vert:│
@@ -109,7 +114,10 @@ set tabstop=2
 set termguicolors
 set undofile
 
-colorscheme gruvbox
+" set background=light
+" colorscheme solarized8_flat
+set background=dark
+colorscheme xcodedark
 
 " ------------------------------------------------------------------------------
 " Mappings & Commands
@@ -126,78 +134,132 @@ nnoremap <silent> <Esc> :nohlsearch<CR>
 nnoremap <Leader>ra :%s/\<<C-r><C-w>\>/
 nnoremap <Leader>rl :s/\<<C-r><C-w>\>/
 
+noremap Y y$
+
+noremap n nzz
+noremap N Nzz
+
 command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update()
 command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
 command! PackStatus packadd minpac | source $MYVIMRC | call minpac#status()
 
+nnoremap <Leader>cc :cclose<CR>
+nnoremap <Leader>lc :lclose<CR>
+
+nnoremap <C-n> <Plug><qf_qf_next>
+nnoremap <C-p> <Plug><qf_qf_previous>
+nnoremap <C-n> <Plug><qf_loc_next>
+nnoremap <C-p> <Plug><qf_loc_previous>
+
+" https://vim.fandom.com/wiki/Identify_the_syntax_highlighting_group_used_at_the_cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+      \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 " ------------------------------------------------------------------------------
 "  Plugin Configuration
 " ------------------------------------------------------------------------------
-"  asyncomplete
-" let g:asyncomplete_auto_completeopt = 0
+"  Some interesting character choices: × ‼ ‽ ⁇ ↬ ⊘ ⋿ ⎔ ☐ ☑ ☒ ⚐ ⚑ ⚡⮾ ⮿       o
+let s:error_sign = '⊘'
+let s:warning_sign = ' '
+let s:info_sign = ' '
+let s:hint_sign = ' '
+
+" asyncomplete
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <CR>    pumvisible() ? "\<C-y>" : "\<CR>"
+" imap <C-Space> <Plug>(asyncomplete_force_refresh)
 
 " vim-lsp
 let g:lsp_virtual_text_enabled = 0
 let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_signs_error = {'text': '˟'}
-let g:lsp_signs_warning = {'text': '⚠'}
-let g:lsp_signs_hint = {'text': 'ℹ'}
+let g:lsp_signs_error = {'text': s:error_sign}
+let g:lsp_signs_warning = {'text': s:warning_sign}
+let g:lsp_signs_hint = {'text': s:info_sign}
 let g:lsp_highlight_references_enabled = 1
 let g:lsp_log_file = expand('/tmp/vim-lsp.log')
 
 function! s:on_lsp_buffer_enabled()
-	setlocal omnifunc=lsp#complete
+  augroup lsp_format
+    autocmd! * <buffer>
+    autocmd BufWritePre <buffer> LspDocumentFormat
+  augroup END
 
-	" augroup format
-	" 	autocmd! * <buffer>
-	" 	autocmd Bufwrite <buffer> call lsp#ui#vim#document_format()
-	" augroup END
+  " [todo] Why are these <plug> mappings not working?
+  " nnoremap <buffer> <C-]> <plug>(lsp-definition)
+  " nnoremap <buffer> K  <Plug>(lsp-hover)
+  " nnoremap <buffer> gr <Plug>(lsp-references)
+  " nnoremap <buffer> ga <Plug>(lsp-code-action)
+  " nnoremap <buffer> gR <Plug>(lsp-rename)
+  " nnoremap <buffer> gS <Plug>(lsp-workspace-symbol)
+  " nnoremap <buffer> go <Plug>(lsp-document-symbol)
+  " nnoremap <buffer> gm <Plug>(lsp-signature-help)
+  " nnoremap <buffer> gd <Plug>(lsp-document-diagnostics)
 
-	nmap <buffer> <C-]> <Plug>(lsp-definition)
-	nmap <buffer> K  <Plug>(lsp-hover)
-	nmap <buffer> gr <Plug>(lsp-references)
-	nmap <buffer> ga <Plug>(lsp-code-action)
-	nmap <buffer> gR <Plug>(lsp-rename)
-	nmap <buffer> gS <Plug>(lsp-workspace-symbol)
-	nmap <buffer> go <Plug>(lsp-document-symbol)
-	nmap <buffer> gm <Plug>(lsp-signature-help)
-	nmap <buffer> gd <Plug>(lsp-document-diagnostics)
+  nnoremap <buffer> <C-]> :LspDefinition<CR>
+  nnoremap <buffer> K  :LspHover<CR>
+  nnoremap <buffer> gr :LspReferences<CR>
+  nnoremap <buffer> ga :LspCodeAction<CR>
+  nnoremap <buffer> gR :LspRename<CR>
+  nnoremap <buffer> gd :LspDocumentDiagnostics<CR>
+  nnoremap <buffer> <Leader>] :LspNextError<CR>
+  nnoremap <buffer> <Leader>[ <Plug>(lsp-previous-error)
 endfunction
 
 augroup lsp_buffer
-	autocmd!
-	autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+  autocmd!
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
-if executable('elixir-ls')
+let s:elixir_ls = '/Users/ngscheurich/dev/elixir-ls/release/language_server.sh'
+if executable(s:elixir_ls)
   autocmd User lsp_setup call lsp#register_server({
-        \ 'name': '[elixir] elixir-ls',
-        \ 'cmd': {server_info->['elixir-ls']},
+        \ 'name': 'elixir-ls',
+        \ 'cmd': {server_info->[s:elixir_ls]},
         \ 'whitelist': ['elixir'],
         \ })
 endif
 
 if executable('dart-analysis-server')
   autocmd User lsp_setup call lsp#register_server({
-        \ 'name': '[dart] dart-analysis-server',
+        \ 'name': 'dart-analysis-server',
         \ 'cmd': {server_info->['dart-analysis-server']},
         \ 'whitelist': ['dart'],
         \ })
 endif
 
 if executable('typescript-language-server')
+  autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'typescript-language-server',
+        \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
+        \ 'whitelist': ['typescript', 'typescriptreact'],
+        \ })
+endif
+
+if executable('./node_modules/.bin/flow')
     au User lsp_setup call lsp#register_server({
-      \ 'name': '[javascript] typescript-language-server',
-      \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-      \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
-      \ 'whitelist': ['javascript'],
-      \ })
+        \ 'name': 'flow-language-server',
+        \ 'cmd': {server_info->['./node_modules/.bin/flow', 'lsp', '--from', 'vim-lsp']},
+        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), '.flowconfig'))},
+        \ 'whitelist': ['javascript'],
+        \ })
+endif
+
+if executable('rls')
+  autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+        \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
+        \ 'whitelist': ['rust'],
+        \ })
 endif
 
 " vsnip
 let g:vsnip_snippet_dir = '~/.config/nvim/snippets'
-let g:vsnip_integ_config = {'vim_lsc': 1}
+let g:vsnip_integ_config = {'vim_lsp': 1}
 imap <expr> <C-y> vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-y>'
 
 "dasht.vim
@@ -206,12 +268,12 @@ let g:dasht_filetype_docsets = {
       \ 'typescript': ['javascript'],
       \ 'typescriptreact': ['javascript'],
       \ }
-nnoremap <Leader>k :Dasht<Space>
-nnoremap <Leader> <Leader>k :Dasht!<Space>
-nnoremap <silent> <Leader>K :call Dasht([expand('<cword>'), expand('<cWORD>')])<Return>
-nnoremap <silent> <Leader><Leader>K :call Dasht([expand('<cword>'), expand('<cWORD>')], '!')<Return>
-vnoremap <silent> <Leader>K y:<C-U>call Dasht(getreg(0))<Return>
-vnoremap <silent> <Leader><Leader>K y:<C-U>call Dasht(getreg(0), '!')<Return>
+" nnoremap <Leader>k :Dasht<Space>
+" nnoremap <Leader> <Leader>k :Dasht!<Space>
+" nnoremap <silent> <Leader>K :call Dasht([expand('<cword>'), expand('<cWORD>')])<Return>
+" nnoremap <silent> <Leader><Leader>K :call Dasht([expand('<cword>'), expand('<cWORD>')], '!')<Return>
+" vnoremap <silent> <Leader>K y:<C-U>call Dasht(getreg(0))<Return>
+" vnoremap <silent> <Leader><Leader>K y:<C-U>call Dasht(getreg(0), '!')<Return>
 
 " ALE
 let g:ale_linters_explicit = 1
@@ -222,6 +284,7 @@ let g:ale_linters = {
       \ 'javascript': ['eslint'],
       \ 'typescript': ['eslint', 'tslint'],
       \ 'typescriptreact': ['eslint', 'tslint'],
+      \ 'html': ['tidy'],
       \ }
 
 let g:ale_fixers = {
@@ -230,6 +293,8 @@ let g:ale_fixers = {
       \ 'javascript': ['prettier'],
       \ 'typescript': ['prettier'],
       \ 'typescriptreact': ['prettier'],
+      \ 'json': ['prettier'],
+      \ 'html': ['prettier'],
       \ }
 
 " echodoc
@@ -259,10 +324,15 @@ nnoremap <silent> <Leader>/ :Rg<CR>
 
 " lightline.vim
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'one',
       \ 'active': {
       \   'left': [[ 'mode', 'paste' ], [ 'git', 'readonly'], ['filename', 'modified' ]],
-      \   'right': [['lineinfo'], ['percent'], ['method', 'obsession', 'filetype', 'fileinfo']]
+      \   'right': [
+      \     ['lsp_information', 'lsp_hints', 'lsp_warnings', 'lsp_errors'],
+      \     ['lineinfo'],
+      \     ['percent'],
+      \     ['method', 'obsession', 'filetype', 'fileinfo'],
+      \   ]
       \ },
       \ 'inactive': {
       \   'left': [[ 'git', 'readonly'], ['filename', 'modified' ]],
@@ -283,7 +353,13 @@ let g:lightline = {
       \   'readonly': '%R',
       \ },
       \ 'component_function': {
-      \   'git': 'lightline_git',
+      \   'git': 'GitCurrentBranch',
+      \   'lsp_errors': 'LspErrors',
+      \ },
+      \ 'component_expand': {
+      \ },
+      \ 'component_type': {
+      \   'lsp_errors': 'error',
       \ },
       \ 'subseparator': {
       \   'left': '',
@@ -291,40 +367,106 @@ let g:lightline = {
       \ },
       \ }
 
-function! s:lightline_git()
-  return winwidth(0) > 120 ? ' ' . fugitive#Head() : ''
+function! LspInformation()
+  let l:count = lsp#get_buffer_diagnostics_counts()['information']
+  return LspComponent(l:count, s:info_sign)
 endfunction
+
+function! LspHints()
+  let l:count = lsp#get_buffer_diagnostics_counts()['hint']
+  return LspComponent(l:count, s:hint_sign)
+endfunction
+
+function! LspWarnings()
+  let l:count = lsp#get_buffer_diagnostics_counts()['warning']
+  return LspComponent(l:count, s:warning_sign)
+endfunction
+
+function! LspErrors()
+  let l:count = lsp#get_buffer_diagnostics_counts()['error']
+  return LspComponent(l:count, s:error_sign)
+endfunction
+
+function! LspComponent(count, symbol)
+  return a:count == '0' ? '' : a:symbol . ' ' . a:count
+endfunction
+
+function! GitCurrentBranch()
+  let l:branch = fugitive#Head()
+  return winwidth(0) < 120 || l:branch == '' ? '' : ' ' . fugitive#Head()
+endfunction
+
+let g:lsp_signs_error = {'text': s:error_sign}
+let g:lsp_signs_warning = {'text': s:warning_sign}
+let g:lsp_signs_hint = {'text': s:hint_sign}
 
 " tmuxline.vim
 let g:tmuxline_powerline_separators = 0
 
 " test.vim
-nmap <silent> t<C-n> :TestNearest<CR>
-nmap <silent> t<C-f> :TestFile<CR>
-nmap <silent> t<C-a> :TestSuite<CR>
-nmap <silent> t<C-t> :TestLast<CR>
-nmap <silent> t<C-g> :TestVisit<CR>
+" let test#strategy = 'dispatch'
+
+nnoremap <silent> t<C-n> :TestNearest<CR>
+nnoremap <silent> t<C-f> :TestFile<CR>
+nnoremap <silent> t<C-a> :TestSuite<CR>
+nnoremap <silent> t<C-t> :TestLast<CR>
+nnoremap <silent> t<C-g> :TestVisit<CR>
 
 " vimwiki
-let g:vimwiki_list = [{
-			\ 'path': '~/Dropbox/wiki/',
-			\ 'syntax': 'markdown',
-			\ 'ext': 'md',
-			\}]
+let g:notes = {
+      \ 'path': '~/Dropbox/wikis/notes/',
+      \ 'auto_toc': 1,
+      \ 'nested_syntaxes': {
+      \   'c': 'c',
+      \   'elixir': 'elixir',
+      \   'javascript': 'javascript',
+      \   'typescript': 'typescript',
+      \   'viml': 'viml',
+      \ },
+      \ }
 
-augroup wiki
-  autocmd!
-  autocmd BufEnter *.md setlocal textwidth=80
-  autocmd BufWrite *.md :VimwikiTOC
-augroup END
+let g:safe_harbour = {
+      \ 'path': '~/Dropbox/wikis/safe_harbour/',
+      \ 'auto_toc': 1,
+      \ }
+
+let g:new_aperio = {
+      \ 'path': '~/Dropbox/wikis/new_aperio/',
+      \ 'auto_toc': 1,
+      \ 'nested_syntaxes': {
+      \   'elixir': 'elixir',
+      \   'javascript': 'javascript',
+      \   'typescript': 'typescript',
+      \ },
+      \ }
+
+let g:vimwiki_list = [g:notes, g:safe_harbour, g:new_aperio]
+let g:vimwiki_hl_headers= 1
+let g:vimwiki_global_ext = 0
+let g:vimwiki_listsyms = ' ○◐●✓'
+let g:vimwiki_folding = 'expr'
 
 " NERDTree
-nmap <leader>tt :NERDTreeToggle<CR>
-nmap <leader>tf :NERDTreeFind<CR>
+nnoremap <leader>tt :NERDTreeToggle<CR>
+nnoremap <leader>tf :NERDTreeFind<CR>
 
 " gruvbox
 let g:gruvbox_italic = 1
 let g:gruvbox_contrast_dark = 'hard'
+
+" GitGutter
+let g:gitgutter_sign_added = '┃'
+let g:gitgutter_sign_modified = '┃'
+let g:gitgutter_sign_removed = '•'
+let g:gitgutter_sign_removed_first_line = '•'
+let g:gitgutter_sign_modified_removed = '•'
+let g:gitgutter_sign_allow_clobber = 1
+let g:lsp_signs_priority = 15
+
+" ack.vim
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep'
+endif
 
 " ------------------------------------------------------------------------------
 " VS Code Integration
