@@ -1,6 +1,5 @@
 require "rake"
 require "fileutils"
-require "colorize"
 require "pathname"
 
 source_path = (Pathname(__dir__) + "lib").expand_path
@@ -25,7 +24,7 @@ task :install do
 
   puts ""
   puts "👨‍💻  Happy hacking!"
-  puts "https://github.com/ngscheurich/dotfiles".colorize(:light_black)
+  puts "https://github.com/ngscheurich/dotfiles"
 end
 
 desc "Install system packages using Homebrew"

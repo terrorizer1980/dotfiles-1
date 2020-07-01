@@ -35,7 +35,7 @@ export PATH=$PATH:$HOME/bin
 
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export ERL_AFLAGS="-kernel shell_history enabled"
-export FZF_DEFAULT_COMMAND='/usr/local/bin/ag -g ""'
+export FZF_DEFAULT_COMMAND="rg --files --hidden"
 export GPG_TTY=$(tty)
 export HAXE_STD_PATH="/usr/local/lib/haxe/std"
 export TWEEGO_PATH="$HOME/.local/share/twine/story-formats"

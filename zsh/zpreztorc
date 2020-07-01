@@ -18,8 +18,7 @@ zstyle ':prezto:load' pmodule \
   'osx' \
   'syntax-highlighting' \
   'autosuggestions' \
-  'history-substring-search' \
-  'prompt'
+  'history-substring-search'
 
 zstyle ':prezto:module:editor' key-bindings 'vi'
 zstyle ':prezto:*:*' color 'yes'

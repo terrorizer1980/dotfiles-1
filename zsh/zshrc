@@ -17,7 +17,9 @@ eval "$(fasd --init auto)"
 eval "$(starship init zsh)"
 eval "$(thefuck --alias)"
 
-. $HOME/.asdf/asdf.sh
+typeset -g ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE='20'
+
+. $(brew --prefix asdf)/asdf.sh
 fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit
 compinit
@@ -49,11 +51,9 @@ alias weather="curl wttr.in/Baton+Rouge"
 alias zshconfig="$EDITOR $HOME/.zshrc"
 alias zshsource="source $HOME/.zshrc"
 alias l="exa"
-alias ls="exa --all"
-alias ll="exa --long --all"
-
-# Load gem man pages
-alias man="gem man -ls"
+alias ls="lsd"
+alias la="lsd --all"
+alias ll="lsd --long --all"
 
 # ------------------------------------------------------------------------------
 # Keybinds
@@ -63,3 +63,9 @@ bindkey '^e' end-of-line
 
 eval "$(direnv hook zsh)"
 
+# ------------------------------------------------------------------------------
+# Functions
+# ------------------------------------------------------------------------------
+xdir() {
+  tmux new-session -s ${PWD##*/}
+}
