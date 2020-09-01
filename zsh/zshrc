@@ -69,3 +69,6 @@ eval "$(direnv hook zsh)"
 xdir() {
   tmux new-session -s ${PWD##*/}
 }
+
+# https://stackoverflow.com/questions/54380924/reference-assemblies-for-framework-netframework-version-v4-7-1-were-not-found
+export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/Current
