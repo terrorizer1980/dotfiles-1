@@ -6,14 +6,14 @@ scriptencoding utf-8
 " Author: N. G. Scheurich <nick@scheurich.me>
 " Repo:   https://github.com/ngscheurich/dotfiles
 
-source $HOME/.config/nvim/plugins.vim
+source $HOME/.config/nvim/packages.vim
 
-let s:plugin_configs = '~/.config/nvim/plugins/*.vim'
+source $HOME/.config/nvim/config/global.vim
+source $HOME/.config/nvim/config/colors.vim
+source $HOME/.config/nvim/config/mappings.vim
+source $HOME/.config/nvim/config/commands.vim
+
+let s:plugin_configs = '~/.config/nvim/config/plugins/*.vim'
 for file in split(glob(s:plugin_configs), '\n')
     exe 'source' file
 endfor
-
-source $HOME/.config/nvim/global.vim
-source $HOME/.config/nvim/colors.vim
-source $HOME/.config/nvim/mappings.vim
-source $HOME/.config/nvim/commands.vim

@@ -24,5 +24,5 @@ let g:ale_fixers = {
       \ 'typescriptreact': ['prettier'],
       \ 'json': ['prettier'],
       \ 'html': ['prettier'],
-      \ 'elixir': ['mix_format'],
       \ }
+      " \ 'elixir': ['mix_format'],

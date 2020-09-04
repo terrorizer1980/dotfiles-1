@@ -1,6 +1,6 @@
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -56,7 +56,6 @@ Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/glyph-palette.vim'
-Plug 'liuchengxu/vim-clap'
 Plug 'nvim-lua/lsp-status.nvim'
 Plug 'romainl/vim-qf'
 
@@ -66,18 +65,18 @@ Plug 'chrisbra/Colorizer'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'janko/vim-test'
 Plug 'jreybert/vimagit'
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-dirvish'
+Plug 'liuchengxu/vim-clap', {'do': ':Clap install-binary'}
+Plug 'mhinz/vim-mix-format'
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-rsi'
-Plug 'tpope/vim-vinegar'
 
 " Evaluating
 Plug 'mbbill/undotree'
-Plug 'fsharpasharp/vim-dirvinist'
 
 call plug#end()

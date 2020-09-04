@@ -24,6 +24,8 @@ function! Colorscheme(name)
   else
     set background=dark
   endif
+
+  hi link mkdLineBreak mkdNonListItemBlock
 endfunction
 
 call Colorscheme('iceberg_dark')
