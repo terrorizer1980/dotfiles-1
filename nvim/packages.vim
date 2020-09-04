@@ -76,14 +76,3 @@ function! PackInit() abort
   " Evaluating
   call minpac#add('mbbill/undotree')
 endfunction
-
-function! PackInstall() abort
-  silent !git clone https://github.com/k-takata/minpac.git
-        \ ~/.config/nvim/pack/minpac/opt/minpac
-  echo "✔ minpac was installed successfully"
-endfunction
-
-command! PackInstall call PackInstall()
-command! PackUpdate  call PackInit() | call minpac#update()
-command! PackClean   call PackInit() | call minpac#clean()
-command! PackStatus  packadd minpac  | call minpac#status()

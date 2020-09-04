@@ -14,6 +14,6 @@ nvim_lsp.elixirls.setup{
   on_attach = lsp_on_attach;
 }
 
-require'nvim_lsp'.tsserver.setup{on_attach = lsp_on_attach}
 require'nvim_lsp'.flow.setup{on_attach = lsp_on_attach}
 require'nvim_lsp'.rls.setup{on_attach = lsp_on_attach}
+require'nvim_lsp'.tsserver.setup{on_attach = lsp_on_attach}

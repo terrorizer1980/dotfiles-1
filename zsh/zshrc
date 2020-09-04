@@ -54,6 +54,18 @@ alias l="exa"
 alias ls="lsd"
 alias la="lsd --all"
 alias ll="lsd --long --all"
+alias gaa="git aa"
+alias gbr="git br"
+alias gco="git co"
+alias gcob="git cob"
+alias gcom="git commit"
+alias gcoma="git commit -a"
+alias ggr="git graph"
+alias glg="git lg"
+alias gpub="git pub"
+alias gpull="git pull"
+alias gpush="git push"
+alias gst="git st"
 
 # ------------------------------------------------------------------------------
 # Keybinds
