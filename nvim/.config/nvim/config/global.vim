@@ -1,4 +1,4 @@
-set completeopt=menuone,preview,noinsert,noselect
+set completeopt=menuone,noinsert,noselect
 set cursorline
 set expandtab
 set fillchars+=vert:│

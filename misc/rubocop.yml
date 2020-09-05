@@ -1,8 +1,0 @@
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
-
-Style/Documentation:
-  Enabled: false
-
-Metrics/LineLength:
-  Max: 90
