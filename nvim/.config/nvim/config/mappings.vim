@@ -1,23 +1,31 @@
+" Map <Leader> to <Space>
 let mapleader=" "
 
+" Navigate window splits with the arrow keys
 nnoremap <Right> <C-w>l
 nnoremap <Left>  <C-w>h
 nnoremap <Up>    <C-w>k
 nnoremap <Down>  <C-w>j
 
+" Clear search highlighting on <Esc>
 nnoremap <silent> <Esc> :nohlsearch<CR>
 
-" nnoremap <Leader>ra :%s/\<<C-r><C-w>\>/
-" nnoremap <Leader>rl :s/\<<C-r><C-w>\>/
+" Replace word under the cursor, by buffer or line
+nnoremap <Leader>ra :%s/\<<C-r><C-w>\>/
+nnoremap <Leader>rl :s/\<<C-r><C-w>\>/
 
+" Yank until the end of the line
 noremap Y y$
 
+" Close the quickfix or location list
 nnoremap <Leader>cc :cclose<CR>
 nnoremap <Leader>lc :lclose<CR>
 
-nnoremap <silent> <Leader>e :FloatermNew ranger<CR>
-
+" Quickly quit the current window
 nnoremap <silent> <Leader>q :q<CR>
 
-" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" I fuck these up a lot
+cnoremap Qa qa
+cnoremap Xa xa
+
+nnoremap <silent> <Leader>e :FloatermNew ranger<CR>
