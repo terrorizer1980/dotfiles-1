@@ -7,7 +7,9 @@
 # ---------------------------------------------------------
 # Setup
 # ---------------------------------------------------------
-source ~/.zbundle
+source $HOME/.zbundle
+source $HOME/.fzf.zsh
+source $(brew --prefix asdf)/asdf.sh
 
 eval "$(fasd --init auto)"
 eval "$(starship init zsh)"
@@ -15,16 +17,10 @@ eval "$(thefuck --alias)"
 eval "$(direnv hook zsh)"
 eval "$(luarocks path --bin)"
 
-. $(brew --prefix asdf)/asdf.sh
-
 fpath=(${ASDF_DIR}/completions $fpath)
-
 autoload -Uz compinit
 compinit
-
 kitty + complete setup zsh | source /dev/stdin
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # ---------------------------------------------------------
 # Options
