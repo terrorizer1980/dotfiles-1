@@ -1,86 +1,56 @@
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#   N. G. Scheurich <nick@scheurich.me>
-#
-# URL: https://github.com/ngscheurich/dotfiles
+# ----------------------------------------------------------
+# Zsh interactive shell configuration
+# ----------------------------------------------------------
+# Author: N. G. Scheurich <nick@scheurich.me>
+# Repo:   https://github.com/ngscheurich/dotfiles
 
-# ------------------------------------------------------------------------------
+# ---------------------------------------------------------
 # Setup
-# ------------------------------------------------------------------------------
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
+# ---------------------------------------------------------
+source ~/.zbundle
 
 eval "$(fasd --init auto)"
 eval "$(starship init zsh)"
 eval "$(thefuck --alias)"
-
-typeset -g ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE='20'
+eval "$(direnv hook zsh)"
+eval "$(luarocks path --bin)"
 
 . $(brew --prefix asdf)/asdf.sh
+
 fpath=(${ASDF_DIR}/completions $fpath)
+
 autoload -Uz compinit
 compinit
+
 kitty + complete setup zsh | source /dev/stdin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# ------------------------------------------------------------------------------
+# ---------------------------------------------------------
 # Options
-# ------------------------------------------------------------------------------
+# ---------------------------------------------------------
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_DUPS
 setopt INC_APPEND_HISTORY
 
-# ------------------------------------------------------------------------------
+# ---------------------------------------------------------
 # Aliases
-# ------------------------------------------------------------------------------
+# ---------------------------------------------------------
 alias curlh="curl -s -D - -o /dev/null"
 alias giga="gigalixir"
 alias git="hub"
 alias http="python -m http.server"
+alias l="exa"
+alias la="lsd --all"
 alias lg="lazygit"
+alias ll="lsd --long --all"
+alias ls="lsd"
+alias vboxls="VBoxManage list runningvms"
 alias vim="$EDITOR"
 alias vimconfig="$EDITOR $HOME/.config/nvim/init.vim"
 alias vimdiff="nvim -d"
-alias vboxls="VBoxManage list runningvms"
 alias weather="curl wttr.in/Baton+Rouge"
+alias zbundle="antibody bundle < .zsh_plugins > .zbundle"
 alias zshconfig="$EDITOR $HOME/.zshrc"
 alias zshsource="source $HOME/.zshrc"
-alias l="exa"
-alias ls="lsd"
-alias la="lsd --all"
-alias ll="lsd --long --all"
-alias gaa="git aa"
-alias gbr="git br"
-alias gco="git co"
-alias gcob="git cob"
-alias gcom="git commit"
-alias gcoma="git commit -a"
-alias ggr="git graph"
-alias glg="git lg"
-alias gpub="git pub"
-alias gpull="git pull"
-alias gpush="git push"
-alias gst="git st"
-
-# ------------------------------------------------------------------------------
-# Keybinds
-# ------------------------------------------------------------------------------
-bindkey '^a' beginning-of-line
-bindkey '^e' end-of-line
-
-eval "$(direnv hook zsh)"
-
-# ------------------------------------------------------------------------------
-# Functions
-# ------------------------------------------------------------------------------
-xdir() {
-  tmux new-session -s ${PWD##*/}
-}
-
-# https://stackoverflow.com/questions/54380924/reference-assemblies-for-framework-netframework-version-v4-7-1-were-not-found
-export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/Current
