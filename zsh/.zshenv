@@ -5,7 +5,7 @@
 # Repo:   https://github.com/ngscheurich/dotfiles
 
 export ANDROID_HOME=$HOME/Library/Android/sdk
-export ANTIBODY_HOME=~/.antibody
+export ANTIBODY_HOME=$HOME/.antibody
 export BROWSER='open'
 export EDITOR='nvim'
 export ERL_AFLAGS="-kernel shell_history enabled"
@@ -19,7 +19,6 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.emacs.d/bin
 export PATH=$PATH:$HOME/.local/bin
