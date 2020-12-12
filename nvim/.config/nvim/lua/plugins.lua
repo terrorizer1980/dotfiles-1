@@ -7,16 +7,18 @@ end
 local function init()
   if packer == nil then
     packer = require('packer')
-    packer.init({})
+    packer.init({
+			compile_path = vim.fn.stdpath('config') .. '/.packer_compiled.vim'
+		})
   end
 
-	local use = packer.use
+  local use = packer.use
 
   -- Package manager
   use {'wbthomason/packer.nvim', opt = true}
 
   ----------------------------------------------------------
-	-- Editing
+  -- Editing
   ----------------------------------------------------------
   use 'andymass/vim-matchup'
   use 'junegunn/vim-easy-align'
@@ -33,20 +35,20 @@ local function init()
   ----------------------------------------------------------
   -- Language support
   ----------------------------------------------------------
-  -- use 'euclidianAce/BetterLua.vim'
-  -- use 'HerringtonDarkholme/yats.vim'
-  -- use 'cespare/vim-toml'
-  -- use 'elixir-editors/vim-elixir'
-  -- use 'ericpruitt/tmux.vim'
-  -- use 'hashivim/vim-terraform'
-  -- use 'jparise/vim-graphql'
-  -- use 'othree/html5.vim'
-  -- use 'pangloss/vim-javascript'
-  -- use 'plasticboy/vim-markdown'
-  -- use 'rust-lang/rust.vim'
+  use 'euclidianAce/BetterLua.vim'
+  use 'HerringtonDarkholme/yats.vim'
+  use 'cespare/vim-toml'
+  use 'elixir-editors/vim-elixir'
+  use 'ericpruitt/tmux.vim'
+  use 'hashivim/vim-terraform'
+  use 'jparise/vim-graphql'
+  use 'othree/html5.vim'
+  use 'pangloss/vim-javascript'
+  use 'plasticboy/vim-markdown'
+  use 'rust-lang/rust.vim'
 
   ----------------------------------------------------------
-	-- Code intelligence
+  -- Code intelligence
   ----------------------------------------------------------
   use {
     'dense-analysis/ale',
@@ -54,13 +56,13 @@ local function init()
     config = "require('plugins.ale')",
   }
 
-	use {
-		'neovim/nvim-lspconfig',
-		opt = true,
-		ft = {'elixir', 'lua'},
-		requires = {'nvim-lua/completion-nvim'},
+  use {
+    'neovim/nvim-lspconfig',
+    opt = true,
+    ft = {'elixir', 'lua'},
+    requires = {'nvim-lua/completion-nvim'},
     config = "require('lsp')",
-	}
+  }
 
   ----------------------------------------------------------
   -- UI enhancements
@@ -76,24 +78,23 @@ local function init()
   ----------------------------------------------------------
   -- Tools
   ----------------------------------------------------------
-  -- use {'bfredl/nvim-luadev', cmd = 'Luadev', config = "require('plugins.nvim-luadev')"}
-  -- use 'editorconfig/editorconfig-vim'
-  -- use 'janko/vim-test'
+  use {'bfredl/nvim-luadev', cmd = 'Luadev', config = "require('plugins.nvim-luadev')"}
+  use 'editorconfig/editorconfig-vim'
+  use 'janko/vim-test'
   use 'justinmk/vim-dirvish'
-  -- use {'kdheepak/lazygit.nvim', cmd = {'LazyGit', 'LazyGitConfig'}}
   use {'mileszs/ack.vim', cmd = 'Ack'}
-  -- use 'norcalli/nvim-colorizer.lua'
+  use 'norcalli/nvim-colorizer.lua'
   use {
     'nvim-telescope/telescope.nvim',
     requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
     config = "require('plugins.telescope')"
   }
-  -- use {'tpope/vim-dispatch', cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
-  -- use 'tpope/vim-fugitive'
-  -- use 'tpope/vim-git'
+  use {'tpope/vim-dispatch', cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-git'
   use 'tpope/vim-obsession'
-  -- use 'tpope/vim-projectionist'
-  -- use 'tpope/vim-rsi'
+  use 'tpope/vim-projectionist'
+  use 'tpope/vim-rsi'
   use {'voldikss/vim-floaterm', config = setup('floaterm')}
 end
 

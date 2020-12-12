@@ -15,7 +15,7 @@ eval "$(fasd --init auto)"
 eval "$(starship init zsh)"
 eval "$(thefuck --alias)"
 eval "$(direnv hook zsh)"
-eval "$(luarocks path --bin)"
+# eval "$(luarocks path --bin)"
 
 fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit
@@ -41,6 +41,9 @@ alias l="exa"
 alias la="exa --long --all"
 alias lg="lazygit"
 alias ll="exa --long"
+alias love="/Applications/love.app/Contents/MacOS/love"
+alias ls="exa"
+alias pico8="/Applications/PICO-8.app/Contents/MacOS/pico8"
 alias vboxls="VBoxManage list runningvms"
 alias vim="$EDITOR"
 alias vimconfig="$EDITOR $HOME/.config/nvim/init.vim"
@@ -49,3 +52,5 @@ alias weather="curl wttr.in/Denham+Springs"
 alias zbundle="antibody bundle < .zsh_plugins > .zbundle"
 alias zshconfig="$EDITOR $HOME/.zshrc"
 alias zshsource="source $HOME/.zshrc"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

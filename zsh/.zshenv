@@ -7,6 +7,7 @@
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export ANTIBODY_HOME=$HOME/.antibody
 export BROWSER='open'
+# export EDITOR='~/neovim/build/bin/nvim'
 export EDITOR='nvim'
 export ERL_AFLAGS="-kernel shell_history enabled"
 export FZF_DEFAULT_COMMAND="rg --files --hidden"
@@ -26,4 +27,5 @@ export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/dev/flutter/bin
 export PATH=$PATH:$HOME/elixir-ls
 export PATH=$PATH:$HOME/go/bin
+export PATH=$PATH:$HOME/Projects/picotool
 export TWEEGO_PATH=$HOME/.local/share/twine/story-formats
