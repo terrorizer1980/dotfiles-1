@@ -23,9 +23,3 @@ nnoremap <Leader>lc :lclose<CR>
 
 " Quickly quit the current window
 nnoremap <silent> <Leader>q :q<CR>
-
-" I fuck these up a lot
-cnoremap Qa qa
-cnoremap Xa xa
-
-nnoremap <silent> <Leader>e :FloatermNew ranger<CR>

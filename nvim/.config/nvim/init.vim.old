@@ -1,0 +1,41 @@
+" =========================================================
+" Neovim configuration
+" =========================================================
+" Author: N. G. Scheurich <nick@scheurich.me>
+" Repo:   https://github.com/ngscheurich/dotfiles
+
+function! s:source(name) abort
+  let l:file = stdpath('config') . '/' . a:name . '.vim'
+	execute 'source ' . l:file
+endfunction
+
+call s:source('options')
+call s:source('mappings')
+call s:source('plugins')
+
+function PluginLoaded(name) abort
+  let l:paths = split(&rtp, ',')
+  let l:plugin_path = stdpath('data') . '/plugged/' . a:name
+  return index(l:paths, l:plugin_path)
+endfunction
+
+let s:plugin_configs = stdpath('config') . '/plugins/*.vim'
+for file in split(glob(s:plugin_configs), '\n')
+  execute 'source' file
+endfor
+
+let g:loaded_python_provider  = 0
+let g:loaded_python3_provider = 0
+let g:loaded_ruby_provider    = 0
+let g:loaded_node_provider    = 0
+let g:loaded_perl_provider    = 0
+
+lua require('lspconfig').elixirls.setup {}
+lua require('lspconfig').sumneko_lua.setup {}
+lua require('nlua.lsp.nvim').setup(require('lspconfig'), {})
+set omnifunc=v:lua.vim.lsp.omnifunc
+autocmd BufEnter * lua require('completion').on_attach()
+nmap <Leader>r <Plug>(Luadev-RunLine)
+
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)

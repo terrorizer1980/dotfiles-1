@@ -1,5 +1,5 @@
 vim.g.lightline = {
-  colorscheme = 'iceberg',
+  colorscheme = 'icebergDark',
 
   active = {
     left  = {{'mode', 'paste'}, {'git', 'readonly'}, {'filename', 'modified'}},

@@ -1,9 +1,6 @@
-" set completeopt=menuone,noinsert,noselect
-
 set cursorline              " Highlight the screen line of the cursor with CursorLine
 set expandtab               " Use the appropriate number of spaces to insert a <Tab>
-set fillchars+=vert:│       " Characters to fill the statuslines and vertical separators.
-" set foldlevelstart=5      " Sets 'foldlevel' when starting to edit another buffer in a window
+set fillchars+=vert:│       " Characters to fill the statuslines and vertical separators
 set foldmethod=marker       " Markers are used to specify folds.
 set grepprg=rg\ --vimgrep   " Program to use for the `:grep` command
 set hidden                  " Abandon buffers when they become hidden
@@ -24,6 +21,16 @@ set softtabstop=2           " Number of spaces that a <Tab> counts for while per
 set splitbelow              " Vertically splitting a window will put the new window below the current one
 set splitright              " Horizaontally splitting a window will put the new window right of the current one
 set tabstop=2               " Number of spaces that a <Tab> in the file counts for
-set termguicolors           " Enables 24-bit RGB color in the `TUI`
-set undofile                " Persists undo histort and restore on buffer read
-set updatetime=300          " Number of milliseconds of inactivity after which to trigger the `CursorHold` autocommand event
+" set termguicolors           " Enables 24-bit RGB color in the `TUI`
+set undofile                " Persists undo history and restore on buffer read
+set updatetime=1000         " Milliseconds after which to trigger swap write/`CursorHold`
+
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+
+" Avoid showing message extra message when using completion
+set shortmess+=c

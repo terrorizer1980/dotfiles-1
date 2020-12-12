@@ -1,0 +1,15 @@
+INFO  2020-12-08T10:58:57.144 51462 set_init_2:755: startup runtimepath/packpath value: /Users/nick/.config/nvim,/etc/xdg/nvim,/Users/nick/.local/share/nvim/site,/usr/local/share/nvim/site,/usr/share/nvim/site,/usr/local/share/nvim/runtime,/Users/nick/neovim/build/lib/nvim,/usr/share/nvim/site/after,/usr/local/share/nvim/site/after,/Users/nick/.local/share/nvim/site/after,/etc/xdg/nvim/after,/Users/nick/.config/nvim/after
+INFO  2020-12-08T10:58:59.733 51462 emsg_multiline:679: E5108: Error executing lua /Users/nick/.config/nvim/lua/lsp.lua:2: module 'lspconfig' not found:
+	no field package.preload['lspconfig']
+	no file './lspconfig.lua'
+	no file '/Users/nick/neovim/.deps/usr/share/luajit-2.1.0-beta3/lspconfig.lua'
+	no file '/usr/local/share/lua/5.1/lspconfig.lua'
+	no file '/usr/local/share/lua/5.1/lspconfig/init.lua'
+	no file '/Users/nick/neovim/.deps/usr/share/lua/5.1/lspconfig.lua'
+	no file '/Users/nick/neovim/.deps/usr/share/lua/5.1/lspconfig/init.lua'
+	no file './lspconfig.so'
+	no file '/usr/local/lib/lua/5.1/lspconfig.so'
+	no file '/Users/nick/neovim/.deps/usr/lib/lua/5.1/lspconfig.so'
+	no file '/usr/local/lib/lua/5.1/loadall.so' (/Users/nick/.dotfiles/nvim/.config/nvim/init.vim (line 10))
+INFO  2020-12-08T10:58:59.769 51462 main:551: starting main loop
+INFO  2020-12-08T10:59:15.755 51462 os_exit:578: Nvim exit: 0
