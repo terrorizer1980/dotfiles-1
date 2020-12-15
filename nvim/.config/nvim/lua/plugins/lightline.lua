@@ -12,7 +12,6 @@ vim.g.lightline = {
   },
 
   component = {
-    modified     = '[%M]',
     fileencoding = '%{&fenc!=#""?&fenc:&enc}',
     fileformat   = '%{&ff}',
     fileinfo     = '%{&ff}[%{&fenc!=#""?&fenc:&enc}]',
@@ -21,7 +20,7 @@ vim.g.lightline = {
     lineinfo     = '%3l:%-2v ',
     mode         = '%{lightline#mode()}',
     modified     = '[%M]',
-    obsession    = '%{ObsessionStatus()}',
+    -- obsession    = '%{ObsessionStatus()}',
     paste        = '%{&paste?"PASTE":""}',
     percent      = '%3p%% ☰ ',
     readonly     = '%R',

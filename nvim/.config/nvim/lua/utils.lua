@@ -5,17 +5,25 @@ local fn  = vim.fn
 local M = {}
 
 -- Conveniences for key mapping
+local function map(mode, lhs, rhs, opts, buflocal)
+  if opts == nil then opts = {} end
+  if buflocal then
+    api.nvim_buf_set_keymap(0, mode, lhs, rhs, opts)
+  else
+    api.nvim_set_keymap(mode, lhs, rhs, opts)
+  end
+end
+
 local modes = {'n', 'v', 's', 'x', 'o', 'i', 'l', 'c', 't'}
-for _, v in pairs(modes) do
-	M[v .. 'map'] = function (lhs, rhs, opts)
-	  if opts == nil then opts = {} end
-    api.nvim_set_keymap(v, lhs, rhs, opts)
+for _, mode in pairs(modes) do
+	M[mode .. 'map'] = function (lhs, rhs, opts, buflocal)
+    map(mode, lhs, rhs, opts, buflocal)
   end
 
-	M[v .. 'noremap'] = function (lhs, rhs, opts)
+	M[mode .. 'noremap'] = function (lhs, rhs, opts, buflocal)
 	  if opts == nil then opts = {} end
 	  opts.noremap = true
-    api.nvim_set_keymap(v, lhs, rhs, opts)
+    map(mode, lhs, rhs, opts, buflocal)
 	end
 end
 
@@ -31,10 +39,18 @@ function M.install_packer()
 	end
 end
 
--- Restart LSP client
-function M.restart_lsp()
-  lsp.stop_client(lsp.get_active_clients())
+-- LSP functions
+function M.lsp_restart()
+  M.lsp_stop()
   vim.cmd('edit')
+end
+
+function M.lsp_stop()
+  lsp.stop_client(lsp.get_active_clients())
+end
+
+function M.lsp_info()
+  print(vim.inspect(vim.lsp.buf_get_clients()))
 end
 
 -- Check if `plugin` is on the runtimepath

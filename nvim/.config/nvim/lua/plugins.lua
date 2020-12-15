@@ -1,15 +1,13 @@
 local packer = nil
 
-local function setup(plugin)
+local function config(plugin)
   return "require('plugins." .. plugin .. "')"
 end
 
 local function init()
   if packer == nil then
     packer = require('packer')
-    packer.init({
-			compile_path = vim.fn.stdpath('config') .. '/.packer_compiled.vim'
-		})
+    packer.init({})
   end
 
   local use = packer.use
@@ -53,7 +51,7 @@ local function init()
   use {
     'dense-analysis/ale',
     ft  = {'css', 'javascript', 'typescript', 'json', 'html'},
-    config = "require('plugins.ale')",
+    config = config('ale'),
   }
 
   use {
@@ -69,16 +67,18 @@ local function init()
   ----------------------------------------------------------
   use 'airblade/vim-gitgutter'
   use {'cocopon/iceberg.vim', config = "vim.cmd('colorscheme iceberg')"}
+  use {'liuchengxu/vim-which-key', config = config('vim-which-key')}
+  use {'mhinz/vim-startify', config =  config('startify')}
   use 'gkeep/iceberg-dark'
-  use {'hoov/tmuxline.vim', branch = 'truecolor-lightline'}
+  use {'hoov/tmuxline.vim', cmd = 'Tmuxline', branch = 'truecolor-lightline', setup = config('tmuxline')}
   use {'kyazdani42/nvim-web-devicons', config = "require('nvim-web-devicons').setup({})"}
-  use {'itchyny/lightline.vim', config = "require('plugins.lightline')"}
+  use {'itchyny/lightline.vim', config = config('lightline')}
   use 'romainl/vim-qf'
 
   ----------------------------------------------------------
   -- Tools
   ----------------------------------------------------------
-  use {'bfredl/nvim-luadev', cmd = 'Luadev', config = "require('plugins.nvim-luadev')"}
+  use {'bfredl/nvim-luadev', cmd = 'Luadev', config = config('nvim-luadev')}
   use 'editorconfig/editorconfig-vim'
   use 'janko/vim-test'
   use 'justinmk/vim-dirvish'
@@ -87,15 +87,15 @@ local function init()
   use {
     'nvim-telescope/telescope.nvim',
     requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
-    config = "require('plugins.telescope')"
+    config = config('telescope'),
   }
   use {'tpope/vim-dispatch', cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
   use 'tpope/vim-fugitive'
   use 'tpope/vim-git'
-  use 'tpope/vim-obsession'
+  -- use 'tpope/vim-obsession' -- handled by Startify
   use 'tpope/vim-projectionist'
   use 'tpope/vim-rsi'
-  use {'voldikss/vim-floaterm', config = setup('floaterm')}
+  use {'voldikss/vim-floaterm', config = config('floaterm')}
 end
 
 local plugins = setmetatable({}, {

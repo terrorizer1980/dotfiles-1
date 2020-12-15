@@ -9,7 +9,6 @@ o.completeopt     = copt      -- Set completeopt to have a better completion exp
 o.expandtab       = false     -- Use the appropriate number of spaces to insert a <Tab>
 o.fillchars       = 'vert:│'  -- Characters to fill the statuslines and vertical separators
 o.grepprg         = gprg      -- Program to use for the `:grep` command
-o.hidden          = false     -- Abandon buffers when they become hidden
 o.ignorecase      = true      -- Ignore case in search patterns
 o.inccommand      = 'split'   -- Show partial off-screen substitutions in a preview window
 o.number          = true      -- Print the line number in front of the current line
