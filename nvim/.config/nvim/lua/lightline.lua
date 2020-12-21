@@ -1,5 +1,5 @@
 vim.g.lightline = {
-  colorscheme = 'icebergDark',
+  colorscheme = 'base16_default_dark',
 
   active = {
     left  = {{'mode', 'paste'}, {'git', 'readonly'}, {'filename', 'modified'}},
@@ -30,3 +30,4 @@ vim.g.lightline = {
     git = 'GitCurrentBranch'
   },
 }
+

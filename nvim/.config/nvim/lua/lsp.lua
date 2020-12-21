@@ -1,13 +1,10 @@
 local lspconfig = require('lspconfig')
-local utils = require('utils')
 
-local nnoremap = utils.nnoremap
-
-local function lsp_map(keys, fn)
-  local lhs = '<Leader>l' .. keys
-  local rhs = '<Cmd>lua vim.lsp.' .. fn .. '()<CR>'
-  local opts = {silent = true}
+local function bufmap(lhs, lsp_fn)
+  local rhs = '<Cmd>lua vim.lsp.' .. lsp_fn .. '()<CR>'
+  local opts = {noremap = true, silent = true}
   nnoremap(lhs, rhs, opts, true)
+  vim.api.nvim_buf_set_keymap(0, 'n', lhs, rhs, opts)
 end
 
 local lsp_on_attach = function ()
@@ -15,27 +12,22 @@ local lsp_on_attach = function ()
 
   vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-  lsp_map('a',  'buf.code_action')
-  lsp_map('f',  'buf.formatting')
-  lsp_map('d',  'diagnostic.show_line_diagnostics')
-  lsp_map('gd', 'buf.definition')
-  lsp_map('gi', 'buf.implementation')
-  lsp_map('gt', 'buf.type_definition')
-  lsp_map('h',  'buf.hover')
-  lsp_map('r',  'buf.references')
-  lsp_map('R',  'buf.rename')
-  lsp_map('s',  'buf.rename')
-  lsp_map('S',  'buf.workspace_symbol')
+  bufmap('K',     '<Cmd>lua vim.lsp.buf.hover()<CR>')
+  bufmap('<C-]>', '<Cmd>lua vim.lsp.buf.definition()<CR>')
 
-  nnoremap('<Leader>lcr',   "<Cmd>lua require('utils').lsp_restart()<CR>", {}, true)
-  nnoremap('<Leader>lcs',   "<Cmd>lua require('utils').lsp_stop()<CR>",    {}, true)
-  nnoremap('<Leader>li',    "<Cmd>lua require('utils').lsp_info()<CR>",    {}, true)
-
-  nnoremap('K',     '<Cmd>lua vim.lsp.buf.hover()<CR>',      {}, true)
-  nnoremap('<C-]>', '<Cmd>lua vim.lsp.buf.definition()<CR>', {}, true)
+  bufmap('<Leader>a',  'buf.code_action')
+  bufmap('<Leader>f',  'buf.formatting')
+  bufmap('<Leader>d',  'diagnostic.show_line_diagnostics')
+  bufmap('<Leader>gd', 'buf.definition')
+  bufmap('<Leader>gi', 'buf.implementation')
+  bufmap('<Leader>gt', 'buf.type_definition')
+  bufmap('<Leader>h',  'buf.hover')
+  bufmap('<Leader>r',  'buf.references')
+  bufmap('<Leader>R',  'buf.rename')
+  bufmap('<Leader>s',  'buf.rename')
+  bufmap('<Leader>S',  'buf.workspace_symbol')
 end
 
--- Language server configuration
 lspconfig.elixirls.setup({on_attach = lsp_on_attach})
 
 lspconfig.sumneko_lua.setup({
