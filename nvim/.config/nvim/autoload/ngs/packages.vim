@@ -1,11 +1,13 @@
-let s:packdir = stdpath('data') . '/site'
+" ----------------------------------------------------------
+" Package management functions.
+" ----------------------------------------------------------
 
-function! PackInit() abort
+function! ngs#packages#Init() abort
   " Load minpac
   packadd minpac
 
   " Initialize minpac, setting preferred `dir`
-  call minpac#init({'dir': s:packdir})
+  call minpac#init({'dir': stdpath('data') . '/site'})
 
   " Let minpac manage itself
   call minpac#add('k-takata/minpac', {'type': 'opt'})
@@ -50,38 +52,43 @@ function! PackInit() abort
 	" --------------------------------------------------------
 	"  User interface
 	" --------------------------------------------------------
-	call minpac#add('airblade/vim-gitgutter')
   call minpac#add('chriskempson/base16-vim')
   call minpac#add('mike-hearn/base16-vim-lightline')
 	call minpac#add('mhinz/vim-startify')
-	call minpac#add('hoov/tmuxline.vim')
+	call minpac#add('hoov/tmuxline.vim', {'type': 'opt'})
 	call minpac#add('kyazdani42/nvim-web-devicons')
+  call minpac#add('kyazdani42/nvim-tree.lua', {'type': 'opt'})
 	call minpac#add('itchyny/lightline.vim')
 	call minpac#add('romainl/vim-qf')
 
 	" --------------------------------------------------------
-	"  Tools
+	" Utilities
 	" --------------------------------------------------------
 	call minpac#add('bfredl/nvim-luadev', {'type': 'opt'})
-	call minpac#add('dstein64/vim-startuptime')
+	call minpac#add('dstein64/vim-startuptime', {'type': 'opt'})
 	call minpac#add('editorconfig/editorconfig-vim')
-	call minpac#add('janko/vim-test')
+  call minpac#add('hrsh7th/vim-vsnip')
+  call minpac#add('hrsh7th/vim-vsnip-integ')
+	call minpac#add('janko/vim-test', {'type': 'opt'})
+  call minpac#add('junegunn/fzf.vim')
 	call minpac#add('justinmk/vim-dirvish')
-	call minpac#add('mhinz/vim-mix-format')
-	call minpac#add('mileszs/ack.vim')
+	call minpac#add('mhinz/vim-mix-format', {'type': 'opt'})
+	call minpac#add('mileszs/ack.vim', {'type': 'opt'})
 	call minpac#add('norcalli/nvim-colorizer.lua')
-  call minpac#add('nvim-lua/plenary.nvim')
-  call minpac#add('nvim-lua/popup.nvim')
-	call minpac#add('nvim-telescope/telescope.nvim')
 	call minpac#add('tpope/vim-dispatch')
 	call minpac#add('tpope/vim-fugitive')
 	call minpac#add('tpope/vim-git')
 	call minpac#add('tpope/vim-projectionist')
 	call minpac#add('tpope/vim-rsi')
-	call minpac#add('voldikss/vim-floaterm')
+	call minpac#add('voldikss/vim-floaterm', {'type': 'opt'})
 endfunction
 
-function! s:install_minpac() abort
+function! ngs#packages#List() abort
+  call PackInit()
+  return join(sort(keys(minpac#getpluglist())), "\n")
+endfunction
+
+function! ngs#packages#MinpacInstall() abort
 	let l:url = 'https://github.com/k-takata/minpac.git'
 	let l:dest = s:packdir . 'pack/minpac/opt/minpac'
 
@@ -90,8 +97,3 @@ function! s:install_minpac() abort
 		echo '✔ minpac downloaded successfully'
 	end
 endfunction
-
-command! PackInstall call s:install_minpac()
-command! PackUpdate  source $MYVIMRC | call PackInit() | call minpac#update()
-command! PackClean   source $MYVIMRC | call PackInit() | call minpac#clean()
-command! PackStatus  packadd minpac  | call minpac#status()
