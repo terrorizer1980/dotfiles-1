@@ -1,5 +1,5 @@
 " ----------------------------------------------------------
-" Helpers for building out the statusline.
+" Helpers for building out the statusline
 " ----------------------------------------------------------
 
 function! ngs#statusline#FileIcon() abort

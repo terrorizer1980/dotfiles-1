@@ -1,5 +1,5 @@
 " ----------------------------------------------------------
-" Package management functions.
+" Package management functions
 " ----------------------------------------------------------
 
 function! ngs#packages#Init() abort
@@ -84,7 +84,7 @@ function! ngs#packages#Init() abort
 endfunction
 
 function! ngs#packages#List() abort
-  call PackInit()
+  call ngs#packages#Init()
   return join(sort(keys(minpac#getpluglist())), "\n")
 endfunction
 

@@ -1,5 +1,5 @@
 " ----------------------------------------------------------
-" Helpers for working with commands.
+" Helpers for working with commands
 " ----------------------------------------------------------
 
 function! ngs#commands#NewLazyCommand(cmd, plugin) abort
