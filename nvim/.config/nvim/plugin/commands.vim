@@ -5,6 +5,9 @@ command! PackClean   source $MYVIMRC | call ngs#pack#Init() | call minpac#clean(
 command! PackStatus  packadd minpac  | call minpac#status()
 command! PackList    packadd minpac  | echo ngs#pack#List()
 
+" FZF pickers
+command! Variables call ngs#fzf#variables()
+
 " Plugin lazy loading
 let s:commands = {
       \ 'vim-test':        ['TestFile', 'TestSuite', 'TestNearest', 'TestLast'],
@@ -16,8 +19,8 @@ let s:commands = {
       \ 'nvim-tree.lua':   ['LuaTreeToggle', 'LuaTreeFindFile', 'LuaTreeOpen'],
       \ }
 
-for pairs in items(s:commands)
-  for cmd in pairs[1]
-    call ngs#commands#NewLazyCommand(cmd, pairs[0])
+for [name, cmds] in items(s:commands)
+  for cmd in cmds
+    call ngs#commands#NewLazyCommand(cmd, name)
   endfor
 endfor
