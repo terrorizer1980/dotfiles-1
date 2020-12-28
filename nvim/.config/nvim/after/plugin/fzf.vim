@@ -1,3 +1,7 @@
+" ----------------------------------------------------------
+" fzf-vim config
+" ----------------------------------------------------------
+
 if exists('g:loaded_fzf')
   nnoremap <Leader>ff <Cmd>Files<CR>
   nnoremap <Leader>fb <Cmd>Buffers<CR>

@@ -1,3 +1,7 @@
+" ----------------------------------------------------------
+" lightline config
+" ----------------------------------------------------------
+
 if exists('g:loaded_lightline')
   let g:lightline = {
         \ 'colorscheme': 'base16_default_dark',

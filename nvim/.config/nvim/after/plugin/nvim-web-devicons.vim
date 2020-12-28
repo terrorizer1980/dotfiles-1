@@ -1,5 +1,11 @@
 " ----------------------------------------------------------
-" dispatch.vim settings
+" nvim-web-devicons config
 " ----------------------------------------------------------
 
-let g:dispatch_no_maps = 1
+lua << EOF
+require("nvim-web-devicons").setup({
+  dirvish = {
+    icon = "",
+  },
+})
+EOF
