@@ -3,9 +3,10 @@
 " ----------------------------------------------------------
 
 " Plugin maintenance
+command! PackInit    call ngs#packages#Init()
 command! PackInstall call ngs#MinpacInstall()
-command! PackUpdate  source $MYVIMRC | call ngs#pack#Init() | call minpac#update()
-command! PackClean   source $MYVIMRC | call ngs#pack#Init() | call minpac#clean()
+command! PackUpdate  source $MYVIMRC | call ngs#packages#Init() | call minpac#update()
+command! PackClean   source $MYVIMRC | call ngs#packages#Init() | call minpac#clean()
 command! PackStatus  packadd minpac  | call minpac#status()
 command! PackList    packadd minpac  | echo ngs#packages#List()
 

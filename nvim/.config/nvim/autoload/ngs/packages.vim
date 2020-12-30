@@ -45,9 +45,9 @@ function! ngs#packages#Init() abort
 	" --------------------------------------------------------
 	"  Code intelligence
 	" --------------------------------------------------------
-	call minpac#add('dense-analysis/ale')
-	call minpac#add('neovim/nvim-lspconfig')
-  call minpac#add('nvim-lua/completion-nvim')
+	call minpac#add('dense-analysis/ale', {'type': 'opt'})
+	call minpac#add('neovim/nvim-lspconfig', {'type': 'opt'})
+  call minpac#add('nvim-lua/completion-nvim', {'type': 'opt'})
 
 	" --------------------------------------------------------
 	"  User interface
@@ -56,7 +56,8 @@ function! ngs#packages#Init() abort
   call minpac#add('mike-hearn/base16-vim-lightline')
 	call minpac#add('mhinz/vim-startify')
 	call minpac#add('hoov/tmuxline.vim', {'type': 'opt'})
-	call minpac#add('kyazdani42/nvim-web-devicons')
+	" call minpac#add('kyazdani42/nvim-web-devicons')
+  call minpac#add('ryanoasis/vim-devicons')
   call minpac#add('kyazdani42/nvim-tree.lua', {'type': 'opt'})
 	call minpac#add('itchyny/lightline.vim')
 	call minpac#add('romainl/vim-qf')
@@ -67,14 +68,13 @@ function! ngs#packages#Init() abort
 	call minpac#add('bfredl/nvim-luadev', {'type': 'opt'})
 	call minpac#add('dstein64/vim-startuptime', {'type': 'opt'})
 	call minpac#add('editorconfig/editorconfig-vim')
-  call minpac#add('hrsh7th/vim-vsnip')
-  call minpac#add('hrsh7th/vim-vsnip-integ')
 	call minpac#add('janko/vim-test', {'type': 'opt'})
   call minpac#add('junegunn/fzf.vim')
 	call minpac#add('justinmk/vim-dirvish')
 	call minpac#add('mhinz/vim-mix-format', {'type': 'opt'})
 	call minpac#add('mileszs/ack.vim', {'type': 'opt'})
 	call minpac#add('norcalli/nvim-colorizer.lua')
+  call minpac#add('sirver/UltiSnips')
 	call minpac#add('tpope/vim-dispatch')
 	call minpac#add('tpope/vim-fugitive')
 	call minpac#add('tpope/vim-git')
@@ -86,6 +86,15 @@ endfunction
 function! ngs#packages#List() abort
   call ngs#packages#Init()
   return join(sort(keys(minpac#getpluglist())), "\n")
+endfunction
+
+function! ngs#packages#OpenDir(packname) abort
+  call ngs#packages#Init()
+
+    call termopen(split(&shell), {
+          \ 'cwd': minpac#getpluginfo(a:packname).dir,
+          \ 'term_finish': 'close'
+          \ })
 endfunction
 
 function! ngs#packages#MinpacInstall() abort

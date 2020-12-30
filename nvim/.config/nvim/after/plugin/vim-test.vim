@@ -1,7 +1,3 @@
-" ----------------------------------------------------------
-" Test.vim settings
-" ----------------------------------------------------------
-
 let test#strategy = 'floaterm'
 
 nmap <silent> <Leader>tn <Cmd>TestNearest<CR>

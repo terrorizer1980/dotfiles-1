@@ -3,10 +3,10 @@
 " ----------------------------------------------------------
 
 function! ngs#statusline#FileIcon() abort
-  let l:name = expand("%:t")
-  let l:ext = expand("%:e")
-  let l:expr = 'require("nvim-web-devicons").get_icon("' . name . '", "' . ext . '")'
-  return luaeval(l:expr) . ' '
+  if exists('g:loaded_webdevicons') && winwidth(0) > 70
+    return strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() . ' ' : 'no ft'
+  endif
+  return ''
 endfunction
 
 function! ngs#statusline#GitCurrentBranch() abort

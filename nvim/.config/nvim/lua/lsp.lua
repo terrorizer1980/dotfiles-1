@@ -51,6 +51,7 @@ local function elixirls_cmd()
   local lscdir = "~/.local/share/elixir-ls/release"
   local stdout = vim.fn.system("elixir -v")
   local otpver = string.match(stdout, "OTP (%d+)")
+  -- TODO Handle nil optver
   return {vim.fn.expand(
     lscdir .. "/1.11.2-otp-" .. otpver .. "/language_server.sh"
   )}
