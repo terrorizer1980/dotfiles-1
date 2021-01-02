@@ -23,4 +23,7 @@ let g:loaded_perl_provider    = 0
 " Specify colorscheme
 colorscheme base16-default-dark
 
+" Load LSP configs
+lua require("lsp")
+
 " TODO Mappings for UI toggles, e.g. tree, git signs, LSP stuff

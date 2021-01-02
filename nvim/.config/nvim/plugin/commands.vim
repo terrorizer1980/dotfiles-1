@@ -20,7 +20,7 @@ let s:commands = {
       \ 'vim-startuptime': ['StartupTime'],
       \ 'nvim-luadev':     ['LuaDev'],
       \ 'ack.vim':         ['Ack'],
-      \ 'vim-floaterm':    ['Floaterm'],
+      \ 'vim-floaterm':    ['FloatermNew'],
       \ 'tmuxline.vim':    ['Tmuxline'],
       \ 'nvim-tree.lua':   ['LuaTreeToggle', 'LuaTreeFindFile', 'LuaTreeOpen'],
       \ }
