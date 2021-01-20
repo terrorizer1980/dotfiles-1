@@ -9,6 +9,7 @@ function! ngs#commands#NewLazyCommand(cmd, plugin) abort
 endfunction
 
 function! ngs#commands#ExecuteLazyCommand(plugin, cmd) abort
+  execute 'delcommand ' . a:cmd
   execute 'packadd ' . a:plugin
   execute a:cmd
 endfunction

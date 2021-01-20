@@ -3,28 +3,28 @@ if exists('g:loaded_lightline')
         \ 'colorscheme': 'base16_default_dark',
         \
         \ 'active': {
-        \   'left':  [['mode', 'paste'], ['git', 'readonly'], ['filename', 'modified']],
-        \   'right': [['lineinfo'], ['percent'], ['method', 'fileicon', 'filetype']],
+        \   'left':  [['mode', 'paste'], ['readonly', 'filename'], ['modified', 'method']],
+        \   'right': [['lineinfo'], ['filetype'], ['method', 'git']],
         \ },
         \
         \ 'inactive': {
-        \   'left':  [['git', 'readonly'], ['filename', 'modified']],
-        \   'right': [['obsession', 'filetype']]
+        \   'left':  [['readonly', 'filename', 'modified']],
+        \   'right': [['filetype']]
         \  },
         \
         \ 'component':  {
         \   'fileinfo': '%{&ff} [%{&fenc!=#""?&fenc:&enc}]',
-        \   'filename': '%t',
-        \   'lineinfo': '%3l:%-2v ',
+        \   'filetype': '%{&ft}',
+        \   'lineinfo': '%3l:%-2v  %3p%% ☰',
         \   'modified': '[%M]',
         \   'paste':    '%{&paste?"PASTE":""}',
-        \   'percent':  '%3p%% ☰ ',
+        \   'percent':  '%3p%% ☰',
         \   'readonly': '%R',
         \  },
         \
         \ 'component_function': {
-        \   'filetype': 'ngs#statusline#FileIcon',
-        \   'git':      'ngs#statusline#GitCurrentBranch',
+        \   'filename': 'ngs#statusline#Filename',
+        \   'git':      'ngs#statusline#GitBranch',
         \   'mode':     'lightline#mode',
         \ },
         \ }

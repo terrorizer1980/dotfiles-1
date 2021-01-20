@@ -29,6 +29,7 @@ nnoremap <Leader>cl <Cmd>lclose<CR>
 nnoremap <Leader>wq <Cmd>q<CR>
 nnoremap <Leader>ws <Cmd>split<CR>
 nnoremap <Leader>wv <Cmd>vsplit<CR>
+nnoremap <Leader>wo <C-w>o
 
 " Buffer management
 nnoremap <Leader>bd <Cmd>bdelete<CR>

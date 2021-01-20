@@ -1,8 +1,17 @@
+-- Neovim LSP Configuration
+
 local lspconfig = require("lspconfig")
 local lsp = vim.lsp
 
-local function bufmap(lhs, lsp_fn)
-  local rhs = "<Cmd>lua vim.lsp." .. lsp_fn .. "()<CR>"
+local function lspmap(lhs, fnname)
+  local rhs = "<Cmd>lua vim.lsp." .. fnname .. "()<CR>"
+  local opts = {noremap = true, silent = true}
+  vim.api.nvim_buf_set_keymap(0, "n", lhs, rhs, opts)
+end
+
+local function telmap(lhs, fnname, telopts)
+  if telopts == nil then telopts = '{}' end
+  local rhs = "<Cmd>lua require('telescope.builtin')." .. fnname .. "(" .. telopts .. ")<CR>"
   local opts = {noremap = true, silent = true}
   vim.api.nvim_buf_set_keymap(0, "n", lhs, rhs, opts)
 end
@@ -26,20 +35,21 @@ local lsp_on_attach = function ()
     print(vim.inspect(lsp.buf_get_clients()))
   end
 
-  bufmap("K",     "buf.hover")
-  bufmap("<C-]>", "buf.definition")
+  lspmap("K",     "buf.hover")
+  lspmap("<C-]>", "buf.definition")
 
-  bufmap("<Leader>la",  "buf.code_action")
-  bufmap("<Leader>lf",  "buf.formatting")
-  bufmap("<Leader>ld",  "diagnostic.show_line_diagnostics")
-  bufmap("<Leader>lgd", "buf.definition")
-  bufmap("<Leader>lgi", "buf.implementation")
-  bufmap("<Leader>lgt", "buf.type_definition")
-  bufmap("<Leader>lh",  "buf.hover")
-  bufmap("<Leader>lr",  "buf.references")
-  bufmap("<Leader>lR",  "buf.rename")
-  bufmap("<Leader>ls",  "buf.document_symbol")
-  bufmap("<Leader>lS",  "buf.workspace_symbol")
+  telmap("<Leader>la",  "lsp_code_actions")
+  lspmap("<Leader>lf",  "buf.formatting")
+  lspmap("<Leader>ld",  "diagnostic.show_line_diagnostics")
+  lspmap("<Leader>lgd", "buf.definition")
+  lspmap("<Leader>lgi", "buf.implementation")
+  lspmap("<Leader>lgt", "buf.type_definition")
+  lspmap("<Leader>lh",  "buf.hover")
+  telmap("<Leader>lr",  "lsp_references")
+  lspmap("<Leader>lR",  "buf.rename")
+  telmap("<Leader>ls",  "lsp_document_symbols")
+  telmap("<Leader>lS",  "lsp_workspace_symbols")
+
 
   vim.cmd [[command! LspStop    lua LspStop()]]
   vim.cmd [[command! LspRestart lua LspRestart()]]
@@ -48,7 +58,7 @@ end
 
 -- Elixir
 local function elixirls_cmd()
-  local lscdir = "~/.local/share/elixir-ls/release"
+  local lscdir = "/usr/local/opt/elixir-ls/release"
   local stdout = vim.fn.system("elixir -v")
   local otpver = string.match(stdout, "OTP (%d+)")
   -- TODO Handle nil optver
@@ -65,13 +75,18 @@ lspconfig.elixirls.setup({
 -- TypeScript
 lspconfig.tsserver.setup({
   on_attach = lsp_on_attach,
+  filetypes = {'typescript', 'javascript'},
   -- Temp fix for Naveon RN app
-  root_dir = lspconfig.util.root_pattern("tsconfig.json"),
+  -- root_dir = lspconfig.util.root_pattern("tsconfig.json"),
 })
 
 -- Lua
+local lua_root = "/usr/local/opt/lua-language-server"
+local lua_bin  = lua_root .. "/bin/macOS/lua-language-server"
+local lua_main = lua_root .. "/main.lua"
 lspconfig.sumneko_lua.setup({
   on_attach = lsp_on_attach,
+  cmd = {lua_bin, "-E", lua_main},
   settings = {
     Lua = {
       diagnostics = {

@@ -1,1 +1,1 @@
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['snippets'] = ''
+" let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['snippets'] = ''
