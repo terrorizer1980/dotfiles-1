@@ -27,9 +27,12 @@ messages—perhaps because of the historical precedent, or maybe because I was
 always in too much of a rush.
 
 In an effort to keep a more useful change log moving forward, I decided to wipe
-out all commits in the `main` branch and begin the history anew. For posterity,
-all commits made prior to this change are available in the `archives` branch.
+out all commits in the [`main`] branch and begin the history anew. For posterity,
+all commits made prior to this change are available in the [`archives`] branch.
 
 ## License
 
 This project is released under the [MIT License (MIT)](https://opensource.org/licenses/MIT).
+
+[`main`]: https://github.com/ngscheurich/dotfiles/tree/main
+[`archives`]: https://github.com/ngscheurich/dotfiles/tree/archives
