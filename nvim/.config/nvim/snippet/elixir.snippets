@@ -1,0 +1,28 @@
+snippet pry "pry here"
+require IEx
+IEx.pry()$0
+endsnippet
+
+snippet moduledoc "add module documentation"
+@moduledoc """
+$1
+"""$0
+endsnippet
+
+snippet doc "add function documentation"
+@doc """
+$1
+"""$0
+endsnippet
+
+snippet puts "IO.puts/1"
+IO.puts($1)$0
+endsnippet
+
+snippet inspect "IO.inspect/1"
+IO.inspect($1)$0
+endsnippet
+
+snippet log "Logger.info/1"
+Logger.info($1)$0
+endsnippet

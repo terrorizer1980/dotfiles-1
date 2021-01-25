@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# CODE=$1
+CART=$1
+
+osascript \
+  -e 'activate application "PICO-8"' \
+  -e "delay 0.5" \
+  -e "tell application \"System Events\" to keystroke \"load $CART.p8\""\
+  -e 'tell application "System Events" to key code 36' \
+  -e "delay 0.5" \
+  -e 'tell application "System Events" to keystroke "run"' \
+  -e 'tell application "System Events" to key code 36'

@@ -1,0 +1,7 @@
+zsh-users/zsh-completions
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-history-substring-search
+zsh-users/zsh-autosuggestions
+softmoth/zsh-vim-mode
+ohmyzsh/ohmyzsh path:plugins/colored-man-pages
+romkatv/powerlevel10k

@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+D="${$(date +'%e')##*( )}"
+H="${$(date +'%l')##*( )}"
+
+echo "`date +'%a %b'` $D $H`date +':%M %p'`"

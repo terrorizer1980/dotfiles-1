@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+  echo "Must specify session name"
+  exit 1
+fi
+
+nvim -S "$XDG_DATA_HOME/nvim/session/$1"
