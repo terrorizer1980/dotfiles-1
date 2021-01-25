@@ -32,7 +32,8 @@ all commits made prior to this change are available in the [`archives`] branch.
 
 ## License
 
-This project is released under the [MIT License (MIT)](https://opensource.org/licenses/MIT).
+This project is released under the [MIT License (MIT)][license].
 
 [`main`]: https://github.com/ngscheurich/dotfiles/tree/main
 [`archives`]: https://github.com/ngscheurich/dotfiles/tree/archives
+[license]: https://github.com/ngscheurich/dotfiles/blob/main/LICENSE
