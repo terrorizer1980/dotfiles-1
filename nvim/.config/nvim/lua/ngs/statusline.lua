@@ -3,7 +3,17 @@ local statusline = {}
 
 function statusline.filename()
   local icon = util.get_buffer_icon()
-  return icon .. " " .. vim.fn.expand("%")
+
+  local filename
+  local filetype = vim.bo.filetype
+
+  if filetype == "qf" then
+    filename = "quickfix"
+  else
+    filename = vim.fn.expand("%:t")
+  end
+
+  return icon .. " " .. filename
 end
 
 function statusline.git_branch()

@@ -17,10 +17,7 @@ local function telmap(lhs, fnname, telopts)
 end
 
 local lsp_on_attach = function ()
-  require("completion").on_attach()
-
   vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
-  vim.g.completion_enable_snippet = "vim-vsnip"
 
   function LspStop()
     lsp.stop_client(lsp.get_active_clients())

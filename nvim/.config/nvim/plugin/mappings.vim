@@ -11,6 +11,12 @@ nnoremap <Down>  <C-w>j
 nnoremap <Up>    <C-w>k
 nnoremap <Right> <C-w>l
 
+" Resize splits with meta + the arrow keys
+nnoremap <M-Up>    <Cmd>resize +10<CR>
+nnoremap <M-Down>  <Cmd>resize -10<CR>
+nnoremap <M-Right> <Cmd>vertical resize +10<CR>
+nnoremap <M-Left>  <Cmd>vertical resize -10<CR>
+
 " Clear search highlighting on <Esc>
 nnoremap <Esc> <Cmd>nohlsearch<CR>
 

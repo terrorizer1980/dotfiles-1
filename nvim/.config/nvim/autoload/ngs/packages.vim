@@ -56,7 +56,7 @@ function! ngs#packages#Init() abort
   " --------------------------------------------------------
   "  User interface
   " --------------------------------------------------------
-  call minpac#add('bluz71/vim-moonfly-colors')
+  call minpac#add('arzg/vim-colors-xcode')
   call minpac#add('chriskempson/base16-vim')
   call minpac#add('mike-hearn/base16-vim-lightline')
   call minpac#add('mhinz/vim-startify')

@@ -39,9 +39,12 @@ end
 -- Get icon for current buffer
 function util.get_buffer_icon()
   local filename
+  local filetype = vim.bo.filetype
 
-  if vim.bo.filetype == "dirvish" then
+  if filetype == "dirvish" then
     filename = "dirvish"
+  elseif filetype == "qf" then
+    filename = "quickfix"
   else
     filename = vim.fn.expand("%:t")
   end

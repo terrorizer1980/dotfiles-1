@@ -1,0 +1,24 @@
+#!/usr/bin/env zsh
+
+DATA="/tmp/current_weather.json"
+
+case `jq -r '.weather[0].main' $DATA` in
+  Thunderstorm)
+    COND="";;
+  Drizzle)
+    COND="";;
+  Rain)
+    COND="";;
+  Snow)
+    COND="";;
+  Clear)
+    COND="";;
+  Clouds)
+    COND="";;
+  *)
+    COND="";;
+esac
+
+TEMP=`cat $DATA | jq '.main.temp' | xargs printf '%.*f\n' 0`
+
+echo "$COND  $TEMP°"
