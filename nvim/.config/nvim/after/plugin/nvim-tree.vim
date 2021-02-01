@@ -10,3 +10,5 @@ let g:nvim_tree_icons  = {
       \ }
       \ }
 
+nnoremap <Leader>ee <Cmd>NvimTreeToggle<CR>
+nnoremap <Leader>ef <Cmd>NvimTreeFindFile<CR>
