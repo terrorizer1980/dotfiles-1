@@ -3,12 +3,13 @@
 " ----------------------------------------------------------
 
 " Plugin maintenance
+let s:packfile = stdpath('config') . '/autoload/ngs/packages.vim'
 command! PackInit    call ngs#packages#Init()
 command! PackInstall call ngs#packages#MinpacInstall()
-command! PackUpdate  source $MYVIMRC | call ngs#packages#Init() | call minpac#update()
-command! PackClean   source $MYVIMRC | call ngs#packages#Init() | call minpac#clean()
-command! PackStatus  packadd minpac  | call minpac#status()
-command! PackList    packadd minpac  | echo ngs#packages#List()
+command! PackUpdate  exe 'so ' . s:packfile | call ngs#packages#Init() | call minpac#update()
+command! PackClean   exe 'so ' . s:packfile | call ngs#packages#Init() | call minpac#clean()
+command! PackStatus  packadd minpac | call minpac#status()
+command! PackList    packadd minpac | echo ngs#packages#List()
 
 " FZF pickers
 command! Variables lua require("ngs.fzf").variables()
