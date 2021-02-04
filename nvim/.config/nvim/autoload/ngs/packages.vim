@@ -32,18 +32,18 @@ function! ngs#packages#Init() abort
   " --------------------------------------------------------
   "  Language support
   " --------------------------------------------------------
-  call minpac#add('euclidianAce/BetterLua.vim')
   call minpac#add('HerringtonDarkholme/yats.vim')
+  call minpac#add('MaxMEllon/vim-jsx-pretty')
   call minpac#add('cespare/vim-toml')
   call minpac#add('elixir-editors/vim-elixir')
   call minpac#add('ericpruitt/tmux.vim')
+  call minpac#add('euclidianAce/BetterLua.vim')
   call minpac#add('hashivim/vim-terraform')
   call minpac#add('jparise/vim-graphql')
-  call minpac#add('MaxMEllon/vim-jsx-pretty')
   call minpac#add('othree/html5.vim')
   call minpac#add('pangloss/vim-javascript')
   call minpac#add('plasticboy/vim-markdown')
-  call minpac#add('rust-lang/rust.vim')"
+  call minpac#add('rust-lang/rust.vim')
 
   " --------------------------------------------------------
   "  Code intelligence
