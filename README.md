@@ -1,15 +1,18 @@
-# 🛠 Sytem Configuration
+# Sytem Configuration
 
 <img src="https://media.giphy.com/media/DBfYJqH5AokgM/giphy.gif" width="100%" alt="A GIF of a frustrated Samuel L. Jackson seated at a computer as the Jurassic Park character Ray Arnold. A caption overlaid near the bottom says “I HATE THIS HACKER CRAP” in all caps.">
 
-These are my application configuration files. Please don’t copy and paste from
-them, but please do learn and steal from them. I manage these using
-[GNU Stow](https://www.gnu.org/software/stow/).
+These are my sytem configuration files. Please don’t copy and paste from them,
+but please do learn and steal from them. I manage these using [GNU Stow].
+
+Contained herein are my [Neovim] [runtime files] as well as configurations for
+other tools I use, such as [kitty], [tmux], and [Zsh]. The intrepid explorer
+may also happen upon myriad handy shell scripts.
 
 ## History
 
 I initially commited to this repository seven years ago, and proceeded to
-interminably shave this particular yak. I experimented, failed, and learned.  I
+interminably shave the proverbial yak. I experimented, failed, and learned. I
 moved from Vim to Neovim to Emacs to Neovim to VS Code and back to Neovim. I
 tried different terminals and window managers. I made various improvements
 around automation.
@@ -34,6 +37,12 @@ all commits made prior to this change are available in the [`archives`] branch.
 
 This project is released under the [MIT License (MIT)][license].
 
+[GNU Stow]: https://www.gnu.org/software/stow/
+[Neovim]: https://neovim.io/
+[kitty]: https://sw.kovidgoyal.net/kitty/
+[tmux]: https://github.com/tmux/tmux
+[Zsh]: https://www.zsh.org/
+[runtime files]: https://github.com/ngscheurich/dotfiles/tree/main/nvim/.config/nvim
 [`main`]: https://github.com/ngscheurich/dotfiles/tree/main
 [`archives`]: https://github.com/ngscheurich/dotfiles/tree/archives
 [license]: https://github.com/ngscheurich/dotfiles/blob/main/LICENSE
