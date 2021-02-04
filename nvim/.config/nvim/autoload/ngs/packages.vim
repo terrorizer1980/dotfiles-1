@@ -27,7 +27,7 @@ function! ngs#packages#Init() abort
   call minpac#add('tpope/vim-repeat')
   call minpac#add('tpope/vim-speeddating')
   call minpac#add('tpope/vim-surround')
-  call minpac#add('tpope/vim-unimpaired')"
+  call minpac#add('tpope/vim-unimpaired')
 
   " --------------------------------------------------------
   "  Language support

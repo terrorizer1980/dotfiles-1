@@ -3,7 +3,7 @@
 " ----------------------------------------------------------
 
 set cursorline            " Highlight the screen line of the cursor with CursorLine
-set noexpandtab           " Use the appropriate number of spaces to insert a <Tab>
+set expandtab             " Use the appropriate number of spaces to insert a <Tab>
 set fillchars+=vert:│     " Characters to fill the statuslines and vertical separators
 set foldmethod=marker     " Markers are used to specify folds
 set grepprg=rg\ --vimgrep " Use ripgrep backend for the `:grep` command
