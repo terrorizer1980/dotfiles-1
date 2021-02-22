@@ -49,12 +49,12 @@ end
 -- Haxe
 configs.haxe_language_server = {
   default_config = {
-    cmd = {"haxe-language-server"},
-    filetypes = {"haxe"},
-    root_dir = lspconfig.util.root_pattern("build.hxml", ".git"),
-    settings = {["haxe.executable"] = "haxe"},
-    init_options = {displayArguments = {"build.hxml"}},
-    trace = "verbose",
+    cmd = {'haxe-language-server'},
+    filetypes = {'haxe'},
+    root_dir = lspconfig.util.root_pattern('build.hxml', '.git'),
+    settings = {['haxe.executable'] = 'haxe'},
+    init_options = {displayArguments = {'build.hxml'}},
+    trace = 'verbose',
   },
 }
 lspconfig.haxe_language_server.setup({
@@ -63,12 +63,12 @@ lspconfig.haxe_language_server.setup({
 
 -- Elixir
 local function elixirls_cmd()
-  local lscdir = "/usr/local/opt/elixir-ls/release"
-  local stdout = vim.fn.system("elixir -v")
-  local otpver = string.match(stdout, "OTP (%d+)")
+  local lscdir = '/usr/local/opt/elixir-ls/release'
+  local stdout = vim.fn.system('elixir -v')
+  local otpver = string.match(stdout, 'OTP (%d+)')
   -- TODO Handle nil optver
   return {vim.fn.expand(
-    lscdir .. "/1.11.2-otp-" .. otpver .. "/language_server.sh"
+    lscdir .. '/1.11.2-otp-' .. otpver .. '/language_server.sh'
   )}
 end
 
@@ -82,16 +82,16 @@ lspconfig.tsserver.setup({
   on_attach = lsp_on_attach,
   filetypes = {'typescript', 'javascript'},
   -- Temp fix for Naveon RN app
-  -- root_dir = lspconfig.util.root_pattern("tsconfig.json"),
+  -- root_dir = lspconfig.util.root_pattern('tsconfig.json'),
 })
 
 -- Lua
-local lua_root = "/usr/local/opt/lua-language-server"
-local lua_bin  = lua_root .. "/bin/macOS/lua-language-server"
-local lua_main = lua_root .. "/main.lua"
+local lua_root = '/usr/local/opt/lua-language-server'
+local lua_bin  = lua_root .. '/bin/macOS/lua-language-server'
+local lua_main = lua_root .. '/main.lua'
 lspconfig.sumneko_lua.setup({
   on_attach = lsp_on_attach,
-  cmd = {lua_bin, "-E", lua_main},
+  cmd = {lua_bin, '-E', lua_main},
   settings = {
     Lua = {
       diagnostics = {
