@@ -12,7 +12,12 @@ case `jq -r '.weather[0].main' $DATA` in
   Snow)
     COND="";;
   Clear)
-    COND="";;
+    H="`date +'%H'`"
+    if [[ $H -gt 5 && $H -lt 18 ]]; then
+      COND=""
+    else
+      COND=""
+    fi;;
   Clouds)
     COND="";;
   *)
