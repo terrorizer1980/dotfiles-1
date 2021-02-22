@@ -4,11 +4,11 @@ DATA="/tmp/current_weather.json"
 
 case `jq -r '.weather[0].main' $DATA` in
   Thunderstorm)
-    COND="";;
+    COND="";;
   Drizzle)
-    COND="";;
+    COND="";;
   Rain)
-    COND="";;
+    COND="";;
   Snow)
     COND="";;
   Clear)
