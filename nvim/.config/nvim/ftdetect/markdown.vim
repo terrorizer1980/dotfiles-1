@@ -1,1 +1,1 @@
-autocmd BufNewFile,BufRead .notes set filetype=markdown
+autocmd BufNewFile,BufRead .notes,TODO set filetype=markdown
