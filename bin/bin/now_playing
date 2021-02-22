@@ -5,9 +5,9 @@ SPOTIFY_STATUS=`spotify status | head -n 1`
 if [ -z "$SPOTIFY_STATUS" ]; then
   exit 0
 elif [ "$SPOTIFY_STATUS" =~ "paused" ]; then
-  ICON=""
+  ICON=" "
 else
-  ICON=" "
+  ICON=" "
 fi
 
 ARTIST=`spotify status artist`
