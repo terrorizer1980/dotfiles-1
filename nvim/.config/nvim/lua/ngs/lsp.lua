@@ -1,23 +1,17 @@
--- Neovim LSP Configuration
+local lspconfig = require('lspconfig')
+local configs = require('lspconfig/configs')
+local lsp, cmd = vim.lsp, vim.cmd
 
-local lspconfig = require("lspconfig")
-local lsp = vim.lsp
-
-local function lspmap(lhs, fnname)
-  local rhs = "<Cmd>lua vim.lsp." .. fnname .. "()<CR>"
+local function map(lhs, fnname)
+  local rhs = '<Cmd>lua vim.lsp.' .. fnname .. '()<CR>'
   local opts = {noremap = true, silent = true}
-  vim.api.nvim_buf_set_keymap(0, "n", lhs, rhs, opts)
-end
-
-local function telmap(lhs, fnname, telopts)
-  if telopts == nil then telopts = '{}' end
-  local rhs = "<Cmd>lua require('telescope.builtin')." .. fnname .. "(" .. telopts .. ")<CR>"
-  local opts = {noremap = true, silent = true}
-  vim.api.nvim_buf_set_keymap(0, "n", lhs, rhs, opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', lhs, rhs, opts)
 end
 
 local lsp_on_attach = function ()
-  vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
+  print('  Attached to LSP server')
+
+  -- vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
 
   function LspStop()
     lsp.stop_client(lsp.get_active_clients())
@@ -25,32 +19,31 @@ local lsp_on_attach = function ()
 
   function LspRestart()
     LspStop()
-    vim.cmd("edit")
+    cmd('edit')
   end
 
-  function LspInfo()
+  function LspDebug()
     print(vim.inspect(lsp.buf_get_clients()))
   end
 
-  lspmap("K",     "buf.hover")
-  lspmap("<C-]>", "buf.definition")
+  map('K',     'buf.hover')
+  map('<C-]>', 'buf.definition')
 
-  telmap("<Leader>la",  "lsp_code_actions")
-  lspmap("<Leader>lf",  "buf.formatting")
-  lspmap("<Leader>ld",  "diagnostic.show_line_diagnostics")
-  lspmap("<Leader>lgd", "buf.definition")
-  lspmap("<Leader>lgi", "buf.implementation")
-  lspmap("<Leader>lgt", "buf.type_definition")
-  lspmap("<Leader>lh",  "buf.hover")
-  telmap("<Leader>lr",  "lsp_references")
-  lspmap("<Leader>lR",  "buf.rename")
-  telmap("<Leader>ls",  "lsp_document_symbols")
-  telmap("<Leader>lS",  "lsp_workspace_symbols")
+  map('<Leader>la',  'buf.code_action')
+  map('<Leader>lf',  'buf.formatting')
+  map('<Leader>ld',  'diagnostic.show_line_diagnostics')
+  map('<Leader>lgd', 'buf.definition')
+  map('<Leader>lgi', 'buf.implementation')
+  map('<Leader>lgt', 'buf.type_definition')
+  map('<Leader>lh',  'buf.hover')
+  map('<Leader>lr',  'buf.references')
+  map('<Leader>lR',  'buf.rename')
+  map('<Leader>ls',  'buf.document_symbol')
+  map('<Leader>lS',  'buf.workspace_symbol')
 
-
-  vim.cmd [[command! LspStop    lua LspStop()]]
-  vim.cmd [[command! LspRestart lua LspRestart()]]
-  vim.cmd [[command! LspInfo    lua LspInfo()]]
+  cmd [[command! LspStop    lua LspStop()]]
+  cmd [[command! LspRestart lua LspRestart()]]
+  cmd [[command! LspDebug   lua LspDebug()]]
 end
 
 -- Haxe
