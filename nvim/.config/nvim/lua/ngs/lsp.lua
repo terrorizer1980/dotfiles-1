@@ -104,3 +104,6 @@ lspconfig.sumneko_lua.setup({
 
 -- Vim
 lspconfig.vimls.setup({on_attach = lsp_on_attach})
+
+-- Rust
+lspconfig.rls.setup({on_attach = lsp_on_attach})
