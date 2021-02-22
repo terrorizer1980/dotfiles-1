@@ -2,9 +2,14 @@
 " Autocommands
 " ----------------------------------------------------------
 
-augroup Filetypes
+augroup movement
   autocmd!
-  autocmd BufEnter * lua require("completion").on_attach()
+
+  " See :h last-position-jump
+  autocmd BufReadPost *
+        \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+        \ |   exe "normal! g`\""
+        \ | endif
 augroup END
 
 augroup status
