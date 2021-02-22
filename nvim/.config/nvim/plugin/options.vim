@@ -17,7 +17,7 @@ set scrolloff=10          " Keep at least 10 screen lines above and below the cu
 set shiftwidth=2          " Number of spaces to use for each step of (auto)indent
 set shortmess+=c          " Don't give `ins-completion-menu` messages
 set noshowmode            " Hide mode indicator
-set signcolumn=yes:2      " Always show the signcolumn with two spaces
+set signcolumn=yes        " Always show the signcolumn
 set smartcase             " Override `ignorecase` if the pattern contains upper case characters
 set smartindent           " Do smart autoindenting when starting a new line
 set softtabstop=2         " Number of spaces that a <Tab> counts for while editing
