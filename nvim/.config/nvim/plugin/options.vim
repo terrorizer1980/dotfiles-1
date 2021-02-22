@@ -9,6 +9,7 @@ set foldlevel=99          " Don't open files with folds closed
 set foldmethod=indent     " Markers are used to specify folds
 set grepprg=rg\ --vimgrep " Use ripgrep backend for the `:grep` command
 set ignorecase            " Ignore case in search patterns
+set hidden                " Don't unload buffers when they become abandoned
 set inccommand=split      " Show partial off-screen substitutions in a preview window
 set number                " Print the line number in front of the current line
 set relativenumber        " Show the cursor-relative line number in front of each line
