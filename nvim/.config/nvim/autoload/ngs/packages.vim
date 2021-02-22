@@ -50,7 +50,6 @@ function! ngs#packages#Init() abort
   " --------------------------------------------------------
   call minpac#add('dense-analysis/ale')
   call minpac#add('neovim/nvim-lspconfig')
-  call minpac#add('nvim-lua/completion-nvim')"
   " call minpac#add('nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'})
 
   " --------------------------------------------------------
@@ -77,6 +76,7 @@ function! ngs#packages#Init() abort
   call minpac#add('nvim-lua/popup.nvim')
   call minpac#add('nvim-lua/plenary.nvim')
   call minpac#add('nvim-telescope/telescope.nvim')
+  call minpac#add('hrsh7th/nvim-compe')
   call minpac#add('tpope/vim-fugitive')
   call minpac#add('tpope/vim-projectionist')
   call minpac#add('tpope/vim-rsi')

@@ -30,7 +30,10 @@ set undofile              " Persist undo history and restore on buffer read
 set updatetime=1000       " Milliseconds after which to trigger swap write/`CursorHold`
 
 " Improve completion experience:
-" - Only show popup menu when there is more than one match
-" - Don't insert anything until a match is selected
-" - Don't automatically select a match
-set completeopt=menuone,noinsert,noselect
+"
+"   - Use a popup menu to show possible completions
+"   - Only show popup menu when there is more than one match
+"   - Don't insert anything until a match is selected
+"   - Don't automatically select a match
+"
+set completeopt=menu,menuone,noselect
