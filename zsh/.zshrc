@@ -42,7 +42,6 @@ setopt INC_APPEND_HISTORY
 # ---------------------------------------------------------
 alias curlh="curl -s -D - -o /dev/null"
 alias giga="gigalixir"
-alias git="hub"
 alias http="python -m http.server"
 alias l="exa"
 alias la="exa --long --all"
