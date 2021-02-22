@@ -1,3 +1,5 @@
+if !exists('g:loaded_completion') | finish | endif
+
 let g:completion_enable_snippet = "UltiSnips"
 let g:completion_auto_change_source = 0
 let g:completion_enable_auto_popup = 1

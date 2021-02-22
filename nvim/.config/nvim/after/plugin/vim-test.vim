@@ -1,3 +1,5 @@
+if !exists('g:loaded_test') | finish | endif
+
 let test#strategy = 'floaterm'
 
 nmap <silent> <Leader>tn <Cmd>TestNearest<CR>
