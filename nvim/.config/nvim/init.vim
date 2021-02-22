@@ -21,6 +21,5 @@ let g:loaded_ruby_provider    = 0
 let g:loaded_node_provider    = 0
 let g:loaded_perl_provider    = 0
 
-
 " LSP configuration
-lua require("ngs.lsp")
+lua require('ngs.lsp')
