@@ -10,4 +10,9 @@ else
   ICON=" "
 fi
 
-echo "$ICON `spotify status track` - `spotify status artist`"
+ARTIST=`spotify status artist`
+if [ "$ARTIST" == "The Mountain Goats" ]; then
+  ARTIST="the Mountain Goats"
+fi
+
+echo "$ICON `spotify status track` - $ARTIST"
