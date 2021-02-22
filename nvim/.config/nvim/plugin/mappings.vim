@@ -42,3 +42,15 @@ nnoremap <Leader>bd <Cmd>bdelete<CR>
 nnoremap <Leader>bh <Cmd>Startify<CR>
 nnoremap <Leader>bn <Cmd>bnext<CR>
 nnoremap <Leader>bp <Cmd>bprevious<CR>
+
+" Telescope
+nnoremap <Leader>fb  <Cmd>lua require("telescope.builtin").buffers({show_all_buffers = true})<CR>
+nnoremap <Leader>ff  <Cmd>lua require("telescope.builtin").find_files()<CR>
+nnoremap <Leader>fg  <Cmd>lua require("telescope.builtin").live_grep()<CR>
+nnoremap <Leader>fh  <Cmd>lua require("telescope.builtin").help_tags()<CR>
+nnoremap <Leader>fk  <Cmd>lua require("telescope.builtin").keymaps()<CR>
+nnoremap <Leader>fo  <Cmd>lua require("telescope.builtin").vim_options()<CR>
+nnoremap <Leader>fr  <Cmd>lua require("telescope.builtin").registers()<CR>
+nnoremap <Leader>flr <Cmd>lua require("telescope.builtin").lsp_references()<CR>
+nnoremap <Leader>fls <Cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>
+nnoremap <Leader>flS <Cmd>lua require("telescope.builtin").lsp_workspace_symbols()<CR>
