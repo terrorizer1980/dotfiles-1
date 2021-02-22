@@ -21,8 +21,6 @@ let g:loaded_ruby_provider    = 0
 let g:loaded_node_provider    = 0
 let g:loaded_perl_provider    = 0
 
-" Specify colorscheme
-colorscheme base16-default-dark
 
 " LSP configuration
 lua require("ngs.lsp")
