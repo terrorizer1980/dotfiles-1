@@ -3,13 +3,16 @@
 " ----------------------------------------------------------
 
 function! ngs#commands#NewLazyCommand(cmd, plugin) abort
-  execute 'command! ' . a:cmd . ' call ngs#commands#ExecuteLazyCommand("'
-        \ . a:plugin . '", "'
-        \ . a:cmd . '")'
+  execute 'command! -nargs=*'
+        \ . ' ' . a:cmd . ' call ngs#commands#ExecuteLazyCommand('
+        \ . '"' . a:plugin . '", '
+        \ . '"' . a:cmd . '", '
+        \ . '<q-args>'
+        \ . ')'
 endfunction
 
-function! ngs#commands#ExecuteLazyCommand(plugin, cmd) abort
+function! ngs#commands#ExecuteLazyCommand(plugin, cmd, args) abort
   execute 'delcommand ' . a:cmd
   execute 'packadd ' . a:plugin
-  execute a:cmd
+  execute a:cmd . ' ' . a:args
 endfunction
