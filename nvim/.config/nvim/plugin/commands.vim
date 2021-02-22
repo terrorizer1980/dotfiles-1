@@ -2,7 +2,7 @@
 " Commands
 " ----------------------------------------------------------
 
-" Plugin maintenance
+" Package maintenance
 let s:packfile = stdpath('config') . '/autoload/ngs/packages.vim'
 command! PackInit    call ngs#packages#Init()
 command! PackInstall call ngs#packages#MinpacInstall()
