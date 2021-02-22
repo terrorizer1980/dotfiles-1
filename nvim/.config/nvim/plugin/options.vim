@@ -5,6 +5,7 @@
 set cursorline            " Highlight the screen line of the cursor with CursorLine
 set expandtab             " Use the appropriate number of spaces to insert a <Tab>
 set fillchars+=vert:│     " Characters to fill the statuslines and vertical separators
+set foldlevel=99          " Don't open files with folds closed
 set foldmethod=indent     " Markers are used to specify folds
 set grepprg=rg\ --vimgrep " Use ripgrep backend for the `:grep` command
 set ignorecase            " Ignore case in search patterns
