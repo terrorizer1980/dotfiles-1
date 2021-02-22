@@ -56,11 +56,9 @@ function! ngs#packages#Init() abort
   " --------------------------------------------------------
   "  User interface
   " --------------------------------------------------------
-  call minpac#add('arzg/vim-colors-xcode')
   call minpac#add('chriskempson/base16-vim')
   call minpac#add('mhinz/vim-startify')
   call minpac#add('hoov/tmuxline.vim', {'type': 'opt'})
-  " call minpac#add('nvim-treesitter/playground')
   call minpac#add('kyazdani42/nvim-tree.lua')
   call minpac#add('kyazdani42/nvim-web-devicons')
   call minpac#add('romainl/vim-qf')
@@ -76,12 +74,10 @@ function! ngs#packages#Init() abort
   call minpac#add('mhinz/vim-mix-format', {'type': 'opt'})
   call minpac#add('norcalli/nvim-colorizer.lua')
   call minpac#add('sirver/UltiSnips')
-  call minpac#add('tpope/vim-dispatch')
   call minpac#add('nvim-lua/popup.nvim')
   call minpac#add('nvim-lua/plenary.nvim')
   call minpac#add('nvim-telescope/telescope.nvim')
   call minpac#add('tpope/vim-fugitive')
-  call minpac#add('tpope/vim-git')
   call minpac#add('tpope/vim-projectionist')
   call minpac#add('tpope/vim-rsi')
   call minpac#add('voldikss/vim-floaterm')
