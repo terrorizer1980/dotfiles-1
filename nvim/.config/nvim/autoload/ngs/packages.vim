@@ -58,13 +58,11 @@ function! ngs#packages#Init() abort
   " --------------------------------------------------------
   call minpac#add('arzg/vim-colors-xcode')
   call minpac#add('chriskempson/base16-vim')
-  call minpac#add('mike-hearn/base16-vim-lightline')
   call minpac#add('mhinz/vim-startify')
   call minpac#add('hoov/tmuxline.vim', {'type': 'opt'})
   " call minpac#add('nvim-treesitter/playground')
   call minpac#add('kyazdani42/nvim-tree.lua')
   call minpac#add('kyazdani42/nvim-web-devicons')
-  call minpac#add('itchyny/lightline.vim')
   call minpac#add('romainl/vim-qf')
 
   " --------------------------------------------------------
