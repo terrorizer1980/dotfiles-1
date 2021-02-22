@@ -29,3 +29,6 @@ for [name, cmds] in items(s:commands)
     call ngs#commands#NewLazyCommand(cmd, name)
   endfor
 endfor
+
+" :grep without the annoying STDOUT window
+command! -nargs=* Grep silent grep <args>
