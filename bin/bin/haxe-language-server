@@ -1,0 +1,3 @@
+#!/bin/sh
+
+node /Users/nick/tools/haxe-language-server/bin/server.js
