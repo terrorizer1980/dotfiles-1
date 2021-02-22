@@ -54,3 +54,7 @@ nnoremap <Leader>fr  <Cmd>lua require("telescope.builtin").registers()<CR>
 nnoremap <Leader>flr <Cmd>lua require("telescope.builtin").lsp_references()<CR>
 nnoremap <Leader>fls <Cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>
 nnoremap <Leader>flS <Cmd>lua require("telescope.builtin").lsp_workspace_symbols()<CR>
+
+" Luadev
+nmap <Leader>r <Plug>(Luadev-RunLine)
+vmap <Leader>r <Plug>(Luadev-Run)
