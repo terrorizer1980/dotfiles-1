@@ -72,7 +72,6 @@ function! ngs#packages#Init() abort
   call minpac#add('editorconfig/editorconfig-vim')
   call minpac#add('janko/vim-test', {'type': 'opt'})
   call minpac#add('justinmk/vim-dirvish')
-  call minpac#add('mhinz/vim-mix-format', {'type': 'opt'})
   call minpac#add('norcalli/nvim-colorizer.lua')
   call minpac#add('sirver/UltiSnips')
   call minpac#add('nvim-lua/popup.nvim')
