@@ -50,6 +50,8 @@ function! ngs#packages#Init() abort
   " --------------------------------------------------------
   call minpac#add('airblade/vim-gitgutter')
   call minpac#add('chriskempson/base16-vim')
+  call minpac#add('junegunn/goyo.vim')
+  call minpac#add('junegunn/limelight.vim')
   call minpac#add('mhinz/vim-startify')
   call minpac#add('hoov/tmuxline.vim', {'type': 'opt'})
   call minpac#add('kyazdani42/nvim-tree.lua')
