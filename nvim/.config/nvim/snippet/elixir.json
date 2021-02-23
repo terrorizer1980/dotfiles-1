@@ -1,0 +1,38 @@
+{
+  "Module Definition": {
+    "prefix": ["defmodule"],
+    "body": [
+      "defmodule ${1:name} do",
+      "  ${0}",
+      "end"
+    ]
+  },
+
+  "Module Documentation": {
+    "prefix": ["@moduledoc"],
+    "body": [
+      "@moduledoc \"\"\"",
+      "  ${1}",
+      "\"\"\"",
+      "${0}"
+    ]
+  },
+
+  "Function Documentation": {
+    "prefix": ["@doc"],
+    "body": [
+      "@doc \"\"\"",
+      "  ${1}",
+      "\"\"\"",
+      "  ${0}"
+    ]
+  },
+
+  "Pry Here": {
+    "prefix": ["pry"],
+    "body": [
+      "require IEx",
+      "IEx.pry"
+    ]
+  }
+}
