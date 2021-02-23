@@ -79,7 +79,6 @@ function! ngs#packages#Init() abort
   call minpac#add('tpope/vim-projectionist')
   call minpac#add('tpope/vim-rsi')
   call minpac#add('voldikss/vim-floaterm')
-  call minpac#add('vimwiki/vimwiki')
 endfunction
 
 function! ngs#packages#List() abort
