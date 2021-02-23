@@ -28,3 +28,6 @@ endfor
 
 " :grep without the annoying STDOUT window
 command! -nargs=* Grep silent grep <args>
+
+" I tend to fuck this up a lot
+command! Xa xa
