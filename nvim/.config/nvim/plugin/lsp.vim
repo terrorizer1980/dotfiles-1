@@ -1,6 +1,6 @@
 augroup  lsp
   autocmd! 
-  autocmd BufWrite *.ex,*.exs,*.lua,*.rs lua vim.lsp.buf.formatting()
+  autocmd BufWrite *.ex,*.exs,*.rs lua vim.lsp.buf.formatting()
 augroup END
 
 highlight link LspDiagnosticsSignError       DiffDelete
