@@ -22,6 +22,3 @@ let g:loaded_perl_provider    = 0
 
 " LSP configuration
 lua require('ngs.lsp')
-
-" Completion settings
-lua require('config.nvim_compe')
