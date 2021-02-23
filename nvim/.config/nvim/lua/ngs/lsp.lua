@@ -11,8 +11,6 @@ end
 local lsp_on_attach = function ()
   print('  Attached to LSP server')
 
-  -- vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
-
   function LspStop()
     lsp.stop_client(lsp.get_active_clients())
   end
