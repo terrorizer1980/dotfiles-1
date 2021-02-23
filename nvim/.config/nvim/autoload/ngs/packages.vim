@@ -46,13 +46,6 @@ function! ngs#packages#Init() abort
   call minpac#add('rust-lang/rust.vim')
 
   " --------------------------------------------------------
-  "  Code intelligence
-  " --------------------------------------------------------
-  call minpac#add('dense-analysis/ale')
-  call minpac#add('neovim/nvim-lspconfig')
-  " call minpac#add('nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'})
-
-  " --------------------------------------------------------
   "  User interface
   " --------------------------------------------------------
   call minpac#add('airblade/vim-gitgutter')
@@ -68,9 +61,11 @@ function! ngs#packages#Init() abort
   " --------------------------------------------------------
   call minpac#add('bfredl/nvim-luadev', {'type': 'opt'})
   call minpac#add('dstein64/vim-startuptime', {'type': 'opt'})
+  call minpac#add('dense-analysis/ale')
   call minpac#add('editorconfig/editorconfig-vim')
   call minpac#add('janko/vim-test', {'type': 'opt'})
   call minpac#add('justinmk/vim-dirvish')
+  call minpac#add('neovim/nvim-lspconfig')
   call minpac#add('norcalli/nvim-colorizer.lua')
   call minpac#add('nvim-lua/popup.nvim')
   call minpac#add('nvim-lua/plenary.nvim')
