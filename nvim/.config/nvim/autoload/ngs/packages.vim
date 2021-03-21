@@ -79,6 +79,7 @@ function! ngs#packages#Init() abort
   call minpac#add('junegunn/fzf.vim')
   call minpac#add('justinmk/vim-dirvish')
   call minpac#add('neovim/nvim-lspconfig')
+  call minpac#add('liuchengxu/vista.vim')
   call minpac#add('norcalli/nvim-colorizer.lua')
   call minpac#add('hrsh7th/nvim-compe')
   call minpac#add('hrsh7th/vim-vsnip')
