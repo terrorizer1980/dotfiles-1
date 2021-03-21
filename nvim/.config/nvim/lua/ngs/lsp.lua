@@ -98,3 +98,6 @@ lspconfig.vimls.setup({on_attach = lsp_on_attach})
 
 -- Rust
 lspconfig.rls.setup({on_attach = lsp_on_attach})
+
+-- Terraform
+lspconfig.terraformls.setup({on_attach = lsp_on_attach})
