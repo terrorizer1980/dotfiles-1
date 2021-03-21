@@ -17,3 +17,9 @@ augroup status
   autocmd BufEnter * setlocal statusline=%!ngs#statusline#Active()
   autocmd BufLeave * setlocal statusline=%!ngs#statusline#Inactive()
 augroup END
+
+augroup lsp
+  autocmd!
+  autocmd BufWritePre *.ex,*.exs,*.rs,*.tf,*.hcl lua vim.lsp.buf.formatting_sync()
+augroup END
+

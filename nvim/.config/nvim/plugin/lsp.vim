@@ -1,8 +1,3 @@
-augroup  lsp
-  autocmd! 
-  autocmd BufWrite *.ex,*.exs,*.rs lua vim.lsp.buf.formatting()
-augroup END
-
 highlight link LspDiagnosticsSignError       DiffDelete
 highlight link LspDiagnosticsSignWarning     StatusLineIndicator
 highlight link LspDiagnosticsSignInformation DiffText
