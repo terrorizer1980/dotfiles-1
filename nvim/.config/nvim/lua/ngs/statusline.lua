@@ -41,6 +41,12 @@ local function mode_indicator(mode)
   end
 end
 
+local function git_current_branch()
+  if vim.g.loaded_fugitive == nil then return end
+  local head = vim.fn['fugitive#Head']()
+  if head == '' then return '' else return '  ' .. head end
+end
+
 local function active_statusline(mode)
   local ft_icon = util.get_buffer_icon()
 

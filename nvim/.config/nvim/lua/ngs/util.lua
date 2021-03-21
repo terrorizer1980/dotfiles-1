@@ -106,13 +106,6 @@ function M.set_highlight(name, tbl)
   vim.cmd('highlight ' .. name .. args)
 end
 
--- Returns the the current Git branch, or an empty string.
-function M.git_current_branch()
-  if vim.g.loaded_fugitive == nil then return end
-  local head = vim.fn['fugitive#Head']()
-  if head then return ' ' .. head end
-end
-
 -- Returns the filename for the current buffer, or a useful alternative.
 function M.get_filename()
   local filename
