@@ -77,16 +77,12 @@ function! ngs#packages#Init() abort
   call minpac#add('justinmk/vim-dirvish')
   call minpac#add('neovim/nvim-lspconfig')
   call minpac#add('norcalli/nvim-colorizer.lua')
-  call minpac#add('nvim-lua/popup.nvim')
-  call minpac#add('nvim-lua/plenary.nvim')
-  call minpac#add('nvim-telescope/telescope.nvim')
   call minpac#add('hrsh7th/nvim-compe')
   call minpac#add('hrsh7th/vim-vsnip')
   call minpac#add('hrsh7th/vim-vsnip-integ')
   call minpac#add('tpope/vim-fugitive')
   call minpac#add('tpope/vim-projectionist')
   call minpac#add('tpope/vim-rsi')
-  call minpac#add('voldikss/vim-floaterm')
 endfunction
 
 function! ngs#packages#List() abort
