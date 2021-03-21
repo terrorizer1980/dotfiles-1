@@ -19,6 +19,7 @@ export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
 export HAXE_STD_PATH="/usr/local/lib/haxe/std"
 export KERL_CONFIGURE_OPTIONS="--without-javac"
 export LANG="en_US.UTF-8"
+export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 export PAGER="less"
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
