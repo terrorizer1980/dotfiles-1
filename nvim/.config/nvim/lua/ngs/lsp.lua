@@ -39,9 +39,9 @@ local lsp_on_attach = function ()
   map('<Leader>ls',  'buf.document_symbol')
   map('<Leader>lS',  'buf.workspace_symbol')
 
-  cmd [[command! LspStop    lua LspStop()]]
-  cmd [[command! LspRestart lua LspRestart()]]
-  cmd [[command! LspDebug   lua LspDebug()]]
+  cmd [[command! LspStop       lua LspStop()]]
+  cmd [[command! LspRestart    lua LspRestart()]]
+  cmd [[command! LspDebug      lua LspDebug()]]
 end
 
 -- Haxe
