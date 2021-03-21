@@ -45,18 +45,11 @@ local lsp_on_attach = function ()
 end
 
 -- Haxe
-configs.haxe_language_server = {
-  default_config = {
-    cmd = {'haxe-language-server'},
-    filetypes = {'haxe'},
-    root_dir = lspconfig.util.root_pattern('build.hxml', '.git'),
-    settings = {['haxe.executable'] = 'haxe'},
-    init_options = {displayArguments = {'build.hxml'}},
-    trace = 'verbose',
-  },
-}
 lspconfig.haxe_language_server.setup({
   on_attach = lsp_on_attach,
+  init_options = {
+    displayArguments = {"compile.hxml"};
+  };
 })
 
 -- Elixir
