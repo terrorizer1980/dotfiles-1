@@ -50,6 +50,7 @@ function! ngs#packages#Init() abort
   "  User interface
   " --------------------------------------------------------
   call minpac#add('airblade/vim-gitgutter')
+  call minpac#add('axvr/photon.vim')
   call minpac#add('chriskempson/base16-vim')
   call minpac#add('mhinz/vim-startify')
   call minpac#add('hoov/tmuxline.vim', {'type': 'opt'})
