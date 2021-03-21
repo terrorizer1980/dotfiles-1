@@ -58,6 +58,7 @@ function! ngs#packages#Init() abort
   call minpac#add('mhinz/vim-startify')
   call minpac#add('onsails/lspkind-nvim')
   call minpac#add('romainl/vim-qf')
+  call minpac#add('voldikss/vim-floaterm')
 
   " --------------------------------------------------------
   " Notes and Prose
