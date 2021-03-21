@@ -20,5 +20,8 @@ let g:loaded_ruby_provider    = 0
 let g:loaded_node_provider    = 0
 let g:loaded_perl_provider    = 0
 
+" Enable 24-bit RGB color in the `TUI`
+" Some colorschemes need this loaded early in order to work properly
+set termguicolors
 " LSP configuration
 lua require('ngs.lsp')
