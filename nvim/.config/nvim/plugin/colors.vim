@@ -13,3 +13,6 @@ lua require"ngs.statusline".set_statusline_highlights()
 
 " Don't draw listchars in bold
 highlight NonText gui=none
+
+" Use the correct color for the Erlang icon
+highlight DevIconErl guifg=#A1022B
