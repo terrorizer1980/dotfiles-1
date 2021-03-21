@@ -101,3 +101,6 @@ lspconfig.rls.setup({on_attach = lsp_on_attach})
 
 -- Terraform
 lspconfig.terraformls.setup({on_attach = lsp_on_attach})
+
+-- GDScript
+lspconfig.gdscript.setup({on_attach = lsp_on_attach})
