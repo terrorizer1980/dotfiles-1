@@ -5,8 +5,11 @@
 " Set the colorscheme
 colorscheme base16-tomorrow-night
 
-" Customize highlight groups
+" Make matched parens less obstrusive
 highlight MatchParen guibg=bg gui=underline
 
 " Set up statusline highlight groups
 lua require"ngs.statusline".set_statusline_highlights()
+
+" Don't draw listchars in bold
+highlight NonText gui=none
