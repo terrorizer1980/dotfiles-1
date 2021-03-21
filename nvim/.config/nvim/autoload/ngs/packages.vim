@@ -65,6 +65,7 @@ function! ngs#packages#Init() abort
   " --------------------------------------------------------
   call minpac#add('junegunn/goyo.vim')
   call minpac#add('junegunn/limelight.vim')
+  call minpac#add('reedes/vim-pencil')
   call minpac#add('wincent/corpus')
 
   " --------------------------------------------------------
