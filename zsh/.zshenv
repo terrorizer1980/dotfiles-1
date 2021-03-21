@@ -11,7 +11,7 @@ export BROWSER="open"
 # export EDITOR='~/neovim/build/bin/nvim'
 export EDITOR="nvim"
 export ERL_AFLAGS="-kernel shell_history enabled"
-export FZF_DEFAULT_COMMAND="rg --files --hidden"
+export FZF_DEFAULT_COMMAND="rg --files --hidden --glob=\!.git"
 export GPG_TTY=$(tty)
 export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
 export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
