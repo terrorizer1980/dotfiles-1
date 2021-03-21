@@ -34,6 +34,7 @@ function! ngs#packages#Init() abort
   " --------------------------------------------------------
   call minpac#add('HerringtonDarkholme/yats.vim')
   call minpac#add('MaxMEllon/vim-jsx-pretty')
+  call minpac#add('calviken/vim-gdscript3')
   call minpac#add('cespare/vim-toml')
   call minpac#add('elixir-editors/vim-elixir')
   call minpac#add('ericpruitt/tmux.vim')
