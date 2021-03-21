@@ -6,6 +6,7 @@
 
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export ANTIBODY_HOME=$HOME/.antibody
+export AWS_VAULT_KEYCHAIN_NAME=login
 export BROWSER="open"
 # export EDITOR='~/neovim/build/bin/nvim'
 export EDITOR="nvim"
