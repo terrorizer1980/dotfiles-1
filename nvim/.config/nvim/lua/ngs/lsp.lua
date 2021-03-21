@@ -77,7 +77,7 @@ lspconfig.elixirls.setup({
 -- TypeScript
 lspconfig.tsserver.setup({
   on_attach = lsp_on_attach,
-  filetypes = {'typescript', 'javascript'},
+  filetypes = {'typescript', 'javascript', 'typescriptreact'},
   -- Temp fix for Naveon RN app
   -- root_dir = lspconfig.util.root_pattern('tsconfig.json'),
 })
