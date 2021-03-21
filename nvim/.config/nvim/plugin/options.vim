@@ -29,6 +29,9 @@ set termguicolors         " Enables 24-bit RGB color in the `TUI`
 set undofile              " Persist undo history and restore on buffer read
 set updatetime=1000       " Milliseconds after which to trigger swap write/`CursorHold`
 
+" Set chars for drawing whitespace
+set listchars=tab:>-,eol:↵,nbsp:␣,trail:‧,extends:⟩,precedes:⟨
+
 " Improve completion experience:
 "
 "   - Use a popup menu to show possible completions
