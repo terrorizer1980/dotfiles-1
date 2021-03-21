@@ -16,3 +16,9 @@ highlight NonText gui=none
 
 " Use the correct color for the Erlang icon
 highlight DevIconErl guifg=#A1022B
+
+" De-emphasize LSP diagnostic virtual text
+highlight link LspDiagnosticsDefaultError NonText
+highlight link LspDiagnosticsDefaultWarning NonText
+highlight link LspDiagnosticsDefaultHint NonText
+highlight link LspDiagnosticsDefaultInformation NonText
