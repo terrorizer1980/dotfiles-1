@@ -76,6 +76,7 @@ function! ngs#packages#Init() abort
   call minpac#add('dense-analysis/ale')
   call minpac#add('editorconfig/editorconfig-vim')
   call minpac#add('janko/vim-test', {'type': 'opt'})
+  call minpac#add('junegunn/fzf.vim')
   call minpac#add('justinmk/vim-dirvish')
   call minpac#add('neovim/nvim-lspconfig')
   call minpac#add('norcalli/nvim-colorizer.lua')
