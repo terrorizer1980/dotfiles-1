@@ -42,6 +42,12 @@ local lsp_on_attach = function ()
   cmd [[command! LspStop       lua LspStop()]]
   cmd [[command! LspRestart    lua LspRestart()]]
   cmd [[command! LspDebug      lua LspDebug()]]
+
+  require('lspkind').init({
+    symbol_map = {
+      Function = "λ"
+    }
+  })
 end
 
 -- Haxe
