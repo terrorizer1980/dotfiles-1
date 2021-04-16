@@ -1,0 +1,9 @@
+# Is the current Git repo being rebased?
+#
+# See: https://github.com/geometry-zsh/geometry/blob/main/functions/geometry_git
+
+git-repo || return
+local git_dir=$(git rev-parse --git-dir)
+[[ -d "$git_dir/rebase-merge" ]] || [[ -d "$git_dir/rebase-apply" ]]
+
+# vim: ft=zsh

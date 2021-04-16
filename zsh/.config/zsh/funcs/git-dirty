@@ -1,0 +1,8 @@
+# Is the current Git repo dirty?
+#
+# See: https://github.com/geometry-zsh/geometry/blob/main/functions/geometry_git
+
+git-repo || return
+[[ -n "$(git status --porcelain --ignore-submodules)" ]]
+
+# vim: ft=zsh

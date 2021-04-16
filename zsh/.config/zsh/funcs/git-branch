@@ -1,0 +1,9 @@
+# Prints current Git branch name.
+#
+# See: https://github.com/geometry-zsh/geometry/blob/main/functions/geometry_git
+
+git-repo || return
+local branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"
+echo ${branch//\%/%%}
+
+# vim: ft=zsh

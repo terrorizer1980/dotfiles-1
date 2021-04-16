@@ -1,0 +1,7 @@
+# Are we in a Git repository?
+#
+# See: https://github.com/geometry-zsh/geometry/blob/main/functions/geometry_git
+
+git rev-parse 2>/dev/null
+
+# vim: ft=zsh

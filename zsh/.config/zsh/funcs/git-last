@@ -1,0 +1,26 @@
+# Prints datetime of last Git commit in a human-readable format.
+#
+# See: https://github.com/geometry-zsh/geometry/blob/main/functions/geometry_git
+
+git-repo || return
+
+local last_commit=$(git log -1 --pretty=format:'%at' 2> /dev/null)
+local now=$(date +%s)
+local seconds=$((now - last_commit))
+
+local -a out=()
+
+local d h m s
+d=$(( seconds / 60 / 60 / 24 ))
+h=$(( seconds / 60 / 60 % 24 ))
+m=$(( seconds / 60 % 60 ))
+s=$(( seconds % 60 ))
+
+(( d > 0 )) && out+="${d}d"
+(( h > 0 )) && out+="${h}h"
+(( m > 0 )) && out+="${m}m"
+(( s > 0 )) && out+="${s}s"
+
+echo "$out"
+
+# vim: ft=zsh

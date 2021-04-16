@@ -1,0 +1,8 @@
+# Does the current Git repo have any stashes?
+#
+# See: https://github.com/geometry-zsh/geometry/blob/main/functions/geometry_git
+
+git-repo || return
+[[ -n "$(git rev-parse --quiet --verify refs/stash 2>/dev/null)" ]]
+
+# vim: ft=zsh
