@@ -152,6 +152,10 @@ bindkey '^?' backward-delete-char
 bindkey '^A' vi-beginning-of-line
 bindkey '^E' vi-end-of-line
 
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd ' ' edit-command-line
+
 KEYTIMEOUT=5
 
 # ---------------------------------------------------------
