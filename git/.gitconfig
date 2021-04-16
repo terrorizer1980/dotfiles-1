@@ -6,8 +6,10 @@
 [core]
   editor = nvim
   excludesfile = /Users/nick/.gitignore_global
+  pager = diff-so-fancy | less --tabs=4 -RFX
+	ignorecase = true
 [color]
-  ui = true
+	ui = true
 [merge]
   ff = only
   tool = vimdiff
@@ -24,8 +26,9 @@
   ci = commit
   co = checkout
   cob = checkout -b
+  fixup = commit --fixup
   graph = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   pf = push --force
   rb = rebase
   rba = rebase --abort
@@ -33,7 +36,7 @@
   rbm = rebase --interactive origin/master
   st = status
   unstage = reset --soft HEAD^
-	pub=push --set-upstream origin HEAD
+  pub = push --set-upstream origin HEAD
 [filter "lfs"]
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
@@ -48,3 +51,18 @@
   cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [gpg]
   program = gpg2
+[interactive]
+  diffFilter = diff-so-fancy --patch
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	func = 146 bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
