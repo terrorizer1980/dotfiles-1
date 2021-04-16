@@ -1,11 +1,52 @@
-local api = vim.api
-local devicons = require('nvim-web-devicons')
+-- ==========================================================
+-- Utilities
+-- ==========================================================
 
-local M = {}
+local util = {}
 
--- Splits a string on `char`. If no char is provided, the '%s'
--- pattern is used.
-function M.split(str, char)
+local api, cmd = vim.api, vim.cmd
+
+local function apply_default_opts(opts)
+	local defaults = {noremap = true}
+	if opts then
+		return vim.tbl_extend('force', defaults, opts)
+	else
+		return defaults
+	end
+end
+
+function util.map(mode, lhs, rhs, opts)
+	local options = apply_default_opts(opts)
+	api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
+function util.bufmap(buffer, mode, lhs, rhs, opts)
+	local options = apply_default_opts(opts)
+	api.nvim_buf_set_keymap(buffer, mode, lhs, rhs, options)
+end
+
+function util.get_packer()
+	local url = 'https://github.com/wbthomason/packer.nvim'
+	local dest = vim.fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
+
+	if vim.fn.input('Download packer? (y/N) ') == 'y' then
+		vim.cmd("silent execute '!git clone " .. url .. " " .. dest .. "'")
+  	print('✔ packer downloaded successfully')
+	end
+end
+
+function util.set(opt, val, scopes)
+  for  _, scope in ipairs(scopes) do
+    vim[scope][opt] = val
+  end
+end
+
+function util.get_highlight_attr(group, attr)
+  local syntax_id = vim.fn.synIDtrans(vim.fn.hlID(group))
+  return vim.fn.synIDattr(syntax_id, attr)
+end
+
+function util.split(str, char)
   local tokens = {}
   char = char or '%s'
 
@@ -16,113 +57,56 @@ function M.split(str, char)
   return tokens
 end
 
--- Removes leading and trailing whitespace from a string.
-function M.trim(str)
-  return str:match('^%s*(.*)%s$*')
-end
-
--- Adds `map` and `noremap` functions for each mode.
-local function map(mode, lhs, rhs, opts, buflocal)
+function util.inspect(obj, opts)
   if opts == nil then opts = {} end
-  if buflocal then
-    api.nvim_buf_set_keymap(0, mode, lhs, rhs, opts)
-  else
-    api.nvim_set_keymap(mode, lhs, rhs, opts)
+  print(vim.inspect(obj, opts))
+end
+
+function util.augroup(name, defs)
+  cmd('augroup ' .. name)
+  cmd('autocmd!')
+  for _, def in ipairs(defs) do
+    vim.api.nvim_exec('autocmd ' .. def, '')
   end
+  cmd('augroup END')
 end
 
-local modes = {'n', 'v', 's', 'x', 'o', 'i', 'l', 'c', 't'}
-for _, mode in pairs(modes) do
-	M[mode .. 'map'] = function (lhs, rhs, opts, buflocal)
-    map(mode, lhs, rhs, opts, buflocal)
-  end
-
-M[mode .. 'noremap'] = function (lhs, rhs, opts, buflocal)
-  if opts == nil then opts = {} end
-    opts.noremap = true
-    map(mode, lhs, rhs, opts, buflocal)
-	end
+function util.globally_exists(name)
+  if _G[name] then return true else return false end
 end
 
--- Gets filetype icon for the buffer with the given `index`. If
--- no index is provided, `0` (the current buffer) is used.
---
--- * Requires nvim-web-devicons.
---   https://github.com/kyazdani42/nvim-web-devicons
-function M.get_buffer_icon(index)
-  local filename
-  local filetype = vim.bo[index or 0].filetype
+function util.set_palette()
+  local palette = {
+    bg = util.get_highlight_attr('CursorLine', 'bg'),
+    fg = util.get_highlight_attr('Normal', 'fg'),
 
-  if filetype == 'dirvish' then
-    filename = 'dirvish'
-  elseif filetype == 'qf' then
-    filename = 'quickfix'
-  else
-    filename = vim.fn.expand('%:t')
-  end
-
-  local extension = vim.fn.expand('%:t:e')
-  local icon = devicons.get_icon(filename, extension)
-
-  return icon or ''
-end
-
--- Prints inspected expression.
-function M.inspect(expr)
-  print(vim.inspect(expr))
-end
-
--- Returns a list of Neovim's built-in highlight groups.
--- * See :help highlight-default
-function M.builtin_groups() 
-  return {
-    'ColorColumn', 'Conceal', 'Cursor', 'lCursor', 'CursorIM', 'CursorColumn',
-    'CursorLine', 'Directory', 'DiffAdd', 'DiffChange', 'DiffDelete',
-    'DiffText', 'EndOfBuffer', 'TermCursor', 'TermCursorNC', 'ErrorMsg',
-    'VertSplit', 'Folded', 'FoldColumn', 'SignColumn', 'IncSearch',
-    'Substitute', 'LineNr', 'CursorLineNr', 'MatchParen', 'ModeMsg', 'MsgArea',
-    'MsgSeparator', 'MoreMsg', 'NonText', 'Normal', 'NormalFloat', 'NormalNC',
-    'Pmenu', 'PmenuSel', 'PmenuSbar', 'PmenuThumb', 'Question', 'QuickFixLine',
-    'Search', 'SpecialKey', 'SpellBad', 'SpellCap', 'SpellLocal', 'SpellRare',
-    'StatusLine', 'StatusLineNC', 'TabLine', 'TabLineFill', 'TabLineSel',
-    'Title', 'Visual', 'VisualNOS', 'WarningMsg', 'Whitespace', 'WildMenu',
-    'Menu', 'Scrollbar', 'Tooltip',
+    black   = util.get_highlight_attr('Normal', 'bg'),
+    red     = util.get_highlight_attr('Constant', 'fg'),
+    green   = util.get_highlight_attr('String', 'fg'),
+    yellow  = util.get_highlight_attr('Label', 'fg'),
+    blue    = util.get_highlight_attr('Function', 'fg'),
+    magenta = util.get_highlight_attr('Keyword', 'fg'),
+    cyan    = util.get_highlight_attr('Special', 'fg'),
+    white   = util.get_highlight_attr('Normal', 'fg'),
+    orange  = util.get_highlight_attr('Boolean', 'fg'),
+    purple  = util.get_highlight_attr('Conditional', 'fg'),
+    gray    = util.get_highlight_attr('StatusLine', 'bg'),
   }
+
+  vim.g.ngs_palette = palette
+
+  return palette
 end
 
--- Sets the highlight group with the given name using a table of
--- highlight arguments.
--- * See :help highlight-args
-function M.set_highlight(name, tbl)
-  local args = ''
-  local keys = {'cterm', 'ctermfg', 'ctermbg', 'gui', 'guifg', 'guibg'}
-
-  for _, key in ipairs(keys) do
-    if tbl[key] then
-      args = args .. ' ' .. key .. '=' .. tbl[key]
-    end
-  end
-
-  vim.cmd('highlight ' .. name .. args)
+function util.join_paths(...)
+  return table.concat({...}, '/')
 end
 
--- Returns the filename for the current buffer, or a useful alternative.
-function M.get_filename()
-  local filename
-  local filetype = vim.bo.filetype
-
-  if filetype == 'qf' then
-    local is_loc = vim.fn.getbufvar(vim.fn.winbufnr(0), 'qf_isLoc')
-    if is_loc then
-      filename = 'Location List'
-    else
-      filename = 'Quickfix List'
-    end
-  else
-    filename = vim.fn.expand('%:t')
-  end
-
-  return filename
+function util.highlight(group, opts)
+  local fg = opts.fg or 'none'
+  local bg = opts.bg or 'none'
+  local command = string.format('highlight %s guifg=%s guibg=%s', group, fg, bg)
+  vim.cmd(command)
 end
 
-return M
+return util
