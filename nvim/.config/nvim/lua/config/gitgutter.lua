@@ -1,7 +1,9 @@
-vim.g.gitgutter_sign_added              = '┃'
-vim.g.gitgutter_sign_modified           = '┃'
-vim.g.gitgutter_sign_removed            = '┃'
-vim.g.gitgutter_sign_removed_first_line = '┃'
-vim.g.gitgutter_sign_modified_removed   = '┃'
+local g = vim.g
 
-vim.g.gitgutter_sign_priority = -1
+g.gitgutter_sign_added              = "┃"
+g.gitgutter_sign_modified           = "┃"
+g.gitgutter_sign_removed            = "┃"
+g.gitgutter_sign_removed_first_line = "┃"
+g.gitgutter_sign_modified_removed   = "┃"
+
+g.gitgutter_sign_priority = -1

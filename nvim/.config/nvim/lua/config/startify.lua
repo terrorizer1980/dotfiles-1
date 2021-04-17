@@ -1,10 +1,10 @@
 vim.g.startify_files_number        = 5
-vim.g.startify_skiplist            = {'~/.local/share/nvim/site/pack/*'}
+vim.g.startify_skiplist            = {"~/.local/share/nvim/site/pack/*"}
 vim.g.startify_bookmarks           = {}
 vim.g.startify_session_persistence = 1
 
 local v = vim.version()
-local version = table.concat({v.major, v.minor, v.patch}, '.')
+local version = table.concat({v.major, v.minor, v.patch}, ".")
 
 local header = {
   [[                                  __                      ]],
@@ -21,4 +21,4 @@ local header = {
 
 vim.g.startify_custom_header = header
 
-require('ngs.util').map('n', '<Leader>wh', '<Cmd>Startify<CR>')
+require("ngs.util").map("n", "<Leader>bh", "<Cmd>Startify<CR>")
