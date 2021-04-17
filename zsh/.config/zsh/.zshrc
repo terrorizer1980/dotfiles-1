@@ -28,7 +28,7 @@ setopt SHARE_HISTORY          # All sessions share the history file
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export AWS_VAULT_KEYCHAIN_NAME=login
 export BROWSER=open
-export EDITOR=nvim
+export EDITOR='NVIM_STYLE=lo-fi nvim'
 export ERL_AFLAGS='-kernel shell_history enabled'
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
 export FZF_DEFAULT_OPTS="--color=bg+:0,pointer:1,hl:3,hl+:1,info:2,prompt:4"
@@ -72,7 +72,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#969896'
 # Aliases
 # ---------------------------------------------------------
 alias curlh='curl -s -D - -o /dev/null'
-alias e='NVIM_STYLE=lo-fi nvim'
 alias giga='gigalixir'
 alias l='exa'
 alias la='exa --long --all'
@@ -85,7 +84,9 @@ alias serve='python -m http.server'
 alias ta='tmux attach'
 alias tn='tmuxdir'
 alias vboxls='VBoxManage list runningvms'
-alias vim='$EDITOR'
+alias vim='nvim'
+alias lim='NVIM_STYLE=lo-fi nvim'
+alias xim='NVIM_STYLE=experimental nvim'
 alias vimconfig='$EDITOR $HOME/.config/nvim/init.vim'
 alias vimdiff='nvim -d'
 alias weather='curl wttr.in'
