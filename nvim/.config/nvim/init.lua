@@ -20,20 +20,19 @@ vim.g.loaded_node_provider    = 0
 vim.g.loaded_perl_provider    = 0
 
 -- Add variant pack to packpath
-local pack = vim.fn['ngs#variant#Pack']()
-pcall(vim.cmd, string.format('set packpath+=%s', pack))
+local pack = vim.fn["ngs#variant#Pack"]()
+pcall(vim.cmd, string.format("set packpath+=%s", pack))
 
-require('ngs.options')
-require('ngs.commands')
-require('ngs.autocmds')
-require('ngs.mappings')
+-- Basic configuration
+require("ngs.autocmds")
+require("ngs.colors")
+require("ngs.commands")
+require("ngs.mappings")
+require("ngs.options")
 
-local colors = require('ngs.colors')
-colors.set_custom()
-
-require('config.galaxyline')
-
--- Variant-based settings
-if vim.fn['ngs#variant#Name']() == 'lo-fi' then
+-- Variants
+if vim.fn["ngs#variant#Name"]() == "lo-fi" then
   vim.o.termguicolors = false
+elseif vim.fn["ngs#variant#Name"]() == "experimental" then
+  require("config.galaxyline")
 end
