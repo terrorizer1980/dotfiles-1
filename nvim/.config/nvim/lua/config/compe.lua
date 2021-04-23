@@ -23,8 +23,6 @@ map("s", "<C-l>",   "vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l
 map("i", "<Tab>",   [[luaeval('require("config.compe").tab(1)')]], {silent = true, expr = true, noremap = false})
 map("i", "<S-Tab>", [[luaeval('require("config.compe").tab(-1)')]], {silent = true, expr = true, noremap = false})
 
-local compe = {}
-
 local function replace_termcodes(str)
   return api.nvim_replace_termcodes(str, true, true, true)
 end
@@ -46,28 +44,28 @@ local function prev_next(dir)
   end
 end
 
-function compe.tab(dir)
-  if fn.pumvisible() == 1 then
-    return prev_next(dir)
-  elseif fn.call("vsnip#available", {1}) == 1 then
-    return replace_termcodes("<Plug>(vsnip-expand-or-jump)")
-  elseif fn.call("vsnip#jumpable", {-1}) == 1 then
-    return replace_termcodes("<Plug>(vsnip-jump-prev)")
-  elseif check_backspace() and dir == 1 then
-    return replace_termcodes("<Tab>")
-  elseif dir == 1 then
-    return fn["compe#complete"]()
-  else
-    return replace_termcodes("<S-Tab>")
-  end
-end
+return {
+  tab = function (dir)
+    if fn.pumvisible() == 1 then
+      return prev_next(dir)
+    elseif fn.call("vsnip#available", {1}) == 1 then
+      return replace_termcodes("<Plug>(vsnip-expand-or-jump)")
+    elseif fn.call("vsnip#jumpable", {-1}) == 1 then
+      return replace_termcodes("<Plug>(vsnip-jump-prev)")
+    elseif check_backspace() and dir == 1 then
+      return replace_termcodes("<Tab>")
+    elseif dir == 1 then
+      return fn["compe#complete"]()
+    else
+      return replace_termcodes("<S-Tab>")
+    end
+  end,
 
-function compe.cr()
-  if fn["vsnip#expandable"]() then
-    return replace_termcodes("<Plug>(vsnip-expand)")
-  else
-    return replace_termcodes("<CR>")
+  cr = function ()
+    if fn["vsnip#expandable"]() then
+      return replace_termcodes("<Plug>(vsnip-expand)")
+    else
+      return replace_termcodes("<CR>")
+    end
   end
-end
-
-return compe
+}
