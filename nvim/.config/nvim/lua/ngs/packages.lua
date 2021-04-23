@@ -108,6 +108,7 @@ local function init()
     use {"mhinz/vim-mix-format", config = config("mix_format")}
     use {"neovim/nvim-lspconfig", config = config("lsp")}
     use "norcalli/nvim-colorizer.lua"
+    use {"norcalli/nvim-colorizer.lua", config = config("colorizer")}
     use {
       "nvim-telescope/telescope.nvim",
       config = config("telescope"),
