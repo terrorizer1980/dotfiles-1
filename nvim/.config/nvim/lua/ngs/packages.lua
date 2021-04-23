@@ -63,24 +63,22 @@ local function init()
 
   --  User interface
   if level >= 1 then
-    use {"airblade/vim-gitgutter", config = config("gitgutter")}
+    use "cocopon/iceberg.vim"
     use {"hoov/tmuxline.vim", opt = true, cmd = {"Tmuxline", "TmuxlineSnapshot"}}
     use {"itchyny/lightline.vim", config = config("lightline")}
     use {"kyazdani42/nvim-tree.lua", config = config("tree")}
     use {"kyazdani42/nvim-web-devicons", config = config("devicons")}
     use {"mhinz/vim-startify", config = config("startify")}
+    use "nvim-lua/lsp-status.nvim"
     use {"onsails/lspkind-nvim", config = config("lspkind")}
     use "romainl/vim-qf"
     use "voldikss/vim-floaterm"
-    use "joshdick/onedark.vim"
-    use "arzg/vim-colors-xcode"
     use "chriskempson/base16-vim"
     use "axvr/photon.vim"
+    use "rakr/vim-one"
   end
   if level >= 2 then
-    use "glepnir/galaxyline.nvim"
     use {"glepnir/lspsaga.nvim", config = config("saga")}
-    use {"Th3Whit3Wolf/onebuddy", requires = {"tjdevries/colorbuddy.nvim"}}
   end
 
   -- Notes and Prose
@@ -107,14 +105,12 @@ local function init()
     use "liuchengxu/vista.vim"
     use {"mhinz/vim-mix-format", config = config("mix_format")}
     use {"neovim/nvim-lspconfig", config = config("lsp")}
-    use "norcalli/nvim-colorizer.lua"
     use {"norcalli/nvim-colorizer.lua", config = config("colorizer")}
     use {
       "nvim-telescope/telescope.nvim",
       config = config("telescope"),
       requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
     }
-    use "nvim-lua/lsp-status.nvim"
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
     use "tpope/vim-fugitive"
     use "tpope/vim-projectionist"
