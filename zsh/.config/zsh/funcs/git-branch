@@ -3,7 +3,14 @@
 # See: https://github.com/geometry-zsh/geometry/blob/main/functions/geometry_git
 
 git-repo || return
+
 local branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"
-echo ${branch//\%/%%}
+local chpart="$(echo $branch | sed -E 's/(^.+\/ch[[:digit:]]+).*/\1/')"
+
+if [[ -n "$chpart" ]]; then
+  echo "$chpart"
+else
+  echo "$branch"
+fi
 
 # vim: ft=zsh
