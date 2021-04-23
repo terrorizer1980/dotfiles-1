@@ -1,9 +1,14 @@
+local colorscheme = "powerline"
+if vim.g.colors_name == "iceberg" then
+  colorscheme = "iceberg"
+end
+
 vim.g.lightline = {
-  colorscheme = "one",
+  colorscheme = colorscheme,
 
   active = {
-    left =  {{"mode", "paste"}, { "readonly", "filename", "modified"}},
-    right = {{"lineinfo"}, {}, {"gitbranch", "filetype"}},
+    left =  {{"mode", "paste"}, {"readonly", "filename"}, {"lspstatus"}},
+    right = {{"lineinfo"}, {"filetype"}, {"gitbranch"}},
   },
 
   inactive = {
@@ -18,6 +23,8 @@ vim.g.lightline = {
 
   component_function = {
     filename  = "ngs#statusline#Filename",
+    lspstatus = "ngs#statusline#LspStatus",
+    filetype  = "ngs#statusline#Filetype",
     gitbranch = "ngs#statusline#GitBranch",
   },
 }
