@@ -96,7 +96,7 @@ function util.toggle_qflist()
   cmd("copen")
 end
 
-function util.set_palette()
+function util.palette()
   local palette = {
     bg = util.get_highlight_attr("CursorLine", "bg"),
     fg = util.get_highlight_attr("Normal", "fg"),
@@ -114,25 +114,13 @@ function util.set_palette()
     gray    = util.get_highlight_attr("StatusLine", "bg"),
   }
 
-  vim.g.ngs_palette = palette
-
   return palette
 end
 
-function util.set_custom_colors()
-  local colorscheme = vim.g.colors_name
-
-  if colorscheme == "onedark" or colorscheme == "onebuddy" then
-    local pal = vim.g.ngs_palette
-
-    util.highlight("Normal",          {bg = "#24282f"})
-    util.highlight("LineNr",          {fg = "#696b71", bg = pal.bg})
-    util.highlight("CursorLineNr",    {fg = "#696b71", bg = pal.bg})
-    util.highlight("SignColumn",      {bg = pal.bg})
-    util.highlight("gitgutteradd",    {fg = pal.green, bg = pal.bg})
-    util.highlight("gitgutterdelete", {fg = pal.red, bg = pal.bg})
-    util.highlight("gitgutterchange", {fg = pal.orange, bg = pal.bg})
-  end
+function util.lightline_reload()
+  vim.fn["lightline#init"]()
+  vim.fn["lightline#colorscheme"]()
+  vim.fn["lightline#update"]()
 end
 
 return util
