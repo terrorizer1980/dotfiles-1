@@ -25,13 +25,13 @@ function util.bufmap(buffer, mode, lhs, rhs, opts)
   api.nvim_buf_set_keymap(buffer, mode, lhs, rhs, options)
 end
 
-function util.get_packer()
-  local url = "https://github.com/wbthomason/packer.nvim"
-  local dest = vim.fn.stdpath("data") .. "/site/pack/packer/opt/packer.nvim"
+function util.paq_get()
+  local url = "https://github.com/savq/paq-nvim"
+  local dest = vim.fn.stdpath("data") .. "/site/pack/paqs/opt/paq-nvim"
 
-  if vim.fn.input("Download packer? (y/N) ") == "y" then
+  if vim.fn.input("Download Paq? (y/N) ") == "y" then
     cmd("silent execute '!git clone " .. url .. " " .. dest .. "'")
-    print("✔ packer downloaded successfully")
+    print("✔ Paq downloaded successfully")
   end
 end
 

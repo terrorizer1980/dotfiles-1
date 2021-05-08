@@ -1,5 +1,6 @@
 local lspconfig = require("lspconfig")
 local lspstatus = require('lsp-status')
+local util = require("ngs.util")
 
 lspstatus.config({
   kind_labels = {},
@@ -18,8 +19,6 @@ lspstatus.config({
 })
 lspstatus.register_progress()
 
-local util = require("ngs.util")
-
 local cmd = vim.cmd
 
 local function map(lhs, rhs)
@@ -29,26 +28,23 @@ end
 LspFormatFiletypes = {}
 
 local function lsp_on_attach(client)
+  -- map("<Leader>la", "<Cmd>lua vim.lsp.buf.code_action()<CR>")
+  -- map("<Leader>ld", "<Cmd>lua vim.lsp.buf.definition()<CR>")
+  -- map("<Leader>lf", "<Cmd>lua vim.lsp.buf.formatting_sync()<CR>")
+  -- map("<Leader>lh", "<Cmd>lua vim.lsp.buf.hover()<CR>")
+  -- map("<Leader>lr", "<Cmd>lua require('telescope.builtin').lsp_references()<CR>")
+  -- map("<Leader>ls", "<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>")
+  -- map("<Leader>lS", "<Cmd>lua require('telescope.builtin').lsp_workspace_symbols()<CR>")
+
   map("<C-]>", "<Cmd>lua vim.lsp.buf.definition()<CR>")
   map("K",     "<Cmd>lua vim.lsp.buf.hover()<CR>")
 
-  map("<Leader>la", "<Cmd>lua vim.lsp.buf.code_action()<CR>")
-  map("<Leader>ld", "<Cmd>lua vim.lsp.buf.definition()<CR>")
-  map("<Leader>lf", "<Cmd>lua vim.lsp.buf.formatting_sync()<CR>")
-  map("<Leader>lh", "<Cmd>lua vim.lsp.buf.hover()<CR>")
-  map("<Leader>lr", "<Cmd>lua require('telescope.builtin').lsp_references()<CR>")
-  map("<Leader>ls", "<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>")
-  map("<Leader>lS", "<Cmd>lua require('telescope.builtin').lsp_workspace_symbols()<CR>")
-
   map("ga", "<Cmd>lua vim.lsp.buf.code_action()<CR>")
-  map("gd", "<Cmd>lua vim.lsp.buf.definition()<CR>")
+  map("gd", "<Cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
   map("gf", "<Cmd>lua vim.lsp.buf.formatting_sync()<CR>")
-  map("gr", "<Cmd>lua require('telescope.builtin').lsp_references()<CR>")
-  map("gs", "<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>")
-  map("gS", "<Cmd>lua require('telescope.builtin').lsp_workspace_symbols()<CR>")
-
-  -- map("[d", "<Cmd>lua require('lspsaga.diagnostic').lsp_jump_diagnostic_prev()<CR>")
-  -- map("d]", "<Cmd>lua require('lspsaga.diagnostic').lsp_jump_diagnostic_next()<CR>")
+  map("gr", "<Cmd>lua vim.lsp.buf.references()<CR>")
+  map("gs", "<Cmd>lua vim.lsp.buf.document_symbol()<CR>")
+  map("gS", "<Cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
 
   local config = client.config
   if config.capabilities.textDocument.formatting then
@@ -88,7 +84,7 @@ end))
 
 elixirls_setup:send()
 
--- TypeScript
+-- TypeScript/JavaScript
 lspconfig.tsserver.setup({
   on_attach = lsp_on_attach,
   filetypes = {"typescript", "javascript", "typescriptreact"},
@@ -125,8 +121,6 @@ lspconfig.terraformls.setup({on_attach = lsp_on_attach})
 lspconfig.gdscript.setup({on_attach = lsp_on_attach})
 
 -- Diagnostic highlights and signs
--- local pal = util.set_palette()
-
 cmd "sign define LspDiagnosticsSignError       text="
 cmd "sign define LspDiagnosticsSignWarning     text="
 cmd "sign define LspDiagnosticsSignInformation text="

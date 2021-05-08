@@ -1,38 +1,47 @@
 {
   "Module Definition": {
     "prefix": ["defmodule"],
-    "body": [
-      "defmodule ${1:name} do",
-      "  ${0}",
-      "end"
-    ]
+    "body": ["defmodule ${1:name} do", "  ${0}", "end"]
   },
 
   "Module Documentation": {
     "prefix": ["@moduledoc"],
-    "body": [
-      "@moduledoc \"\"\"",
-      "  ${1}",
-      "\"\"\"",
-      "${0}"
-    ]
+    "body": ["@moduledoc \"\"\"", "  ${1}", "\"\"\"", "${0}"]
   },
 
   "Function Documentation": {
     "prefix": ["@doc"],
-    "body": [
-      "@doc \"\"\"",
-      "  ${1}",
-      "\"\"\"",
-      "  ${0}"
-    ]
+    "body": ["@doc \"\"\"", "  ${1}", "\"\"\"", "  ${0}"]
+  },
+
+  "Inspect Term": {
+    "prefix": ["insp"],
+    "body": "IO.inspect(${1}, label: \"${1}\")${0}"
   },
 
   "Pry Here": {
     "prefix": ["pry"],
+    "body": ["require IEx", "IEx.pry"]
+  },
+  
+  "LiveView Module": {
+    "prefix": ["lvmod"],
     "body": [
-      "require IEx",
-      "IEx.pry"
+      "defmodule ${1:module}.$2 do",
+      "  use $1, :live_view",
+      "  @impl true",
+      "  def mount(params, session, socket) do",
+      "    {:ok, assign(socket, message: \"$1.$2\")}",
+      "  end",
+      "",
+      "  @impl true",
+      "  def render(assigns) do",
+      "    ~L\"\"\"",
+      "    <%= @message %>",
+      "    \"\"\"",
+      "  end",
+      "  $0",
+      "end"
     ]
   }
 }

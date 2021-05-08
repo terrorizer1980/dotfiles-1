@@ -1,11 +1,7 @@
-local exists, compe = pcall(require, "compe")
-
-if not exists then return end
-
 local map = require("ngs.util").map
 local fn, api = vim.fn, vim.api
 
-compe.setup({
+require("compe").setup({
   min_length = 1,
   source = {
     path      = true,

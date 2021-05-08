@@ -1,8 +1,4 @@
-local exists, devicons = pcall(require, "nvim-web-devicons")
-
-if not exists then return end
-
-devicons.setup({
+require("nvim-web-devicons").setup({
   override = {
     dirvish  = {icon = ""},
     zsh      = {icon = ""},
