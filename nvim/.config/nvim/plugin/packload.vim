@@ -1,1 +1,0 @@
-call ngs#variant#Load()
