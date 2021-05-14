@@ -1,14 +1,11 @@
 function ngs#statusline#Filename() abort
   let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
   let modified = &modified ? ' ⁕' : ''
-
-
   return filename . modified
 endfunction
 
 function ngs#statusline#Filetype() abort
   if !exists('g:loaded_devicons') | return &filetype | endif
-
 
   let l:name = expand("%:t")
   let l:ext  = expand("%:t:e")
@@ -20,14 +17,6 @@ function ngs#statusline#Filetype() abort
   else
     return &filetype
   endif
-endfunction
-
-function! ngs#statusline#LspStatus() abort
-  if luaeval('#vim.lsp.buf_get_clients() > 0')
-    return luaeval("require('lsp-status').status()")
-  endif
-
-  return ''
 endfunction
 
 function ngs#statusline#GitBranch() abort
@@ -44,6 +33,11 @@ function ngs#statusline#GitBranch() abort
   return ''
 endfunction
 
-function ngs#statusline#FileInfo() abort
-  return ngs#statusline#LspStatus() . ' ' . ngs#statusline#GitBranch()
+function! ngs#statusline#LspStatus() abort
+  if luaeval('#vim.lsp.buf_get_clients() > 0')
+    return luaeval("require('lsp-status').status()")
+  endif
+
+  return ''
 endfunction
+
