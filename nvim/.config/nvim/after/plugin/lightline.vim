@@ -1,6 +1,10 @@
 let s:colorscheme = 'powerline'
-if exists('g:colors_name') && g:colors_name == 'one'
-  let s:colorscheme = 'one'
+if exists('g:colors_name')
+  if g:colors_name == 'one'
+    let s:colorscheme = 'one'
+  elseif g:colors_name == 'base16-tomorrow-night'
+    let s:colorscheme = 'Tomorrow_Night'
+  end
 end
 
 let g:lightline = {}

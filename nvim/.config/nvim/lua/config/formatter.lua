@@ -5,6 +5,7 @@ local config = {
         exe = 'mix',
         args = {'format'},
         stdin = false,
+        tempfile_dir = "/tmp",
       }
     end,
 
@@ -19,6 +20,8 @@ local config = {
 }
 
 require('formatter').setup({
+  quiet = true,
+
   filetype = {
     elixir = {config.mix_format},
     javascript = {config.prettier},

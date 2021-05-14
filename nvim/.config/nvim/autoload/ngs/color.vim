@@ -12,10 +12,10 @@ function! ngs#color#SetCustom() abort
     highlight LspDiagnosticsSignHint        guifg=#7dcfff guibg=#282c34
     highlight LspDiagnosticsSignInformation guifg=#7aa2f7 guibg=#282c34
     highlight LspDiagnosticsSignWarning     guifg=#e5c07b guibg=#282c34
-
-    highlight link LspDiagnosticsVirtualTextError       Comment
-    highlight link LspDiagnosticsVirtualTextHint        Comment
-    highlight link LspDiagnosticsVirtualTextInformation Comment
-    highlight link LspDiagnosticsVirtualTextWarning     Comment
+  elseif g:colors_name == 'base16-tomorrow-night'
+    highlight LspDiagnosticsSignError       guifg=#cc6666 guibg=#282c34
+    highlight LspDiagnosticsSignHint        guifg=#81a2be guibg=#282c34
+    highlight LspDiagnosticsSignInformation guifg=#8abeb7 guibg=#282c34
+    highlight LspDiagnosticsSignWarning     guifg=#f0c674 guibg=#282c34
   end
 endfunction
