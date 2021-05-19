@@ -17,5 +17,16 @@ function! ngs#color#SetCustom() abort
     highlight LspDiagnosticsSignHint        guifg=#81a2be guibg=#282c34
     highlight LspDiagnosticsSignInformation guifg=#8abeb7 guibg=#282c34
     highlight LspDiagnosticsSignWarning     guifg=#f0c674 guibg=#282c34
+  elseif g:colors_name == 'two-firewatch'
+    highlight Normal       guibg=#24282f
+    highlight LineNr       guifg=#696b71 guibg=#282c34
+    highlight CursoLine    guibg=#282d36
+    highlight CursorLineNr guibg=#282c34
+    highlight SignColumn   guibg=#282c34
+
+    highlight LspDiagnosticsSignError       guifg=#e05252 guibg=#282c34
+    highlight LspDiagnosticsSignHint        guifg=#6e88a6 guibg=#282c34
+    highlight LspDiagnosticsSignInformation guifg=#56b6c2 guibg=#282c34
+    highlight LspDiagnosticsSignWarning     guifg=#c8ae9d guibg=#282c34
   end
 endfunction

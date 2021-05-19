@@ -2,8 +2,8 @@ let s:colorscheme = 'powerline'
 if exists('g:colors_name')
   if g:colors_name == 'one'
     let s:colorscheme = 'one'
-  elseif g:colors_name == 'base16-tomorrow-night'
-    let s:colorscheme = 'Tomorrow_Night'
+  elseif g:colors_name == 'two-firewatch'
+    let s:colorscheme = 'twofirewatch'
   end
 end
 

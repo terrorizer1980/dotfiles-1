@@ -39,7 +39,6 @@ local function init()
   paq "rust-lang/rust.vim"
 
   --  User interface
-  paq "chriskempson/base16-vim"
   paq {"hoov/tmuxline.vim", opt = true}
   paq "itchyny/lightline.vim"
   paq "kyazdani42/nvim-tree.lua"
@@ -51,7 +50,10 @@ local function init()
   paq "onsails/lspkind-nvim"
   paq "romainl/vim-qf"
   paq "voldikss/vim-floaterm"
+
+  -- Colorschemes
   paq "axvr/photon.vim"
+  paq "rakr/vim-two-firewatch"
   paq "rakr/vim-one"
 
   -- Notes and prose
