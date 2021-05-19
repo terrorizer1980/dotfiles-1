@@ -23,10 +23,11 @@ function ngs#statusline#GitBranch() abort
   if !exists('g:loaded_fugitive') | return '' | endif
 
   let l:head = fugitive#Head()
+
   " Shorten Clubhouse branch names
   let l:head = substitute(l:head, '\v(^.+\/ch\d+).*', '\1', '')
 
-  if g:loaded_fugitive && l:head != ''
+  if l:head != ''
     return ' ' . l:head
   endif
 
