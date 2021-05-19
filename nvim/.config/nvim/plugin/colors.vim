@@ -2,7 +2,7 @@
 " " Colors
 " ==========================================================
 
-colorscheme base16-tomorrow-night
+colorscheme two-firewatch 
 
 highlight link LspDiagnosticsVirtualTextError       Comment
 highlight link LspDiagnosticsVirtualTextHint        Comment
