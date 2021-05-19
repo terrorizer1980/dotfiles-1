@@ -2,92 +2,170 @@
 -- Packages
 -- ==========================================================
 
-local function init()
-  vim.cmd("packadd paq-nvim")
-  local paq_nvim = require("paq-nvim")
-  local paq = paq_nvim.paq
+local util = require("ngs.util")
+local fn, cmd = vim.fn, vim.cmd
 
-  -- Paq
-  paq {"savq/paq-nvim", opt = true}
+local packages = {}
+
+function packages.packer_get()
+  local url = "https://github.com/wbthomason/packer.nvim"
+  local dest = fn.stdpath("data") .. "/site/pack/packer/opt/packer.nvim"
+
+  if vim.fn.input("Download packer? (y/N) ") == "y" then
+    cmd("silent execute '!git clone " .. url .. " " .. dest .. "'")
+    print("✔ packer downloaded successfully")
+  end
+end
+
+function packages.pack()
+  if vim.env.NVIM_PACK then
+    return vim.env.NVIM_PACK
+  end
+  return "standard"
+end
+
+function packages.path()
+  return util.join_paths(fn.stdpath("data"), "packs", packages.pack())
+end
+
+function packages.file()
+  local file = packages.pack() .. ".vim"
+  return util.join_paths(fn.stdpath("data"), "packfiles", file)
+end
+
+function packages.load()
+  cmd("set packpath+=" .. packages.path())
+  cmd("source " .. packages.file())
+end
+
+local function init()
+  vim.cmd("packadd packer.nvim")
+
+  local packer = require("packer")
+
+  packer.init({
+    package_root = util.join_paths(packages.path(), "pack"),
+    compile_path = packages.file(),
+    disable_commands = true,
+  })
+
+  local levels = {
+    lofi         = 0,
+    standard     = 1,
+    experimental = 2,
+  }
+  local level = levels[packages.pack()]
+  local use = packer.use
+
+  local function config(name)
+    return "require('config." .. name .. "')"
+  end
+
+  -- Package manager
+  use {"wbthomason/packer.nvim", opt = true}
 
   -- Editing
-  paq "andymass/vim-matchup"
-  paq "junegunn/vim-easy-align"
-  paq "justinmk/vim-sneak"
-  paq "tpope/vim-abolish"
-  paq "tpope/vim-commentary"
-  paq "tpope/vim-eunuch"
-  paq "tpope/vim-repeat"
-  paq "tpope/vim-sleuth"
-  paq "tpope/vim-speeddating"
-  paq "tpope/vim-surround"
-  paq "tpope/vim-unimpaired"
+  use "andymass/vim-matchup"
+  use {"junegunn/vim-easy-align", config = config("easyalign")}
+  use "justinmk/vim-sneak"
+  use "tpope/vim-abolish"
+  use "tpope/vim-commentary"
+  use "tpope/vim-eunuch"
+  use "tpope/vim-repeat"
+  use "tpope/vim-sleuth"
+  use "tpope/vim-speeddating"
+  use "tpope/vim-surround"
+  use "tpope/vim-unimpaired"
 
   -- Language support
-  paq "HerringtonDarkholme/yats.vim"
-  paq "MaxMEllon/vim-jsx-pretty"
-  paq "calviken/vim-gdscript3"
-  paq "cespare/vim-toml"
-  paq "elixir-editors/vim-elixir"
-  paq "ericpruitt/tmux.vim"
-  paq "euclidianAce/BetterLua.vim"
-  paq "hashivim/vim-terraform"
-  paq "jparise/vim-graphql"
-  paq "othree/html5.vim"
-  paq "pangloss/vim-javascript"
-  paq "plasticboy/vim-markdown"
-  paq "rust-lang/rust.vim"
+  use "HerringtonDarkholme/yats.vim"
+  use "MaxMEllon/vim-jsx-pretty"
+  use "calviken/vim-gdscript3"
+  use "cespare/vim-toml"
+  use "elixir-editors/vim-elixir"
+  use "ericpruitt/tmux.vim"
+  use "euclidianAce/BetterLua.vim"
+  use "hashivim/vim-terraform"
+  use "jparise/vim-graphql"
+  use "othree/html5.vim"
+  use "pangloss/vim-javascript"
+  use "plasticboy/vim-markdown"
+  use "rust-lang/rust.vim"
 
   --  User interface
-  paq "chriskempson/base16-vim"
-  paq {"hoov/tmuxline.vim", opt = true}
-  paq "itchyny/lightline.vim"
-  paq "kyazdani42/nvim-tree.lua"
-  paq "kyazdani42/nvim-web-devicons"
-  paq "liuchengxu/vista.vim"
-  paq "mhinz/vim-startify"
-  paq "norcalli/nvim-colorizer.lua"
-  paq "nvim-lua/lsp-status.nvim"
-  paq "onsails/lspkind-nvim"
-  paq "romainl/vim-qf"
-  paq "voldikss/vim-floaterm"
-  paq "axvr/photon.vim"
-  paq "rakr/vim-one"
+  if level >= 1 then
+    use {"hoov/tmuxline.vim", opt = true, cmd = {"Tmuxline", "TmuxlineSnapshot"}}
+    use {"hrsh7th/nvim-compe", config = config("compe")}
+    use {"itchyny/lightline.vim", config = config("lightline")}
+    use {"kyazdani42/nvim-tree.lua", config = config("nvim_tree")}
+    use {"kyazdani42/nvim-web-devicons", config = config("devicons")}
+    use "liuchengxu/vista.vim"
+    use {"mhinz/vim-startify", config = config("startify")}
+    use {"norcalli/nvim-colorizer.lua"}
+    use "nvim-lua/lsp-status.nvim"
+    use {"onsails/lspkind-nvim", config = config("lspkind")}
+    use "romainl/vim-qf"
+    use {"voldikss/vim-floaterm", config = config("floaterm")}
+  end
+
+  -- Colorschemes
+  if level >= 1 then
+    use "axvr/photon.vim"
+    use "rakr/vim-one"
+    use "rakr/vim-two-firewatch"
+  end
+  if level >= 2 then
+    use "bluz71/vim-moonfly-colors"
+  end
 
   -- Notes and prose
-  paq "junegunn/goyo.vim"
-  paq "junegunn/limelight.vim"
-  paq "reedes/vim-pencil"
+  if level >= 1 then
+    use "junegunn/goyo.vim"
+    use "junegunn/limelight.vim"
+    use "reedes/vim-pencil"
+  end
 
   -- Navigation
-  paq "nvim-lua/popup.nvim"
-  paq "nvim-lua/plenary.nvim"
-  paq "nvim-telescope/telescope.nvim"
-  paq "tpope/vim-projectionist"
-  paq "justinmk/vim-dirvish"
+  if level >= 1 then
+    use {
+      "nvim-telescope/telescope.nvim",
+      config = config("telescope"),
+      requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
+    }
+    use "tpope/vim-projectionist"
+  end
+  use "justinmk/vim-dirvish"
 
   -- Code intelligence
-  paq "neovim/nvim-lspconfig"
-  paq {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+  if level >= 1 then
+    use {"neovim/nvim-lspconfig", config = config("lspconfig")}
+    use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+  end
 
   -- Tools
-  paq {"bfredl/nvim-luadev", opt = true}
-  paq "editorconfig/editorconfig-vim"
-  paq "hrsh7th/nvim-compe"
-  paq "hrsh7th/vim-vsnip"
-  paq "hrsh7th/vim-vsnip-integ"
-  paq "janko/vim-test"
-  paq "mhartington/formatter.nvim"
-  paq "tpope/vim-fugitive"
-  paq {"dstein64/vim-startuptime", opt = true}
-  paq "tpope/vim-rsi"
+  if level >= 1 then
+    use {"bfredl/nvim-luadev", opt = true, cmd = {"Luadev"}}
+    use {"hrsh7th/vim-vsnip", config = config("vsnip")}
+    use "hrsh7th/vim-vsnip-integ"
+    use {"janko/vim-test", config = config("vim_test")}
+    use "mhartington/formatter.nvim"
+    use "tpope/vim-fugitive"
+  end
+  use "editorconfig/editorconfig-vim"
+  use {"dstein64/vim-startuptime", opt = true, cmd = {"StartupTime"}}
+  use "tpope/vim-rsi"
 
-  return paq_nvim
+  return packer
 end
 
 return setmetatable({}, {
   __index = function(_, key)
-    local paq_nvim = init()
-    return paq_nvim[key]
+    local packer = init()
+
+    if packer[key] then
+      return packer[key]
+    else
+      return packages[key]
+    end
   end
 })

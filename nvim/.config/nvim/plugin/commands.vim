@@ -3,7 +3,9 @@
 " ==========================================================
 
 " Package management
-command! PaqInstall lua require'ngs.packages'.install()
-command! PaqUpdate  lua require'ngs.packages'.update()
-command! PaqClean   lua require'ngs.packages'.clean()
-command! PaqGet     lua require'ngs.util'.paq_get()
+command! PackerInstall lua require'ngs.packages'.install()
+command! PackerCompile lua require'ngs.packages'.compile()
+command! PackerUpdate  lua require'ngs.packages'.update()
+command! PackerClean   lua require'ngs.packages'.clean()
+command! PackerSync    lua require'ngs.packages'.sync()
+command! PackerGet     lua require'ngs.util'.packer_get()

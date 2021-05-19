@@ -25,34 +25,15 @@ local function map(lhs, rhs)
   util.bufmap(0, "n", lhs, rhs, {silent = true})
 end
 
-LspFormatFiletypes = {}
-
 local function lsp_on_attach(client)
-  -- map("<Leader>la", "<Cmd>lua vim.lsp.buf.code_action()<CR>")
-  -- map("<Leader>ld", "<Cmd>lua vim.lsp.buf.definition()<CR>")
-  -- map("<Leader>lf", "<Cmd>lua vim.lsp.buf.formatting_sync()<CR>")
-  -- map("<Leader>lh", "<Cmd>lua vim.lsp.buf.hover()<CR>")
-  map("<Leader>lr", "<Cmd>lua require('telescope.builtin').lsp_references()<CR>")
-  map("<Leader>ls", "<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>")
-  map("<Leader>lS", "<Cmd>lua require('telescope.builtin').lsp_workspace_symbols()<CR>")
-
   map("<C-]>", "<Cmd>lua vim.lsp.buf.definition()<CR>")
   map("K",     "<Cmd>lua vim.lsp.buf.hover()<CR>")
-
-  map("ga", "<Cmd>lua vim.lsp.buf.code_action()<CR>")
-  map("gd", "<Cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
-  map("gf", "<Cmd>lua vim.lsp.buf.formatting_sync()<CR>")
-  -- map("gr", "<Cmd>lua vim.lsp.buf.references()<CR>")
-  -- map("gs", "<Cmd>lua vim.lsp.buf.document_symbol()<CR>")
-  -- map("gS", "<Cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
-
-  local config = client.config
-  if config.capabilities.textDocument.formatting then
-    for _, ft in ipairs(config.filetypes) do
-      print("Adding " .. ft)
-      table.insert(LspFormatFiletypes, ft)
-    end
-  end
+  map("gca",   "<Cmd>lua vim.lsp.buf.code_action()<CR>")
+  map("gd",    "<Cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
+  map("gf",    "<Cmd>lua vim.lsp.buf.formatting_sync()<CR>")
+  map("gr",    "<Cmd>lua require('telescope.builtin').lsp_references()<CR>")
+  map("gs",    "<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>")
+  map("gS",    "<Cmd>lua require('telescope.builtin').lsp_workspace_symbols()<CR>")
 
   lspstatus.on_attach(client)
 end
@@ -93,10 +74,10 @@ end))
 elixirls_setup:send()
 
 -- TypeScript/JavaScript
-lspconfig.tsserver.setup({
-  on_attach = lsp_on_attach,
-  filetypes = {"typescript", "javascript", "typescriptreact"},
-})
+-- lspconfig.tsserver.setup({
+--   on_attach = lsp_on_attach,
+--   filetypes = {"javascript", "typescriptreact"},
+-- })
 
 -- Lua
 local lua_root = "/usr/local/opt/lua-language-server"
@@ -127,6 +108,13 @@ lspconfig.terraformls.setup({on_attach = lsp_on_attach})
 
 -- GDScript
 lspconfig.gdscript.setup({on_attach = lsp_on_attach})
+
+-- EFM
+lspconfig.efm.setup {
+  on_attach = lsp_on_attach,
+  init_options = {documentFormatting = true},
+  filetypes = {"javascript", "typescript"}
+}
 
 -- Diagnostic highlights and signs
 cmd "sign define LspDiagnosticsSignError       text="

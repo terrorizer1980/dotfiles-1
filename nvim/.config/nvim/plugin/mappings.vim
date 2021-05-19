@@ -3,7 +3,7 @@
 " ==========================================================
 
 " Map <Leader> to <Space>
-let mapleader = " "
+" let mapleader = " "
 
 " Navigate window splits with the arrow keys
 nnoremap <Left>  <C-w>h

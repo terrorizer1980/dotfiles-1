@@ -4,7 +4,7 @@
 
 local util = {}
 
-local api, cmd = vim.api, vim.cmd
+local api, cmd, fn = vim.api, vim.cmd, vim.fn
 
 local function apply_default_opts(opts)
   local defaults = {noremap = true}
@@ -23,16 +23,6 @@ end
 function util.bufmap(buffer, mode, lhs, rhs, opts)
   local options = apply_default_opts(opts)
   api.nvim_buf_set_keymap(buffer, mode, lhs, rhs, options)
-end
-
-function util.paq_get()
-  local url = "https://github.com/savq/paq-nvim"
-  local dest = vim.fn.stdpath("data") .. "/site/pack/paqs/opt/paq-nvim"
-
-  if vim.fn.input("Download Paq? (y/N) ") == "y" then
-    cmd("silent execute '!git clone " .. url .. " " .. dest .. "'")
-    print("✔ Paq downloaded successfully")
-  end
 end
 
 function util.set(opt, val, scopes)
