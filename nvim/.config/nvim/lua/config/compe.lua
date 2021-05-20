@@ -37,7 +37,10 @@ local function s_tab()
   end
 end
 
-map("i", "<CR>",    "compe#confirm('<CR>')", {expr = true})
+vim.g.lexima_no_default_rules = true
+fn["lexima#set_default_rules"]()
+
+map("i", "<CR>",    [[compe#confirm(lexima#expand("<LT>CR>", "i"))]], {expr = true})
 map("i", "<Tab>",   [[luaeval('require("config.compe").tab()')]], {expr = true, noremap = false})
 map("s", "<Tab>",   [[luaeval('require("config.compe").tab()')]], {expr = true, noremap = false})
 map("i", "<S-Tab>", [[luaeval('require("config.compe").s_tab()')]], {expr = true, noremap = false})

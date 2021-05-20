@@ -74,6 +74,7 @@ local function init()
 
   -- Tools
   paq {"bfredl/nvim-luadev", opt = true}
+  paq "cohama/lexima.vim"
   paq "editorconfig/editorconfig-vim"
   paq "hrsh7th/nvim-compe"
   paq "hrsh7th/vim-vsnip"
