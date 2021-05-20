@@ -22,11 +22,5 @@ vim.g.loaded_perl_provider    = 0
 --- Package management
 require("ngs.packages")
 
--- Package configuration
-require("config.compe")
-require("config.devicons")
-require("config.formatter")
-require("config.lspconfig")
-require("config.lspkind")
-require("config.startify")
-require("config.treesitter")
+-- Load package configs
+require("config")
