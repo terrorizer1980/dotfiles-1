@@ -54,7 +54,6 @@ local function init()
   -- Colorschemes
   paq "axvr/photon.vim"
   paq "rakr/vim-two-firewatch"
-  paq "rakr/vim-one"
 
   -- Notes and prose
   paq "junegunn/goyo.vim"
