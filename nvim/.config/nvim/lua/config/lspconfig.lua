@@ -113,7 +113,7 @@ lspconfig.terraformls.setup({on_attach = lsp_on_attach})
 lspconfig.gdscript.setup({on_attach = lsp_on_attach})
 
 -- Diagnostic highlights and signs
-cmd "sign define LspDiagnosticsSignError       text="
-cmd "sign define LspDiagnosticsSignWarning     text="
+cmd "sign define LspDiagnosticsSignError       text="
+cmd "sign define LspDiagnosticsSignWarning     text="
 cmd "sign define LspDiagnosticsSignInformation text="
 cmd "sign define LspDiagnosticsSignHint        text="
