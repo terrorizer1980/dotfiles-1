@@ -8,3 +8,4 @@ require("config.startify")
 require("config.treesitter")
 
 require("colorizer").setup()
+require("trouble").setup({})

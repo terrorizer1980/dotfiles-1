@@ -39,6 +39,7 @@ local function init()
   paq "rust-lang/rust.vim"
 
   --  User interface
+  paq "folke/trouble.nvim"
   paq {"hoov/tmuxline.vim", opt = true}
   paq "itchyny/lightline.vim"
   paq "kyazdani42/nvim-tree.lua"
