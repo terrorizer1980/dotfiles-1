@@ -43,6 +43,7 @@ local function init()
   paq "itchyny/lightline.vim"
   paq "kyazdani42/nvim-tree.lua"
   paq "kyazdani42/nvim-web-devicons"
+  paq "lewis6991/gitsigns.nvim"
   paq "liuchengxu/vista.vim"
   paq "mhinz/vim-startify"
   paq "norcalli/nvim-colorizer.lua"
