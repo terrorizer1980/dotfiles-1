@@ -17,16 +17,35 @@ function! ngs#color#SetCustom() abort
     highlight LspDiagnosticsSignHint        guifg=#81a2be guibg=#282c34
     highlight LspDiagnosticsSignInformation guifg=#8abeb7 guibg=#282c34
     highlight LspDiagnosticsSignWarning     guifg=#f0c674 guibg=#282c34
-  elseif g:colors_name == 'two-firewatch'
-    highlight Normal       guibg=#24282f
-    highlight LineNr       guifg=#696b71 guibg=#282c34
-    highlight CursoLine    guibg=#282d36
-    highlight CursorLineNr guibg=#282c34
-    highlight SignColumn   guibg=#282c34
+  elseif g:colors_name == 'two-firewatch' && &background == 'dark'
+    let s:dk = '#24282f'
+    let s:md = '#282c34'
+    let s:lt = '#282d36'
 
-    highlight LspDiagnosticsSignError       guifg=#e05252 guibg=#282c34
-    highlight LspDiagnosticsSignHint        guifg=#6e88a6 guibg=#282c34
-    highlight LspDiagnosticsSignInformation guifg=#56b6c2 guibg=#282c34
-    highlight LspDiagnosticsSignWarning     guifg=#c8ae9d guibg=#282c34
+    call s:hilite('Normal',       {'bg': s:dk})
+    call s:hilite('CursorLine',   {'bg': s:lt})
+    call s:hilite('LineNr',       {'bg': s:md})
+    call s:hilite('CursorLineNr', {'bg': s:md})
+    call s:hilite('SignColumn',   {'bg': s:md})
+
+    call s:hilite('LspDiagnosticsSignError',       {'fg': '#e06c75', 'bg': s:md})
+    call s:hilite('LspDiagnosticsSignHint',        {'fg': '#6e88a6', 'bg': s:md})
+    call s:hilite('LspDiagnosticsSignInformation', {'fg': '#56b6c2', 'bg': s:md})
+    call s:hilite('LspDiagnosticsSignWarning',     {'fg': '#c8ae9d', 'bg': s:md})
+
+    call s:hilite('GitSignsAdd',    {'fg': '#43d08a', 'bg': s:md})
+    call s:hilite('GitSignsChange', {'fg': '#c8ae9d', 'bg': s:md})
+    call s:hilite('GitSignsDelete', {'fg': '#e06c75', 'bg': s:md})
   end
+endfunction
+
+function! s:hilite(group, colors) abort
+  let l:fg  = get(a:colors, 'fg')
+  let l:bg  = get(a:colors, 'bg')
+  let l:cmd = 'hi ' . a:group
+
+  if l:fg != v:false | let l:cmd .= ' guifg=' . l:fg | endif
+  if l:bg != v:false | let l:cmd .= ' guibg=' . l:bg | endif
+
+  execute cmd
 endfunction
