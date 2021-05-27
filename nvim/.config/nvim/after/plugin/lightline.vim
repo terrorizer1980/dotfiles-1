@@ -4,6 +4,8 @@ if exists('g:colors_name')
     let s:colorscheme = 'one'
   elseif g:colors_name == 'two-firewatch'
     let s:colorscheme = 'twofirewatch'
+  elseif g:colors_name == 'iceberg'
+    let s:colorscheme = 'iceberg'
   end
 end
 

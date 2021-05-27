@@ -53,6 +53,7 @@ local function init()
 
   -- Colorschemes
   paq "axvr/photon.vim"
+  paq "cocopon/iceberg.vim"
   paq "rakr/vim-two-firewatch"
 
   -- Notes and prose
