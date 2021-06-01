@@ -18,9 +18,9 @@ function! ngs#color#SetCustom() abort
     highlight LspDiagnosticsSignInformation guifg=#8abeb7 guibg=#282c34
     highlight LspDiagnosticsSignWarning     guifg=#f0c674 guibg=#282c34
   elseif g:colors_name == 'two-firewatch' && &background == 'dark'
-    let s:dk = '#24282f'
-    let s:md = '#282c34'
-    let s:lt = '#282d36'
+    let s:dk = '#20232a'
+    let s:md = '#24282f'
+    let s:lt = '#272C36'
 
     call s:hilite('Normal',       {'bg': s:dk})
     call s:hilite('CursorLine',   {'bg': s:lt})
@@ -36,6 +36,24 @@ function! ngs#color#SetCustom() abort
     call s:hilite('GitSignsAdd',    {'fg': '#43d08a', 'bg': s:md})
     call s:hilite('GitSignsChange', {'fg': '#c8ae9d', 'bg': s:md})
     call s:hilite('GitSignsDelete', {'fg': '#e06c75', 'bg': s:md})
+  elseif g:colors_name == 'tokyonight' && &background == 'dark'
+    let s:gutter = '#1d202e'
+
+    call s:hilite('LineNr',         {'bg': s:gutter})
+    call s:hilite('CursorLineNr',   {'bg': s:gutter})
+    call s:hilite('SignColumn',     {'bg': s:gutter})
+
+    call s:hilite('LspDiagnosticsSignError',  {'fg': '#e06c75', 'bg': s:gutter})
+    call s:hilite('LspDiagnosticsSignHint',        {'fg': '#1abc9c', 'bg': s:gutter})
+    call s:hilite('LspDiagnosticsSignInformation', {'fg': '#0db9d7', 'bg': s:gutter})
+    call s:hilite('LspDiagnosticsSignWarning',     {'fg': '#e0af68', 'bg': s:gutter})
+
+    call s:hilite('GitSignsAdd',    {'fg': '#164846', 'bg': s:gutter})
+    call s:hilite('GitSignsChange', {'fg': '#394b70', 'bg': s:gutter})
+    call s:hilite('GitSignsDelete', {'fg': '#823c41', 'bg': s:gutter})
+
+    highlight CursorLine guibg=#25293b
+    highlight IndentBlanklineChar guifg=#2f354e
   end
 endfunction
 

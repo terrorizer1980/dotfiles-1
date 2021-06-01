@@ -63,6 +63,8 @@ local function init()
   paq "junegunn/limelight.vim"
   paq "reedes/vim-pencil"
 
+  vim.cmd("packadd tokyonight.nvim")
+
   -- Navigation
   paq "nvim-lua/popup.nvim"
   paq "nvim-lua/plenary.nvim"
