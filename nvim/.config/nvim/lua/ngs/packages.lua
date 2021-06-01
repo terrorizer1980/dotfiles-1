@@ -40,7 +40,6 @@ local function init()
 
   --  User interface
   paq "folke/trouble.nvim"
-  paq {"hoov/tmuxline.vim", opt = true}
   paq "itchyny/lightline.vim"
   paq "kyazdani42/nvim-tree.lua"
   paq "kyazdani42/nvim-web-devicons"
