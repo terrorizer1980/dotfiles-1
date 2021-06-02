@@ -40,7 +40,7 @@ local function init()
 
   --  User interface
   paq "folke/trouble.nvim"
-  paq "itchyny/lightline.vim"
+  paq "glepnir/galaxyline.nvim"
   paq "kyazdani42/nvim-tree.lua"
   paq "kyazdani42/nvim-web-devicons"
   paq "lewis6991/gitsigns.nvim"
