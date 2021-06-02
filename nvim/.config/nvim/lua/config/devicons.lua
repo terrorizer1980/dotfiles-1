@@ -4,7 +4,7 @@ require("nvim-web-devicons").setup({
     zsh      = {icon = ""},
     quickfix = {icon = ""},
     erlang   = {color = "#A1022B"},
-    NvimTree = {icon = "滑"},
+    NvimTree = {icon = ""},
     text     = {icon = ""},
   }
 })
