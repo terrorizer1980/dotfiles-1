@@ -1,5 +1,6 @@
 require("lspkind").init({
   symbol_map = {
-    Function = ""
+    Function = "",
+    Constant = "π",
   }
 })
