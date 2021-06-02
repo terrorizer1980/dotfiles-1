@@ -8,7 +8,7 @@ local function add_components(location, name)
   end
 end
 
-galaxyline.short_line_list = {"NvimTree", "Trouble", "vista"}
+galaxyline.short_line_list = {"NvimTree", "Trouble", "dirvish", "vista"}
 
 add_components("left", "mode")
 add_components("left", "fileinfo")
