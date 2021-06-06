@@ -22,5 +22,8 @@ vim.g.loaded_perl_provider    = 0
 -- Enable 24-bit color
 vim.o.termguicolors = true
 
+-- Map <Leader> to <Space>
+vim.g.mapleader = " "
+
 -- Load package configs
 require("pkg.conf")
