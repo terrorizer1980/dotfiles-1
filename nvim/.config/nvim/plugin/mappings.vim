@@ -2,9 +2,6 @@
 " Mappings
 " ==========================================================
 
-" Map <Leader> to <Space>
-let mapleader = " "
-
 " Navigate window splits with the arrow keys
 nnoremap <Left>  <C-w>h
 nnoremap <Down>  <C-w>j
@@ -39,3 +36,7 @@ nnoremap <Leader>bd <Cmd>bdelete<CR>
 nnoremap <Leader>bh <Cmd>Startify<CR>
 nnoremap <Leader>bn <Cmd>bnext<CR>
 nnoremap <Leader>bp <Cmd>bprevious<CR>
+
+" Toggles
+nnoremap <Leader>un <Cmd>lua require("ngs.util").toggle_line_numbers()<CR>
+nnoremap <Leader>us <Cmd>lua require("ngs.util").toggle_sign_column()<CR>

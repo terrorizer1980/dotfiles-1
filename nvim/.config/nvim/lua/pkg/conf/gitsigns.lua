@@ -10,5 +10,5 @@ require("gitsigns").setup({
   }
 })
 
-map("n", "<Leader>tgs", "<Cmd>Gitsigns toggle_signs<CR>")
-map("n", "<Leader>tgb", "<Cmd>Gitsigns toggle_current_line_blame<CR>")
+map("n", "<Leader>ugs", "<Cmd>Gitsigns toggle_signs<CR>")
+map("n", "<Leader>ugb", "<Cmd>Gitsigns toggle_current_line_blame<CR>")
