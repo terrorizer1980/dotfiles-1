@@ -40,6 +40,7 @@ local function init()
 
   --  User interface
   paq "folke/trouble.nvim"
+  paq "folke/which-key.nvim"
   paq "glepnir/galaxyline.nvim"
   paq "kyazdani42/nvim-tree.lua"
   paq "kyazdani42/nvim-web-devicons"
@@ -54,16 +55,16 @@ local function init()
   paq "voldikss/vim-floaterm"
 
   -- Colorschemes
+  paq "RRethy/nvim-base16"
   paq "axvr/photon.vim"
   paq "cocopon/iceberg.vim"
+  -- paq "folke/tokyonight.nvim"
   paq "rakr/vim-two-firewatch"
 
   -- Notes and prose
   paq "junegunn/goyo.vim"
   paq "junegunn/limelight.vim"
   paq "reedes/vim-pencil"
-
-  vim.cmd("packadd tokyonight.nvim")
 
   -- Navigation
   paq "nvim-lua/popup.nvim"
@@ -84,7 +85,6 @@ local function init()
   paq "hrsh7th/vim-vsnip"
   paq "hrsh7th/vim-vsnip-integ"
   paq "janko/vim-test"
-  paq "mhartington/formatter.nvim"
   paq "tpope/vim-fugitive"
   paq {"dstein64/vim-startuptime", opt = true}
   paq "tpope/vim-rsi"

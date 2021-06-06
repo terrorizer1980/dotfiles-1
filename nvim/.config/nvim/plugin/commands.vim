@@ -3,7 +3,7 @@
 " ==========================================================
 
 " Package management
-command! PaqInstall lua require'ngs.packages'.install()
-command! PaqUpdate  lua require'ngs.packages'.update()
-command! PaqClean   lua require'ngs.packages'.clean()
+command! PaqInstall lua require'pkg'.install()
+command! PaqUpdate  lua require'pkg'.update()
+command! PaqClean   lua require'pkg'.clean()
 command! PaqGet     lua require'ngs.util'.paq_get()

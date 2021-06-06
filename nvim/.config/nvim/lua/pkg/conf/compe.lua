@@ -41,10 +41,10 @@ vim.g.lexima_no_default_rules = true
 fn["lexima#set_default_rules"]()
 
 map("i", "<CR>",    [[compe#confirm(lexima#expand("<LT>CR>", "i"))]], {expr = true, silent = true})
-map("i", "<Tab>",   [[luaeval('require("config.compe").tab()')]], {expr = true, noremap = false})
-map("s", "<Tab>",   [[luaeval('require("config.compe").tab()')]], {expr = true, noremap = false})
-map("i", "<S-Tab>", [[luaeval('require("config.compe").s_tab()')]], {expr = true, noremap = false})
-map("s", "<S-Tab>", [[luaeval('require("config.compe").s_tab()')]], {expr = true, noremap = false})
+map("i", "<Tab>",   [[luaeval('require("pkg.conf.compe").tab()')]], {expr = true, noremap = false})
+map("s", "<Tab>",   [[luaeval('require("pkg.conf.compe").tab()')]], {expr = true, noremap = false})
+map("i", "<S-Tab>", [[luaeval('require("pkg.conf.compe").s_tab()')]], {expr = true, noremap = false})
+map("s", "<S-Tab>", [[luaeval('require("pkg.conf.compe").s_tab()')]], {expr = true, noremap = false})
 
 return {
   tab = tab,

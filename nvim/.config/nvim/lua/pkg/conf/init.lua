@@ -1,0 +1,12 @@
+require("pkg.conf.compe")
+require("pkg.conf.devicons")
+require("pkg.conf.gitsigns")
+require("pkg.conf.iris")
+require("pkg.conf.lspconfig")
+require("pkg.conf.lspkind")
+require("pkg.conf.startify")
+require("pkg.conf.treesitter")
+require("pkg.conf.whichkey")
+
+require("colorizer").setup()
+require("trouble").setup()

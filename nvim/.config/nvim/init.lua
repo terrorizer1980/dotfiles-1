@@ -23,4 +23,4 @@ vim.g.loaded_perl_provider    = 0
 vim.o.termguicolors = true
 
 -- Load package configs
-require("config")
+require("pkg.conf")

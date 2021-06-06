@@ -2,7 +2,7 @@ local galaxyline = require("galaxyline")
 local section = galaxyline.section
 
 local function add_components(location, name)
-  local components = require("config.galaxyline." .. name)
+  local components = require("pkg.conf.galaxyline." .. name)
   for _, component in ipairs(components) do
     table.insert(section[location], component)
   end
