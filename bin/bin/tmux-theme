@@ -1,0 +1,52 @@
+#!/bin/sh
+
+input=$1
+
+error() {
+  echo "Error: $1"
+  echo $input
+  exit 1
+}
+
+get() {
+  v=$(echo "$input" | jq -r "$1")
+  [ "$v" = 'null' ] && echo "$2" || echo "$v"
+}
+
+if [ $# == 0 ]; then
+  error 'No input given'
+elif [ ! -x "$(command -v jq)" ]; then
+  error 'Could not find command jq'
+else
+  echo "$input" | jq > /dev/null 2>&1
+  if [ ! $? -eq 0 ]; then
+    error 'Invalid JSON'
+  fi
+fi
+
+base_fg=$(get '.base[0]' 'colour0')
+base_bg=$(get '.base[1]' 'colour8')
+
+left_fg=$(get '.left[0]' 'colour0')
+left_bg=$(get '.left[1]' 'colour4')
+
+right_fg=$(get '.right[0]' 'colour0')
+right_bg=$(get '.right[1]' 'colour7')
+
+inactive_fg=$(get '.inactive[0]' 'colour15')
+inactive_bg=$(get '.inactive[1]' 'colour8')
+
+active_fg=$(get '.active[0]' 'colour15')
+active_bg=$(get '.active[1]' 'colour0')
+
+message_fg=$(get '.message[0]' 'colour0')
+message_bg=$(get '.message[1]' 'colour11')
+
+tmux set  -g status-style "fg=$base_fg,bg=$base_bg"
+tmux set  -g status-left-length "100"
+tmux set  -g status-left "#[fg=$left_fg,bg=$left_bg] #S "
+tmux set  -g status-right-length "100"
+tmux set  -g status-right " #(now_playing)  #(current_weather) #[fg=$right_fg,bg=$right_bg] #(date_time) "
+tmux set  -g message-style "fg=$message_fg,bg=$message_bg"
+tmux setw -g window-status-format "#[fg=$inactive_fg,bg=$inactive_bg]$WINDOW"
+tmux setw -g window-status-current-format "#[fg=$active_fg,bg=$active_bg]$WINDOW"

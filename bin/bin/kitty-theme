@@ -1,0 +1,3 @@
+#!/bin/sh
+
+kitty @ --to=unix:/tmp/kittysocket set-colors $1
