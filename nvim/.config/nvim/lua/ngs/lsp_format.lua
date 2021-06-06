@@ -1,4 +1,3 @@
-local util = require("ngs.util")
 local _M = {}
 
 local cmd, g = vim.cmd, vim.g
