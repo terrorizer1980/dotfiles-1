@@ -1,15 +1,15 @@
 #!/bin/sh
 
-input=$1
+json=$1
 
 error() {
   echo "Error: $1"
-  echo $input
+  echo $json
   exit 1
 }
 
 get() {
-  v=$(echo "$input" | jq -r "$1")
+  v=$(echo "$json" | jq -r "$1")
   [ "$v" = 'null' ] && echo "$2" || echo "$v"
 }
 
@@ -18,29 +18,31 @@ if [ $# == 0 ]; then
 elif [ ! -x "$(command -v jq)" ]; then
   error 'Could not find command jq'
 else
-  echo "$input" | jq > /dev/null 2>&1
+  echo "$json" | jq > /dev/null 2>&1
   if [ ! $? -eq 0 ]; then
     error 'Invalid JSON'
   fi
 fi
 
-base_fg=$(get '.base[0]' 'colour0')
-base_bg=$(get '.base[1]' 'colour8')
+echo "$json" | jq '.base00'
 
-left_fg=$(get '.left[0]' 'colour0')
-left_bg=$(get '.left[1]' 'colour4')
+base_fg=$(get '.base06' 'colour0')
+base_bg=$(get '.base01' 'colour8')
 
-right_fg=$(get '.right[0]' 'colour0')
-right_bg=$(get '.right[1]' 'colour7')
+left_fg=$(get '.base01' 'colour0')
+left_bg=$(get '.blue' 'colour4')
 
-inactive_fg=$(get '.inactive[0]' 'colour15')
-inactive_bg=$(get '.inactive[1]' 'colour8')
+right_fg=$(get '.base01' 'colour0')
+right_bg=$(get '.base05' 'colour7')
 
-active_fg=$(get '.active[0]' 'colour15')
-active_bg=$(get '.active[1]' 'colour0')
+inactive_fg=$(get '.base06' 'colour15')
+inactive_bg=$(get '.base01' 'colour8')
 
-message_fg=$(get '.message[0]' 'colour0')
-message_bg=$(get '.message[1]' 'colour11')
+active_fg=$(get '.base06' 'colour15')
+active_bg=$(get '.base00' 'colour0')
+
+message_fg=$(get '.base00' 'colour0')
+message_bg=$(get '.magenta' 'colour11')
 
 tmux set  -g status-style "fg=$base_fg,bg=$base_bg"
 tmux set  -g status-left-length "100"
