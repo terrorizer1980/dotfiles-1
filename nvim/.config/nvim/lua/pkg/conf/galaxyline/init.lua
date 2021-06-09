@@ -2,10 +2,10 @@ local galaxyline = require("galaxyline")
 local section = galaxyline.section
 
 local function add_components(location, name)
-    local components = require("pkg.conf.galaxyline." .. name)
-    for _, component in ipairs(components) do
-        table.insert(section[location], component)
-    end
+  local components = require("pkg.conf.galaxyline." .. name)
+  for _, component in ipairs(components) do
+    table.insert(section[location], component)
+  end
 end
 
 galaxyline.short_line_list = {"NvimTree", "Trouble", "dirvish", "vista"}

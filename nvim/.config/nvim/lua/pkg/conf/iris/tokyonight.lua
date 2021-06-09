@@ -1,7 +1,7 @@
 local exists, module = pcall(require, "tokyonight.colors")
 if not exists then return end
 
-local blend = require("iris.lib.blend").blend
+local blend = require("iris.lib.color").blend
 local colors = module.setup()
 
 -- LuaFormatter off
