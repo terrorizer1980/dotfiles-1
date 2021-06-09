@@ -6,8 +6,8 @@ return function(on_attach)
     settings = {
       rootMarkers = {".git/"},
       languages = {
-        lua = {{formatCommand = "lua-format -i", formatStdin = true}}
-      }
-    }
+        lua = {{formatCommand = "lua-format -i", formatStdin = true}},
+      },
+    },
   })
 end

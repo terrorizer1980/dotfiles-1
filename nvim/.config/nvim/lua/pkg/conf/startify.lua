@@ -1,6 +1,6 @@
-vim.g.startify_files_number = 5
-vim.g.startify_skiplist = {"~/.local/share/nvim/site/pack/*"}
-vim.g.startify_bookmarks = {}
+vim.g.startify_files_number        = 5
+vim.g.startify_skiplist            = {"~/.local/share/nvim/site/pack/*"}
+vim.g.startify_bookmarks           = {}
 vim.g.startify_session_persistence = 1
 
 local v = vim.version()

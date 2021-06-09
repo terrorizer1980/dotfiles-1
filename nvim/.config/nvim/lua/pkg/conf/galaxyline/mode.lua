@@ -40,16 +40,15 @@ return {
         local color = colors("white")()
         local cfg = modes[vim.fn.mode()]
         if cfg then
-          label = cfg[1] .. " "
+          label = cfg[1].." "
           color = cfg[2]
         end
-        vim.cmd("hi GalaxyMode guifg=" .. color .. " guibg=" ..
-                    colors("line_dark")())
-        vim.cmd("hi GalaxyLineColumnIcon guifg=" .. color)
-        vim.cmd("hi GalaxyLinePercentIcon guifg=" .. color)
-        vim.cmd("hi GalaxyGitIcon guifg=" .. color)
-        return "▊ " .. label
+        vim.cmd("hi GalaxyMode guifg="..color.." guibg="..colors("line_dark")())
+        vim.cmd("hi GalaxyLineColumnIcon guifg="..color)
+        vim.cmd("hi GalaxyLinePercentIcon guifg="..color)
+        vim.cmd("hi GalaxyGitIcon guifg="..color)
+        return "▊ "..label
       end
-    }
-  }
+    },
+  },
 }
