@@ -1,1 +1,1 @@
-setlocal shiftwidth=2
+call ngs#options#SetTabWidth(2)
