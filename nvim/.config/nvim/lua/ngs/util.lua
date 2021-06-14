@@ -79,7 +79,7 @@ function util.highlight(group, opts)
   local bg = opts.bg or "NONE"
   local attrs = opts.attrs or "NONE"
   local command = string.format("highlight %s gui=%s guifg=%s guibg=%s",
-    group, attrs, fg, bg)
+                                group, attrs, fg, bg)
   cmd(command)
 end
 
