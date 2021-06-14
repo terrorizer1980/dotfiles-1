@@ -1,2 +1,2 @@
-nmap <Leader>r <Plug>(Luadev-Runline)
-vmap <Leader>r <Plug>(Luadev-Run)
+nmap <Leader>rl <Plug>(Luadev-Runline)
+vmap <Leader>rl <Plug>(Luadev-Run)

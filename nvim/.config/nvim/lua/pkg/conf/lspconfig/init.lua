@@ -5,26 +5,18 @@ local util = require("ngs.util")
 -- Callback for when LSP client attaches to buffer
 local function on_attach(client, bufnr)
   local function map(lhs, rhs)
-    util.bufmap(bufnr, "n", lhs, rhs, {silent = true})
+    for _, l in pairs(lhs) do
+      util.bufmap(bufnr, "n", l, rhs, {silent = true})
+    end
   end
 
-  map("<C-]>", "<Cmd>lua vim.lsp.buf.definition()<CR>")
-  map("K",     "<Cmd>lua vim.lsp.buf.hover()<CR>")
-  map("gca",   "<Cmd>lua vim.lsp.buf.code_action()<CR>")
-  map("gd",    "<Cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
-  map("gf",    "<Cmd>lua vim.lsp.buf.formatting_sync()<CR>")
-  map("gr",    "<Cmd>lua require('telescope.builtin').lsp_references()<CR>")
-  map("gs",    "<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>")
-  map("gS",    "<Cmd>lua require('telescope.builtin').lsp_workspace_symbols()<CR>")
-
-  map("<Leader>ld", "<Cmd>lua vim.lsp.buf.definition()<CR>")
-  map("<Leader>lh", "<Cmd>lua vim.lsp.buf.hover()<CR>")
-  map("<Leader>la", "<Cmd>lua vim.lsp.buf.code_action()<CR>")
-  map("<Leader>lD", "<Cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
-  map("<Leader>lf", "<Cmd>lua vim.lsp.buf.formatting_sync()<CR>")
-  map("<Leader>lr", "<Cmd>lua require('telescope.builtin').lsp_references()<CR>")
-  map("<Leader>ls", "<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>")
-  map("<Leader>lS", "<Cmd>lua require('telescope.builtin').lsp_workspace_symbols()<CR>")
+  map({"<C-]>", "<Leader>ld"},  "<Cmd>lua vim.lsp.buf.definition()<CR>")
+  map({"K",     "<Leader>lh"},  "<Cmd>lua vim.lsp.buf.hover()<CR>")
+  map({"gca",   "<Leader>la"},  "<Cmd>lua vim.lsp.buf.code_action()<CR>")
+  map({"gd",    "<Leader>lD"},  "<Cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
+  map({"gf",    "<Leader>lf"},  "<Cmd>lua vim.lsp.buf.formatting_sync()<CR>")
+  map({"gr",    "<Leader>lr"},  "<Cmd>lua require('telescope.builtin').lsp_references()<CR>")
+  map({"gs",    "<Leader>ls"},  "<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>")
 
   lsp_format.setup(client.config.filetypes)
 end

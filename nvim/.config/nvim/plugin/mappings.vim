@@ -14,10 +14,6 @@ nnoremap <M-Down>  <Cmd>resize -10<CR>
 nnoremap <M-Right> <Cmd>vertical resize +10<CR>
 nnoremap <M-Left>  <Cmd>vertical resize -10<CR>
 
-" Quickfix and location lists
-nmap <Leader>\ <Plug>(qf_qg_toggle)
-nmap <Leader><Leader>\ <Plug>(qf_loc_toggle)
-
 " Clear search highlighting on <Esc>
 nnoremap <Esc> <Cmd>nohlsearch<CR>
 
