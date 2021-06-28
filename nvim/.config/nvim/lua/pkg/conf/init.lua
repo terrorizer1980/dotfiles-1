@@ -1,6 +1,7 @@
 require("pkg.conf.autopairs")
 require("pkg.conf.compe")
 require("pkg.conf.devicons")
+require("pkg.conf.formatter")
 require("pkg.conf.gitsigns")
 require("pkg.conf.iris")
 require("pkg.conf.lspconfig")
