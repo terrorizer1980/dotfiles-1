@@ -1,3 +1,4 @@
+local autopairs = require("nvim-autopairs")
 local map = require("ngs.util").map
 local fn = vim.fn
 
@@ -37,13 +38,22 @@ local function s_tab()
   end
 end
 
-vim.g.lexima_no_default_rules = true
-fn["lexima#set_default_rules"]()
+local function cr()
+  if vim.fn.pumvisible() == 1 then
+    if vim.fn.complete_info()["selected"] ~= -1 then
+      return vim.fn["compe#confirm"](autopairs.esc("<CR>", "i"))
+    else
+      return autopairs.esc("<cr>")
+    end
+  else
+    return autopairs.autopairs_cr()
+  end
+end
 
-map("i", "<CR>",    [[compe#confirm(lexima#expand("<LT>CR>", "i"))]], {expr = true, silent = true})
+map("i", "<CR>",    [[luaeval('require("pkg.conf.compe").cr()')]],    {expr = true})
 map("i", "<Tab>",   [[luaeval('require("pkg.conf.compe").tab()')]],   {expr = true, noremap = false})
 map("s", "<Tab>",   [[luaeval('require("pkg.conf.compe").tab()')]],   {expr = true, noremap = false})
 map("i", "<S-Tab>", [[luaeval('require("pkg.conf.compe").s_tab()')]], {expr = true, noremap = false})
 map("s", "<S-Tab>", [[luaeval('require("pkg.conf.compe").s_tab()')]], {expr = true, noremap = false})
 
-return {tab = tab, s_tab = s_tab}
+return {tab = tab, s_tab = s_tab, cr = cr}

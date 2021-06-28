@@ -7,17 +7,17 @@ local function init()
   paq {"savq/paq-nvim", opt = true}
 
   -- Editing
-  paq "andymass/vim-matchup"
   paq "junegunn/vim-easy-align"
   paq "justinmk/vim-sneak"
   paq "tpope/vim-abolish"
   paq "tpope/vim-commentary"
-  paq "tpope/vim-eunuch"
+  paq {"tpope/vim-endwise", opt = true}
   paq "tpope/vim-repeat"
   paq "tpope/vim-sleuth"
   paq "tpope/vim-speeddating"
   paq "tpope/vim-surround"
   paq "tpope/vim-unimpaired"
+  paq "windwp/nvim-autopairs"
 
   -- Language support
   paq "HerringtonDarkholme/yats.vim"
@@ -63,6 +63,7 @@ local function init()
   paq "reedes/vim-pencil"
 
   -- Navigation
+  paq "andymass/vim-matchup"
   paq "nvim-lua/popup.nvim"
   paq "nvim-lua/plenary.nvim"
   paq "nvim-telescope/telescope.nvim"
@@ -75,7 +76,6 @@ local function init()
 
   -- Tools
   paq {"bfredl/nvim-luadev", opt = true}
-  paq "cohama/lexima.vim"
   paq "editorconfig/editorconfig-vim"
   paq "hrsh7th/nvim-compe"
   paq "hrsh7th/vim-vsnip"
@@ -84,6 +84,7 @@ local function init()
   paq "ngscheurich/iris.nvim"
   paq "tpope/vim-fugitive"
   paq {"dstein64/vim-startuptime", opt = true}
+  paq "tpope/vim-eunuch"
   paq "tpope/vim-rsi"
 
   return paq_nvim

@@ -1,3 +1,4 @@
+require("pkg.conf.autopairs")
 require("pkg.conf.compe")
 require("pkg.conf.devicons")
 require("pkg.conf.gitsigns")
