@@ -1,9 +1,9 @@
 local lspconfig = require("lspconfig")
-local lsp_format = require("ngs.lsp_format")
+-- local lsp_format = require("ngs.lsp_format")
 local util = require("ngs.util")
 
 -- Callback for when LSP client attaches to buffer
-local function on_attach(client, bufnr)
+local function on_attach(_, bufnr)
   local function map(lhs, rhs)
     for _, l in pairs(lhs) do
       util.bufmap(bufnr, "n", l, rhs, {silent = true})
@@ -18,7 +18,7 @@ local function on_attach(client, bufnr)
   map({"gr",    "<Leader>lr"},  "<Cmd>lua require('telescope.builtin').lsp_references()<CR>")
   map({"gs",    "<Leader>ls"},  "<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>")
 
-  lsp_format.setup(client.config.filetypes)
+  -- lsp_format.setup(client.config.filetypes)
 end
 
 -- Set up servers with default settings

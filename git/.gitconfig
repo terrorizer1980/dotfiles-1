@@ -37,6 +37,7 @@
   st = status
   unstage = reset --soft HEAD^
   pub = push --set-upstream origin HEAD
+  subget = !git submodule init && git submodule update
 [filter "lfs"]
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process

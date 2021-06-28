@@ -2,7 +2,11 @@
 
 json=$1
 
+echo "Ran $(date)" >> /tmp/tmux-theme.log
+# echo "$1" >> /tmp/tmux-theme.log
+
 error() {
+  echo "Error: $1" >> /tmp/tmux-theme.log
   echo "Error: $1"
   echo $json
   exit 1
@@ -24,7 +28,7 @@ else
   fi
 fi
 
-echo "$json" | jq '.base00'
+echo "$json" | jq '.base00' >> /tmp/tmux-theme.log
 
 base_fg=$(get '.base06' 'colour0')
 base_bg=$(get '.base01' 'colour8')

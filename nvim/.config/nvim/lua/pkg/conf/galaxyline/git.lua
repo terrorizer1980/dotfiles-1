@@ -2,7 +2,7 @@ local condition = require("galaxyline.condition")
 local colors = require("iris.palette").get_color_fn
 
 local function ch_shorten(branch)
-  return string.match(branch, [[^.+/ch%d+/(.*)]])
+  return string.match(branch, [[^.+/(ch%d+)/.*]])
 end
 
 return {

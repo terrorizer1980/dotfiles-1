@@ -1,5 +1,8 @@
 require("iris").setup({
-  palettes = {tokyonight = require("pkg.conf.iris.tokyonight")},
+  palettes = {
+    tokyonight = require("pkg.conf.iris.tokyonight"),
+    moonfly = require("pkg.conf.iris.moonfly"),
+  },
 
   callbacks = {
     function(_) require("pkg.conf.galaxyline") end,

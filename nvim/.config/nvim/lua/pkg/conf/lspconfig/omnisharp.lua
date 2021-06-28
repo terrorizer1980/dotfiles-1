@@ -1,6 +1,6 @@
 return function(on_attach)
     local pid = vim.fn.getpid()
-    local omnisharp_bin = "~/tools/omnisharp-osx/run"
+    local omnisharp_bin = "/Users/nick/tools/omnisharp-osx/run"
 
     require("lspconfig").omnisharp.setup({
         cmd = {omnisharp_bin, "--languageserver", "--hostPID", tostring(pid)},

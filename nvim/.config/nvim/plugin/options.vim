@@ -11,6 +11,7 @@ set grepprg=rg\ --vimgrep " Use ripgrep backend for the `:grep` command
 set hidden                " Don't unload buffers when they become abandoned
 set ignorecase            " Ignore case in search patterns
 set inccommand=split      " Show partial off-screen substitutions in a preview window
+set mouse=a               " The mouse can be useful at times
 set noshowmode            " Hide mode indicator
 set noswapfile            " Don't use swapfiles
 set number                " Print the line number in front of the current line

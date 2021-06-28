@@ -3,6 +3,7 @@ local set = require("iris.util").set_highlight
 return function(pal)
   require("pkg.conf.galaxyline")
 
+  set("Normal",       {fg = pal.fg, bg = pal.bg})
   set("LineNr",       {fg = pal.base05, bg = pal.gutter})
   set("CursorLineNr", {fg = pal.base06, bg = pal.gutter})
   set("SignColumn",   {bg = pal.gutter})
