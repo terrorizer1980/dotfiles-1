@@ -74,7 +74,8 @@ local function init()
 
   -- Code intelligence
   paq "neovim/nvim-lspconfig"
-  paq {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+  paq {"nvim-treesitter/nvim-treesitter", run = function () vim.cmd("TSUpdate") end}
+  paq "nvim-treesitter/playground"
 
   -- Tools
   paq {"bfredl/nvim-luadev", opt = true}
