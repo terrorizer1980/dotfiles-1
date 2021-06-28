@@ -67,6 +67,7 @@ local function init()
   paq "nvim-lua/popup.nvim"
   paq "nvim-lua/plenary.nvim"
   paq "nvim-telescope/telescope.nvim"
+  paq {"nvim-telescope/telescope-fzy-native.nvim", run = "git subget"}
   paq "tpope/vim-projectionist"
   paq "justinmk/vim-dirvish"
 

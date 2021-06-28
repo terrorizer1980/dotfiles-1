@@ -10,4 +10,5 @@ require("pkg.conf.treesitter")
 require("pkg.conf.whichkey")
 
 require("colorizer").setup()
+require("telescope").load_extension("fzy_native")
 require("trouble").setup()
