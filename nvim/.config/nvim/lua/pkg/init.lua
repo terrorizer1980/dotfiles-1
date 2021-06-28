@@ -53,6 +53,7 @@ local function init()
   -- Colorschemes
   paq "RRethy/nvim-base16"
   paq "axvr/photon.vim"
+  paq "bluz71/vim-moonfly-colors"
   paq "cocopon/iceberg.vim"
   -- paq "folke/tokyonight.nvim"
   paq "rakr/vim-two-firewatch"
