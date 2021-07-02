@@ -84,8 +84,8 @@ local function init()
   paq "hrsh7th/vim-vsnip"
   paq "hrsh7th/vim-vsnip-integ"
   paq "janko/vim-test"
-  paq "ngscheurich/iris.nvim"
   paq "mhartington/formatter.nvim"
+  -- paq "ngscheurich/iris.nvim"
   paq "tpope/vim-fugitive"
   paq {"dstein64/vim-startuptime", opt = true}
   paq "tpope/vim-eunuch"

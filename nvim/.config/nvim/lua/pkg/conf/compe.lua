@@ -41,7 +41,7 @@ end
 local function cr()
   if vim.fn.pumvisible() == 1 then
     if vim.fn.complete_info()["selected"] ~= -1 then
-      return vim.fn["compe#confirm"](autopairs.esc("<CR>", "i"))
+      return vim.fn["compe#confirm"](autopairs.esc("<LT><CR>", "i"))
     else
       return autopairs.esc("<cr>")
     end
@@ -50,7 +50,8 @@ local function cr()
   end
 end
 
-map("i", "<CR>",    [[luaeval('require("pkg.conf.compe").cr()')]],    {expr = true})
+map("i", "<CR>",    [[compe#confirm()]], {expr = true, silent = true})
+-- map("i", "<CR>",    [[luaeval('require("pkg.conf.compe").cr()')]],    {expr = true})
 map("i", "<Tab>",   [[luaeval('require("pkg.conf.compe").tab()')]],   {expr = true, noremap = false})
 map("s", "<Tab>",   [[luaeval('require("pkg.conf.compe").tab()')]],   {expr = true, noremap = false})
 map("i", "<S-Tab>", [[luaeval('require("pkg.conf.compe").s_tab()')]], {expr = true, noremap = false})

@@ -10,7 +10,7 @@
 setopt APPEND_HISTORY         # Sessions should append to the history file (not overwrite)
 setopt AUTO_CD                # Avoid having to type `cd` to change directories
 setopt CORRECT                # Provide a guess of intended commands when command is invalid
-setopt CORRECT_ALL            # Try to correct all arguments in a line
+# setopt CORRECT_ALL            # Try to correct all arguments in a line
 setopt EXTENDED_HISTORY       # Save extra info (timestamp, exec time) to history file
 setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicates first
 setopt HIST_FIND_NO_DUPS      # Ignore duplicates when searching
@@ -28,15 +28,12 @@ setopt SHARE_HISTORY          # All sessions share the history file
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export AWS_VAULT_KEYCHAIN_NAME=login
 export BROWSER=open
-export EDITOR='NVIM_STYLE=lo-fi nvim'
+export EDITOR='nvim'
 export ERL_AFLAGS='-kernel shell_history enabled'
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
 export FZF_DEFAULT_OPTS="--color=bg+:0,pointer:1,hl:3,hl+:1,info:2,prompt:4"
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
-# export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}'"
-export FZF_CTRL_T_OPTS="--preview \
-  'bat --color=always --style=numbers \
-  --line-range=:500 {}'"
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 export FZF_ALT_C_COMMAND='fd --type directory --follow --hidden --exclude .git'
 export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
 export FZF_PATH=$(which fzf)
@@ -85,8 +82,6 @@ alias ta='tmux attach'
 alias tn='tmuxdir'
 alias vboxls='VBoxManage list runningvms'
 alias vim='nvim'
-alias lim='NVIM_STYLE=lo-fi nvim'
-alias xim='NVIM_STYLE=experimental nvim'
 alias vimconfig='$EDITOR $HOME/.config/nvim/init.vim'
 alias vimdiff='nvim -d'
 alias weather='curl wttr.in'
@@ -195,13 +190,13 @@ set-prompt() {
   local git_info=''
   if git-repo; then
     local branch_name=$(colorize "$(git-branch)" cyan)
-    local branch_icon=${PROMPT_GIT_CLEAN:-''}
+    local branch_icon=${PROMPT_GIT_CLEAN:-' '}
     local branch_color=green
     if git-rebase; then
-      branch_icon=${PROMPT_GIT_REBASE:-'漏'}
+      branch_icon=${PROMPT_GIT_REBASE:-' '}
       branch_color=red
     elif git-dirty; then
-      branch_icon=${PROMPT_GIT_DIRTY:-'署'}
+      branch_icon=${PROMPT_GIT_DIRTY:-' '}
       branch_color=yellow
     fi
     local branch_status=$(colorize $branch_icon $branch_color)
@@ -253,10 +248,10 @@ if ! zgen saved; then
   zgen save
 fi
 
-eval   "$(thefuck --alias)"
-eval   "$(direnv hook zsh)"
-eval   "$(fasd --init auto)"
-eval   "$(docker-machine env default)"
+eval "$(thefuck --alias)"
+eval "$(direnv hook zsh)"
+eval "$(fasd --init auto)"
+# eval "$(docker-machine env default)"
 
 source "$(brew --prefix asdf)/asdf.sh"
 

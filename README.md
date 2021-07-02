@@ -37,11 +37,11 @@ all commits made prior to this change are available in the [`archives`] branch.
 
 This project is released under the [MIT License (MIT)][license].
 
-[GNU Stow]: https://www.gnu.org/software/stow/
-[Neovim]: https://neovim.io/
+[gnu stow]: https://www.gnu.org/software/stow/
+[neovim]: https://neovim.io/
 [kitty]: https://sw.kovidgoyal.net/kitty/
 [tmux]: https://github.com/tmux/tmux
-[Zsh]: https://www.zsh.org/
+[zsh]: https://www.zsh.org/
 [runtime files]: https://github.com/ngscheurich/dotfiles/tree/main/nvim/.config/nvim
 [`main`]: https://github.com/ngscheurich/dotfiles/tree/main
 [`archives`]: https://github.com/ngscheurich/dotfiles/tree/archives
